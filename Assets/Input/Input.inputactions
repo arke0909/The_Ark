@@ -6,9 +6,36 @@
             "id": "df70fa95-8a34-4494-b137-73ab6b9c7d37",
             "actions": [
                 {
-                    "name": "Input",
+                    "name": "Up",
                     "type": "Button",
                     "id": "5093e22b-c8f1-49e3-a2de-0bea692d4543",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Down",
+                    "type": "Button",
+                    "id": "0570cfdf-bff3-4d80-9ad0-77f08fd66519",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Left",
+                    "type": "Button",
+                    "id": "910be710-45cf-4b71-aeac-9919eaad67ac",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Right",
+                    "type": "Button",
+                    "id": "a65f2b21-929d-4c53-a6a8-40b7783371ee",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -17,59 +44,48 @@
             ],
             "bindings": [
                 {
-                    "name": "WASD",
-                    "id": "2451a23e-ac4d-4a0d-bb27-98ca88bde845",
-                    "path": "Dpad",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Input",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "up",
-                    "id": "85840ff0-2dc4-40d2-824f-1041e02b9c4b",
+                    "name": "",
+                    "id": "244b9772-2165-457f-a4a2-ba40c71a2d5d",
                     "path": "<Keyboard>/upArrow",
                     "interactions": "",
                     "processors": "",
-                    "groups": ";Keyboard&Mouse",
-                    "action": "Input",
+                    "groups": "",
+                    "action": "Up",
                     "isComposite": false,
-                    "isPartOfComposite": true
+                    "isPartOfComposite": false
                 },
                 {
-                    "name": "down",
-                    "id": "643e31f8-0455-46ab-bc57-5b0504e7e9bd",
+                    "name": "",
+                    "id": "eea62bab-8a0c-4559-83a4-b9eaae085a87",
                     "path": "<Keyboard>/downArrow",
                     "interactions": "",
                     "processors": "",
-                    "groups": ";Keyboard&Mouse",
-                    "action": "Input",
+                    "groups": "",
+                    "action": "Down",
                     "isComposite": false,
-                    "isPartOfComposite": true
+                    "isPartOfComposite": false
                 },
                 {
-                    "name": "left",
-                    "id": "8efdc1c2-d68c-44c9-91c0-55730bab3b43",
+                    "name": "",
+                    "id": "b6dbb723-4e1e-4b4a-9bee-0835b46bb7f8",
                     "path": "<Keyboard>/leftArrow",
                     "interactions": "",
                     "processors": "",
-                    "groups": ";Keyboard&Mouse",
-                    "action": "Input",
+                    "groups": "",
+                    "action": "Left",
                     "isComposite": false,
-                    "isPartOfComposite": true
+                    "isPartOfComposite": false
                 },
                 {
-                    "name": "right",
-                    "id": "708757c8-9f13-4022-8bd3-8e6931cccef3",
+                    "name": "",
+                    "id": "9c7e8808-5b50-454e-b5d7-93b34646dda3",
                     "path": "<Keyboard>/rightArrow",
                     "interactions": "",
                     "processors": "",
-                    "groups": ";Keyboard&Mouse",
-                    "action": "Input",
+                    "groups": "",
+                    "action": "Right",
                     "isComposite": false,
-                    "isPartOfComposite": true
+                    "isPartOfComposite": false
                 }
             ]
         },

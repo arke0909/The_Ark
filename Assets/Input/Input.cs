@@ -28,9 +28,36 @@ public partial class @Input: IInputActionCollection2, IDisposable
             ""id"": ""df70fa95-8a34-4494-b137-73ab6b9c7d37"",
             ""actions"": [
                 {
-                    ""name"": ""Input"",
+                    ""name"": ""Up"",
                     ""type"": ""Button"",
                     ""id"": ""5093e22b-c8f1-49e3-a2de-0bea692d4543"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Down"",
+                    ""type"": ""Button"",
+                    ""id"": ""0570cfdf-bff3-4d80-9ad0-77f08fd66519"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Left"",
+                    ""type"": ""Button"",
+                    ""id"": ""910be710-45cf-4b71-aeac-9919eaad67ac"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Right"",
+                    ""type"": ""Button"",
+                    ""id"": ""a65f2b21-929d-4c53-a6a8-40b7783371ee"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
@@ -39,59 +66,48 @@ public partial class @Input: IInputActionCollection2, IDisposable
             ],
             ""bindings"": [
                 {
-                    ""name"": ""WASD"",
-                    ""id"": ""2451a23e-ac4d-4a0d-bb27-98ca88bde845"",
-                    ""path"": ""Dpad"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Input"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""up"",
-                    ""id"": ""85840ff0-2dc4-40d2-824f-1041e02b9c4b"",
+                    ""name"": """",
+                    ""id"": ""244b9772-2165-457f-a4a2-ba40c71a2d5d"",
                     ""path"": ""<Keyboard>/upArrow"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""Input"",
+                    ""groups"": """",
+                    ""action"": ""Up"",
                     ""isComposite"": false,
-                    ""isPartOfComposite"": true
+                    ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""down"",
-                    ""id"": ""643e31f8-0455-46ab-bc57-5b0504e7e9bd"",
+                    ""name"": """",
+                    ""id"": ""eea62bab-8a0c-4559-83a4-b9eaae085a87"",
                     ""path"": ""<Keyboard>/downArrow"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""Input"",
+                    ""groups"": """",
+                    ""action"": ""Down"",
                     ""isComposite"": false,
-                    ""isPartOfComposite"": true
+                    ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""left"",
-                    ""id"": ""8efdc1c2-d68c-44c9-91c0-55730bab3b43"",
+                    ""name"": """",
+                    ""id"": ""b6dbb723-4e1e-4b4a-9bee-0835b46bb7f8"",
                     ""path"": ""<Keyboard>/leftArrow"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""Input"",
+                    ""groups"": """",
+                    ""action"": ""Left"",
                     ""isComposite"": false,
-                    ""isPartOfComposite"": true
+                    ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""right"",
-                    ""id"": ""708757c8-9f13-4022-8bd3-8e6931cccef3"",
+                    ""name"": """",
+                    ""id"": ""9c7e8808-5b50-454e-b5d7-93b34646dda3"",
                     ""path"": ""<Keyboard>/rightArrow"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""Input"",
+                    ""groups"": """",
+                    ""action"": ""Right"",
                     ""isComposite"": false,
-                    ""isPartOfComposite"": true
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -233,7 +249,10 @@ public partial class @Input: IInputActionCollection2, IDisposable
 }");
         // PlayerTurn
         m_PlayerTurn = asset.FindActionMap("PlayerTurn", throwIfNotFound: true);
-        m_PlayerTurn_Input = m_PlayerTurn.FindAction("Input", throwIfNotFound: true);
+        m_PlayerTurn_Up = m_PlayerTurn.FindAction("Up", throwIfNotFound: true);
+        m_PlayerTurn_Down = m_PlayerTurn.FindAction("Down", throwIfNotFound: true);
+        m_PlayerTurn_Left = m_PlayerTurn.FindAction("Left", throwIfNotFound: true);
+        m_PlayerTurn_Right = m_PlayerTurn.FindAction("Right", throwIfNotFound: true);
         // EnemyTurn
         m_EnemyTurn = asset.FindActionMap("EnemyTurn", throwIfNotFound: true);
         m_EnemyTurn_Move = m_EnemyTurn.FindAction("Move", throwIfNotFound: true);
@@ -304,12 +323,18 @@ public partial class @Input: IInputActionCollection2, IDisposable
     // PlayerTurn
     private readonly InputActionMap m_PlayerTurn;
     private List<IPlayerTurnActions> m_PlayerTurnActionsCallbackInterfaces = new List<IPlayerTurnActions>();
-    private readonly InputAction m_PlayerTurn_Input;
+    private readonly InputAction m_PlayerTurn_Up;
+    private readonly InputAction m_PlayerTurn_Down;
+    private readonly InputAction m_PlayerTurn_Left;
+    private readonly InputAction m_PlayerTurn_Right;
     public struct PlayerTurnActions
     {
         private @Input m_Wrapper;
         public PlayerTurnActions(@Input wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Input => m_Wrapper.m_PlayerTurn_Input;
+        public InputAction @Up => m_Wrapper.m_PlayerTurn_Up;
+        public InputAction @Down => m_Wrapper.m_PlayerTurn_Down;
+        public InputAction @Left => m_Wrapper.m_PlayerTurn_Left;
+        public InputAction @Right => m_Wrapper.m_PlayerTurn_Right;
         public InputActionMap Get() { return m_Wrapper.m_PlayerTurn; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -319,16 +344,34 @@ public partial class @Input: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_PlayerTurnActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_PlayerTurnActionsCallbackInterfaces.Add(instance);
-            @Input.started += instance.OnInput;
-            @Input.performed += instance.OnInput;
-            @Input.canceled += instance.OnInput;
+            @Up.started += instance.OnUp;
+            @Up.performed += instance.OnUp;
+            @Up.canceled += instance.OnUp;
+            @Down.started += instance.OnDown;
+            @Down.performed += instance.OnDown;
+            @Down.canceled += instance.OnDown;
+            @Left.started += instance.OnLeft;
+            @Left.performed += instance.OnLeft;
+            @Left.canceled += instance.OnLeft;
+            @Right.started += instance.OnRight;
+            @Right.performed += instance.OnRight;
+            @Right.canceled += instance.OnRight;
         }
 
         private void UnregisterCallbacks(IPlayerTurnActions instance)
         {
-            @Input.started -= instance.OnInput;
-            @Input.performed -= instance.OnInput;
-            @Input.canceled -= instance.OnInput;
+            @Up.started -= instance.OnUp;
+            @Up.performed -= instance.OnUp;
+            @Up.canceled -= instance.OnUp;
+            @Down.started -= instance.OnDown;
+            @Down.performed -= instance.OnDown;
+            @Down.canceled -= instance.OnDown;
+            @Left.started -= instance.OnLeft;
+            @Left.performed -= instance.OnLeft;
+            @Left.canceled -= instance.OnLeft;
+            @Right.started -= instance.OnRight;
+            @Right.performed -= instance.OnRight;
+            @Right.canceled -= instance.OnRight;
         }
 
         public void RemoveCallbacks(IPlayerTurnActions instance)
@@ -439,7 +482,10 @@ public partial class @Input: IInputActionCollection2, IDisposable
     }
     public interface IPlayerTurnActions
     {
-        void OnInput(InputAction.CallbackContext context);
+        void OnUp(InputAction.CallbackContext context);
+        void OnDown(InputAction.CallbackContext context);
+        void OnLeft(InputAction.CallbackContext context);
+        void OnRight(InputAction.CallbackContext context);
     }
     public interface IEnemyTurnActions
     {
