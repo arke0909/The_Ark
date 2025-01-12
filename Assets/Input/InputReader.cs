@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using static Input;
 
-public enum ArrowsType
+public enum ArrowType
 {
     UP, DOWN, LEFT, RIGHT
 }
@@ -11,7 +11,7 @@ public enum ArrowsType
 [CreateAssetMenu(fileName = "InputReader", menuName = "SO/InputReader")]
 public class InputReader : ScriptableObject, IPlayerTurnActions
 {
-    public Action<ArrowsType> ArrowEvent;
+    public Action<ArrowType> ArrowEvent;
 
     private Input _input;
 
@@ -37,25 +37,25 @@ public class InputReader : ScriptableObject, IPlayerTurnActions
     public void OnUp(InputAction.CallbackContext context)
     {
         if (context.performed)
-            ArrowEvent?.Invoke(ArrowsType.UP);
+            ArrowEvent?.Invoke(ArrowType.UP);
     }
 
     public void OnDown(InputAction.CallbackContext context)
     {
         if(context.performed)
-            ArrowEvent?.Invoke(ArrowsType.DOWN);
+            ArrowEvent?.Invoke(ArrowType.DOWN);
     }
 
     public void OnLeft(InputAction.CallbackContext context)
     {
         if (context.performed)
-            ArrowEvent?.Invoke(ArrowsType.LEFT);
+            ArrowEvent?.Invoke(ArrowType.LEFT);
     }
 
     public void OnRight(InputAction.CallbackContext context)
     {
         if (context.performed)
-            ArrowEvent?.Invoke(ArrowsType.RIGHT);
+            ArrowEvent?.Invoke(ArrowType.RIGHT);
     }
 
     #endregion
