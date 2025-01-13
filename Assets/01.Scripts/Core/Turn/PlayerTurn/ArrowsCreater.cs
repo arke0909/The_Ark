@@ -7,14 +7,14 @@ public class ArrowsCreater : MonoBehaviour
 {
     [SerializeField] private ArrowTypeEventChannel ArrowTypeEvent;
 
-    private List<Arrow> _arrows;
+    [SerializeField] private List<Arrow> _arrows;
     private Arrow _currentArrow;
 
     private int _arrowTypeCnt = Enum.GetValues(typeof(ArrowType)).Length;
 
-    private int _currentRepeatCnt = 0;
+    //private int _currentRepeatCnt = 0;
 
-    private int _idx;
+    [SerializeField] private int _idx;
 
     private int _currentArrowIndex
     {
@@ -34,33 +34,23 @@ public class ArrowsCreater : MonoBehaviour
 
     private int _size;
 
-    public int Size
-    {
-        get { return _size; }
-
-        set
-        {
-            if (value < 0)
-                value = 0;
-
-            _size = value;
-        }
-    }
-
-    public int TotalRepeatCnt { get; set; }
+    //public int TotalRepeatCnt { get; set; }
 
     private void Awake()
     {
         _arrows = new List<Arrow>();
         ArrowTypeEvent.ValueEvent += ArrowCheck;
+
+        SetArrows(8);
     }
 
-    public void SetArrows()
+    public void SetArrows(int size)
     {
         _arrows.Clear();
         _currentArrowIndex = 0;
+        //_size = size;
 
-        for (int i = 0; i < _size; i++)
+        for (int i = 0; i < size; i++)
         {
             ArrowType arrowType = (ArrowType)Random.Range(0, _arrowTypeCnt);
             Arrow arrow = new Arrow(arrowType);
@@ -74,6 +64,7 @@ public class ArrowsCreater : MonoBehaviour
     {
         if (_currentArrow.Check(type))
         {
+            Debug.Log($"{_currentArrow.ArrowType}, {type} 같은 종류다.");
             if (_currentArrowIndex == _arrows.Count - 1)
             {
                 End();
@@ -83,20 +74,27 @@ public class ArrowsCreater : MonoBehaviour
                 _currentArrowIndex++;
         }
         else
+        {
+
+            Debug.Log($"{_currentArrow.ArrowType}, {type} 다른 종류다.");
             _currentArrowIndex = 0;
+        }
+
 
         _currentArrow = _arrows[_currentArrowIndex];
     }
 
     private void End()
     {
-        if (_currentRepeatCnt < TotalRepeatCnt)
+        Debug.Log("끝");
+
+        /*if (_currentRepeatCnt < TotalRepeatCnt)
         {
             _currentRepeatCnt++;
-            SetArrows();
+            SetArrows(_size);
         }
         else
         {
-        }
+        }*/
     }
 }

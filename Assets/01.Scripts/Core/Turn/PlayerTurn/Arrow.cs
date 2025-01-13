@@ -1,7 +1,10 @@
+using System;
 using UnityEngine;
 
+[Serializable]
 public class Arrow
 {
+    [SerializeField]
     private ArrowType _arrowType;
 
     public ArrowType ArrowType => _arrowType;
