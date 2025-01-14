@@ -9,9 +9,11 @@ public enum ArrowType
 }
 
 [CreateAssetMenu(fileName = "InputReader", menuName = "SO/InputReader")]
-public class InputReader : ScriptableObject, IPlayerTurnActions
+public class InputReader : ScriptableObject, IPlayerTurnActions, IEnemyTurnActions
 {
     public Action<ArrowType> ArrowEvent;
+
+    public Vector2 InputVector { get; private set; }
 
     private Input _input;
 
@@ -22,6 +24,7 @@ public class InputReader : ScriptableObject, IPlayerTurnActions
             _input = new Input();
 
             _input.PlayerTurn.SetCallbacks(this);
+            _input.EnemyTurn.SetCallbacks(this);
         }
 
         _input.PlayerTurn.Enable();
@@ -29,7 +32,16 @@ public class InputReader : ScriptableObject, IPlayerTurnActions
 
     private void OnDisable()
     {
-        _input.PlayerTurn.Disable();
+        _input.Disable();
+    }
+    public void TurnChange(bool isPlayerTurn)
+    {
+        _input.Disable();
+
+        if (isPlayerTurn)
+            _input.PlayerTurn.Enable();
+        else
+            _input.EnemyTurn.Enable();
     }
 
     #region Player Turn
@@ -58,5 +70,12 @@ public class InputReader : ScriptableObject, IPlayerTurnActions
             ArrowEvent?.Invoke(ArrowType.RIGHT);
     }
 
+    #endregion
+
+    #region Enemy Turn
+    public void OnMove(InputAction.CallbackContext context)
+    {
+        InputVector = context.ReadValue<Vector2>();
+    }
     #endregion
 }
