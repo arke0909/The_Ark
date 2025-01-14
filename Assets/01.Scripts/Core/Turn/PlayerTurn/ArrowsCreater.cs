@@ -7,14 +7,15 @@ public class ArrowsCreater : MonoBehaviour
 {
     [SerializeField] private ArrowTypeEventChannel ArrowTypeEvent;
 
-    [SerializeField] private List<Arrow> _arrows;
-    private Arrow _currentArrow;
+    private List<ArrowType> _arrows;
+
+    private ArrowType _currentArrow;
 
     private int _arrowTypeCnt = Enum.GetValues(typeof(ArrowType)).Length;
 
     //private int _currentRepeatCnt = 0;
 
-    [SerializeField] private int _idx;
+    private int _idx;
 
     private int _currentArrowIndex
     {
@@ -38,7 +39,7 @@ public class ArrowsCreater : MonoBehaviour
 
     private void Awake()
     {
-        _arrows = new List<Arrow>();
+        _arrows = new List<ArrowType>();
         ArrowTypeEvent.ValueEvent += ArrowCheck;
 
         SetArrows(8);
@@ -52,8 +53,7 @@ public class ArrowsCreater : MonoBehaviour
 
         for (int i = 0; i < size; i++)
         {
-            ArrowType arrowType = (ArrowType)Random.Range(0, _arrowTypeCnt);
-            Arrow arrow = new Arrow(arrowType);
+            ArrowType arrow = (ArrowType)Random.Range(0, _arrowTypeCnt);
             _arrows.Add(arrow);
         }
 
@@ -62,9 +62,10 @@ public class ArrowsCreater : MonoBehaviour
 
     private void ArrowCheck(ArrowType type)
     {
-        if (_currentArrow.Check(type))
+        bool isRight = _currentArrow == type;
+
+        if (isRight)
         {
-            Debug.Log($"{_currentArrow.ArrowType}, {type} 같은 종류다.");
             if (_currentArrowIndex == _arrows.Count - 1)
             {
                 End();
@@ -76,7 +77,6 @@ public class ArrowsCreater : MonoBehaviour
         else
         {
 
-            Debug.Log($"{_currentArrow.ArrowType}, {type} 다른 종류다.");
             _currentArrowIndex = 0;
         }
 
@@ -86,8 +86,6 @@ public class ArrowsCreater : MonoBehaviour
 
     private void End()
     {
-        Debug.Log("끝");
-
         /*if (_currentRepeatCnt < TotalRepeatCnt)
         {
             _currentRepeatCnt++;
