@@ -340,6 +340,52 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &650294914
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 650294916}
+  - component: {fileID: 650294915}
+  m_Layer: 0
+  m_Name: TurnManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &650294915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 650294914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8218f66761ee4d3584410e2d3eca6173, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turnChangeChannel: {fileID: 11400000, guid: cbee26c0380d9c745b94e60ad84e18d2, type: 2}
+  inputChangeChannel: {fileID: 11400000, guid: 9a822eef76b308d4097d4c9085e0029c, type: 2}
+--- !u!4 &650294916
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 650294914}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1222527434
 GameObject:
   m_ObjectHideFlags: 0
@@ -438,7 +484,7 @@ GameObject:
   - component: {fileID: 2065057170}
   - component: {fileID: 2065057171}
   m_Layer: 0
-  m_Name: ArrowCreater
+  m_Name: PlayerTurn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -468,10 +514,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2065057169}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 708519858bae90445b6fd2ba8978036f, type: 3}
+  m_Script: {fileID: 11500000, guid: f26b0ec17a8c58e4981bee2528353e73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ArrowTypeEvent: {fileID: 11400000, guid: eebe65fef960775428db45766bf268bd, type: 2}
+  arrowTypeEvent: {fileID: 11400000, guid: eebe65fef960775428db45766bf268bd, type: 2}
+  turnChangeEvent: {fileID: 11400000, guid: cbee26c0380d9c745b94e60ad84e18d2, type: 2}
+  totalRepeatCnt: 1
 --- !u!1 &2078656532
 GameObject:
   m_ObjectHideFlags: 0
@@ -521,7 +569,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <InputCompo>k__BackingField: {fileID: 11400000, guid: 805884eb54a0bc54dbd5ee8e9c59073d, type: 2}
-  ArrowTypeEvent: {fileID: 11400000, guid: eebe65fef960775428db45766bf268bd, type: 2}
+  arrowTypeEvent: {fileID: 11400000, guid: eebe65fef960775428db45766bf268bd, type: 2}
+  inputChangeChannel: {fileID: 11400000, guid: 9a822eef76b308d4097d4c9085e0029c, type: 2}
 --- !u!50 &2078656536
 Rigidbody2D:
   serializedVersion: 5
@@ -597,7 +646,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 629c9873b874d204295c40f123695a02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveSpeed: 5
+  moveSpeed: 5
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -606,3 +655,4 @@ SceneRoots:
   - {fileID: 619394802}
   - {fileID: 2078656534}
   - {fileID: 2065057170}
+  - {fileID: 650294916}
