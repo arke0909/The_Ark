@@ -14,6 +14,11 @@ namespace Scripts.Core.Manager
             turnChangeChannel.AddListner<TurnChangeEvent>(HandleTurnChange);
         }
 
+        private void OnDestroy()
+        {
+            turnChangeChannel.RemoveListner<TurnChangeEvent>(HandleTurnChange);
+        }
+
         private void HandleTurnChange(TurnChangeEvent evt)
         {
             if (evt.isPlayerTurn)

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using Scripts.Core.EventChannel;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 namespace Scripts.Player
 {
@@ -25,6 +24,11 @@ namespace Scripts.Player
             inputChangeChannel.ValueEvent += TurnChange;
         }
 
+        private void OnDestroy()
+        {
+            InputCompo.ArrowEvent -= CheckArrow;
+            inputChangeChannel.ValueEvent -= TurnChange;
+        }
         private void SetPlayerCompoentsAndInitialize()
         {
             GetComponentsInChildren<IPlayerComponent>().ToList().ForEach(component =>

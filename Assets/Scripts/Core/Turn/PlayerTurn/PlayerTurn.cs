@@ -88,23 +88,33 @@ namespace Scripts.Core.Turn.PlayerTurn
         private void End()
         {
             _currentRepeatCnt++;
-            
+
             if (_currentRepeatCnt < totalRepeatCnt)
             {
                 SetArrows(_size);
             }
             else
             {
-                TurnChangeToEnemy(false);
+                TurnChangeToEnemy(false, size, _duration);
             }
         }
 
-        private void TurnChangeToEnemy(bool isPlayerTurn)
+        [SerializeField] private Vector2 size;
+        [SerializeField] private float _duration;
+
+
+        // 나중에 불리시킬 거
+        private void TurnChangeToEnemy(bool isPlayerTurn, Vector2 size, float duration)
         {
-            TurnChangeEvent evt = new TurnChangeEvent();
-            evt.isPlayerTurn = isPlayerTurn;
-            
-            turnChangeEvent.RaiseEvent(evt);
+            TurnChangeEvent changeEvt = TurnEvents.TurnChangeEvent;
+            changeEvt.isPlayerTurn = isPlayerTurn;
+
+            ChangeAreaSizeEvent sizeEvt = TurnEvents.ChangeAreaSizeEvent;
+            sizeEvt.size = size;
+            sizeEvt.duration = duration;
+
+            turnChangeEvent.RaiseEvent(sizeEvt);
+            turnChangeEvent.RaiseEvent(changeEvt);
         }
     }
 }

@@ -1,3 +1,5 @@
+using UnityEngine;
+
 namespace Scripts.Core.EventChannel
 {
     public enum Turn
@@ -5,13 +7,20 @@ namespace Scripts.Core.EventChannel
         Start, Player, Enemy, End
     }
 
-    public class TurnEvents
+    public static class TurnEvents
     {
         public static TurnChangeEvent TurnChangeEvent = new TurnChangeEvent();
+        public static ChangeAreaSizeEvent ChangeAreaSizeEvent = new ChangeAreaSizeEvent();
     }
 
     public class TurnChangeEvent : GameEvent
     {
         public bool isPlayerTurn;
+    }
+
+    public class ChangeAreaSizeEvent : GameEvent
+    {
+        public Vector2 size;
+        public float duration;
     }
 }
