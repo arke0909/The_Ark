@@ -1,12 +1,15 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "EntityFinder", menuName = "SO/Entity/Finder")]
-public class EntityFinder : ScriptableObject
+namespace Assets.Scripts.Entity
 {
-    public Entity entity;
-    
-    public void SetEntity(Entity entity)
+    [CreateAssetMenu(fileName = "EntityFinder", menuName = "SO/Entity/Finder")]
+    public class EntityFinder : ScriptableObject
     {
-        this.entity = entity;
+        public Entity entity;
+
+        public void SetEntity(Entity entity)
+        {
+            this.entity = entity;
+        }
     }
 }

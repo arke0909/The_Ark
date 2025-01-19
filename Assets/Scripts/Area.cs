@@ -2,7 +2,7 @@ using Scripts.Core.EventChannel;
 using Scripts.Players;
 using UnityEngine;
 using DG.Tweening;
-using static UnityEditor.Experimental.GraphView.GraphView;
+using Assets.Scripts.Entity;
 
 namespace Assets.Scripts
 {
@@ -34,8 +34,9 @@ namespace Assets.Scripts
             if(_player != null)
             {
                 Collider2D targetCollider = _player.GetComponent<Collider2D>();
-                _bounds.x = targetCollider.bounds.size.x / 2;
-                _bounds.y = targetCollider.bounds.size.y / 2;
+                Debug.Log(targetCollider.bounds.size);
+                _bounds.x = targetCollider.bounds.size.x * 1.2f;
+                _bounds.y = targetCollider.bounds.size.y * 1.2f;
             }
 
             turnChangeChannel.AddListner<ChangeAreaSizeEvent>(HandhelChangeAreaSize);
@@ -50,13 +51,13 @@ namespace Assets.Scripts
         {
             DOTween.To(() => _confiningBounds.size,
                        x => _confiningBounds.size = x,
-                       targetSize + _bounds,
+                       targetSize,
                        duration)
                    .SetEase(Ease.InOutQuad);
 
             DOTween.To(() => _spriteRenderer.size,
                        x => _spriteRenderer.size = x,
-                       targetSize,
+                       targetSize + _bounds,
                        duration)
                    .SetEase(Ease.InOutQuad);
         }

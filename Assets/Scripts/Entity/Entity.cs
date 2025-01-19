@@ -1,6 +1,9 @@
 using UnityEngine;
 
-public class Entity : MonoBehaviour
+namespace Assets.Scripts.Entity
 {
+    public abstract class Entity : MonoBehaviour
+    {
 
+    }
 }

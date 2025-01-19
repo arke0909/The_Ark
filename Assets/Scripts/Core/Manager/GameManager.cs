@@ -1,16 +1,20 @@
+using Assets.Scripts.Entity;
 using Scripts.Players;
 using UnityEngine;
 
-// 스크립트 실행 순서
-[DefaultExecutionOrder(-20)]
-public class GameManager : MonoBehaviour
+namespace Assets.Scripts.Core.Manager
 {
-    [SerializeField] private EntityFinder playerFinder;
-    private Player _player;
-
-    private void Awake()
+    // 스크립트 실행 순서 확보
+    [DefaultExecutionOrder(-20)]
+    public class GameManager : MonoBehaviour
     {
-        _player = FindAnyObjectByType<Player>();
-        playerFinder.SetEntity(_player);
+        [SerializeField] private EntityFinder playerFinder;
+        private Player _player;
+
+        private void Awake()
+        {
+            _player = FindAnyObjectByType<Player>();
+            playerFinder.SetEntity(_player);
+        }
     }
 }
