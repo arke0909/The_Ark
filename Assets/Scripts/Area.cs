@@ -1,27 +1,42 @@
 using Scripts.Core.EventChannel;
-using Scripts.Player;
+using Scripts.Players;
 using UnityEngine;
 using DG.Tweening;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 namespace Assets.Scripts
 {
     public class Area : MonoBehaviour
     {
+        [SerializeField] private EntityFinder playerFinder;
         [SerializeField] private GameEventChannel turnChangeChannel;
-        [SerializeField] private Player player;
+
+        private Player _player;
 
         private BoxCollider2D _confiningBounds;
         private SpriteRenderer _spriteRenderer;
 
+        private Vector2 _bounds;
+
         private void Awake()
         {
+            _player = playerFinder.entity as Player;
+
             _confiningBounds = GetComponent<BoxCollider2D>();
             Debug.Assert(_confiningBounds != null, "this gameObject has not Collider2D");
+
             _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
             Debug.Assert(_confiningBounds != null, "this gameObject has not SpriteRenderer");
 
             if(_spriteRenderer.drawMode == SpriteDrawMode.Simple)
                 _spriteRenderer.drawMode = SpriteDrawMode.Sliced;
+
+            if(_player != null)
+            {
+                Collider2D targetCollider = _player.GetComponent<Collider2D>();
+                _bounds.x = targetCollider.bounds.size.x / 2;
+                _bounds.y = targetCollider.bounds.size.y / 2;
+            }
 
             turnChangeChannel.AddListner<ChangeAreaSizeEvent>(HandhelChangeAreaSize);
         }
@@ -35,7 +50,7 @@ namespace Assets.Scripts
         {
             DOTween.To(() => _confiningBounds.size,
                        x => _confiningBounds.size = x,
-                       targetSize,
+                       targetSize + _bounds,
                        duration)
                    .SetEase(Ease.InOutQuad);
 
@@ -55,16 +70,15 @@ namespace Assets.Scripts
         {
             if (_confiningBounds == null) return;
 
-            // 현재 위치가 경계 내에 있는지 확인
-            Vector2 currentPosition = player.transform.position;
+            Vector2 currentPosition = _player.transform.position;
 
-            // 경계 안의 가장 가까운 점 계산
+            
+
             Vector2 closestPoint = _confiningBounds.ClosestPoint(currentPosition);
 
-            // 오브젝트가 경계를 벗어났다면 위치를 경계로 이동
             if (currentPosition != closestPoint)
             {
-                player.transform.position = closestPoint;
+                _player.transform.position = closestPoint;
             }
         }
     }

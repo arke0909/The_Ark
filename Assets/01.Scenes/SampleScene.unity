@@ -212,7 +212,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turnChangeChannel: {fileID: 11400000, guid: cbee26c0380d9c745b94e60ad84e18d2, type: 2}
-  player: {fileID: 2078656535}
+  targetCollider: {fileID: 2078656537}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0

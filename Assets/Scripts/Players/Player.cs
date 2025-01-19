@@ -4,9 +4,9 @@ using System.Linq;
 using Scripts.Core.EventChannel;
 using UnityEngine;
 
-namespace Scripts.Player
+namespace Scripts.Players
 {
-    public class Player : MonoBehaviour
+    public class Player : Entity
     {
         [field : SerializeField] public InputReader  InputCompo {  get; private set; }
 
