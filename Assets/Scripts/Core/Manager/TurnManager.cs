@@ -86,7 +86,7 @@ namespace Scripts.Core.Manager
         }
 
         [SerializeField] private Vector2 size;
-        [SerializeField] private float _duration;
+        [SerializeField] private float duration;
 
         private void End()
         {
@@ -98,14 +98,14 @@ namespace Scripts.Core.Manager
             }
             else
             {
-                TurnChangeToEnemy(false, size, _duration);
+                TurnChangeToEnemy();
             }
         }
 
-        private void TurnChangeToEnemy(bool isPlayerTurn, Vector2 size, float duration)
+        private void TurnChangeToEnemy()
         {
             InputChangeEvent changeEvt = TurnEvents.InputChangeEvent;
-            changeEvt.isPlayerTurn = isPlayerTurn;
+            changeEvt.isPlayerTurn = false;
 
             ChangeAreaSizeEvent sizeEvt = TurnEvents.ChangeAreaSizeEvent;
             sizeEvt.size = size;

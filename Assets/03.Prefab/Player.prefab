@@ -137,7 +137,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <InputCompo>k__BackingField: {fileID: 11400000, guid: 805884eb54a0bc54dbd5ee8e9c59073d, type: 2}
   arrowTypeEvent: {fileID: 11400000, guid: eebe65fef960775428db45766bf268bd, type: 2}
-  inputChangeChannel: {fileID: 11400000, guid: 9a822eef76b308d4097d4c9085e0029c, type: 2}
+  turnChangeChannel: {fileID: 11400000, guid: cbee26c0380d9c745b94e60ad84e18d2, type: 2}
 --- !u!114 &4459543979401727318
 MonoBehaviour:
   m_ObjectHideFlags: 0
