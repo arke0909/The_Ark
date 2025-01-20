@@ -9,11 +9,11 @@ namespace Scripts.Core.EventChannel
 
     public static class TurnEvents
     {
-        public static TurnChangeEvent TurnChangeEvent = new TurnChangeEvent();
+        public static InputChangeEvent InputChangeEvent = new InputChangeEvent();
         public static ChangeAreaSizeEvent ChangeAreaSizeEvent = new ChangeAreaSizeEvent();
     }
 
-    public class TurnChangeEvent : GameEvent
+    public class InputChangeEvent : GameEvent
     {
         public bool isPlayerTurn;
     }

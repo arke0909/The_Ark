@@ -12,23 +12,25 @@ namespace Scripts.Players
         [field : SerializeField] public InputReader  InputCompo {  get; private set; }
 
         [SerializeField] private ArrowTypeEventChannel arrowTypeEvent;
-        [SerializeField] private BoolEventChannel inputChangeChannel;
+        [SerializeField] private GameEventChannel turnChangeChannel;
 
         private Dictionary<Type, IPlayerComponent> _components;
 
+
+        #region Init Section
         private void Awake()
         {
             _components = new Dictionary<Type, IPlayerComponent>();
             SetPlayerCompoentsAndInitialize();
 
             InputCompo.ArrowEvent += CheckArrow;
-            inputChangeChannel.ValueEvent += TurnChange;
+            turnChangeChannel.AddListner<InputChangeEvent>(HandleInputChange);
         }
+
 
         private void OnDestroy()
         {
             InputCompo.ArrowEvent -= CheckArrow;
-            inputChangeChannel.ValueEvent -= TurnChange;
         }
         private void SetPlayerCompoentsAndInitialize()
         {
@@ -39,15 +41,16 @@ namespace Scripts.Players
                 _components.Add(type, component);
             });
         }
+        #endregion
+
+        private void HandleInputChange(InputChangeEvent evt)
+        {
+            InputCompo.TurnChange(evt.isPlayerTurn);
+        }
 
         private void CheckArrow(ArrowType type)
         {
             arrowTypeEvent.RaiseEvent(type);
-        }
-
-        private void TurnChange(bool isPlayerTurn)
-        {
-            InputCompo.TurnChange(isPlayerTurn);
         }
     }
 }

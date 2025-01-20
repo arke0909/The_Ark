@@ -34,9 +34,8 @@ namespace Assets.Scripts
             if(_player != null)
             {
                 Collider2D targetCollider = _player.GetComponent<Collider2D>();
-                Debug.Log(targetCollider.bounds.size);
-                _bounds.x = targetCollider.bounds.size.x * 1.2f;
-                _bounds.y = targetCollider.bounds.size.y * 1.2f;
+                _bounds.x = targetCollider.bounds.size.x;
+                _bounds.y = targetCollider.bounds.size.y;
             }
 
             turnChangeChannel.AddListner<ChangeAreaSizeEvent>(HandhelChangeAreaSize);
