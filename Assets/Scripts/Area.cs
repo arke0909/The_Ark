@@ -12,31 +12,23 @@ namespace Assets.Scripts
         [SerializeField] private GameEventChannel turnChangeChannel;
 
         private Player _player;
+        private Collider2D _targetCollider;
 
-        private BoxCollider2D _confiningBounds;
+        private BoxCollider2D _confiningCollider;
         private SpriteRenderer _spriteRenderer;
-
-        private Vector2 _bounds;
 
         private void Awake()
         {
             _player = playerFinder.entity as Player;
 
-            _confiningBounds = GetComponent<BoxCollider2D>();
-            Debug.Assert(_confiningBounds != null, "this gameObject has not Collider2D");
+            _targetCollider = _player.GetComponent<Collider2D>();
+            Debug.Assert(_targetCollider != null, "entity in PlayerFinder is null");
+
+            _confiningCollider = GetComponent<BoxCollider2D>();
+            Debug.Assert(_confiningCollider != null, "this gameObject has not Collider2D");
 
             _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
-            Debug.Assert(_confiningBounds != null, "this gameObject has not SpriteRenderer");
-
-            if(_spriteRenderer.drawMode == SpriteDrawMode.Simple)
-                _spriteRenderer.drawMode = SpriteDrawMode.Sliced;
-
-            if(_player != null)
-            {
-                Collider2D targetCollider = _player.GetComponent<Collider2D>();
-                _bounds.x = targetCollider.bounds.size.x;
-                _bounds.y = targetCollider.bounds.size.y;
-            }
+            Debug.Assert(_spriteRenderer != null, "this gameObject has not SpriteRenderer");
 
             turnChangeChannel.AddListner<ChangeAreaSizeEvent>(HandhelChangeAreaSize);
         }
@@ -48,15 +40,15 @@ namespace Assets.Scripts
 
         private void ChangeArea(Vector2 targetSize, float duration)
         {
-            DOTween.To(() => _confiningBounds.size,
-                       x => _confiningBounds.size = x,
+            DOTween.To(() => _confiningCollider.size,
+                       x => _confiningCollider.size = x,
                        targetSize,
                        duration)
                    .SetEase(Ease.InOutQuad);
 
             DOTween.To(() => _spriteRenderer.size,
                        x => _spriteRenderer.size = x,
-                       targetSize + _bounds,
+                       targetSize,
                        duration)
                    .SetEase(Ease.InOutQuad);
         }
@@ -68,18 +60,30 @@ namespace Assets.Scripts
 
         private void LateUpdate()
         {
-            if (_confiningBounds == null) return;
+            KeepTargetInsideBounds();
+        }
+        private void KeepTargetInsideBounds()
+        {
+            Bounds confinerBounds = _confiningCollider.bounds; // 제한 콜라이더의 경계
+            Bounds targetBounds = _targetCollider.bounds; // 대상 콜라이더의 경계
 
-            Vector2 currentPosition = _player.transform.position;
+            Vector3 targetPosition = _player.transform.position;
 
-            
+            // 제한 영역 내로 위치 보정
+            float clampedX = Mathf.Clamp(
+                targetPosition.x,
+                confinerBounds.min.x + (targetBounds.extents.x),
+                confinerBounds.max.x - (targetBounds.extents.x)
+            );
 
-            Vector2 closestPoint = _confiningBounds.ClosestPoint(currentPosition);
+            float clampedY = Mathf.Clamp(
+                targetPosition.y,
+                confinerBounds.min.y + (targetBounds.extents.y),
+                confinerBounds.max.y - (targetBounds.extents.y)
+            );
 
-            if (currentPosition != closestPoint)
-            {
-                _player.transform.position = closestPoint;
-            }
+            // 보정된 위치 적용
+            _player.transform.position = new Vector3(clampedX, clampedY, targetPosition.z);
         }
     }
 }
