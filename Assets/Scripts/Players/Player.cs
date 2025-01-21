@@ -24,7 +24,7 @@ namespace Scripts.Players
             SetPlayerCompoentsAndInitialize();
 
             InputCompo.ArrowEvent += CheckArrow;
-            turnChangeChannel.AddListner<InputChangeEvent>(HandleInputChange);
+            turnChangeChannel.AddListner<TurnChangeEvent>(HandleInputChange);
         }
 
 
@@ -43,7 +43,7 @@ namespace Scripts.Players
         }
         #endregion
 
-        private void HandleInputChange(InputChangeEvent evt)
+        private void HandleInputChange(TurnChangeEvent evt)
         {
             InputCompo.TurnChange(evt.isPlayerTurn);
         }

@@ -104,7 +104,7 @@ namespace Scripts.Core.Manager
 
         private void TurnChangeToEnemy()
         {
-            InputChangeEvent changeEvt = TurnEvents.InputChangeEvent;
+            TurnChangeEvent changeEvt = TurnEvents.TurnChangeEvent;
             changeEvt.isPlayerTurn = false;
 
             ChangeAreaSizeEvent sizeEvt = TurnEvents.ChangeAreaSizeEvent;

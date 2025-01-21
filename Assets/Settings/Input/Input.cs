@@ -184,7 +184,7 @@ public partial class @Input: IInputActionCollection2, IDisposable
             ]
         },
         {
-            ""name"": ""Choice"",
+            ""name"": ""Act"",
             ""id"": ""90a19a25-26dd-429e-9812-ec6b19cb095e"",
             ""actions"": [
                 {
@@ -345,7 +345,7 @@ public partial class @Input: IInputActionCollection2, IDisposable
         m_EnemyTurn = asset.FindActionMap("EnemyTurn", throwIfNotFound: true);
         m_EnemyTurn_Move = m_EnemyTurn.FindAction("Move", throwIfNotFound: true);
         // Choice
-        m_Choice = asset.FindActionMap("Choice", throwIfNotFound: true);
+        m_Choice = asset.FindActionMap("Act", throwIfNotFound: true);
         m_Choice_Up = m_Choice.FindAction("Up", throwIfNotFound: true);
         m_Choice_Down = m_Choice.FindAction("Down", throwIfNotFound: true);
         m_Choice_Left = m_Choice.FindAction("Left", throwIfNotFound: true);
@@ -356,7 +356,7 @@ public partial class @Input: IInputActionCollection2, IDisposable
     {
         UnityEngine.Debug.Assert(!m_PlayerTurn.enabled, "This will cause a leak and performance issues, Input.PlayerTurn.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_EnemyTurn.enabled, "This will cause a leak and performance issues, Input.EnemyTurn.Disable() has not been called.");
-        UnityEngine.Debug.Assert(!m_Choice.enabled, "This will cause a leak and performance issues, Input.Choice.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_Choice.enabled, "This will cause a leak and performance issues, Input.Act.Disable() has not been called.");
     }
 
     public void Dispose()
