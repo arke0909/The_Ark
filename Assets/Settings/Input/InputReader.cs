@@ -9,9 +9,10 @@ public enum ArrowType
 }
 
 [CreateAssetMenu(fileName = "InputReader", menuName = "SO/InputReader")]
-public class InputReader : ScriptableObject, IPlayerTurnActions, IEnemyTurnActions
+public class InputReader : ScriptableObject, IPlayerTurnActions, IEnemyTurnActions, IChoiceActions
 {
-    public Action<ArrowType> ArrowEvent;
+    public event Action<ArrowType> ArrowEvent;
+    public event Action ChoiceEvent;
 
     public Vector2 InputVector { get; private set; }
 
@@ -44,30 +45,55 @@ public class InputReader : ScriptableObject, IPlayerTurnActions, IEnemyTurnActio
             _input.EnemyTurn.Enable();
     }
 
+    private bool isChoice()
+    {
+        return _input.Choice.enabled;
+    }
+
     #region Player Turn
 
     public void OnUp(InputAction.CallbackContext context)
     {
         if (context.performed)
-            ArrowEvent?.Invoke(ArrowType.UP);
+        {
+            if (isChoice())
+                ChoiceEvent?.Invoke();
+            else
+                ArrowEvent?.Invoke(ArrowType.UP);
+        }
     }
 
     public void OnDown(InputAction.CallbackContext context)
     {
         if(context.performed)
-            ArrowEvent?.Invoke(ArrowType.DOWN);
+        {
+            if (isChoice())
+                ChoiceEvent?.Invoke();
+            else
+                ArrowEvent?.Invoke(ArrowType.DOWN);
+        }
     }
 
     public void OnLeft(InputAction.CallbackContext context)
     {
         if (context.performed)
-            ArrowEvent?.Invoke(ArrowType.LEFT);
+        {
+            if (isChoice())
+                ChoiceEvent?.Invoke();
+            else
+                ArrowEvent?.Invoke(ArrowType.LEFT);
+        }
     }
 
     public void OnRight(InputAction.CallbackContext context)
     {
         if (context.performed)
-            ArrowEvent?.Invoke(ArrowType.RIGHT);
+        {
+            if (isChoice())
+                ChoiceEvent?.Invoke();
+            else
+                ArrowEvent?.Invoke(ArrowType.RIGHT);
+        }
     }
 
     #endregion
