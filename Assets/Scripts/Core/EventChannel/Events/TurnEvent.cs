@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Scripts.Core.EventChannel
+namespace Assets.Scripts.Core.EventChannel.Events
 {
     public enum Turn
     {

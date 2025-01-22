@@ -1,5 +1,5 @@
-using Assets.Scripts.Entity;
-using Scripts.Players;
+using Assets.Scripts.Entities;
+using Assets.Scripts.Players;
 using UnityEngine;
 
 namespace Assets.Scripts.Core.Manager
@@ -9,12 +9,15 @@ namespace Assets.Scripts.Core.Manager
     public class GameManager : MonoBehaviour
     {
         [SerializeField] private EntityFinder playerFinder;
+        [SerializeField] private EntityFinder enemyFinder;
         private Player _player;
+        private Player _enemy;
 
         private void Awake()
         {
             _player = FindAnyObjectByType<Player>();
             playerFinder.SetEntity(_player);
+            enemyFinder.SetEntity(_enemy);
         }
     }
 }

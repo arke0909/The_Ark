@@ -1,6 +1,6 @@
-using Assets.Scripts.Entity;
-using Scripts.Core.EventChannel;
-using Scripts.Players;
+using Assets.Scripts.Core.EventChannel;
+using Assets.Scripts.Core.EventChannel.Events;
+using Assets.Scripts.Entities;
 using UnityEngine;
 
 namespace Assets.Scripts.Players.Act

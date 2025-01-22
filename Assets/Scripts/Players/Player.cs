@@ -1,18 +1,21 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Assets.Scripts.Entity;
+using Assets.Scripts.Core.EventChannel;
+using Assets.Scripts.Core.EventChannel.Events;
+using Assets.Scripts.Entities;
 using Scripts.Core.EventChannel;
 using UnityEngine;
 
-namespace Scripts.Players
+namespace Assets.Scripts.Players
 {
     public class Player : Entity
     {
-        [field : SerializeField] public InputReader  InputCompo {  get; private set; }
+        [field: SerializeField] public InputReader InputCompo { get; private set; }
 
         [SerializeField] private ArrowTypeEventChannel arrowTypeEvent;
         [SerializeField] private GameEventChannel turnChangeChannel;
+        [SerializeField] private GameEventChannel attackChannel;
 
         private Dictionary<Type, IPlayerComponent> _components;
 
@@ -25,12 +28,13 @@ namespace Scripts.Players
 
             InputCompo.BattleEvent += CheckArrow;
             turnChangeChannel.AddListner<TurnChangeEvent>(HandleInputChange);
+            attackChannel.AddListner<AttackEvent>(HandleAttackEvent);
         }
-
-
         private void OnDestroy()
         {
             InputCompo.BattleEvent -= CheckArrow;
+            turnChangeChannel.RemoveListner<TurnChangeEvent>(HandleInputChange);
+            attackChannel.RemoveListner<AttackEvent>(HandleAttackEvent);
         }
         private void SetPlayerCompoentsAndInitialize()
         {
@@ -46,6 +50,11 @@ namespace Scripts.Players
         private void HandleInputChange(TurnChangeEvent evt)
         {
             InputCompo.TurnChange(evt.isPlayerTurn);
+        }
+
+        private void HandleAttackEvent(AttackEvent evt)
+        {
+
         }
 
         private void CheckArrow(ArrowType type)

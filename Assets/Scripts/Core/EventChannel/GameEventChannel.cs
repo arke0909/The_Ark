@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Scripts.Core.EventChannel
+namespace Assets.Scripts.Core.EventChannel
 {
     public abstract class GameEvent { }
 

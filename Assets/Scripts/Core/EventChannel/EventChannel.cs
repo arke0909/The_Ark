@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Scripts.Core.EventChannel
+namespace Assets.Scripts.Core.EventChannel
 {
     public abstract class EventChannel<T> : ScriptableObject
     {

@@ -1,3 +1,4 @@
+using Assets.Scripts.Core.EventChannel;
 using UnityEngine;
 
 namespace Scripts.Core.EventChannel

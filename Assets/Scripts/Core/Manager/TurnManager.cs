@@ -1,4 +1,4 @@
-using Scripts.Core.EventChannel;
+using Assets.Scripts.Core.EventChannel;
 using UnityEngine;
 
 namespace Scripts.Core.Manager
@@ -7,12 +7,14 @@ namespace Scripts.Core.Manager
     {
         [SerializeField] private GameEventChannel turnChangeChannel;
 
-        private void TurnChangeToEnemy()
+        private void Awake()
         {
-            TurnChangeEvent changeEvt = TurnEvents.TurnChangeEvent;
-            changeEvt.isPlayerTurn = false;
+            //turnChangeChannel.AddListner<TurnChangeEvent>(HandleTurnChange);
+        }
 
-            turnChangeChannel.RaiseEvent(changeEvt);
+        private void HandleTurnChange()
+        {
+
         }
     }
 }

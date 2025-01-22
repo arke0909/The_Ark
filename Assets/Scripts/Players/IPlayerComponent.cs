@@ -1,7 +1,7 @@
-namespace Scripts.Players
+namespace Assets.Scripts.Players
 {
     public interface IPlayerComponent
     {
-        void Initialize(global::Scripts.Players.Player player);
+        void Initialize(Player player);
     }
 }

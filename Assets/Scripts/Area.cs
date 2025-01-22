@@ -1,8 +1,9 @@
-using Scripts.Core.EventChannel;
-using Scripts.Players;
 using UnityEngine;
 using DG.Tweening;
-using Assets.Scripts.Entity;
+using Assets.Scripts.Entities;
+using Assets.Scripts.Core.EventChannel.Events;
+using Assets.Scripts.Core.EventChannel;
+using Assets.Scripts.Players;
 
 namespace Assets.Scripts
 {
