@@ -5,6 +5,7 @@ using Assets.Scripts.Core.EventChannel;
 using Assets.Scripts.Core.EventChannel.Events;
 using Assets.Scripts.Entities;
 using Scripts.Core.EventChannel;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Assets.Scripts.Players
@@ -54,7 +55,7 @@ namespace Assets.Scripts.Players
 
         private void HandleAttackEvent(AttackEvent evt)
         {
-
+            evt.damage = 5f;
         }
 
         private void CheckArrow(ArrowType type)

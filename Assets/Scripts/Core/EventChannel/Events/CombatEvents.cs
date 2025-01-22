@@ -2,11 +2,11 @@
 {
     public static class CombatEvents
     {
-
+        public static AttackEvent AttackEvent = new AttackEvent();
     }
 
     public class AttackEvent : GameEvent
     {
-        float damage;
+        public float damage;
     }
 }

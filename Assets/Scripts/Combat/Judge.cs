@@ -16,7 +16,7 @@ namespace Assets.Scripts.Combat
         #region EventChannel Section
         [Header("Event Channel")]
         [SerializeField] private ArrowTypeEventChannel arrowTypeEvent;
-        [SerializeField] private GameEventChannel turnChangeChannel;
+        [SerializeField] private GameEventChannel attackChannel;
         [SerializeField] private IntEventChannel setArrowEvent;
         #endregion
 
@@ -45,6 +45,7 @@ namespace Assets.Scripts.Combat
         }
 
         private int _size;
+
         private void Awake()
         {
             _arrows = new List<ArrowType>();
@@ -57,6 +58,14 @@ namespace Assets.Scripts.Combat
         {
             arrowTypeEvent.ValueEvent -= ArrowCheck;
             setArrowEvent.ValueEvent -= SetArrows;
+        }
+
+        private void Update()
+        {
+            if(_isCheckTime)
+            {
+                _currentTime += Time.deltaTime;
+            }  
         }
 
         public void SetArrows(int size)
@@ -112,16 +121,17 @@ namespace Assets.Scripts.Combat
             {
                 _isCheckTime = false;
 
-                ApplyDamage();
+                ApplyDamage(_currentTime);
+                _currentTime = 0;
             }
         }
 
-        private void ApplyDamage()
+        private void ApplyDamage(float damge)
         {
-            TurnChangeEvent evt = TurnEvents.TurnChangeEvent;
-            evt.isPlayerTurn = false;
+            AttackEvent evt = CombatEvents.AttackEvent;
+            evt.damage = damge;
 
-            turnChangeChannel.RaiseEvent(evt);
+            attackChannel.RaiseEvent(evt);
         }
     }
 }
