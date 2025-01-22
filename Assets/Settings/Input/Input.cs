@@ -24,7 +24,7 @@ public partial class @Input: IInputActionCollection2, IDisposable
     ""name"": ""Input"",
     ""maps"": [
         {
-            ""name"": ""PlayerTurn"",
+            ""name"": ""Battle"",
             ""id"": ""df70fa95-8a34-4494-b137-73ab6b9c7d37"",
             ""actions"": [
                 {
@@ -184,7 +184,7 @@ public partial class @Input: IInputActionCollection2, IDisposable
             ]
         },
         {
-            ""name"": ""Act"",
+            ""name"": ""PlayerTurn"",
             ""id"": ""90a19a25-26dd-429e-9812-ec6b19cb095e"",
             ""actions"": [
                 {
@@ -335,28 +335,28 @@ public partial class @Input: IInputActionCollection2, IDisposable
         }
     ]
 }");
+        // Battle
+        m_Battle = asset.FindActionMap("Battle", throwIfNotFound: true);
+        m_Battle_Up = m_Battle.FindAction("Up", throwIfNotFound: true);
+        m_Battle_Down = m_Battle.FindAction("Down", throwIfNotFound: true);
+        m_Battle_Left = m_Battle.FindAction("Left", throwIfNotFound: true);
+        m_Battle_Right = m_Battle.FindAction("Right", throwIfNotFound: true);
+        // EnemyTurn
+        m_EnemyTurn = asset.FindActionMap("EnemyTurn", throwIfNotFound: true);
+        m_EnemyTurn_Move = m_EnemyTurn.FindAction("Move", throwIfNotFound: true);
         // PlayerTurn
         m_PlayerTurn = asset.FindActionMap("PlayerTurn", throwIfNotFound: true);
         m_PlayerTurn_Up = m_PlayerTurn.FindAction("Up", throwIfNotFound: true);
         m_PlayerTurn_Down = m_PlayerTurn.FindAction("Down", throwIfNotFound: true);
         m_PlayerTurn_Left = m_PlayerTurn.FindAction("Left", throwIfNotFound: true);
         m_PlayerTurn_Right = m_PlayerTurn.FindAction("Right", throwIfNotFound: true);
-        // EnemyTurn
-        m_EnemyTurn = asset.FindActionMap("EnemyTurn", throwIfNotFound: true);
-        m_EnemyTurn_Move = m_EnemyTurn.FindAction("Move", throwIfNotFound: true);
-        // Choice
-        m_Choice = asset.FindActionMap("Act", throwIfNotFound: true);
-        m_Choice_Up = m_Choice.FindAction("Up", throwIfNotFound: true);
-        m_Choice_Down = m_Choice.FindAction("Down", throwIfNotFound: true);
-        m_Choice_Left = m_Choice.FindAction("Left", throwIfNotFound: true);
-        m_Choice_Right = m_Choice.FindAction("Right", throwIfNotFound: true);
     }
 
     ~@Input()
     {
-        UnityEngine.Debug.Assert(!m_PlayerTurn.enabled, "This will cause a leak and performance issues, Input.PlayerTurn.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_Battle.enabled, "This will cause a leak and performance issues, Input.Battle.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_EnemyTurn.enabled, "This will cause a leak and performance issues, Input.EnemyTurn.Disable() has not been called.");
-        UnityEngine.Debug.Assert(!m_Choice.enabled, "This will cause a leak and performance issues, Input.Act.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_PlayerTurn.enabled, "This will cause a leak and performance issues, Input.PlayerTurn.Disable() has not been called.");
     }
 
     public void Dispose()
@@ -414,6 +414,122 @@ public partial class @Input: IInputActionCollection2, IDisposable
     {
         return asset.FindBinding(bindingMask, out action);
     }
+
+    // Battle
+    private readonly InputActionMap m_Battle;
+    private List<IBattleActions> m_BattleActionsCallbackInterfaces = new List<IBattleActions>();
+    private readonly InputAction m_Battle_Up;
+    private readonly InputAction m_Battle_Down;
+    private readonly InputAction m_Battle_Left;
+    private readonly InputAction m_Battle_Right;
+    public struct BattleActions
+    {
+        private @Input m_Wrapper;
+        public BattleActions(@Input wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Up => m_Wrapper.m_Battle_Up;
+        public InputAction @Down => m_Wrapper.m_Battle_Down;
+        public InputAction @Left => m_Wrapper.m_Battle_Left;
+        public InputAction @Right => m_Wrapper.m_Battle_Right;
+        public InputActionMap Get() { return m_Wrapper.m_Battle; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(BattleActions set) { return set.Get(); }
+        public void AddCallbacks(IBattleActions instance)
+        {
+            if (instance == null || m_Wrapper.m_BattleActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_BattleActionsCallbackInterfaces.Add(instance);
+            @Up.started += instance.OnUp;
+            @Up.performed += instance.OnUp;
+            @Up.canceled += instance.OnUp;
+            @Down.started += instance.OnDown;
+            @Down.performed += instance.OnDown;
+            @Down.canceled += instance.OnDown;
+            @Left.started += instance.OnLeft;
+            @Left.performed += instance.OnLeft;
+            @Left.canceled += instance.OnLeft;
+            @Right.started += instance.OnRight;
+            @Right.performed += instance.OnRight;
+            @Right.canceled += instance.OnRight;
+        }
+
+        private void UnregisterCallbacks(IBattleActions instance)
+        {
+            @Up.started -= instance.OnUp;
+            @Up.performed -= instance.OnUp;
+            @Up.canceled -= instance.OnUp;
+            @Down.started -= instance.OnDown;
+            @Down.performed -= instance.OnDown;
+            @Down.canceled -= instance.OnDown;
+            @Left.started -= instance.OnLeft;
+            @Left.performed -= instance.OnLeft;
+            @Left.canceled -= instance.OnLeft;
+            @Right.started -= instance.OnRight;
+            @Right.performed -= instance.OnRight;
+            @Right.canceled -= instance.OnRight;
+        }
+
+        public void RemoveCallbacks(IBattleActions instance)
+        {
+            if (m_Wrapper.m_BattleActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IBattleActions instance)
+        {
+            foreach (var item in m_Wrapper.m_BattleActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_BattleActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public BattleActions @Battle => new BattleActions(this);
+
+    // EnemyTurn
+    private readonly InputActionMap m_EnemyTurn;
+    private List<IEnemyTurnActions> m_EnemyTurnActionsCallbackInterfaces = new List<IEnemyTurnActions>();
+    private readonly InputAction m_EnemyTurn_Move;
+    public struct EnemyTurnActions
+    {
+        private @Input m_Wrapper;
+        public EnemyTurnActions(@Input wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Move => m_Wrapper.m_EnemyTurn_Move;
+        public InputActionMap Get() { return m_Wrapper.m_EnemyTurn; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(EnemyTurnActions set) { return set.Get(); }
+        public void AddCallbacks(IEnemyTurnActions instance)
+        {
+            if (instance == null || m_Wrapper.m_EnemyTurnActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_EnemyTurnActionsCallbackInterfaces.Add(instance);
+            @Move.started += instance.OnMove;
+            @Move.performed += instance.OnMove;
+            @Move.canceled += instance.OnMove;
+        }
+
+        private void UnregisterCallbacks(IEnemyTurnActions instance)
+        {
+            @Move.started -= instance.OnMove;
+            @Move.performed -= instance.OnMove;
+            @Move.canceled -= instance.OnMove;
+        }
+
+        public void RemoveCallbacks(IEnemyTurnActions instance)
+        {
+            if (m_Wrapper.m_EnemyTurnActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IEnemyTurnActions instance)
+        {
+            foreach (var item in m_Wrapper.m_EnemyTurnActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_EnemyTurnActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public EnemyTurnActions @EnemyTurn => new EnemyTurnActions(this);
 
     // PlayerTurn
     private readonly InputActionMap m_PlayerTurn;
@@ -484,122 +600,6 @@ public partial class @Input: IInputActionCollection2, IDisposable
         }
     }
     public PlayerTurnActions @PlayerTurn => new PlayerTurnActions(this);
-
-    // EnemyTurn
-    private readonly InputActionMap m_EnemyTurn;
-    private List<IEnemyTurnActions> m_EnemyTurnActionsCallbackInterfaces = new List<IEnemyTurnActions>();
-    private readonly InputAction m_EnemyTurn_Move;
-    public struct EnemyTurnActions
-    {
-        private @Input m_Wrapper;
-        public EnemyTurnActions(@Input wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Move => m_Wrapper.m_EnemyTurn_Move;
-        public InputActionMap Get() { return m_Wrapper.m_EnemyTurn; }
-        public void Enable() { Get().Enable(); }
-        public void Disable() { Get().Disable(); }
-        public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(EnemyTurnActions set) { return set.Get(); }
-        public void AddCallbacks(IEnemyTurnActions instance)
-        {
-            if (instance == null || m_Wrapper.m_EnemyTurnActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_EnemyTurnActionsCallbackInterfaces.Add(instance);
-            @Move.started += instance.OnMove;
-            @Move.performed += instance.OnMove;
-            @Move.canceled += instance.OnMove;
-        }
-
-        private void UnregisterCallbacks(IEnemyTurnActions instance)
-        {
-            @Move.started -= instance.OnMove;
-            @Move.performed -= instance.OnMove;
-            @Move.canceled -= instance.OnMove;
-        }
-
-        public void RemoveCallbacks(IEnemyTurnActions instance)
-        {
-            if (m_Wrapper.m_EnemyTurnActionsCallbackInterfaces.Remove(instance))
-                UnregisterCallbacks(instance);
-        }
-
-        public void SetCallbacks(IEnemyTurnActions instance)
-        {
-            foreach (var item in m_Wrapper.m_EnemyTurnActionsCallbackInterfaces)
-                UnregisterCallbacks(item);
-            m_Wrapper.m_EnemyTurnActionsCallbackInterfaces.Clear();
-            AddCallbacks(instance);
-        }
-    }
-    public EnemyTurnActions @EnemyTurn => new EnemyTurnActions(this);
-
-    // Choice
-    private readonly InputActionMap m_Choice;
-    private List<IChoiceActions> m_ChoiceActionsCallbackInterfaces = new List<IChoiceActions>();
-    private readonly InputAction m_Choice_Up;
-    private readonly InputAction m_Choice_Down;
-    private readonly InputAction m_Choice_Left;
-    private readonly InputAction m_Choice_Right;
-    public struct ChoiceActions
-    {
-        private @Input m_Wrapper;
-        public ChoiceActions(@Input wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Up => m_Wrapper.m_Choice_Up;
-        public InputAction @Down => m_Wrapper.m_Choice_Down;
-        public InputAction @Left => m_Wrapper.m_Choice_Left;
-        public InputAction @Right => m_Wrapper.m_Choice_Right;
-        public InputActionMap Get() { return m_Wrapper.m_Choice; }
-        public void Enable() { Get().Enable(); }
-        public void Disable() { Get().Disable(); }
-        public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(ChoiceActions set) { return set.Get(); }
-        public void AddCallbacks(IChoiceActions instance)
-        {
-            if (instance == null || m_Wrapper.m_ChoiceActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_ChoiceActionsCallbackInterfaces.Add(instance);
-            @Up.started += instance.OnUp;
-            @Up.performed += instance.OnUp;
-            @Up.canceled += instance.OnUp;
-            @Down.started += instance.OnDown;
-            @Down.performed += instance.OnDown;
-            @Down.canceled += instance.OnDown;
-            @Left.started += instance.OnLeft;
-            @Left.performed += instance.OnLeft;
-            @Left.canceled += instance.OnLeft;
-            @Right.started += instance.OnRight;
-            @Right.performed += instance.OnRight;
-            @Right.canceled += instance.OnRight;
-        }
-
-        private void UnregisterCallbacks(IChoiceActions instance)
-        {
-            @Up.started -= instance.OnUp;
-            @Up.performed -= instance.OnUp;
-            @Up.canceled -= instance.OnUp;
-            @Down.started -= instance.OnDown;
-            @Down.performed -= instance.OnDown;
-            @Down.canceled -= instance.OnDown;
-            @Left.started -= instance.OnLeft;
-            @Left.performed -= instance.OnLeft;
-            @Left.canceled -= instance.OnLeft;
-            @Right.started -= instance.OnRight;
-            @Right.performed -= instance.OnRight;
-            @Right.canceled -= instance.OnRight;
-        }
-
-        public void RemoveCallbacks(IChoiceActions instance)
-        {
-            if (m_Wrapper.m_ChoiceActionsCallbackInterfaces.Remove(instance))
-                UnregisterCallbacks(instance);
-        }
-
-        public void SetCallbacks(IChoiceActions instance)
-        {
-            foreach (var item in m_Wrapper.m_ChoiceActionsCallbackInterfaces)
-                UnregisterCallbacks(item);
-            m_Wrapper.m_ChoiceActionsCallbackInterfaces.Clear();
-            AddCallbacks(instance);
-        }
-    }
-    public ChoiceActions @Choice => new ChoiceActions(this);
     private int m_KeyboardMouseSchemeIndex = -1;
     public InputControlScheme KeyboardMouseScheme
     {
@@ -645,7 +645,7 @@ public partial class @Input: IInputActionCollection2, IDisposable
             return asset.controlSchemes[m_XRSchemeIndex];
         }
     }
-    public interface IPlayerTurnActions
+    public interface IBattleActions
     {
         void OnUp(InputAction.CallbackContext context);
         void OnDown(InputAction.CallbackContext context);
@@ -656,7 +656,7 @@ public partial class @Input: IInputActionCollection2, IDisposable
     {
         void OnMove(InputAction.CallbackContext context);
     }
-    public interface IChoiceActions
+    public interface IPlayerTurnActions
     {
         void OnUp(InputAction.CallbackContext context);
         void OnDown(InputAction.CallbackContext context);

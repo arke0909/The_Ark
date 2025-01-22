@@ -9,10 +9,10 @@ public enum ArrowType
 }
 
 [CreateAssetMenu(fileName = "InputReader", menuName = "SO/InputReader")]
-public class InputReader : ScriptableObject, IPlayerTurnActions, IEnemyTurnActions, IChoiceActions
+public class InputReader : ScriptableObject, IPlayerTurnActions, IEnemyTurnActions, IBattleActions
 {
-    public event Action<ArrowType> ArrowEvent;
-    public event Action ChoiceEvent;
+    public event Action<ArrowType> BattleEvent;
+    public event Action PlayerTurnInputEvent;
 
     public Vector2 InputVector { get; private set; }
 
@@ -45,10 +45,18 @@ public class InputReader : ScriptableObject, IPlayerTurnActions, IEnemyTurnActio
             _input.EnemyTurn.Enable();
     }
 
+    public void Battle()
+    {
+        _input.Disable();
+
+        _input.Battle.Enable();
+    }
+
     private bool isChoice()
     {
-        return _input.Choice.enabled;
+        return _input.PlayerTurn.enabled;
     }
+
 
     #region Player Turn
 
@@ -57,9 +65,9 @@ public class InputReader : ScriptableObject, IPlayerTurnActions, IEnemyTurnActio
         if (context.performed)
         {
             if (isChoice())
-                ChoiceEvent?.Invoke();
+                PlayerTurnInputEvent?.Invoke();
             else
-                ArrowEvent?.Invoke(ArrowType.UP);
+                BattleEvent?.Invoke(ArrowType.UP);
         }
     }
 
@@ -68,9 +76,9 @@ public class InputReader : ScriptableObject, IPlayerTurnActions, IEnemyTurnActio
         if(context.performed)
         {
             if (isChoice())
-                ChoiceEvent?.Invoke();
+                PlayerTurnInputEvent?.Invoke();
             else
-                ArrowEvent?.Invoke(ArrowType.DOWN);
+                BattleEvent?.Invoke(ArrowType.DOWN);
         }
     }
 
@@ -79,9 +87,9 @@ public class InputReader : ScriptableObject, IPlayerTurnActions, IEnemyTurnActio
         if (context.performed)
         {
             if (isChoice())
-                ChoiceEvent?.Invoke();
+                PlayerTurnInputEvent?.Invoke();
             else
-                ArrowEvent?.Invoke(ArrowType.LEFT);
+                BattleEvent?.Invoke(ArrowType.LEFT);
         }
     }
 
@@ -90,9 +98,9 @@ public class InputReader : ScriptableObject, IPlayerTurnActions, IEnemyTurnActio
         if (context.performed)
         {
             if (isChoice())
-                ChoiceEvent?.Invoke();
+                PlayerTurnInputEvent?.Invoke();
             else
-                ArrowEvent?.Invoke(ArrowType.RIGHT);
+                BattleEvent?.Invoke(ArrowType.RIGHT);
         }
     }
 
