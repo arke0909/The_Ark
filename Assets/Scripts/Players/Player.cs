@@ -23,14 +23,14 @@ namespace Scripts.Players
             _components = new Dictionary<Type, IPlayerComponent>();
             SetPlayerCompoentsAndInitialize();
 
-            InputCompo.ArrowEvent += CheckArrow;
+            InputCompo.BattleEvent += CheckArrow;
             turnChangeChannel.AddListner<TurnChangeEvent>(HandleInputChange);
         }
 
 
         private void OnDestroy()
         {
-            InputCompo.ArrowEvent -= CheckArrow;
+            InputCompo.BattleEvent -= CheckArrow;
         }
         private void SetPlayerCompoentsAndInitialize()
         {

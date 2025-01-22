@@ -25,6 +25,7 @@ public class InputReader : ScriptableObject, IPlayerTurnActions, IEnemyTurnActio
             _input = new Input();
 
             _input.PlayerTurn.SetCallbacks(this);
+            _input.Battle.SetCallbacks(this);
             _input.EnemyTurn.SetCallbacks(this);
         }
 
@@ -35,6 +36,7 @@ public class InputReader : ScriptableObject, IPlayerTurnActions, IEnemyTurnActio
     {
         _input.Disable();
     }
+
     public void TurnChange(bool isPlayerTurn)
     {
         _input.Disable();

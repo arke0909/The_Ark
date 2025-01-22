@@ -6,11 +6,11 @@ using Random = UnityEngine.Random;
 
 public class Judge : MonoBehaviour
 {
+    [SerializeField] private int totalRepeatCnt = 1;
     [SerializeField] private ArrowTypeEventChannel arrowTypeEvent;
-    [SerializeField] private IntEventChannel setRepeatCntEvent;
+    [SerializeField] private IntEventChannel setArrowEvent;
     [SerializeField] private List<ArrowType> _arrows;
 
-    private int totalRepeatCnt = 1;
 
     private ArrowType _currentArrow;
     private readonly int _arrowTypeCnt = Enum.GetValues(typeof(ArrowType)).Length;
@@ -25,7 +25,7 @@ public class Judge : MonoBehaviour
 
         set
         {
-            if (_arrows.Count <= value)
+            if (_arrows.Count < value)
                 value = 0;
 
             _idx = value;
@@ -37,14 +37,14 @@ public class Judge : MonoBehaviour
         _arrows = new List<ArrowType>();
 
         arrowTypeEvent.ValueEvent += ArrowCheck;
-        setRepeatCntEvent.ValueEvent += SetArrows;
+        setArrowEvent.ValueEvent += SetArrows;
     }
 
     public void SetArrows(int size)
     {
         _arrows.Clear();
         CurrentArrowIndex = 0;
-        //_size = size;
+        _size = size;
 
         for (int i = 0; i < size; i++)
         {
@@ -61,13 +61,13 @@ public class Judge : MonoBehaviour
 
         if (isRight)
         {
-            if (CurrentArrowIndex == _arrows.Count - 1)
+            CurrentArrowIndex++;
+            
+            if (CurrentArrowIndex == _arrows.Count)
             {
                 End();
                 return;
             }
-            else
-                CurrentArrowIndex++;
         }
         else
         {
