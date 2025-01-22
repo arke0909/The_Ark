@@ -16,7 +16,6 @@ namespace Assets.Scripts.Players
 
         [SerializeField] private ArrowTypeEventChannel arrowTypeEvent;
         [SerializeField] private GameEventChannel turnChangeChannel;
-        [SerializeField] private GameEventChannel attackChannel;
 
         private Dictionary<Type, IPlayerComponent> _components;
 
@@ -29,13 +28,11 @@ namespace Assets.Scripts.Players
 
             InputCompo.BattleEvent += CheckArrow;
             turnChangeChannel.AddListner<TurnChangeEvent>(HandleInputChange);
-            attackChannel.AddListner<AttackEvent>(HandleAttackEvent);
         }
         private void OnDestroy()
         {
             InputCompo.BattleEvent -= CheckArrow;
             turnChangeChannel.RemoveListner<TurnChangeEvent>(HandleInputChange);
-            attackChannel.RemoveListner<AttackEvent>(HandleAttackEvent);
         }
         private void SetPlayerCompoentsAndInitialize()
         {
@@ -51,11 +48,6 @@ namespace Assets.Scripts.Players
         private void HandleInputChange(TurnChangeEvent evt)
         {
             InputCompo.TurnChange(evt.isPlayerTurn);
-        }
-
-        private void HandleAttackEvent(AttackEvent evt)
-        {
-            evt.damage = 5f;
         }
 
         private void CheckArrow(ArrowType type)

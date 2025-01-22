@@ -2,13 +2,13 @@
     "name": "Input",
     "maps": [
         {
-            "name": "Battle",
-            "id": "df70fa95-8a34-4494-b137-73ab6b9c7d37",
+            "name": "PlayerTurn",
+            "id": "90a19a25-26dd-429e-9812-ec6b19cb095e",
             "actions": [
                 {
                     "name": "Up",
                     "type": "Button",
-                    "id": "5093e22b-c8f1-49e3-a2de-0bea692d4543",
+                    "id": "99769fef-016c-48e9-917f-b5d991f8dd33",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -17,7 +17,7 @@
                 {
                     "name": "Down",
                     "type": "Button",
-                    "id": "0570cfdf-bff3-4d80-9ad0-77f08fd66519",
+                    "id": "8bb826dc-9e26-46d4-904d-eff2a2052680",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -26,7 +26,7 @@
                 {
                     "name": "Left",
                     "type": "Button",
-                    "id": "910be710-45cf-4b71-aeac-9919eaad67ac",
+                    "id": "36a7ade4-8d7c-4ddc-a6b2-3164258ae2d0",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -35,7 +35,7 @@
                 {
                     "name": "Right",
                     "type": "Button",
-                    "id": "a65f2b21-929d-4c53-a6a8-40b7783371ee",
+                    "id": "23c30816-98ea-4f2c-80c4-d28c77e091ef",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -45,7 +45,7 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "244b9772-2165-457f-a4a2-ba40c71a2d5d",
+                    "id": "d30e8626-ee1c-4d8c-9a34-2a9844482f38",
                     "path": "<Keyboard>/upArrow",
                     "interactions": "",
                     "processors": "",
@@ -56,7 +56,7 @@
                 },
                 {
                     "name": "",
-                    "id": "eea62bab-8a0c-4559-83a4-b9eaae085a87",
+                    "id": "12124dc9-eaf5-49c1-9596-95577c5b70f1",
                     "path": "<Keyboard>/downArrow",
                     "interactions": "",
                     "processors": "",
@@ -67,7 +67,7 @@
                 },
                 {
                     "name": "",
-                    "id": "b6dbb723-4e1e-4b4a-9bee-0835b46bb7f8",
+                    "id": "b576dec7-1c3c-41f8-a541-77ac31adbcc7",
                     "path": "<Keyboard>/leftArrow",
                     "interactions": "",
                     "processors": "",
@@ -78,7 +78,7 @@
                 },
                 {
                     "name": "",
-                    "id": "9c7e8808-5b50-454e-b5d7-93b34646dda3",
+                    "id": "2f89cdc4-f3f3-4fda-ac75-27e9eeb6f46e",
                     "path": "<Keyboard>/rightArrow",
                     "interactions": "",
                     "processors": "",
@@ -162,13 +162,13 @@
             ]
         },
         {
-            "name": "PlayerTurn",
-            "id": "90a19a25-26dd-429e-9812-ec6b19cb095e",
+            "name": "Battle",
+            "id": "df70fa95-8a34-4494-b137-73ab6b9c7d37",
             "actions": [
                 {
                     "name": "Up",
                     "type": "Button",
-                    "id": "99769fef-016c-48e9-917f-b5d991f8dd33",
+                    "id": "5093e22b-c8f1-49e3-a2de-0bea692d4543",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -177,7 +177,7 @@
                 {
                     "name": "Down",
                     "type": "Button",
-                    "id": "8bb826dc-9e26-46d4-904d-eff2a2052680",
+                    "id": "0570cfdf-bff3-4d80-9ad0-77f08fd66519",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -186,7 +186,7 @@
                 {
                     "name": "Left",
                     "type": "Button",
-                    "id": "36a7ade4-8d7c-4ddc-a6b2-3164258ae2d0",
+                    "id": "910be710-45cf-4b71-aeac-9919eaad67ac",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -195,7 +195,7 @@
                 {
                     "name": "Right",
                     "type": "Button",
-                    "id": "23c30816-98ea-4f2c-80c4-d28c77e091ef",
+                    "id": "a65f2b21-929d-4c53-a6a8-40b7783371ee",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -205,7 +205,7 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "d30e8626-ee1c-4d8c-9a34-2a9844482f38",
+                    "id": "244b9772-2165-457f-a4a2-ba40c71a2d5d",
                     "path": "<Keyboard>/upArrow",
                     "interactions": "",
                     "processors": "",
@@ -216,7 +216,7 @@
                 },
                 {
                     "name": "",
-                    "id": "12124dc9-eaf5-49c1-9596-95577c5b70f1",
+                    "id": "eea62bab-8a0c-4559-83a4-b9eaae085a87",
                     "path": "<Keyboard>/downArrow",
                     "interactions": "",
                     "processors": "",
@@ -227,7 +227,7 @@
                 },
                 {
                     "name": "",
-                    "id": "b576dec7-1c3c-41f8-a541-77ac31adbcc7",
+                    "id": "b6dbb723-4e1e-4b4a-9bee-0835b46bb7f8",
                     "path": "<Keyboard>/leftArrow",
                     "interactions": "",
                     "processors": "",
@@ -238,7 +238,7 @@
                 },
                 {
                     "name": "",
-                    "id": "2f89cdc4-f3f3-4fda-ac75-27e9eeb6f46e",
+                    "id": "9c7e8808-5b50-454e-b5d7-93b34646dda3",
                     "path": "<Keyboard>/rightArrow",
                     "interactions": "",
                     "processors": "",

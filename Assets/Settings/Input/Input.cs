@@ -24,166 +24,6 @@ public partial class @Input: IInputActionCollection2, IDisposable
     ""name"": ""Input"",
     ""maps"": [
         {
-            ""name"": ""Battle"",
-            ""id"": ""df70fa95-8a34-4494-b137-73ab6b9c7d37"",
-            ""actions"": [
-                {
-                    ""name"": ""Up"",
-                    ""type"": ""Button"",
-                    ""id"": ""5093e22b-c8f1-49e3-a2de-0bea692d4543"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
-                },
-                {
-                    ""name"": ""Down"",
-                    ""type"": ""Button"",
-                    ""id"": ""0570cfdf-bff3-4d80-9ad0-77f08fd66519"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
-                },
-                {
-                    ""name"": ""Left"",
-                    ""type"": ""Button"",
-                    ""id"": ""910be710-45cf-4b71-aeac-9919eaad67ac"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
-                },
-                {
-                    ""name"": ""Right"",
-                    ""type"": ""Button"",
-                    ""id"": ""a65f2b21-929d-4c53-a6a8-40b7783371ee"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
-                }
-            ],
-            ""bindings"": [
-                {
-                    ""name"": """",
-                    ""id"": ""244b9772-2165-457f-a4a2-ba40c71a2d5d"",
-                    ""path"": ""<Keyboard>/upArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Up"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""eea62bab-8a0c-4559-83a4-b9eaae085a87"",
-                    ""path"": ""<Keyboard>/downArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Down"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""b6dbb723-4e1e-4b4a-9bee-0835b46bb7f8"",
-                    ""path"": ""<Keyboard>/leftArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Left"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""9c7e8808-5b50-454e-b5d7-93b34646dda3"",
-                    ""path"": ""<Keyboard>/rightArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Right"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                }
-            ]
-        },
-        {
-            ""name"": ""EnemyTurn"",
-            ""id"": ""b46a40bd-7b2a-4dd8-b0b2-4559194c3588"",
-            ""actions"": [
-                {
-                    ""name"": ""Move"",
-                    ""type"": ""Value"",
-                    ""id"": ""cc3e40e0-8578-46b0-b989-07fc91344238"",
-                    ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
-                }
-            ],
-            ""bindings"": [
-                {
-                    ""name"": ""WASD"",
-                    ""id"": ""8e72c9e4-5d5d-42ce-bafe-4ec023f263a4"",
-                    ""path"": ""Dpad"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""up"",
-                    ""id"": ""0c7ccd46-00b3-4d93-b1f1-fe3715e6d1e0"",
-                    ""path"": ""<Keyboard>/upArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""down"",
-                    ""id"": ""085fe80a-8a68-4d00-873d-69aedbecb576"",
-                    ""path"": ""<Keyboard>/downArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""left"",
-                    ""id"": ""1f664dbf-a887-4883-b107-4fdfbd50a4db"",
-                    ""path"": ""<Keyboard>/leftArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""right"",
-                    ""id"": ""9a00e819-db36-46f1-b252-d93a6302aabb"",
-                    ""path"": ""<Keyboard>/rightArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                }
-            ]
-        },
-        {
             ""name"": ""PlayerTurn"",
             ""id"": ""90a19a25-26dd-429e-9812-ec6b19cb095e"",
             ""actions"": [
@@ -270,6 +110,166 @@ public partial class @Input: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""EnemyTurn"",
+            ""id"": ""b46a40bd-7b2a-4dd8-b0b2-4559194c3588"",
+            ""actions"": [
+                {
+                    ""name"": ""Move"",
+                    ""type"": ""Value"",
+                    ""id"": ""cc3e40e0-8578-46b0-b989-07fc91344238"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": ""WASD"",
+                    ""id"": ""8e72c9e4-5d5d-42ce-bafe-4ec023f263a4"",
+                    ""path"": ""Dpad"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""0c7ccd46-00b3-4d93-b1f1-fe3715e6d1e0"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""085fe80a-8a68-4d00-873d-69aedbecb576"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""1f664dbf-a887-4883-b107-4fdfbd50a4db"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""9a00e819-db36-46f1-b252-d93a6302aabb"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                }
+            ]
+        },
+        {
+            ""name"": ""Battle"",
+            ""id"": ""df70fa95-8a34-4494-b137-73ab6b9c7d37"",
+            ""actions"": [
+                {
+                    ""name"": ""Up"",
+                    ""type"": ""Button"",
+                    ""id"": ""5093e22b-c8f1-49e3-a2de-0bea692d4543"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Down"",
+                    ""type"": ""Button"",
+                    ""id"": ""0570cfdf-bff3-4d80-9ad0-77f08fd66519"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Left"",
+                    ""type"": ""Button"",
+                    ""id"": ""910be710-45cf-4b71-aeac-9919eaad67ac"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Right"",
+                    ""type"": ""Button"",
+                    ""id"": ""a65f2b21-929d-4c53-a6a8-40b7783371ee"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""244b9772-2165-457f-a4a2-ba40c71a2d5d"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Up"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""eea62bab-8a0c-4559-83a4-b9eaae085a87"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Down"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b6dbb723-4e1e-4b4a-9bee-0835b46bb7f8"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Left"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9c7e8808-5b50-454e-b5d7-93b34646dda3"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Right"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -335,28 +335,28 @@ public partial class @Input: IInputActionCollection2, IDisposable
         }
     ]
 }");
-        // Battle
-        m_Battle = asset.FindActionMap("Battle", throwIfNotFound: true);
-        m_Battle_Up = m_Battle.FindAction("Up", throwIfNotFound: true);
-        m_Battle_Down = m_Battle.FindAction("Down", throwIfNotFound: true);
-        m_Battle_Left = m_Battle.FindAction("Left", throwIfNotFound: true);
-        m_Battle_Right = m_Battle.FindAction("Right", throwIfNotFound: true);
-        // EnemyTurn
-        m_EnemyTurn = asset.FindActionMap("EnemyTurn", throwIfNotFound: true);
-        m_EnemyTurn_Move = m_EnemyTurn.FindAction("Move", throwIfNotFound: true);
         // PlayerTurn
         m_PlayerTurn = asset.FindActionMap("PlayerTurn", throwIfNotFound: true);
         m_PlayerTurn_Up = m_PlayerTurn.FindAction("Up", throwIfNotFound: true);
         m_PlayerTurn_Down = m_PlayerTurn.FindAction("Down", throwIfNotFound: true);
         m_PlayerTurn_Left = m_PlayerTurn.FindAction("Left", throwIfNotFound: true);
         m_PlayerTurn_Right = m_PlayerTurn.FindAction("Right", throwIfNotFound: true);
+        // EnemyTurn
+        m_EnemyTurn = asset.FindActionMap("EnemyTurn", throwIfNotFound: true);
+        m_EnemyTurn_Move = m_EnemyTurn.FindAction("Move", throwIfNotFound: true);
+        // Battle
+        m_Battle = asset.FindActionMap("Battle", throwIfNotFound: true);
+        m_Battle_Up = m_Battle.FindAction("Up", throwIfNotFound: true);
+        m_Battle_Down = m_Battle.FindAction("Down", throwIfNotFound: true);
+        m_Battle_Left = m_Battle.FindAction("Left", throwIfNotFound: true);
+        m_Battle_Right = m_Battle.FindAction("Right", throwIfNotFound: true);
     }
 
     ~@Input()
     {
-        UnityEngine.Debug.Assert(!m_Battle.enabled, "This will cause a leak and performance issues, Input.Battle.Disable() has not been called.");
-        UnityEngine.Debug.Assert(!m_EnemyTurn.enabled, "This will cause a leak and performance issues, Input.EnemyTurn.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_PlayerTurn.enabled, "This will cause a leak and performance issues, Input.PlayerTurn.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_EnemyTurn.enabled, "This will cause a leak and performance issues, Input.EnemyTurn.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_Battle.enabled, "This will cause a leak and performance issues, Input.Battle.Disable() has not been called.");
     }
 
     public void Dispose()
@@ -414,122 +414,6 @@ public partial class @Input: IInputActionCollection2, IDisposable
     {
         return asset.FindBinding(bindingMask, out action);
     }
-
-    // Battle
-    private readonly InputActionMap m_Battle;
-    private List<IBattleActions> m_BattleActionsCallbackInterfaces = new List<IBattleActions>();
-    private readonly InputAction m_Battle_Up;
-    private readonly InputAction m_Battle_Down;
-    private readonly InputAction m_Battle_Left;
-    private readonly InputAction m_Battle_Right;
-    public struct BattleActions
-    {
-        private @Input m_Wrapper;
-        public BattleActions(@Input wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Up => m_Wrapper.m_Battle_Up;
-        public InputAction @Down => m_Wrapper.m_Battle_Down;
-        public InputAction @Left => m_Wrapper.m_Battle_Left;
-        public InputAction @Right => m_Wrapper.m_Battle_Right;
-        public InputActionMap Get() { return m_Wrapper.m_Battle; }
-        public void Enable() { Get().Enable(); }
-        public void Disable() { Get().Disable(); }
-        public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(BattleActions set) { return set.Get(); }
-        public void AddCallbacks(IBattleActions instance)
-        {
-            if (instance == null || m_Wrapper.m_BattleActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_BattleActionsCallbackInterfaces.Add(instance);
-            @Up.started += instance.OnUp;
-            @Up.performed += instance.OnUp;
-            @Up.canceled += instance.OnUp;
-            @Down.started += instance.OnDown;
-            @Down.performed += instance.OnDown;
-            @Down.canceled += instance.OnDown;
-            @Left.started += instance.OnLeft;
-            @Left.performed += instance.OnLeft;
-            @Left.canceled += instance.OnLeft;
-            @Right.started += instance.OnRight;
-            @Right.performed += instance.OnRight;
-            @Right.canceled += instance.OnRight;
-        }
-
-        private void UnregisterCallbacks(IBattleActions instance)
-        {
-            @Up.started -= instance.OnUp;
-            @Up.performed -= instance.OnUp;
-            @Up.canceled -= instance.OnUp;
-            @Down.started -= instance.OnDown;
-            @Down.performed -= instance.OnDown;
-            @Down.canceled -= instance.OnDown;
-            @Left.started -= instance.OnLeft;
-            @Left.performed -= instance.OnLeft;
-            @Left.canceled -= instance.OnLeft;
-            @Right.started -= instance.OnRight;
-            @Right.performed -= instance.OnRight;
-            @Right.canceled -= instance.OnRight;
-        }
-
-        public void RemoveCallbacks(IBattleActions instance)
-        {
-            if (m_Wrapper.m_BattleActionsCallbackInterfaces.Remove(instance))
-                UnregisterCallbacks(instance);
-        }
-
-        public void SetCallbacks(IBattleActions instance)
-        {
-            foreach (var item in m_Wrapper.m_BattleActionsCallbackInterfaces)
-                UnregisterCallbacks(item);
-            m_Wrapper.m_BattleActionsCallbackInterfaces.Clear();
-            AddCallbacks(instance);
-        }
-    }
-    public BattleActions @Battle => new BattleActions(this);
-
-    // EnemyTurn
-    private readonly InputActionMap m_EnemyTurn;
-    private List<IEnemyTurnActions> m_EnemyTurnActionsCallbackInterfaces = new List<IEnemyTurnActions>();
-    private readonly InputAction m_EnemyTurn_Move;
-    public struct EnemyTurnActions
-    {
-        private @Input m_Wrapper;
-        public EnemyTurnActions(@Input wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Move => m_Wrapper.m_EnemyTurn_Move;
-        public InputActionMap Get() { return m_Wrapper.m_EnemyTurn; }
-        public void Enable() { Get().Enable(); }
-        public void Disable() { Get().Disable(); }
-        public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(EnemyTurnActions set) { return set.Get(); }
-        public void AddCallbacks(IEnemyTurnActions instance)
-        {
-            if (instance == null || m_Wrapper.m_EnemyTurnActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_EnemyTurnActionsCallbackInterfaces.Add(instance);
-            @Move.started += instance.OnMove;
-            @Move.performed += instance.OnMove;
-            @Move.canceled += instance.OnMove;
-        }
-
-        private void UnregisterCallbacks(IEnemyTurnActions instance)
-        {
-            @Move.started -= instance.OnMove;
-            @Move.performed -= instance.OnMove;
-            @Move.canceled -= instance.OnMove;
-        }
-
-        public void RemoveCallbacks(IEnemyTurnActions instance)
-        {
-            if (m_Wrapper.m_EnemyTurnActionsCallbackInterfaces.Remove(instance))
-                UnregisterCallbacks(instance);
-        }
-
-        public void SetCallbacks(IEnemyTurnActions instance)
-        {
-            foreach (var item in m_Wrapper.m_EnemyTurnActionsCallbackInterfaces)
-                UnregisterCallbacks(item);
-            m_Wrapper.m_EnemyTurnActionsCallbackInterfaces.Clear();
-            AddCallbacks(instance);
-        }
-    }
-    public EnemyTurnActions @EnemyTurn => new EnemyTurnActions(this);
 
     // PlayerTurn
     private readonly InputActionMap m_PlayerTurn;
@@ -600,6 +484,122 @@ public partial class @Input: IInputActionCollection2, IDisposable
         }
     }
     public PlayerTurnActions @PlayerTurn => new PlayerTurnActions(this);
+
+    // EnemyTurn
+    private readonly InputActionMap m_EnemyTurn;
+    private List<IEnemyTurnActions> m_EnemyTurnActionsCallbackInterfaces = new List<IEnemyTurnActions>();
+    private readonly InputAction m_EnemyTurn_Move;
+    public struct EnemyTurnActions
+    {
+        private @Input m_Wrapper;
+        public EnemyTurnActions(@Input wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Move => m_Wrapper.m_EnemyTurn_Move;
+        public InputActionMap Get() { return m_Wrapper.m_EnemyTurn; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(EnemyTurnActions set) { return set.Get(); }
+        public void AddCallbacks(IEnemyTurnActions instance)
+        {
+            if (instance == null || m_Wrapper.m_EnemyTurnActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_EnemyTurnActionsCallbackInterfaces.Add(instance);
+            @Move.started += instance.OnMove;
+            @Move.performed += instance.OnMove;
+            @Move.canceled += instance.OnMove;
+        }
+
+        private void UnregisterCallbacks(IEnemyTurnActions instance)
+        {
+            @Move.started -= instance.OnMove;
+            @Move.performed -= instance.OnMove;
+            @Move.canceled -= instance.OnMove;
+        }
+
+        public void RemoveCallbacks(IEnemyTurnActions instance)
+        {
+            if (m_Wrapper.m_EnemyTurnActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IEnemyTurnActions instance)
+        {
+            foreach (var item in m_Wrapper.m_EnemyTurnActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_EnemyTurnActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public EnemyTurnActions @EnemyTurn => new EnemyTurnActions(this);
+
+    // Battle
+    private readonly InputActionMap m_Battle;
+    private List<IBattleActions> m_BattleActionsCallbackInterfaces = new List<IBattleActions>();
+    private readonly InputAction m_Battle_Up;
+    private readonly InputAction m_Battle_Down;
+    private readonly InputAction m_Battle_Left;
+    private readonly InputAction m_Battle_Right;
+    public struct BattleActions
+    {
+        private @Input m_Wrapper;
+        public BattleActions(@Input wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Up => m_Wrapper.m_Battle_Up;
+        public InputAction @Down => m_Wrapper.m_Battle_Down;
+        public InputAction @Left => m_Wrapper.m_Battle_Left;
+        public InputAction @Right => m_Wrapper.m_Battle_Right;
+        public InputActionMap Get() { return m_Wrapper.m_Battle; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(BattleActions set) { return set.Get(); }
+        public void AddCallbacks(IBattleActions instance)
+        {
+            if (instance == null || m_Wrapper.m_BattleActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_BattleActionsCallbackInterfaces.Add(instance);
+            @Up.started += instance.OnUp;
+            @Up.performed += instance.OnUp;
+            @Up.canceled += instance.OnUp;
+            @Down.started += instance.OnDown;
+            @Down.performed += instance.OnDown;
+            @Down.canceled += instance.OnDown;
+            @Left.started += instance.OnLeft;
+            @Left.performed += instance.OnLeft;
+            @Left.canceled += instance.OnLeft;
+            @Right.started += instance.OnRight;
+            @Right.performed += instance.OnRight;
+            @Right.canceled += instance.OnRight;
+        }
+
+        private void UnregisterCallbacks(IBattleActions instance)
+        {
+            @Up.started -= instance.OnUp;
+            @Up.performed -= instance.OnUp;
+            @Up.canceled -= instance.OnUp;
+            @Down.started -= instance.OnDown;
+            @Down.performed -= instance.OnDown;
+            @Down.canceled -= instance.OnDown;
+            @Left.started -= instance.OnLeft;
+            @Left.performed -= instance.OnLeft;
+            @Left.canceled -= instance.OnLeft;
+            @Right.started -= instance.OnRight;
+            @Right.performed -= instance.OnRight;
+            @Right.canceled -= instance.OnRight;
+        }
+
+        public void RemoveCallbacks(IBattleActions instance)
+        {
+            if (m_Wrapper.m_BattleActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IBattleActions instance)
+        {
+            foreach (var item in m_Wrapper.m_BattleActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_BattleActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public BattleActions @Battle => new BattleActions(this);
     private int m_KeyboardMouseSchemeIndex = -1;
     public InputControlScheme KeyboardMouseScheme
     {
@@ -645,7 +645,7 @@ public partial class @Input: IInputActionCollection2, IDisposable
             return asset.controlSchemes[m_XRSchemeIndex];
         }
     }
-    public interface IBattleActions
+    public interface IPlayerTurnActions
     {
         void OnUp(InputAction.CallbackContext context);
         void OnDown(InputAction.CallbackContext context);
@@ -656,7 +656,7 @@ public partial class @Input: IInputActionCollection2, IDisposable
     {
         void OnMove(InputAction.CallbackContext context);
     }
-    public interface IPlayerTurnActions
+    public interface IBattleActions
     {
         void OnUp(InputAction.CallbackContext context);
         void OnDown(InputAction.CallbackContext context);
