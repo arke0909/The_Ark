@@ -135,8 +135,9 @@ GameObject:
   m_Component:
   - component: {fileID: 505737567311099369}
   - component: {fileID: 484969296255645271}
+  - component: {fileID: 3520844340707257420}
   m_Layer: 0
-  m_Name: Judge
+  m_Name: ArrowSystem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -173,10 +174,24 @@ MonoBehaviour:
   totalTime: 0
   arrowTypeEvent: {fileID: 11400000, guid: eebe65fef960775428db45766bf268bd, type: 2}
   attackChannel: {fileID: 11400000, guid: ac14975a5566f2c429fbd5bbbb04bba3, type: 2}
+--- !u!114 &3520844340707257420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8139496135161167765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89552c0876084446a0d65b1f9516240f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  arrowHolder: {fileID: 0}
+  arrowBack: {fileID: 0}
   setArrowEvent: {fileID: 11400000, guid: d4651c7301d43654a8acc7de9def88f6, type: 2}
-  _arrows: 
   arrowSpriteList:
-  - {fileID: -241607317, guid: 266570cdc07e2344abb0096535544025, type: 3}
   - {fileID: 356519396, guid: 266570cdc07e2344abb0096535544025, type: 3}
-  - {fileID: 1228589079, guid: 266570cdc07e2344abb0096535544025, type: 3}
   - {fileID: -1135250896, guid: 266570cdc07e2344abb0096535544025, type: 3}
+  - {fileID: 1228589079, guid: 266570cdc07e2344abb0096535544025, type: 3}
+  - {fileID: -241607317, guid: 266570cdc07e2344abb0096535544025, type: 3}
+  arrows: 
