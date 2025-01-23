@@ -16,41 +16,47 @@ namespace Assets.Scripts.Combat
         [SerializeField] private List<Sprite> arrowSpriteList;
 
         private Dictionary<ArrowType, Sprite> _arrowSpriteDict = new Dictionary<ArrowType, Sprite>();
+        private int _size;
+
         private readonly int _arrowTypeCnt = Enum.GetValues(typeof(ArrowType)).Length;
 
-        public List<ArrowType> arrows = new List<ArrowType>();
-        
+        public List<ArrowType> Arrows { get; private set; } = new List<ArrowType>();
+
         private void Awake()
         {
             InitDictionary();
 
-            setArrowEvent.ValueEvent += SetArrows;
+            setArrowEvent.ValueEvent += HandleSetArrows;
         }
 
         private void OnDestroy()
         {
-            setArrowEvent.ValueEvent -= SetArrows;
+            setArrowEvent.ValueEvent -= HandleSetArrows;
         }
 
         private void InitDictionary()
         {
-            for(int i = 0; i < arrowSpriteList.Count; i++)
+            for (int i = 0; i < arrowSpriteList.Count; i++)
             {
                 ArrowType arrowType = (ArrowType)i;
-                Debug.Log(arrowType);
                 Sprite sprite = arrowSpriteList[i];
 
                 _arrowSpriteDict.Add(arrowType, sprite);
             }
         }
 
-        public void SetArrows(int size)
+        public void HandleSetArrows(int size)
         {
-            arrows.Clear();
+            ResetArrows();
+
+            _size = size;
+
+            if (arrowHolder.childCount == 0) return;
+
+            Arrows.Clear();
 
             for (int i = 0; i < size; i++)
             {
-                if (arrowHolder.childCount == 0) break;
 
                 Transform arrowTrm = arrowHolder.GetChild(0);
                 ArrowType arrowType = (ArrowType)UnityEngine.Random.Range(0, _arrowTypeCnt);
@@ -59,10 +65,24 @@ namespace Assets.Scripts.Combat
 
                 arrowTrm.SetParent(arrowBack);
 
-                arrows.Add(arrowType);
-                
-            }
+                Arrows.Add(arrowType);
 
+            }
+        }
+
+        private void ResetArrows()
+        {
+            int childCnt = arrowBack.childCount;
+
+            for (int i = 0;i < childCnt; i++)
+            {
+                arrowBack.GetChild(0).SetParent(arrowHolder);
+            }
+        }
+
+        public int GetSize()
+        {
+            return _size;
         }
 
     }

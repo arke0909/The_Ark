@@ -12,7 +12,7 @@ namespace Assets.Scripts.Players
     {
         [field: SerializeField] public InputReader InputCompo { get; private set; }
 
-        [SerializeField] private ArrowTypeEventChannel arrowTypeEvent;
+        [SerializeField] private ArrowTypeEventChannel arrowCheckEvent;
         [SerializeField] private GameEventChannel turnChangeChannel;
 
         private Dictionary<Type, IPlayerComponent> _components;
@@ -50,7 +50,7 @@ namespace Assets.Scripts.Players
 
         private void CheckArrow(ArrowType type)
         {
-            arrowTypeEvent.RaiseEvent(type);
+            arrowCheckEvent.RaiseEvent(type);
         }
     }
 }

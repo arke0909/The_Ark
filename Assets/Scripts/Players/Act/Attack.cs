@@ -7,11 +7,12 @@ namespace Assets.Scripts.Players.Act
     public class Attack : Act
     {
         [SerializeField] IntEventChannel setArrowEvent;
-        [SerializeField] int size    = 1;
+        [SerializeField] BoolEventChannel changeIsCheckEvent;
+        [SerializeField] int size = 1;
         public override void OnClick()
         {
+            changeIsCheckEvent.RaiseEvent(true);
             setArrowEvent.RaiseEvent(size);
-
             _player.InputCompo.Battle();
         }
     }
