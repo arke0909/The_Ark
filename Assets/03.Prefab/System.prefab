@@ -175,3 +175,8 @@ MonoBehaviour:
   attackChannel: {fileID: 11400000, guid: ac14975a5566f2c429fbd5bbbb04bba3, type: 2}
   setArrowEvent: {fileID: 11400000, guid: d4651c7301d43654a8acc7de9def88f6, type: 2}
   _arrows: 
+  arrowSpriteList:
+  - {fileID: -241607317, guid: 266570cdc07e2344abb0096535544025, type: 3}
+  - {fileID: 356519396, guid: 266570cdc07e2344abb0096535544025, type: 3}
+  - {fileID: 1228589079, guid: 266570cdc07e2344abb0096535544025, type: 3}
+  - {fileID: -1135250896, guid: 266570cdc07e2344abb0096535544025, type: 3}

@@ -4,8 +4,6 @@ using System.Linq;
 using Assets.Scripts.Core.EventChannel;
 using Assets.Scripts.Core.EventChannel.Events;
 using Assets.Scripts.Entities;
-using Scripts.Core.EventChannel;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Assets.Scripts.Players

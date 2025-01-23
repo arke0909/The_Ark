@@ -1,4 +1,6 @@
-﻿namespace Assets.Scripts.Core.EventChannel.Events
+﻿using System.Collections.Generic;
+
+namespace Assets.Scripts.Core.EventChannel.Events
 {
     public static class CombatEvents
     {

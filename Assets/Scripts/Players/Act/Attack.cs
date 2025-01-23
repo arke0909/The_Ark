@@ -1,4 +1,4 @@
-﻿using Scripts.Core.EventChannel;
+﻿using Assets.Scripts.Core.EventChannel;
 using System.Collections;
 using UnityEngine;
 

@@ -1,8 +1,5 @@
 using Assets.Scripts.Core.EventChannel;
 using Assets.Scripts.Core.EventChannel.Events;
-using Scripts.Core.EventChannel;
-using System;
-using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -17,47 +14,29 @@ namespace Assets.Scripts.Combat
         [Header("Event Channel")]
         [SerializeField] private ArrowTypeEventChannel arrowTypeEvent;
         [SerializeField] private GameEventChannel attackChannel;
-        [SerializeField] private IntEventChannel setArrowEvent;
         #endregion
 
-        [SerializeField] private List<ArrowType> _arrows;
+        private ArrowSetter _setterCompo;
 
         private ArrowType _currentArrow;
-        private readonly int _arrowTypeCnt = Enum.GetValues(typeof(ArrowType)).Length;
         private int _currentRepeatCnt = 0;
 
         private bool _isCheckTime;
         private float _currentTime;
 
         private int _idx;
-
-        private int CurrentArrowIndex
-        {
-            get => _idx;
-
-            set
-            {
-                if (_arrows.Count < value)
-                    value = 0;
-
-                _idx = value;
-            }
-        }
-
         private int _size;
 
         private void Awake()
         {
-            _arrows = new List<ArrowType>();
+            _setterCompo = GetComponent<ArrowSetter>();
 
             arrowTypeEvent.ValueEvent += ArrowCheck;
-            setArrowEvent.ValueEvent += SetArrows;
         }
 
         private void OnDestroy()
         {
             arrowTypeEvent.ValueEvent -= ArrowCheck;
-            setArrowEvent.ValueEvent -= SetArrows;
         }
 
         private void Update()
@@ -68,22 +47,16 @@ namespace Assets.Scripts.Combat
             }  
         }
 
-        public void SetArrows(int size)
+        public void SetArrow(int size)
         {
             if(_isCheckTime == false)
                 _isCheckTime = true;
 
-            _arrows.Clear();
-            CurrentArrowIndex = 0;
+            _setterCompo.arrows.Clear();
+            _idx = 0;
             _size = size;
 
-            for (int i = 0; i < size; i++)
-            {
-                ArrowType arrow = (ArrowType)Random.Range(0, _arrowTypeCnt);
-                _arrows.Add(arrow);
-            }
-
-            _currentArrow = _arrows[CurrentArrowIndex];
+            _currentArrow = _setterCompo.arrows[_idx];
         }
 
         private void ArrowCheck(ArrowType type)
@@ -92,9 +65,9 @@ namespace Assets.Scripts.Combat
 
             if (isRight)
             {
-                CurrentArrowIndex++;
+                _idx++;
 
-                if (CurrentArrowIndex == _arrows.Count)
+                if (_idx == _setterCompo.arrows.Count)
                 {
                     EndCheck();
                     return;
@@ -102,11 +75,10 @@ namespace Assets.Scripts.Combat
             }
             else
             {
-                CurrentArrowIndex = 0;
+                _idx = 0;
             }
 
-
-            _currentArrow = _arrows[CurrentArrowIndex];
+            _currentArrow = _setterCompo.arrows[_idx];
         }
 
         private void EndCheck()
@@ -115,7 +87,7 @@ namespace Assets.Scripts.Combat
 
             if (_currentRepeatCnt < totalRepeatCnt)
             {
-                SetArrows(_size);
+                SetArrow(_size);
             }
             else
             {
