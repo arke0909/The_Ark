@@ -1,5 +1,4 @@
 using DG.Tweening;
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,8 +6,8 @@ namespace Assets.Scripts.Combat
 {
     public class Arrow : MonoBehaviour
     {
-        [SerializeField] private float scaleDuration;
-        [SerializeField] private float fadeDuration;
+        private float _scaleDuration;
+        private float _fadeDuration;
 
         private Image _image;
         private Vector3 _originScale;
@@ -28,7 +27,12 @@ namespace Assets.Scripts.Combat
             Open();
         }
         
-        public void SetArrowType(ArrowType type) => arrowType = type;
+        public void Init(ArrowType type, float scaleDuration, float fadeDuration)
+        {
+            arrowType = type;
+            _scaleDuration = scaleDuration;
+            _fadeDuration = fadeDuration;
+        }
 
         public void Open()
         {
@@ -48,7 +52,7 @@ namespace Assets.Scripts.Combat
             }
 
             transform.localScale = _originScale * 1.3f;
-            _tween = transform.DOScale(_originScale * 1, scaleDuration);
+            _tween = transform.DOScale(_originScale * 1, _scaleDuration);
         }
 
         public void Close()
@@ -61,7 +65,7 @@ namespace Assets.Scripts.Combat
                 _tween = null;
             }
 
-            _tween = _image.DOFade(0, fadeDuration);
+            _tween = _image.DOFade(0, _fadeDuration);
         }
 
         public bool IsEqual(ArrowType type)

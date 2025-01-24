@@ -15,6 +15,9 @@ namespace Assets.Scripts.Combat
         [SerializeField] private IntEventChannel setArrowEvent;
         [SerializeField] private List<Sprite> arrowSpriteList;
 
+        [SerializeField] private float scaleDuration = 0.5f;
+        [SerializeField] private float fadeDuration = 0.2f;
+
         private Dictionary<ArrowType, Sprite> _arrowSpriteDict = new Dictionary<ArrowType, Sprite>();
         private int _size;
 
@@ -66,7 +69,7 @@ namespace Assets.Scripts.Combat
                 Arrow arrow = arrowTrm.GetComponent<Arrow>();
                 Debug.Assert(arrowTrm != null, $"{arrowTrm.name} has not Arrow Compo");
 
-                arrow.SetArrowType(arrowType);
+                arrow.Init(arrowType, scaleDuration, fadeDuration);
 
                 arrowTrm.GetComponent<Image>().sprite = _arrowSpriteDict[arrowType];
                 arrowTrm.SetParent(arrowBack);
