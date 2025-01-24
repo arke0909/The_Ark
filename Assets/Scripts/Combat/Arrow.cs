@@ -17,6 +17,7 @@ namespace Assets.Scripts.Combat
         private void Awake()
         {
             _image = GetComponent<Image>();
+            _originScale = transform.localScale;
         }
 
         private void OnEnable()
