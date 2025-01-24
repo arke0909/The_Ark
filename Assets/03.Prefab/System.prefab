@@ -195,4 +195,5 @@ MonoBehaviour:
   - {fileID: -1135250896, guid: 266570cdc07e2344abb0096535544025, type: 3}
   - {fileID: 1228589079, guid: 266570cdc07e2344abb0096535544025, type: 3}
   - {fileID: -241607317, guid: 266570cdc07e2344abb0096535544025, type: 3}
-  arrows: 
+  scaleDuration: 0.5
+  fadeDuration: 0.2
