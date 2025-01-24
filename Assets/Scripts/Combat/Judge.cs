@@ -19,7 +19,7 @@ namespace Assets.Scripts.Combat
 
         private ArrowSetter _setterCompo;
 
-        private ArrowType _currentArrow;
+        private Arrow _currentArrow;
         private int _currentRepeatCnt = 0;
 
         private bool _isCheckTime;
@@ -49,19 +49,15 @@ namespace Assets.Scripts.Combat
             }  
         }
 
-        private void IndexInit()
-        {
-            if(_isCheckTime == false)
-                _isCheckTime = true;
-        }
-
         private void HandleArrowCheck(ArrowType type)
         {
-            bool isRight = _currentArrow == type;
+            if (_currentArrow == null)
+               _currentArrow = _setterCompo.SetCurrentArrow(_idx);
 
-            if (isRight)
+            if (_currentArrow.IsEqual(type))
             {
                 _idx++;
+                _currentArrow.Close();
 
                 if (_idx == _setterCompo.Arrows.Count)
                 {
@@ -72,9 +68,10 @@ namespace Assets.Scripts.Combat
             else
             {
                 _idx = 0;
+                _setterCompo.OnFailArrowSet();
             }
 
-            _currentArrow = _setterCompo.Arrows[_idx];
+            _currentArrow = _setterCompo.SetCurrentArrow(_idx);
         }
 
         private void HandleChangeIsCheck(bool value)
@@ -91,13 +88,14 @@ namespace Assets.Scripts.Combat
                 int size = _setterCompo.GetSize();
                 _setterCompo.HandleSetArrows(size);
                 _idx = 0;
-                _currentArrow = _setterCompo.Arrows[_idx];
+                _currentArrow = _setterCompo.SetCurrentArrow(_idx);
             }
             else
             {
                 _isCheckTime = false;
 
                 ApplyDamage(_currentTime);
+
                 _currentRepeatCnt = 0;
                 _currentTime = 0;
             }

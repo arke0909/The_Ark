@@ -20,7 +20,7 @@ namespace Assets.Scripts.Combat
 
         private readonly int _arrowTypeCnt = Enum.GetValues(typeof(ArrowType)).Length;
 
-        public List<ArrowType> Arrows { get; private set; } = new List<ArrowType>();
+        public List<Arrow> Arrows { get; private set; } = new List<Arrow>();
 
         private void Awake()
         {
@@ -58,14 +58,20 @@ namespace Assets.Scripts.Combat
             for (int i = 0; i < size; i++)
             {
 
-                Transform arrowTrm = arrowHolder.GetChild(0);
                 ArrowType arrowType = (ArrowType)UnityEngine.Random.Range(0, _arrowTypeCnt);
+                
+                Transform arrowTrm = arrowHolder.GetChild(0);
+                Debug.Assert(arrowTrm != null, $"{arrowHolder.name} has not children");
+
+                Arrow arrow = arrowTrm.GetComponent<Arrow>();
+                Debug.Assert(arrowTrm != null, $"{arrowTrm.name} has not Arrow Compo");
+
+                arrow.SetArrowType(arrowType);
 
                 arrowTrm.GetComponent<Image>().sprite = _arrowSpriteDict[arrowType];
-
                 arrowTrm.SetParent(arrowBack);
 
-                Arrows.Add(arrowType);
+                Arrows.Add(arrow);
 
             }
         }
@@ -74,9 +80,20 @@ namespace Assets.Scripts.Combat
         {
             int childCnt = arrowBack.childCount;
 
-            for (int i = 0;i < childCnt; i++)
+            for (int i = 0; i < childCnt; i++)
             {
                 arrowBack.GetChild(0).SetParent(arrowHolder);
+            }
+        }
+
+        public Arrow SetCurrentArrow(int idx) => Arrows[idx];
+
+        public void OnFailArrowSet()
+        {
+            foreach (Arrow arrow in Arrows)
+            {
+                if (arrow.isClear)
+                    arrow.Open();
             }
         }
 

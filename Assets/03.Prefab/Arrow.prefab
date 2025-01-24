@@ -89,6 +89,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scaleDuration: 0.5
-  fadeDuration: 0.5
+  fadeDuration: 0.2
   arrowType: 0
   isClear: 0
