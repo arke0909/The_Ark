@@ -10,9 +10,8 @@ namespace Assets.Scripts.Combat
         [SerializeField] private float fadeDuration;
 
         private Image _image;
-
         private Vector3 _originScale;
-
+        private Tween _scaleTween;
 
         private void Awake()
         {
@@ -28,8 +27,20 @@ namespace Assets.Scripts.Combat
                 color.a = 1;
                 _image.color = color;
             }
-                transform.localScale = _originScale * 1.3f;
-            transform.DOScale(_originScale * 1, scaleDuration);
+
+            ScaleTween();
+        }
+
+        private void ScaleTween()
+        {
+            if (_scaleTween != null)
+            {
+                transform.DOKill();
+                _scaleTween = null;
+            }
+
+            transform.localScale = _originScale * 1.3f;
+            _scaleTween = transform.DOScale(_originScale * 1, scaleDuration);
         }
 
 

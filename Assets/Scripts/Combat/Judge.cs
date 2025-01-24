@@ -98,7 +98,7 @@ namespace Assets.Scripts.Combat
                 _isCheckTime = false;
 
                 ApplyDamage(_currentTime);
-                totalRepeatCnt = 0;
+                _currentRepeatCnt = 0;
                 _currentTime = 0;
             }
         }
