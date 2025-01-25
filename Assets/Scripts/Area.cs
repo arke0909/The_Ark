@@ -28,7 +28,7 @@ namespace Assets.Scripts
             _confiningCollider = GetComponent<BoxCollider2D>();
             Debug.Assert(_confiningCollider != null, "this gameObject has not Collider2D");
 
-            _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+            _spriteRenderer = GetComponent<SpriteRenderer>();
             Debug.Assert(_spriteRenderer != null, "this gameObject has not SpriteRenderer");
 
             turnChangeChannel.AddListner<ChangeAreaSizeEvent>(HandhelChangeAreaSize);
