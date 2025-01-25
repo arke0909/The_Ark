@@ -1,6 +1,5 @@
 using DG.Tweening;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Assets.Scripts.Combat
 {
@@ -9,7 +8,7 @@ namespace Assets.Scripts.Combat
         private float _scaleDuration;
         private float _fadeDuration;
 
-        private Image _image;
+        private SpriteRenderer _renderer;
         private Vector3 _originScale;
         private Tween _tween;
 
@@ -18,7 +17,7 @@ namespace Assets.Scripts.Combat
 
         private void Awake()
         {
-            _image = GetComponent<Image>();
+            _renderer = GetComponent<SpriteRenderer>();
             _originScale = transform.localScale;
         }
 
@@ -44,11 +43,11 @@ namespace Assets.Scripts.Combat
                 _tween = null;
             }
 
-            if (_image.color.a != 1)
+            if (_renderer.color.a != 1)
             {
-                Color color = _image.GetComponent<Image>().color;
+                Color color = _renderer.GetComponent<SpriteRenderer>().color;
                 color.a = 1;
-                _image.color = color;
+                _renderer.color = color;
             }
 
             transform.localScale = _originScale * 1.3f;
@@ -65,7 +64,7 @@ namespace Assets.Scripts.Combat
                 _tween = null;
             }
 
-            _tween = _image.DOFade(0, _fadeDuration);
+            _tween = _renderer.DOFade(0, _fadeDuration);
         }
 
         public bool IsEqual(ArrowType type)
