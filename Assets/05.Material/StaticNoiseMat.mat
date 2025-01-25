@@ -55,7 +55,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _NoiseStepValue: 0.3
-    - _NoiseValue: 0.01
+    - _NoiseValue: 0.1
     m_Colors: []
   m_BuildTextureStacks: []
   m_AllowLocking: 1
