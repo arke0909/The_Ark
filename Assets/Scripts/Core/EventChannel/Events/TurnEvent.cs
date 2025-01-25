@@ -21,6 +21,5 @@ namespace Assets.Scripts.Core.EventChannel.Events
     public class ChangeAreaSizeEvent : GameEvent
     {
         public Vector2 size;
-        public float duration;
     }
 }

@@ -25,7 +25,12 @@ namespace Assets.Scripts.Combat
         {
             Open();
         }
-        
+
+        private void OnTransformParentChanged()
+        {
+            _renderer.size = Vector2.one;
+        }
+
         public void Init(ArrowType type, float scaleDuration, float fadeDuration)
         {
             arrowType = type;

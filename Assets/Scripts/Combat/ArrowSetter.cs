@@ -71,7 +71,7 @@ namespace Assets.Scripts.Combat
 
                 arrow.Init(arrowType, scaleDuration, fadeDuration);
 
-                arrowTrm.GetComponent<Image>().sprite = _arrowSpriteDict[arrowType];
+                arrowTrm.GetComponent<SpriteRenderer>().sprite = _arrowSpriteDict[arrowType];
                 arrowTrm.SetParent(arrowBack);
 
                 Arrows.Add(arrow);
