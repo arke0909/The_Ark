@@ -1,9 +1,9 @@
 <engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/10.UIDocument/USS/MainTitleBtn.uss?fileID=7433441132597879392&amp;guid=ddc53a00997b6f64f8b188dbb366c453&amp;type=3#MainTitleBtn" />
     <engine:VisualElement name="Base" style="flex-grow: 1;">
-        <engine:Label text="THE ARK" name="TitleTxt" style="height: 194px; font-size: 150px; -unity-text-align: upper-left; border-left-color: rgba(0, 0, 0, 0); border-left-width: 150px;" />
-        <engine:Button text="Start" name="StartBtn" class="MainTitleBtn" />
-        <engine:Button text="Setting" name="SettingBtn" class="MainTitleBtn" />
-        <engine:Button text="Exit" name="ExitBtn" class="MainTitleBtn" />
+        <engine:Label text="THE ARK" name="TitleTxt" style="height: 194px; font-size: 150px; -unity-text-align: upper-left; border-left-color: rgba(0, 0, 0, 0); border-left-width: 150px; -unity-font-definition: url(&quot;project://database/Assets/09.Font/I%20AM%20A%20PLAYER.ttf?fileID=12800000&amp;guid=8fb06f4f4e1c0664a96eb18c679ceaed&amp;type=3#I AM A PLAYER&quot;);" />
+        <engine:Button text="START" name="StartBtn" class="MainTitleBtn" />
+        <engine:Button text="SETTING" name="SettingBtn" class="MainTitleBtn" />
+        <engine:Button text="EXIT" name="ExitBtn" class="MainTitleBtn" />
     </engine:VisualElement>
 </engine:UXML>

@@ -8,4 +8,8 @@
     border-right-width: 0;
     margin-left: 145px;
     margin-bottom: 120px;
+    background-image: url("project://database/Assets/04.Sprite/Area.png?fileID=21300000&guid=c097ee41a4a6dc7418d2e263b552a075&type=3#Area");
+    background-color: rgba(255, 255, 255, 0);
+    color: rgb(255, 255, 255);
+    -unity-font-definition: url("project://database/Assets/09.Font/NeoDunggeunmoPro-Regular.ttf?fileID=12800000&guid=e6f9f029e51c3c040a0137197928232d&type=3#NeoDunggeunmoPro-Regular");
 }
