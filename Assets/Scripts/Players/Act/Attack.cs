@@ -1,14 +1,12 @@
 ﻿using Assets.Scripts.Core.EventChannel;
 using Assets.Scripts.Core.EventChannel.Events;
-using System;
-using System.Collections;
 using UnityEngine;
 
 namespace Assets.Scripts.Players.Act
 {
     public class Attack : Act
     {
-        [SerializeField] GameEventChannel changeAreaSizeChannel;
+        [SerializeField] GameEventChannel attackChannel;
         [SerializeField] IntEventChannel setArrowEvent;
         [SerializeField] BoolEventChannel changeIsCheckEvent;
         [SerializeField] int arrowSize = 1;
@@ -18,10 +16,10 @@ namespace Assets.Scripts.Players.Act
             changeIsCheckEvent.RaiseEvent(true);
             setArrowEvent.RaiseEvent(arrowSize);
 
-            ChangeAreaSizeEvent evt = TurnEvents.ChangeAreaSizeEvent;
+            ChangeAreaSizeEvent evt = CombatEvents.ChangeAreaSizeEvent;
             evt.size = _areaSize;
 
-            changeAreaSizeChannel.RaiseEvent(evt);
+            attackChannel.RaiseEvent(evt);
 
             _player.InputCompo.Battle();
         }

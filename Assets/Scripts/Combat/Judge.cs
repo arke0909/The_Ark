@@ -1,5 +1,6 @@
 using Assets.Scripts.Core.EventChannel;
 using Assets.Scripts.Core.EventChannel.Events;
+using Assets.Scripts.Core.Manager;
 using System;
 using UnityEngine;
 
@@ -103,10 +104,14 @@ namespace Assets.Scripts.Combat
 
         private void ApplyDamage(float damge)
         {
-            AttackEvent evt = CombatEvents.AttackEvent;
-            evt.damage = damge;
+            AttackEvent atkEvt = CombatEvents.AttackEvent;
+            atkEvt.damage = damge;
 
-            attackChannel.RaiseEvent(evt);
+            ChangeAreaSizeEvent changeSizeEvt = CombatEvents.ChangeAreaSizeEvent;
+            changeSizeEvt.size = GameManager.originSize;
+
+            attackChannel.RaiseEvent(changeSizeEvt);
+            attackChannel.RaiseEvent(atkEvt);
         }
     }
 }

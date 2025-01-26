@@ -10,9 +10,10 @@ namespace Assets.Scripts
     public class Area : MonoBehaviour
     {
         [SerializeField] private EntityFinder playerFinder;
-        [SerializeField] private GameEventChannel changeAreaSizeChannel;
+        [SerializeField] private GameEventChannel attackChannel;
 
         [SerializeField] private float duration;
+        [SerializeField] private Vector2 originSize;
 
         private Player _player;
         private Collider2D _targetCollider;
@@ -33,12 +34,12 @@ namespace Assets.Scripts
             _spriteRenderer = GetComponent<SpriteRenderer>();
             Debug.Assert(_spriteRenderer != null, "this gameObject has not SpriteRenderer");
 
-            changeAreaSizeChannel.AddListner<ChangeAreaSizeEvent>(HandhelChangeAreaSize);
+            attackChannel.AddListner<ChangeAreaSizeEvent>(HandhelChangeAreaSize);
         }
 
         private void OnDestroy()
         {
-            changeAreaSizeChannel.RemoveListner<ChangeAreaSizeEvent>(HandhelChangeAreaSize);
+            attackChannel.RemoveListner<ChangeAreaSizeEvent>(HandhelChangeAreaSize);
         }
 
         private void ChangeArea(Vector2 targetSize, float duration)

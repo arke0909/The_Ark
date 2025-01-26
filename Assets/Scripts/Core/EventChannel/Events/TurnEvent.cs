@@ -1,5 +1,3 @@
-using UnityEngine;
-
 namespace Assets.Scripts.Core.EventChannel.Events
 {
     public enum Turn
@@ -10,7 +8,6 @@ namespace Assets.Scripts.Core.EventChannel.Events
     public static class TurnEvents
     {
         public static TurnChangeEvent TurnChangeEvent = new TurnChangeEvent();
-        public static ChangeAreaSizeEvent ChangeAreaSizeEvent = new ChangeAreaSizeEvent();
     }
 
     public class TurnChangeEvent : GameEvent
@@ -18,8 +15,4 @@ namespace Assets.Scripts.Core.EventChannel.Events
         public bool isPlayerTurn;
     }
 
-    public class ChangeAreaSizeEvent : GameEvent
-    {
-        public Vector2 size;
-    }
 }
