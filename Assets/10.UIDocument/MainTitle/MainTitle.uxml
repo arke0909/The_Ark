@@ -1,0 +1,6 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <engine:VisualElement name="Base" style="flex-grow: 1;">
+        <engine:Label text="THE ARK" name="TitleTxt" style="height: 194px; font-size: 150px; -unity-text-align: upper-left; border-left-color: rgba(0, 0, 0, 0); border-left-width: 150px;" />
+        <engine:Button text="Button" name="StartBtn" />
+    </engine:VisualElement>
+</engine:UXML>
