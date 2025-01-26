@@ -15,13 +15,13 @@ namespace Assets.Scripts.Players
 
         
 
-        private Dictionary<Type, IPlayerComponent> _components;
+        private Dictionary<Type, IPlayerComponent> _playerComponents;
 
 
         #region Init Section
         private void Awake()
         {
-            _components = new Dictionary<Type, IPlayerComponent>();
+            _playerComponents = new Dictionary<Type, IPlayerComponent>();
             SetPlayerCompoentsAndInitialize();
 
             InputCompo.BattleEvent += CheckArrow;
@@ -38,7 +38,7 @@ namespace Assets.Scripts.Players
             {
                 Type type = component.GetType();
                 component.Initialize(this);
-                _components.Add(type, component);
+                _playerComponents.Add(type, component);
             });
         }
         #endregion
