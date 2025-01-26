@@ -1,4 +1,5 @@
 using Assets.Scripts.Core.EventChannel;
+using Assets.Scripts.Core.EventChannel.Events;
 using Assets.Scripts.Core.InGameData;
 using UnityEngine;
 
@@ -9,14 +10,17 @@ namespace Scripts.Core.Manager
         [SerializeField] private GameEventChannel turnChangeChannel;
         [SerializeField] private Vector2Data originSize;
 
-        private void Awake()
+        private void Start()
         {
-            //turnChangeChannel.AddListner<TurnChangeEvent>(HandleTurnChange);
+            TurnChange(true);
         }
 
-        private void HandleTurnChange()
+        private void TurnChange(bool isPlayerTurn)
         {
-
+            TurnChangeEvent evt = TurnEvents.TurnChangeEvent;
+            evt.isPlayerTurn = isPlayerTurn;
+            
+            turnChangeChannel.RaiseEvent(evt);
         }
     }
 }

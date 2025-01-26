@@ -9,8 +9,10 @@ namespace Assets.Scripts.Enemies
     {
         [SerializeField] private GameEventChannel attackChannel;
 
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
+
             attackChannel.AddListner<AttackEvent>(HandleApplyDamage);
         }
 
