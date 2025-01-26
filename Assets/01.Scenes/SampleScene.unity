@@ -818,7 +818,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bb9ce8f4313cc64fa315714c268f17c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turnChangeChannel: {fileID: 0}
+  turnChangeChannel: {fileID: 11400000, guid: cbee26c0380d9c745b94e60ad84e18d2, type: 2}
   attackChannel: {fileID: 11400000, guid: ac14975a5566f2c429fbd5bbbb04bba3, type: 2}
 --- !u!1 &519420028
 GameObject:
