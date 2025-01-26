@@ -8,8 +8,6 @@ namespace Assets.Scripts.Core.Manager
     [DefaultExecutionOrder(-20)]
     public class GameManager : MonoBehaviour
     {
-        public static Vector2 originSize;
-
         [SerializeField] private EntityFinder playerFinder;
         [SerializeField] private EntityFinder enemyFinder;
         private Player _player;

@@ -1,5 +1,6 @@
 using Assets.Scripts.Core.EventChannel;
 using Assets.Scripts.Core.EventChannel.Events;
+using Assets.Scripts.Core.InGameData;
 using Assets.Scripts.Core.Manager;
 using System;
 using UnityEngine;
@@ -10,6 +11,8 @@ namespace Assets.Scripts.Combat
     {
         [SerializeField] private int totalRepeatCnt = 1;
         [SerializeField] private float totalTime;
+
+        [SerializeField] private Vector2Data originSize;
 
         #region EventChannel Section
         [Header("Event Channel")]
@@ -108,7 +111,7 @@ namespace Assets.Scripts.Combat
             atkEvt.damage = damge;
 
             ChangeAreaSizeEvent changeSizeEvt = CombatEvents.ChangeAreaSizeEvent;
-            changeSizeEvt.size = GameManager.originSize;
+            changeSizeEvt.size = originSize.Value;
 
             attackChannel.RaiseEvent(changeSizeEvt);
             attackChannel.RaiseEvent(atkEvt);

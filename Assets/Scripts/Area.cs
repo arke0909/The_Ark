@@ -4,6 +4,7 @@ using Assets.Scripts.Entities;
 using Assets.Scripts.Core.EventChannel.Events;
 using Assets.Scripts.Core.EventChannel;
 using Assets.Scripts.Players;
+using Assets.Scripts.Core.InGameData;
 
 namespace Assets.Scripts
 {
@@ -13,7 +14,6 @@ namespace Assets.Scripts
         [SerializeField] private GameEventChannel attackChannel;
 
         [SerializeField] private float duration;
-        [SerializeField] private Vector2 originSize;
 
         private Player _player;
         private Collider2D _targetCollider;

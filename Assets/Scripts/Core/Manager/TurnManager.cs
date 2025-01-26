@@ -1,4 +1,5 @@
 using Assets.Scripts.Core.EventChannel;
+using Assets.Scripts.Core.InGameData;
 using UnityEngine;
 
 namespace Scripts.Core.Manager
@@ -6,6 +7,7 @@ namespace Scripts.Core.Manager
     public class TurnManager : MonoBehaviour
     {
         [SerializeField] private GameEventChannel turnChangeChannel;
+        [SerializeField] private Vector2Data originSize;
 
         private void Awake()
         {

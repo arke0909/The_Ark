@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26d5a22fe741b8649af11eaa7921f986, type: 3}
   m_Name: AreaSizeData
   m_EditorClassIdentifier: 
+  <Value>k__BackingField: {x: 4, y: 4}
