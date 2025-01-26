@@ -1,6 +1,5 @@
-using Assets.Scripts.Players;
-
+using Assets.Scripts.Entities;
 public interface IEntityComponent
 {
-    void Initialize(Player player);
+    void Initialize(Entity entity);
 }

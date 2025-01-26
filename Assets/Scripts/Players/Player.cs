@@ -19,8 +19,10 @@ namespace Assets.Scripts.Players
 
 
         #region Init Section
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
+
             _playerComponents = new Dictionary<Type, IPlayerComponent>();
             SetPlayerCompoentsAndInitialize();
 
@@ -42,6 +44,18 @@ namespace Assets.Scripts.Players
             });
         }
         #endregion
+
+        public T GetPlayerCompo<T>() where T : class
+        {
+            Type type = typeof(T);
+
+            if(_playerComponents.TryGetValue(type, out IPlayerComponent compo))
+            {
+                return compo as T;
+            }
+
+            return default;
+        }
 
         private void HandleInputChange(TurnChangeEvent evt)
         {
