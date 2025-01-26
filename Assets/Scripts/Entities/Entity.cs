@@ -1,4 +1,5 @@
 using Assets.Scripts.Core.EventChannel;
+using Assets.Scripts.Core.EventChannel.Events;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,11 +13,15 @@ namespace Assets.Scripts.Entities
 
         protected Dictionary<Type, IEntityComponent> _entityComponets = new Dictionary<Type, IEntityComponent>();
 
+        #region Init Section
         protected virtual void Awake()
         {
-            SetEntityCompoentsAndInitialize();   
+            SetEntityCompoentsAndInitialize();
         }
 
+        private void OnDestroy()
+        {
+        }
 
         private void SetEntityCompoentsAndInitialize()
         {
@@ -27,6 +32,7 @@ namespace Assets.Scripts.Entities
                 _entityComponets.Add(type, component);
             });
         }
+        #endregion
 
         public T GetCompo<T>() where T : class
         {
@@ -38,6 +44,14 @@ namespace Assets.Scripts.Entities
             }
 
             return default;
+        }
+
+        protected void TurnChangeCalling(bool isPlayerTurn)
+        {
+            TurnChangeCallingEvent evt = TurnEvents.TurnChangeCallingEvent;
+            evt.isPlayerTurn = isPlayerTurn;
+
+            turnChangeChannel.RaiseEvent(evt);
         }
     }
 }

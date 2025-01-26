@@ -10,9 +10,24 @@ namespace Scripts.Core.Manager
         [SerializeField] private GameEventChannel turnChangeChannel;
         [SerializeField] private Vector2Data originSize;
 
+        private void Awake()
+        {
+            turnChangeChannel.AddListner<TurnChangeCallingEvent>(HandleTurnChange);
+        }
+
+        private void OnDestroy()
+        {
+            turnChangeChannel.RemoveListner<TurnChangeCallingEvent>(HandleTurnChange);
+        }
+
         private void Start()
         {
             TurnChange(true);
+        }
+
+        private void HandleTurnChange(TurnChangeCallingEvent evt)
+        {
+            TurnChange(evt.isPlayerTurn);
         }
 
         private void TurnChange(bool isPlayerTurn)

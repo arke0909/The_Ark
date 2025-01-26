@@ -13,6 +13,13 @@ namespace Assets.Scripts.Entities
             _renderer = GetComponent<SpriteRenderer>();
         }
 
+        public void FadeWithTurn(bool isPlayerTurn)
+        {
+            float alpha = isPlayerTurn ? 0.0f : 1.0f;
+            Color color = _renderer.color;
+            color.a = alpha;
 
+            _renderer.color = color;
+        }
     }
 }

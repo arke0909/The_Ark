@@ -19,6 +19,7 @@ namespace Assets.Scripts.Enemies
         private void HandleApplyDamage(AttackEvent evt)
         {
             Debug.Log($"{evt.damage}초가 걸려 입혀진 대미지");
+            TurnChangeCalling(false);
         }
     }
 }

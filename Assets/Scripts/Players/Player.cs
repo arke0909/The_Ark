@@ -59,6 +59,7 @@ namespace Assets.Scripts.Players
 
         private void HandleInputChange(TurnChangeEvent evt)
         {
+            GetCompo<EntityRenderer>().FadeWithTurn(evt.isPlayerTurn);
             InputCompo.TurnChange(evt.isPlayerTurn);
         }
 
