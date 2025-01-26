@@ -483,8 +483,8 @@ MonoBehaviour:
   turnChangeChannel: {fileID: 11400000, guid: cbee26c0380d9c745b94e60ad84e18d2, type: 2}
   playerFinder: {fileID: 11400000, guid: 23e17a3a4d1d5894f8fa737d0d00f6b6, type: 2}
   attackChannel: {fileID: 11400000, guid: ac14975a5566f2c429fbd5bbbb04bba3, type: 2}
-  setArrowEvent: {fileID: 11400000, guid: d4651c7301d43654a8acc7de9def88f6, type: 2}
-  changeIsCheckEvent: {fileID: 11400000, guid: ca0780ba18666cf459610ac836bd8d89, type: 2}
+  setArrowChannel: {fileID: 11400000, guid: d4651c7301d43654a8acc7de9def88f6, type: 2}
+  changeIsCheckChannel: {fileID: 11400000, guid: ca0780ba18666cf459610ac836bd8d89, type: 2}
   arrowSize: 8
   _areaSize: {x: 12, y: 4}
 --- !u!1 &355648951
@@ -1977,7 +1977,6 @@ MonoBehaviour:
   playerFinder: {fileID: 11400000, guid: 23e17a3a4d1d5894f8fa737d0d00f6b6, type: 2}
   attackChannel: {fileID: 11400000, guid: ac14975a5566f2c429fbd5bbbb04bba3, type: 2}
   duration: 0.2
-  originSize: {x: 0, y: 0}
 --- !u!114 &1571069920
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2477,17 +2476,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1276699468557054207, guid: 290204e2e8e9ba042848ad936e90fc66, type: 3}
-      propertyPath: m_Color.a
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5259096048403228482, guid: 290204e2e8e9ba042848ad936e90fc66, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5259096048403228482, guid: 290204e2e8e9ba042848ad936e90fc66, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.34
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5259096048403228482, guid: 290204e2e8e9ba042848ad936e90fc66, type: 3}
       propertyPath: m_LocalPosition.z

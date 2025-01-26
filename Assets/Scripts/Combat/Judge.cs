@@ -16,8 +16,8 @@ namespace Assets.Scripts.Combat
 
         #region EventChannel Section
         [Header("Event Channel")]
-        [SerializeField] private ArrowTypeEventChannel arrowCheckEvent;
-        [SerializeField] private BoolEventChannel changeIsCheckEvent;
+        [SerializeField] private ArrowTypeEventChannel arrowCheckChannel;
+        [SerializeField] private BoolEventChannel changeIsCheckChannel;
         [SerializeField] private GameEventChannel attackChannel;
         #endregion
 
@@ -35,14 +35,14 @@ namespace Assets.Scripts.Combat
         {
             _setterCompo = GetComponent<ArrowSetter>();
 
-            arrowCheckEvent.ValueEvent += HandleArrowCheck;
-            changeIsCheckEvent.ValueEvent += HandleChangeIsCheck;
+            arrowCheckChannel.ValueEvent += HandleArrowCheck;
+            changeIsCheckChannel.ValueEvent += HandleChangeIsCheck;
         }
 
         private void OnDestroy()
         {
-            arrowCheckEvent.ValueEvent -= HandleArrowCheck;
-            changeIsCheckEvent.ValueEvent -= HandleChangeIsCheck;
+            arrowCheckChannel.ValueEvent -= HandleArrowCheck;
+            changeIsCheckChannel.ValueEvent -= HandleChangeIsCheck;
         }
 
         private void Update()

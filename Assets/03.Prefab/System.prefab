@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turnChangeChannel: {fileID: 11400000, guid: cbee26c0380d9c745b94e60ad84e18d2, type: 2}
+  originSize: {fileID: 11400000, guid: 0ed6a2aa4ec4eb149ac42925d83bff7a, type: 2}
 --- !u!1 &4646480972133679431
 GameObject:
   m_ObjectHideFlags: 0
@@ -172,8 +173,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   totalRepeatCnt: 2
   totalTime: 0
-  arrowCheckEvent: {fileID: 11400000, guid: eebe65fef960775428db45766bf268bd, type: 2}
-  changeIsCheckEvent: {fileID: 11400000, guid: ca0780ba18666cf459610ac836bd8d89, type: 2}
+  originSize: {fileID: 11400000, guid: 0ed6a2aa4ec4eb149ac42925d83bff7a, type: 2}
+  arrowCheckChannel: {fileID: 11400000, guid: eebe65fef960775428db45766bf268bd, type: 2}
+  changeIsCheckChannel: {fileID: 11400000, guid: ca0780ba18666cf459610ac836bd8d89, type: 2}
   attackChannel: {fileID: 11400000, guid: ac14975a5566f2c429fbd5bbbb04bba3, type: 2}
 --- !u!114 &3520844340707257420
 MonoBehaviour:

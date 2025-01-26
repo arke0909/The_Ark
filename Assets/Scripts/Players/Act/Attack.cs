@@ -7,14 +7,14 @@ namespace Assets.Scripts.Players.Act
     public class Attack : Act
     {
         [SerializeField] GameEventChannel attackChannel;
-        [SerializeField] IntEventChannel setArrowEvent;
-        [SerializeField] BoolEventChannel changeIsCheckEvent;
+        [SerializeField] IntEventChannel setArrowChannel;
+        [SerializeField] BoolEventChannel changeIsCheckChannel;
         [SerializeField] int arrowSize = 1;
         [SerializeField] private Vector2 _areaSize;
         public override void OnClick()
         {
-            changeIsCheckEvent.RaiseEvent(true);
-            setArrowEvent.RaiseEvent(arrowSize);
+            changeIsCheckChannel.RaiseEvent(true);
+            setArrowChannel.RaiseEvent(arrowSize);
 
             ChangeAreaSizeEvent evt = CombatEvents.ChangeAreaSizeEvent;
             evt.size = _areaSize;

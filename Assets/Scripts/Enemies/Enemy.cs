@@ -11,10 +11,10 @@ namespace Assets.Scripts.Enemies
 
         private void Awake()
         {
-            attackChannel.AddListner<AttackEvent>(HandleAttackEvent);
+            attackChannel.AddListner<AttackEvent>(HandleApplyDamage);
         }
 
-        private void HandleAttackEvent(AttackEvent evt)
+        private void HandleApplyDamage(AttackEvent evt)
         {
             Debug.Log($"{evt.damage}초가 걸려 입혀진 대미지");
         }
