@@ -2,10 +2,11 @@
 using Assets.Scripts.Entities;
 using Assets.Scripts.Core.EventChannel;
 using Assets.Scripts.Core.EventChannel.Events;
-using Assets.Scripts.Combat.Pattern;
 using Assets.Scripts.Combat;
 using System.Collections.Generic;
 using Assets.Scripts.Players;
+using Assets.Scripts.Combat.Patterns;
+using System.Linq;
 
 namespace Assets.Scripts.Enemies
 {
@@ -13,15 +14,17 @@ namespace Assets.Scripts.Enemies
     {
         [SerializeField] private GameEventChannel attackChannel;
         [SerializeField] private List<Transform> firePos = new List<Transform>();
-        [SerializeField] private List<PatternSO> patterns = new List<PatternSO>();
+        [SerializeField] private List<Pattern> patterns;
         [SerializeField] private EntityFinder playerFinder;
 
         [SerializeField] private float delay = 0.5f;
+        [SerializeField] private bool canUseTwoPattern = false;
 
         protected override void Awake()
         {
             base.Awake();
 
+            patterns = GetComponentsInChildren<Pattern>().ToList();
             attackChannel.AddListner<AttackEvent>(HandleApplyDamage);
         }
 
@@ -35,19 +38,19 @@ namespace Assets.Scripts.Enemies
         {
             if (idx < 0 || idx >= patterns.Count) return;
 
-
-            PatternSO pattern = patterns[idx];
+            Pattern pattern = patterns[idx];
             ChangeAreaSize(pattern.areaSize);
             Player player = playerFinder.entity as Player;
 
-            Bullet bullet = GameObject.Instantiate(pattern.bullet, firePos[0].position, Quaternion.identity);
 
             Vector2 tartgetDir = player.transform.position - firePos[0].position;
 
-            for (int i = 1; i < pattern.bulletCount; i++)
+            for (int i = 0; i < pattern.bulletCount; i++)
             {
+                Bullet bullet = GameObject.Instantiate(pattern.bullet, firePos[0].position, Quaternion.identity);
                 bullet.InitBullet(tartgetDir, pattern.bulletSpeed);
             }
+
         }
 
         private void HandleApplyDamage(AttackEvent evt)

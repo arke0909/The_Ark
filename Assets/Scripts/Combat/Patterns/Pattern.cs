@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 
-namespace Assets.Scripts.Combat.Pattern
+namespace Assets.Scripts.Combat.Patterns
 {
-    public class PatternSO : MonoBehaviour
+    public class Pattern : MonoBehaviour
     {
         public int bulletCount;
         public float bulletSpeed;

@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Assets.Scripts.Combat
 {
@@ -20,7 +19,10 @@ namespace Assets.Scripts.Combat
         private void OnTriggerEnter2D(Collider2D collision)
         {
             if (collision.CompareTag("Player"))
+            {
                 Debug.Log("Player hit");
+                Destroy(gameObject);
+            }
         }
     }
 }
