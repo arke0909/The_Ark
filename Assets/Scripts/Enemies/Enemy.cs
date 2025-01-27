@@ -5,7 +5,7 @@ using Assets.Scripts.Core.EventChannel.Events;
 
 namespace Assets.Scripts.Enemies
 {
-    public class Enemy : Entity
+    public abstract class Enemy : Entity
     {
         [SerializeField] private GameEventChannel attackChannel;
 
@@ -16,7 +16,14 @@ namespace Assets.Scripts.Enemies
             attackChannel.AddListner<AttackEvent>(HandleApplyDamage);
         }
 
-        private void HandleApplyDamage(AttackEvent evt)
+        protected override void OnDestroy()
+        {
+            base.OnDestroy();
+
+            attackChannel.RemoveListner<AttackEvent>(HandleApplyDamage);
+        }
+
+        protected virtual void HandleApplyDamage(AttackEvent evt)
         {
             Debug.Log($"{evt.damage}초가 걸려 입혀진 대미지");
             TurnChangeCalling(false);

@@ -19,7 +19,7 @@ namespace Assets.Scripts.Entities
             SetEntityCompoentsAndInitialize();
         }
 
-        private void OnDestroy()
+        protected virtual void OnDestroy()
         {
         }
 

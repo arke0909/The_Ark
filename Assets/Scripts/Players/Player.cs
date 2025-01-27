@@ -29,8 +29,10 @@ namespace Assets.Scripts.Players
             InputCompo.BattleEvent += CheckArrow;
             turnChangeChannel.AddListner<TurnChangeEvent>(HandleInputChange);
         }
-        private void OnDestroy()
+        protected override void OnDestroy()
         {
+            base.OnDestroy();
+
             InputCompo.BattleEvent -= CheckArrow;
             turnChangeChannel.RemoveListner<TurnChangeEvent>(HandleInputChange);
         }
