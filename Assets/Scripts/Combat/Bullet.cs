@@ -11,5 +11,10 @@ namespace Assets.Scripts.Combat
         {
             rigidCompo = GetComponent<Rigidbody2D>();
         }
+
+        public void InitBullet(Vector2 dir)
+        {
+
+        }
     }
 }

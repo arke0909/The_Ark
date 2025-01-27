@@ -8,6 +8,7 @@ namespace Assets.Scripts.Enemies
     public abstract class Enemy : Entity
     {
         [SerializeField] private GameEventChannel attackChannel;
+        [SerializeField] private float delay = 0.5f;
 
         protected override void Awake()
         {
