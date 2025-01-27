@@ -28,5 +28,13 @@ namespace Assets.Scripts.Enemies
             Debug.Log($"{evt.damage}초가 걸려 입혀진 대미지");
             TurnChangeCalling(false);
         }
+
+        protected virtual void ChangeAreaSize(Vector2 size)
+        {
+            ChangeAreaSizeEvent evt = CombatEvents.ChangeAreaSizeEvent;
+            evt.size = size;
+
+            attackChannel.RaiseEvent(evt);
+        }
     }
 }
