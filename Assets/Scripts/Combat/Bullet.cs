@@ -12,9 +12,15 @@ namespace Assets.Scripts.Combat
             rigidCompo = GetComponent<Rigidbody2D>();
         }
 
-        public void InitBullet(Vector2 dir)
+        public void InitBullet(Vector2 dir, float speed)
         {
+            rigidCompo.linearVelocity = dir.normalized * speed;
+        }
 
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.CompareTag("Player"))
+                Debug.Log("Player hit");
         }
     }
 }

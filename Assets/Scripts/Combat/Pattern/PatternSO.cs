@@ -6,6 +6,7 @@ namespace Assets.Scripts.Combat.Pattern
     {
         public int bulletCount;
         public float bulletSpeed;
+        public Vector2 areaSize;
         public Bullet bullet;
     }
 }
