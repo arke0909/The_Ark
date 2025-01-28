@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-
+ 
 namespace Assets.Scripts.Entities
 {
     public abstract class Entity : MonoBehaviour

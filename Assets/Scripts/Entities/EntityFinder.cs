@@ -10,6 +10,6 @@ namespace Assets.Scripts.Entities
         public void SetEntity(Entity entity)
         {
             this.entity = entity;
-        }
+        } 
     }
 }
