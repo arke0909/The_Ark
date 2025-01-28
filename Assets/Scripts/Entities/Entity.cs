@@ -17,10 +17,12 @@ namespace Assets.Scripts.Entities
         protected virtual void Awake()
         {
             SetEntityCompoentsAndInitialize();
+            turnChangeChannel.AddListner<TurnChangeEvent>(HandleTurnChange);
         }
 
-        private void OnDestroy()
+        protected virtual void OnDestroy()
         {
+            turnChangeChannel.RemoveListner<TurnChangeEvent>(HandleTurnChange);
         }
 
         private void SetEntityCompoentsAndInitialize()
@@ -45,8 +47,9 @@ namespace Assets.Scripts.Entities
 
             return default;
         }
+        protected abstract void HandleTurnChange(TurnChangeEvent evt);
 
-        protected void TurnChangeCalling(bool isPlayerTurn)
+        protected virtual void TurnChangeCalling(bool isPlayerTurn)
         {
             TurnChangeCallingEvent evt = TurnEvents.TurnChangeCallingEvent;
             evt.isPlayerTurn = isPlayerTurn;

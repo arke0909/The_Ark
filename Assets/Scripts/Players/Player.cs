@@ -27,12 +27,12 @@ namespace Assets.Scripts.Players
             SetPlayerCompoentsAndInitialize();
 
             InputCompo.BattleEvent += CheckArrow;
-            turnChangeChannel.AddListner<TurnChangeEvent>(HandleInputChange);
         }
-        private void OnDestroy()
+        protected override void OnDestroy()
         {
+            base.OnDestroy();
+
             InputCompo.BattleEvent -= CheckArrow;
-            turnChangeChannel.RemoveListner<TurnChangeEvent>(HandleInputChange);
         }
         private void SetPlayerCompoentsAndInitialize()
         {
@@ -57,15 +57,15 @@ namespace Assets.Scripts.Players
             return default;
         }
 
-        private void HandleInputChange(TurnChangeEvent evt)
-        {
-            GetCompo<EntityRenderer>().FadeWithTurn(evt.isPlayerTurn);
-            InputCompo.TurnChange(evt.isPlayerTurn);
-        }
-
         private void CheckArrow(ArrowType type)
         {
             arrowCheckChannel.RaiseEvent(type);
+        }
+
+        protected override void HandleTurnChange(TurnChangeEvent evt)
+        {
+            GetCompo<EntityRenderer>().FadeWithTurn(evt.isPlayerTurn);
+            InputCompo.TurnChange(evt.isPlayerTurn);
         }
     }
 }
