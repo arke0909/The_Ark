@@ -861,6 +861,9 @@ MonoBehaviour:
   playerFinder: {fileID: 11400000, guid: 23e17a3a4d1d5894f8fa737d0d00f6b6, type: 2}
   delay: 0.5
   canUseTwoPattern: 0
+  OnHit:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -2077,12 +2080,12 @@ BoxCollider2D:
     border: {x: 0.125, y: 0.125, z: 0.125, w: 0.125}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 4, y: 4}
-    newSize: {x: 4, y: 4}
+    newSize: {x: 0, y: 0}
     adaptiveTilingThreshold: 0.5
     drawMode: 1
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 4, y: 4}
+  m_Size: {x: 0.0001, y: 0.0001}
   m_EdgeRadius: 0
 --- !u!212 &1571069918
 SpriteRenderer:
@@ -2133,7 +2136,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1
-  m_Size: {x: 4, y: 4}
+  m_Size: {x: 0, y: 0}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -2153,6 +2156,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerFinder: {fileID: 11400000, guid: 23e17a3a4d1d5894f8fa737d0d00f6b6, type: 2}
   attackChannel: {fileID: 11400000, guid: ac14975a5566f2c429fbd5bbbb04bba3, type: 2}
+  originSize: {fileID: 11400000, guid: 0ed6a2aa4ec4eb149ac42925d83bff7a, type: 2}
   duration: 0.2
 --- !u!114 &1571069920
 MonoBehaviour:

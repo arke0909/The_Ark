@@ -11,7 +11,7 @@ namespace Assets.Scripts.Entities
     {
         [SerializeField] protected GameEventChannel turnChangeChannel;
 
-        protected Dictionary<Type, IEntityComponent> _entityComponets = new Dictionary<Type, IEntityComponent>();
+        protected Dictionary<Type, IEntityComponent> _entityComponents = new Dictionary<Type, IEntityComponent>();
 
         #region Init Section
         protected virtual void Awake()
@@ -31,7 +31,7 @@ namespace Assets.Scripts.Entities
             {
                 Type type = component.GetType();
                 component.Initialize(this);
-                _entityComponets.Add(type, component);
+                _entityComponents.Add(type, component);
             });
         }
         #endregion
@@ -40,7 +40,7 @@ namespace Assets.Scripts.Entities
         {
             Type type = typeof(T);
 
-            if(_entityComponets.TryGetValue(type, out IEntityComponent compo))
+            if(_entityComponents.TryGetValue(type, out IEntityComponent compo))
             {
                 return compo as T;
             }

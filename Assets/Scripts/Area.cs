@@ -13,6 +13,7 @@ namespace Assets.Scripts
         [SerializeField] private EntityFinder playerFinder;
         [SerializeField] private GameEventChannel attackChannel;
 
+        [SerializeField] private Vector2Data originSize;
         [SerializeField] private float duration;
 
         private Player _player;
@@ -35,6 +36,8 @@ namespace Assets.Scripts
             Debug.Assert(_spriteRenderer != null, "this gameObject has not SpriteRenderer");
 
             attackChannel.AddListner<ChangeAreaSizeEvent>(HandhelChangeAreaSize);
+
+            ChangeArea(originSize.Value, duration);
         }
 
         private void OnDestroy()
