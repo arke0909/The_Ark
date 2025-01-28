@@ -1,16 +1,46 @@
-﻿using Assets.Scripts.Entities;
-using System.Collections;
+﻿using Assets.Scripts.Combat.Patterns;
+using Assets.Scripts.Entities;
+using Assets.Scripts.Players;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using Random = UnityEngine.Random;
+
 
 namespace Assets.Scripts.Combat.Skills
 {
     public class PatternComponent : MonoBehaviour, IEntityComponent
     {
+        [SerializeField] private EntityFinder playerFinder;
+
+        [SerializeField] private bool canUseTwoPattern = false;
+        [SerializeField] private float delay = 0.5f;
+
         private Entity _entity;
+        private List<Pattern> patterns;
+
+        private Pattern _currentPattern = null;
 
         public void Initialize(Entity entity)
         {
             _entity = entity;
+            patterns = GetComponentsInChildren<Pattern>().ToList();
+        }
+
+        public void UsePattern()
+        {
+            int idx = Random.Range(0, patterns.Count);
+
+            if (idx < 0 || idx >= patterns.Count) return;
+
+            _currentPattern = patterns[idx];
+
+            _currentPattern.UseSkill(playerFinder.entity as Player);
+        }
+
+        public Pattern GetPattern()
+        {
+            return _currentPattern; 
         }
     }
 }

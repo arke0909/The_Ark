@@ -854,10 +854,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   turnChangeChannel: {fileID: 11400000, guid: cbee26c0380d9c745b94e60ad84e18d2, type: 2}
   attackChannel: {fileID: 11400000, guid: ac14975a5566f2c429fbd5bbbb04bba3, type: 2}
-  firePos:
-  - {fileID: 130102567}
-  patterns:
-  - {fileID: 11400000, guid: bba58ea84020f2a4cbc390bd1948b94e, type: 2}
   playerFinder: {fileID: 11400000, guid: 23e17a3a4d1d5894f8fa737d0d00f6b6, type: 2}
   delay: 0.5
   canUseTwoPattern: 0
@@ -1350,7 +1346,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 2003103677}
   m_Father: {fileID: 401086959}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &777166474
@@ -1362,13 +1359,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 777166472}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd3a559a1f3d06c4da4357b526e784bd, type: 3}
+  m_Script: {fileID: 11500000, guid: 3819c38adba0ff44c9ea657a9b7eaa55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletCount: 1
-  bulletSpeed: 6
-  areaSize: {x: 10, y: 4}
-  bullet: {fileID: 5062867524870107985, guid: f1c6ecae08dc179488d1753c8f6ff1bf, type: 3}
 --- !u!1 &853037496
 GameObject:
   m_ObjectHideFlags: 0
@@ -2466,6 +2459,55 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1195384289957426140, guid: 6f9c3239ea83c124fbfa8dddbe23f651, type: 3}
   m_PrefabInstance: {fileID: 1945064010}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2003103676
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2003103677}
+  - component: {fileID: 2003103678}
+  m_Layer: 0
+  m_Name: TestPattern
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2003103677
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2003103676}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 777166473}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2003103678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2003103676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b5036a480f2e394fa4f838eac8fbc04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletCount: 1
+  bulletSpeed: 6
+  areaSize: {x: 10, y: 4}
+  firePosTrm: {fileID: 130102567}
+  bullet: {fileID: 5062867524870107985, guid: f1c6ecae08dc179488d1753c8f6ff1bf, type: 3}
 --- !u!1 &2138623383
 GameObject:
   m_ObjectHideFlags: 0

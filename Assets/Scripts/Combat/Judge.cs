@@ -3,6 +3,7 @@ using Assets.Scripts.Core.EventChannel.Events;
 using Assets.Scripts.Core.InGameData;
 using Assets.Scripts.Core.Manager;
 using System;
+using System.Collections;
 using UnityEngine;
 
 namespace Assets.Scripts.Combat
@@ -13,6 +14,7 @@ namespace Assets.Scripts.Combat
         [SerializeField] private float totalTime;
 
         [SerializeField] private Vector2Data originSize;
+        [SerializeField] private FloatData turnChangeDuration;
 
         #region EventChannel Section
         [Header("Event Channel")]
@@ -107,13 +109,21 @@ namespace Assets.Scripts.Combat
 
         private void ApplyDamage(float damge)
         {
-            AttackEvent atkEvt = CombatEvents.AttackEvent;
-            atkEvt.damage = damge;
+            StartCoroutine(ApplyDamageCoroutine(damge));
+        }
 
+        private IEnumerator ApplyDamageCoroutine(float damge)
+        {
             ChangeAreaSizeEvent changeSizeEvt = CombatEvents.ChangeAreaSizeEvent;
             changeSizeEvt.size = originSize.Value;
 
             attackChannel.RaiseEvent(changeSizeEvt);
+
+            yield return new WaitForSeconds(turnChangeDuration.Value);
+
+            AttackEvent atkEvt = CombatEvents.AttackEvent;
+            atkEvt.damage = damge;
+
             attackChannel.RaiseEvent(atkEvt);
         }
     }

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.Players;
+using UnityEngine;
 
 namespace Assets.Scripts.Combat.Patterns
 {
@@ -10,6 +11,6 @@ namespace Assets.Scripts.Combat.Patterns
         public Transform firePosTrm;
         public Bullet bullet;
 
-        public abstract void UseSkill();
+        public abstract void UseSkill(Player player);
     }
 }

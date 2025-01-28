@@ -174,6 +174,7 @@ MonoBehaviour:
   totalRepeatCnt: 2
   totalTime: 0
   originSize: {fileID: 11400000, guid: 0ed6a2aa4ec4eb149ac42925d83bff7a, type: 2}
+  turnChangeDuration: {fileID: 11400000, guid: 2bd7175537cdf7d4a8231e93b3522a22, type: 2}
   arrowCheckChannel: {fileID: 11400000, guid: eebe65fef960775428db45766bf268bd, type: 2}
   changeIsCheckChannel: {fileID: 11400000, guid: ca0780ba18666cf459610ac836bd8d89, type: 2}
   attackChannel: {fileID: 11400000, guid: ac14975a5566f2c429fbd5bbbb04bba3, type: 2}
