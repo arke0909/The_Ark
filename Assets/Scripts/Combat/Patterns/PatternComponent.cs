@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Combat.Patterns;
+using Assets.Scripts.Enemies;
 using Assets.Scripts.Entities;
 using Assets.Scripts.Players;
 using System.Collections.Generic;
@@ -9,21 +10,21 @@ using Random = UnityEngine.Random;
 
 namespace Assets.Scripts.Combat.Skills
 {
-    public class PatternComponent : MonoBehaviour, IEntityComponent
+    public class PatternComponent : MonoBehaviour, IEnemyComponent
     {
         [SerializeField] private EntityFinder playerFinder;
 
         [SerializeField] private bool canUseTwoPattern = false;
         [SerializeField] private float delay = 0.5f;
 
-        private Entity _entity;
+        private Enemy _enemy;
         private List<Pattern> patterns;
 
         private Pattern _currentPattern = null;
 
-        public void Initialize(Entity entity)
+        public void Initialize(Enemy enemy)
         {
-            _entity = entity;
+            _enemy = enemy;
             patterns = GetComponentsInChildren<Pattern>().ToList();
         }
 

@@ -4,16 +4,21 @@ using Assets.Scripts.Core.EventChannel;
 using Assets.Scripts.Core.EventChannel.Events;
 using Assets.Scripts.Entities;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
+using Random = UnityEngine.Random;
 
 namespace Assets.Scripts.Enemies
 {
     public class Enemy : Entity
     {
         [SerializeField] private GameEventChannel attackChannel;
+
+        [SerializeField] private float minWaitSec = 1.5f;
+        [SerializeField] private float maxWaitSec = 3.5f;
 
         private Dictionary<Type, IEnemyComponent> _enemyComponents = new Dictionary<Type, IEnemyComponent>();
 
@@ -76,10 +81,18 @@ namespace Assets.Scripts.Enemies
         {
             if (evt.isPlayerTurn == false)
             {
-                PatternComponent patternCompo = GetEnemyCompo<PatternComponent>();
-                patternCompo.UsePattern();
-                ChangeAreaSize(patternCompo.GetPattern().areaSize);
+                StartCoroutine(TurnChangeCoroutine());
             }
+        }
+
+        private IEnumerator TurnChangeCoroutine()
+        {
+            float waitSec = Random.Range(minWaitSec, maxWaitSec);
+            yield return new WaitForSeconds(minWaitSec);
+
+            PatternComponent patternCompo = GetEnemyCompo<PatternComponent>();
+            patternCompo.UsePattern();
+            ChangeAreaSize(patternCompo.GetPattern().areaSize);
         }
     }
 }

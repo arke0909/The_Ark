@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 427a5ebe8bfe62c4aaeb9b4fc0b4c0e1, type: 3}
   m_Name: TurnChangeDuration
   m_EditorClassIdentifier: 
-  <Value>k__BackingField: 1.5
+  <Value>k__BackingField: 0.5
