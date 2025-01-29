@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.Core.States
 {
-    [CreateAssetMenu(fileName = "StateList", menuName = "SO/States/State")]
+    [CreateAssetMenu(fileName = "StateList", menuName = "SO/States/List")]
     public class StateListSO : ScriptableObject
     {
         public List<StateSO> states;

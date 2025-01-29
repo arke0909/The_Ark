@@ -79,10 +79,7 @@ namespace Assets.Scripts.Enemies
 
         protected override void HandleTurnChange(TurnChangeEvent evt)
         {
-            if (evt.isPlayerTurn == false)
-            {
-                StartCoroutine(TurnChangeCoroutine());
-            }
+
         }
 
         private IEnumerator TurnChangeCoroutine()
