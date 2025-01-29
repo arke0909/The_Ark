@@ -12,12 +12,10 @@ namespace Assets.Scripts.Combat
         [SerializeField] private int totalRepeatCnt = 1;
         [SerializeField] private float totalTime;
 
-        [SerializeField] private Vector2Data originSize;
-
         #region EventChannel Section
         [Header("Event Channel")]
         [SerializeField] private ArrowTypeEventChannel arrowCheckChannel;
-        [SerializeField] private BoolEventChannel changeIsCheckChannel;
+        [SerializeField] private GameEventChannel turnChangeChannel;
         [SerializeField] private GameEventChannel attackChannel;
         #endregion
 
@@ -36,13 +34,13 @@ namespace Assets.Scripts.Combat
             _setterCompo = GetComponent<ArrowSetter>();
 
             arrowCheckChannel.ValueEvent += HandleArrowCheck;
-            changeIsCheckChannel.ValueEvent += HandleChangeIsCheck;
+            turnChangeChannel.AddListner<TurnChangeEvent>(HandleChangeIsCheck);
         }
 
         private void OnDestroy()
         {
             arrowCheckChannel.ValueEvent -= HandleArrowCheck;
-            changeIsCheckChannel.ValueEvent -= HandleChangeIsCheck;
+            turnChangeChannel.RemoveListner<TurnChangeEvent>(HandleChangeIsCheck);
         }
 
         private void Update()
@@ -78,9 +76,10 @@ namespace Assets.Scripts.Combat
             _currentArrow = _setterCompo.SetCurrentArrow(_idx);
         }
 
-        private void HandleChangeIsCheck(bool value)
+        private void HandleChangeIsCheck(TurnChangeEvent evt)
         {
-            _isCheckTime = value;
+            if(evt.turnState == "INPUT")
+                _isCheckTime = true;
         }
 
         private void EndCheck()
@@ -110,10 +109,6 @@ namespace Assets.Scripts.Combat
             AttackEvent atkEvt = CombatEvents.AttackEvent;
             atkEvt.damage = damge;
 
-            ChangeAreaSizeEvent changeSizeEvt = CombatEvents.ChangeAreaSizeEvent;
-            changeSizeEvt.size = originSize.Value;
-
-            attackChannel.RaiseEvent(changeSizeEvt);
             attackChannel.RaiseEvent(atkEvt);
         }
     }
