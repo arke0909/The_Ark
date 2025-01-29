@@ -10,11 +10,10 @@ namespace Assets.Scripts.Core.States.TurnStates
 {
     public class InputTurnState : State
     {
-        public InputTurnState(TurnManager turnManager, GameEventChannel turnChangeChannel) : base(turnManager, turnChangeChannel)
+        public InputTurnState(TurnManager turnManager, GameEventChannel turnChangeChannel, string stateName) : base(turnManager, turnChangeChannel, stateName)
         {
         }
-
-        protected override void EnterEvent()
+        protected override void TurnChange()
         {
             throw new NotImplementedException();
         }

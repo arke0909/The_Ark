@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Assets.Scripts.Core.EventChannel;
+using Scripts.Core.Manager;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +10,11 @@ namespace Assets.Scripts.Core.States.TurnStates
 {
     public class DamageCalcTurnState : State
     {
-        protected override void EnterEvent()
+        public DamageCalcTurnState(TurnManager turnManager, GameEventChannel turnChangeChannel, string stateName) : base(turnManager, turnChangeChannel, stateName)
+        {
+        }
+
+        protected override void TurnChange()
         {
             throw new NotImplementedException();
         }

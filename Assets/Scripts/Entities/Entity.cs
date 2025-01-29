@@ -47,14 +47,47 @@ namespace Assets.Scripts.Entities
 
             return default;
         }
-        protected abstract void HandleTurnChange(TurnChangeEvent evt);
 
         protected virtual void TurnChangeCalling(bool isPlayerTurn)
         {
             TurnChangeCallingEvent evt = TurnEvents.TurnChangeCallingEvent;
-            evt.isPlayerTurn = isPlayerTurn;
 
             turnChangeChannel.RaiseEvent(evt);
         }
+
+        protected void HandleTurnChange(TurnChangeEvent evt)
+        {
+            switch(evt.turnState)
+            {
+                case "PLAYER":
+                    PlayerTurn();
+                    break;
+                case "ENEMY":
+                    EnemyTurn();
+                    break;
+                case "ITEM":
+                    ItemTurn();
+                    break;
+                case "INPUT":
+                    InputTurn();
+                    break;
+                case "DAMAGECALC":
+                    DamageCalcTurn();
+                    break;
+            }
+        }
+
+        protected virtual void PlayerTurn()
+        { }
+        protected virtual void EnemyTurn()
+        { }
+        protected virtual void ItemTurn()
+        { }
+        protected virtual void InputTurn()
+        { }
+        protected virtual void DamageCalcTurn()
+        { }
+
+
     }
 }

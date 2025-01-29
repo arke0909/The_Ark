@@ -11,6 +11,8 @@ namespace Scripts.Players
         private Player _player;
         private Rigidbody2D _rbCompo;
 
+        public bool canManualMove = true;
+
         public void Initialize(Player player)
         {
             _player = player;
@@ -19,6 +21,8 @@ namespace Scripts.Players
 
         private void FixedUpdate()
         {
+            if (!canManualMove) return;
+
             Movement(_player.InputCompo.InputVector);
         }
 

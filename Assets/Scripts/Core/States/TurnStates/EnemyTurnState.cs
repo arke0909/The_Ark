@@ -10,11 +10,11 @@ namespace Assets.Scripts.Core.States.TurnStates
 {
     public class EnemyTurnState : State
     {
-        public EnemyTurnState(TurnManager turnManager, GameEventChannel turnChangeChannel) : base(turnManager, turnChangeChannel)
+        public EnemyTurnState(TurnManager turnManager, GameEventChannel turnChangeChannel, string stateName) : base(turnManager, turnChangeChannel, stateName)
         {
         }
 
-        protected override void EnterEvent()
+        protected override void TurnChange()
         {
             throw new NotImplementedException();
         }

@@ -44,8 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8218f66761ee4d3584410e2d3eca6173, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turnChangeChannel: {fileID: 11400000, guid: cbee26c0380d9c745b94e60ad84e18d2, type: 2}
-  originSize: {fileID: 11400000, guid: 0ed6a2aa4ec4eb149ac42925d83bff7a, type: 2}
+  <TurnChangeChannel>k__BackingField: {fileID: 11400000, guid: cbee26c0380d9c745b94e60ad84e18d2, type: 2}
+  stateList: {fileID: 11400000, guid: dae9e9d441568a14e897d504ab28d8d6, type: 2}
 --- !u!1 &4646480972133679431
 GameObject:
   m_ObjectHideFlags: 0
@@ -173,10 +173,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   totalRepeatCnt: 2
   totalTime: 0
-  originSize: {fileID: 11400000, guid: 0ed6a2aa4ec4eb149ac42925d83bff7a, type: 2}
-  turnChangeDuration: {fileID: 11400000, guid: 2bd7175537cdf7d4a8231e93b3522a22, type: 2}
   arrowCheckChannel: {fileID: 11400000, guid: eebe65fef960775428db45766bf268bd, type: 2}
-  changeIsCheckChannel: {fileID: 11400000, guid: ca0780ba18666cf459610ac836bd8d89, type: 2}
+  turnChangeChannel: {fileID: 11400000, guid: cbee26c0380d9c745b94e60ad84e18d2, type: 2}
   attackChannel: {fileID: 11400000, guid: ac14975a5566f2c429fbd5bbbb04bba3, type: 2}
 --- !u!114 &3520844340707257420
 MonoBehaviour:

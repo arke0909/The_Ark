@@ -10,9 +10,7 @@ namespace Scripts.Core.Manager
 {
     public class TurnManager : MonoBehaviour
     {
-
         [field : SerializeField] public GameEventChannel TurnChangeChannel { get; private set; }
-        [field : SerializeField] public Vector2Data OriginSize { get; private set; }
 
         [SerializeField] private StateListSO stateList; 
         private StateMachine _stateMachine;
@@ -25,11 +23,12 @@ namespace Scripts.Core.Manager
 
             foreach (StateSO state in stateList.states)
             {
-                Type type = state.GetType();
-                var turnState = Activator.CreateInstance(type, this, TurnChangeChannel) as State;
+                Type type = Type.GetType(state.className);
+                var turnState = Activator.CreateInstance(type, this, TurnChangeChannel, state.stateName) as State;
                 _turnStateDict.Add(state, turnState);
             }
 
+            _stateMachine.Initialize(_turnStateDict[stateList["PLAYER"]]);
 
             TurnChangeChannel.AddListner<TurnChangeCallingEvent>(HandleTurnChange);
         }
@@ -37,11 +36,6 @@ namespace Scripts.Core.Manager
         private void OnDestroy()
         {
             TurnChangeChannel.RemoveListner<TurnChangeCallingEvent>(HandleTurnChange);
-        }
-
-        private void Start()
-        {
-            TurnChange("PLAYER");
         }
 
         private void HandleTurnChange(TurnChangeCallingEvent evt)

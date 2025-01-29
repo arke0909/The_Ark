@@ -65,7 +65,6 @@ namespace Assets.Scripts.Enemies
         private void HandleApplyDamage(AttackEvent evt)
         {
             Debug.Log($"{evt.damage}초가 걸려 입혀진 대미지");
-            OnHit?.Invoke();
             TurnChangeCalling(false);
         }
 
@@ -77,11 +76,6 @@ namespace Assets.Scripts.Enemies
             attackChannel.RaiseEvent(evt);
         }
 
-        protected override void HandleTurnChange(TurnChangeEvent evt)
-        {
-
-        }
-
         private IEnumerator TurnChangeCoroutine()
         {
             float waitSec = Random.Range(minWaitSec, maxWaitSec);
@@ -90,6 +84,11 @@ namespace Assets.Scripts.Enemies
             PatternComponent patternCompo = GetEnemyCompo<PatternComponent>();
             patternCompo.UsePattern();
             ChangeAreaSize(patternCompo.GetPattern().areaSize);
+        }
+
+        protected override void DamageCalcTurn()
+        {
+            OnHit?.Invoke();
         }
     }
 }

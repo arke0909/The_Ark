@@ -4,19 +4,18 @@ using System.Linq;
 using Assets.Scripts.Core.EventChannel;
 using Assets.Scripts.Core.EventChannel.Events;
 using Assets.Scripts.Entities;
+using Scripts.Players;
 using UnityEngine;
 
 namespace Assets.Scripts.Players
 {
     public class Player : Entity
     {
-        [SerializeField] private ArrowTypeEventChannel arrowCheckChannel;
         [field: SerializeField] public InputReader InputCompo { get; private set; }
 
-        
+        [SerializeField] private ArrowTypeEventChannel arrowCheckChannel;
 
         private Dictionary<Type, IPlayerComponent> _playerComponents;
-
 
         #region Init Section
         protected override void Awake()
@@ -62,9 +61,25 @@ namespace Assets.Scripts.Players
             arrowCheckChannel.RaiseEvent(type);
         }
 
-        protected override void HandleTurnChange(TurnChangeEvent evt)
+        protected override void PlayerTurn()
         {
-            //InputCompo.TurnChange(evt.isPlayerTurn);
+            InputCompo.TurnChange(true);
+        }
+
+        protected override void EnemyTurn()
+        {
+            GetPlayerCompo<PlayerMovement>().canManualMove = true;
+        }
+
+        protected override void InputTurn()
+        {
+            InputCompo.Battle();
+        }
+
+        protected override void DamageCalcTurn()
+        {
+            InputCompo.TurnChange(false);
+            GetPlayerCompo<PlayerMovement>().canManualMove = false;
         }
     }
 }

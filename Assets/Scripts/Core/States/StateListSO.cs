@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 namespace Assets.Scripts.Core.States
@@ -18,7 +17,7 @@ namespace Assets.Scripts.Core.States
 
             foreach (var state in states)
             {
-                _statesDict.Add(state.name, state);
+                _statesDict.Add(state.stateName, state);
             }
         }
     }

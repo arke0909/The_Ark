@@ -8,13 +8,12 @@ using System.Threading.Tasks;
 
 namespace Assets.Scripts.Core.States.TurnStates
 {
-    public class ItemTurnChange : State
+    public class ItemTurnState : State
     {
-        public ItemTurnChange(TurnManager turnManager, GameEventChannel turnChangeChannel) : base(turnManager, turnChangeChannel)
+        public ItemTurnState(TurnManager turnManager, GameEventChannel turnChangeChannel, string stateName) : base(turnManager, turnChangeChannel, stateName)
         {
         }
-
-        protected override void EnterEvent()
+        protected override void TurnChange()
         {
             throw new NotImplementedException();
         }
