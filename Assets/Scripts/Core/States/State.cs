@@ -20,11 +20,12 @@ namespace Assets.Scripts.Core.States
         public void Enter()
         {
             EnterEvent(stateName);
+            TurnChange();
         }
 
         protected void EnterEvent(string stateName)
         {
-            TurnChangeCallingEvent evt = TurnEvents.TurnChangeCallingEvent;
+            TurnChangeEvent evt = TurnEvents.TurnChangeEvent;
             evt.turnState = stateName;
 
             turnChangeChannel.RaiseEvent(evt);

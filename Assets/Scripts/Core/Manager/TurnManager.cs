@@ -28,9 +28,12 @@ namespace Scripts.Core.Manager
                 _turnStateDict.Add(state, turnState);
             }
 
-            _stateMachine.Initialize(_turnStateDict[stateList["PLAYER"]]);
-
             TurnChangeChannel.AddListner<TurnChangeCallingEvent>(HandleTurnChange);
+        }
+
+        private void Start()
+        {
+            _stateMachine.Initialize(_turnStateDict[stateList["PLAYER"]]);
         }
 
         private void OnDestroy()

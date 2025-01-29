@@ -34,13 +34,13 @@ namespace Assets.Scripts.Combat
             _setterCompo = GetComponent<ArrowSetter>();
 
             arrowCheckChannel.ValueEvent += HandleArrowCheck;
-            turnChangeChannel.AddListner<TurnChangeEvent>(HandleChangeIsCheck);
+            turnChangeChannel.AddListner<TurnChangeEvent>(HandleTurnChange);
         }
 
         private void OnDestroy()
         {
             arrowCheckChannel.ValueEvent -= HandleArrowCheck;
-            turnChangeChannel.RemoveListner<TurnChangeEvent>(HandleChangeIsCheck);
+            turnChangeChannel.RemoveListner<TurnChangeEvent>(HandleTurnChange);
         }
 
         private void Update()
@@ -76,7 +76,7 @@ namespace Assets.Scripts.Combat
             _currentArrow = _setterCompo.SetCurrentArrow(_idx);
         }
 
-        private void HandleChangeIsCheck(TurnChangeEvent evt)
+        private void HandleTurnChange(TurnChangeEvent evt)
         {
             if(evt.turnState == "INPUT")
                 _isCheckTime = true;

@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Assets.Scripts.Core.EventChannel;
-using Assets.Scripts.Core.EventChannel.Events;
 using Assets.Scripts.Entities;
 using Scripts.Players;
 using UnityEngine;
@@ -64,6 +63,7 @@ namespace Assets.Scripts.Players
         protected override void PlayerTurn()
         {
             InputCompo.TurnChange(true);
+            GetCompo<EntityRenderer>().FadeWithTurn(true);
         }
 
         protected override void EnemyTurn()
@@ -79,6 +79,7 @@ namespace Assets.Scripts.Players
         protected override void DamageCalcTurn()
         {
             InputCompo.TurnChange(false);
+            GetCompo<EntityRenderer>().FadeWithTurn(false);
             GetPlayerCompo<PlayerMovement>().canManualMove = false;
         }
     }

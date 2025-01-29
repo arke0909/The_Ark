@@ -59,5 +59,14 @@ namespace Assets.Scripts.Core.EventChannel
                 handler?.Invoke(evt);
             }
         }
+
+        /*public void BrigdAddEvent<T>(GameEvent evt, GameEventChannel channel) where T : GameEvent
+        {
+            Type type = evt.GetType();
+            if(_events.ContainsKey(type))
+            {
+                channel.AddListner<T>();
+            }
+        }*/
     }
 }
