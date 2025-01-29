@@ -62,7 +62,6 @@ namespace Assets.Scripts
 
         private void HandhelChangeAreaSize(ChangeAreaSizeEvent evt)
         {
-            Debug.Log(1);
             ChangeArea(evt.size, duration);
         }
 

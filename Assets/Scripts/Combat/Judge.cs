@@ -73,6 +73,7 @@ namespace Assets.Scripts.Combat
                 _setterCompo.OnFailArrowSet();
             }
 
+                    Debug.Log(1);
             _currentArrow = _setterCompo.SetCurrentArrow(_idx);
         }
 
@@ -109,6 +110,10 @@ namespace Assets.Scripts.Combat
             AttackEvent atkEvt = CombatEvents.AttackEvent;
             atkEvt.damage = damge;
 
+            TurnChangeCallingEvent callingEvt = TurnEvents.TurnChangeCallingEvent;
+            callingEvt.turnState = "DAMAGECALC";
+
+            turnChangeChannel.RaiseEvent(atkEvt);
             attackChannel.RaiseEvent(atkEvt);
         }
     }

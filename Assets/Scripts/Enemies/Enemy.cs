@@ -3,6 +3,7 @@ using Assets.Scripts.Combat.Skills;
 using Assets.Scripts.Core.EventChannel;
 using Assets.Scripts.Core.EventChannel.Events;
 using Assets.Scripts.Entities;
+using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -88,7 +89,7 @@ namespace Assets.Scripts.Enemies
 
         protected override void DamageCalcTurn()
         {
-            OnHit?.Invoke();
+
         }
     }
 }
