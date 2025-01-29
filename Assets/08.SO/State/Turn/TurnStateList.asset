@@ -12,4 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8ea0af1159691d4ea95b3575dd0d744, type: 3}
   m_Name: TurnStateList
   m_EditorClassIdentifier: 
-  states: []
+  states:
+  - {fileID: 11400000, guid: 129631951195a384b8f13eb966377c2b, type: 2}
+  - {fileID: 11400000, guid: 1d1f55d8e93dc284da2453a5c7a1f52a, type: 2}
+  - {fileID: 11400000, guid: d8e489be24b426f4bb1f675097729a2d, type: 2}
+  - {fileID: 11400000, guid: e141c6dc05b39a345a066d3a8f302241, type: 2}
+  - {fileID: 11400000, guid: 1a7ef190b5fa0b04bb0be77f9cae0b85, type: 2}

@@ -64,8 +64,7 @@ namespace Assets.Scripts.Players
 
         protected override void HandleTurnChange(TurnChangeEvent evt)
         {
-            GetCompo<EntityRenderer>().FadeWithTurn(evt.isPlayerTurn);
-            InputCompo.TurnChange(evt.isPlayerTurn);
+            //InputCompo.TurnChange(evt.isPlayerTurn);
         }
     }
 }
