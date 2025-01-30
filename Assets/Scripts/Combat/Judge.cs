@@ -73,7 +73,6 @@ namespace Assets.Scripts.Combat
                 _setterCompo.OnFailArrowSet();
             }
 
-                    Debug.Log(1);
             _currentArrow = _setterCompo.SetCurrentArrow(_idx);
         }
 
@@ -81,6 +80,20 @@ namespace Assets.Scripts.Combat
         {
             if(evt.turnState == "INPUT")
                 _isCheckTime = true;
+            else if(evt.turnState == "DAMAGECALC") 
+            {
+                AttackEvent atkEvt = CombatEvents.AttackEvent;
+                atkEvt.damage = ConvertDamage(_currentTime);
+
+                attackChannel.RaiseEvent(atkEvt);
+            }
+        }
+
+        private float ConvertDamage(float currentTime)
+        {
+            // 나중에 대미지 환산 처리
+
+            return currentTime;
         }
 
         private void EndCheck()
@@ -98,23 +111,18 @@ namespace Assets.Scripts.Combat
             {
                 _isCheckTime = false;
 
-                ApplyDamage(_currentTime);
+                DamageCalc();
 
                 _currentRepeatCnt = 0;
-                _currentTime = 0;
             }
         }
 
-        private void ApplyDamage(float damge)
+        private void DamageCalc()
         {
-            AttackEvent atkEvt = CombatEvents.AttackEvent;
-            atkEvt.damage = damge;
+            TurnChangeCallingEvent evt = TurnEvents.TurnChangeCallingEvent;
+            evt.turnState = "DAMAGECALC";
 
-            TurnChangeCallingEvent callingEvt = TurnEvents.TurnChangeCallingEvent;
-            callingEvt.turnState = "DAMAGECALC";
-
-            turnChangeChannel.RaiseEvent(atkEvt);
-            attackChannel.RaiseEvent(atkEvt);
+            turnChangeChannel.RaiseEvent(evt);
         }
     }
 }
