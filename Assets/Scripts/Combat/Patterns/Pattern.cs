@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Players;
+﻿using Assets.Scripts.Combat.Bullets;
+using Assets.Scripts.Players;
 using UnityEngine;
 
 namespace Assets.Scripts.Combat.Patterns

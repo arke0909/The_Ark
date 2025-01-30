@@ -113,7 +113,7 @@ GameObject:
   - component: {fileID: 4459543979401727318}
   - component: {fileID: 1750069647622603568}
   - component: {fileID: 5833950727239020413}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -149,8 +149,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turnChangeChannel: {fileID: 11400000, guid: cbee26c0380d9c745b94e60ad84e18d2, type: 2}
-  arrowCheckChannel: {fileID: 11400000, guid: eebe65fef960775428db45766bf268bd, type: 2}
   <InputCompo>k__BackingField: {fileID: 11400000, guid: 805884eb54a0bc54dbd5ee8e9c59073d, type: 2}
+  arrowCheckChannel: {fileID: 11400000, guid: eebe65fef960775428db45766bf268bd, type: 2}
 --- !u!114 &4459543979401727318
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -164,6 +164,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
+  canManualMove: 1
 --- !u!50 &1750069647622603568
 Rigidbody2D:
   serializedVersion: 5

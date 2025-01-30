@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Assets.Scripts.Combat
+namespace Assets.Scripts.Combat.Bullets
 {
     public class Bullet : MonoBehaviour
     {
