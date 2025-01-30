@@ -48,13 +48,6 @@ namespace Assets.Scripts.Entities
             return default;
         }
 
-        protected virtual void TurnChangeCalling(bool isPlayerTurn)
-        {
-            TurnChangeCallingEvent evt = TurnEvents.TurnChangeCallingEvent;
-
-            turnChangeChannel.RaiseEvent(evt);
-        }
-
         protected void HandleTurnChange(TurnChangeEvent evt)
         {
             switch(evt.turnState)

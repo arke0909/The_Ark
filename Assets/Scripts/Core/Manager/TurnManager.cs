@@ -33,7 +33,7 @@ namespace Scripts.Core.Manager
 
         private void Start()
         {
-            _stateMachine.Initialize(_turnStateDict[stateList["PLAYER"]]);
+            TurnChange("PLAYER");
         }
 
         private void OnDestroy()

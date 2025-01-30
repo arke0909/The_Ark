@@ -58,7 +58,6 @@ namespace Assets.Scripts.Players
         private void CheckArrow(ArrowType type)
         {
             arrowCheckChannel.RaiseEvent(type);
-            Debug.Log(1);
         }
 
         protected override void PlayerTurn()
