@@ -2,10 +2,10 @@
 
 namespace Assets.Scripts.Entities
 {
-    public class EntityRenderer : MonoBehaviour, IEntityComponent
+    public abstract class EntityRenderer : MonoBehaviour, IEntityComponent
     {
-        private SpriteRenderer _renderer;
-        private Entity _entity;
+        protected SpriteRenderer _renderer;
+        protected Entity _entity;
 
         public void Initialize(Entity entity)
         {
@@ -13,13 +13,6 @@ namespace Assets.Scripts.Entities
             _renderer = GetComponent<SpriteRenderer>();
         }
 
-        public void FadeWithTurn(bool isPlayerTurn)
-        {
-            float alpha = isPlayerTurn ? 0.0f : 1.0f;
-            Color color = _renderer.color;
-            color.a = alpha;
-
-            _renderer.color = color;
-        }
+        
     }
 }
