@@ -12,7 +12,7 @@ namespace Assets.Scripts.Combat.Bullets
             rigidCompo = GetComponent<Rigidbody2D>();
         }
 
-        public void InitBullet(Vector2 dir, float speed)
+        public void InitBullet(Vector2 dir)
         {
             rigidCompo.linearVelocity = dir.normalized * speed;
         }

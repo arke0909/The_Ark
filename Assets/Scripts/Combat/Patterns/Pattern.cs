@@ -9,7 +9,7 @@ namespace Assets.Scripts.Combat.Patterns
         [SerializeField] protected List<Transform> firePosTrm = new List<Transform>();
 
         public Vector2 areaSize;
-        public Bullet bullet;
+        public Bullet bulletPrefab;
 
         public abstract void UsePattern();
     }
