@@ -63,7 +63,7 @@ namespace Assets.Scripts.Players
         protected override void PlayerTurn()
         {
             InputCompo.TurnChange(true);
-            GetCompo<EntityRenderer>().FadeWithTurn(true);
+            GetPlayerCompo<PlayerRenderer>().FadeWithTurn(true);
         }
 
         protected override void EnemyTurn()
@@ -79,7 +79,7 @@ namespace Assets.Scripts.Players
         protected override void DamageCalcTurn()
         {
             InputCompo.TurnChange(false);
-            GetCompo<EntityRenderer>().FadeWithTurn(false);
+            GetPlayerCompo<PlayerRenderer>().FadeWithTurn(false);
             GetPlayerCompo<PlayerMovement>().canManualMove = false;
         }
     }
