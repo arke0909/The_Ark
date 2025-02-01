@@ -1,17 +1,16 @@
 ﻿using Assets.Scripts.Combat.Bullets;
-using Assets.Scripts.Players;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Assets.Scripts.Combat.Patterns
 {
     public abstract class Pattern : MonoBehaviour
     {
-        public int bulletCount;
-        public float bulletSpeed;
+        private List<Transform> firePosTrm = new List<Transform>();
+
         public Vector2 areaSize;
-        public Transform firePosTrm;
         public Bullet bullet;
 
-        public abstract void UseSkill(Player player);
+        public abstract void UseSkill();
     }
 }
