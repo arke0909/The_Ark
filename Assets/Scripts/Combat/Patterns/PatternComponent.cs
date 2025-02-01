@@ -1,7 +1,6 @@
 ﻿using Assets.Scripts.Combat.Patterns;
 using Assets.Scripts.Enemies;
 using Assets.Scripts.Entities;
-using Assets.Scripts.Players;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -36,7 +35,7 @@ namespace Assets.Scripts.Combat.Skills
 
             _currentPattern = patterns[idx];
 
-            _currentPattern.UseSkill(playerFinder.entity as Player);
+            _currentPattern.UseSkill();
         }
 
         public Pattern GetPattern()
