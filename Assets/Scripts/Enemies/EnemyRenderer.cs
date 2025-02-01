@@ -1,5 +1,4 @@
 ﻿using Assets.Scripts.Entities;
-using System.Collections;
 using UnityEngine;
 
 namespace Assets.Scripts.Enemies
