@@ -4,6 +4,7 @@ namespace Assets.Scripts.Combat.Bullets
 {
     public class Bullet : MonoBehaviour
     {
+        [SerializeField] private float speed;
         private Rigidbody2D rigidCompo;
 
         private void Awake()

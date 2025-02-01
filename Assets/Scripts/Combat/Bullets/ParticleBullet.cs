@@ -2,7 +2,7 @@
 
 namespace Assets.Scripts.Combat.Bullets
 {
-    public class ParticleBullet : MonoBehaviour
+    public class ParticleBullet : Bullet
     {
         private ParticleSystem _particle;
 

@@ -35,7 +35,7 @@ namespace Assets.Scripts.Combat.Skills
 
             _currentPattern = patterns[idx];
 
-            _currentPattern.UseSkill();
+            _currentPattern.UsePattern();
         }
 
         public Pattern GetPattern()

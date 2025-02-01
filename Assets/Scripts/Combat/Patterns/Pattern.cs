@@ -6,11 +6,11 @@ namespace Assets.Scripts.Combat.Patterns
 {
     public abstract class Pattern : MonoBehaviour
     {
-        private List<Transform> firePosTrm = new List<Transform>();
+        [SerializeField] protected List<Transform> firePosTrm = new List<Transform>();
 
         public Vector2 areaSize;
         public Bullet bullet;
 
-        public abstract void UseSkill();
+        public abstract void UsePattern();
     }
 }
