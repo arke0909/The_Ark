@@ -36,13 +36,13 @@ namespace Assets.Scripts
             Debug.Assert(_spriteRenderer != null, "this gameObject has not SpriteRenderer");
 
             turnChangeChannel.AddListner<ChangeAreaSizeEvent>(HandhelChangeAreaSize);
-            //attackChannel.AddListner<ChangeAreaSizeEvent>(HandhelChangeAreaSize);
+            attackChannel.AddListner<ChangeAreaSizeEvent>(HandhelChangeAreaSize);
         }
 
         private void OnDestroy()
         {
             turnChangeChannel.RemoveListner<ChangeAreaSizeEvent>(HandhelChangeAreaSize);
-            //attackChannel.RemoveListner<ChangeAreaSizeEvent>(HandhelChangeAreaSize);
+            attackChannel.RemoveListner<ChangeAreaSizeEvent>(HandhelChangeAreaSize);
         }
 
         private void ChangeArea(Vector2 targetSize, float duration)

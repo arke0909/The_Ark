@@ -69,7 +69,6 @@ namespace Assets.Scripts.Enemies
         {
             ChangeAreaSizeEvent evt = CombatEvents.ChangeAreaSizeEvent;
             evt.size = size;
-
             attackChannel.RaiseEvent(evt);
         }
 
