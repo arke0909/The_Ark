@@ -10,14 +10,8 @@ namespace Assets.Scripts.Combat.Patterns
     public class FireArcPattern : Pattern
     {
         [SerializeField] private int bulletCount;
-        [SerializeField] private float totalAngle;
+        [SerializeField] private float angle;
         [SerializeField] private float deleay;
-
-        private void Update()
-        {
-            if (Keyboard.current.digit1Key.wasPressedThisFrame)
-                UsePattern();
-        }
 
         public override void UsePattern()
         {
@@ -26,23 +20,24 @@ namespace Assets.Scripts.Combat.Patterns
 
         private IEnumerator PatternCoroutine()
         {
-            float angle = totalAngle / bulletCount;
-            float radian = angle * Mathf.Deg2Rad;
-
-            float x = Mathf.Cos(radian);
-            float y = Mathf.Sin(radian);
+            float angle = this.angle / bulletCount;
+            int repeat = Mathf.Abs((bulletCount - 1) / 2);
 
             foreach (Transform firePos in firePosTrm)
             {
+                Bullet bullet = GameObject.Instantiate(bulletPrefab, firePos.position, Quaternion.identity);
+                bullet.InitBullet(Vector2.down);
 
-                Vector2 startPos = (Vector2)firePos.position + new Vector2(x, y);
-
-                for (int i = 0; i < bulletCount; i++)
+                for (int i = 1; i <= repeat; i++)
                 {
-                    Bullet bullet = GameObject.Instantiate(bulletPrefab, firePos.position, Quaternion.identity);
-                    Vector2 dir = Quaternion.AngleAxis(-i * (angle * 1.5f) + 180, Vector3.forward) * startPos;
+                    Bullet RBullet = GameObject.Instantiate(bulletPrefab, firePos.position, Quaternion.identity);
+                    Bullet LBullet = GameObject.Instantiate(bulletPrefab, firePos.position, Quaternion.identity);
 
-                    bullet.InitBullet(dir);
+                    Vector2 RDir= Quaternion.AngleAxis(angle * i, Vector3.forward) * Vector2.down;
+                    Vector2 LDir= Quaternion.AngleAxis(angle * -i, Vector3.forward) * Vector2.down;
+
+                    RBullet.InitBullet(RDir);
+                    LBullet.InitBullet(LDir);
                 }
 
                 yield return new WaitForSeconds(deleay);
