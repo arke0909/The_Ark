@@ -1,9 +1,9 @@
 ﻿using Assets.Scripts.Combat.Patterns;
-using Assets.Scripts.Combat.Skills;
 using Assets.Scripts.Core.EventChannel;
 using Assets.Scripts.Core.EventChannel.Events;
 using Assets.Scripts.Entities;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -76,7 +76,22 @@ namespace Assets.Scripts.Enemies
         {
             PatternComponent patternCompo = GetEnemyCompo<PatternComponent>();
             patternCompo.UsePattern();
-            ChangeAreaSize(patternCompo.GetPattern().areaSize);
+
+            Pattern pattern = patternCompo.GetPattern();
+
+            ChangeAreaSize(pattern.areaSize);
+
+            StartCoroutine(TurnChangeToPlayer(pattern.attackTime));
+        }
+
+        private IEnumerator TurnChangeToPlayer(float attackTime)
+        {
+            yield return new WaitForSeconds(attackTime);
+
+            TurnChangeCallingEvent evt = TurnEvents.TurnChangeCallingEvent;
+            evt.turnState = "PLAYER";
+
+            turnChangeChannel.RaiseEvent(evt);
         }
     }
 }

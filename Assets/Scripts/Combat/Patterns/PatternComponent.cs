@@ -1,5 +1,4 @@
-﻿using Assets.Scripts.Combat.Patterns;
-using Assets.Scripts.Core.EventChannel;
+﻿using Assets.Scripts.Core.EventChannel;
 using Assets.Scripts.Enemies;
 using Assets.Scripts.Entities;
 using System.Collections.Generic;
@@ -8,7 +7,7 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 
 
-namespace Assets.Scripts.Combat.Skills
+namespace Assets.Scripts.Combat.Patterns
 {
     public class PatternComponent : MonoBehaviour, IEnemyComponent
     {
@@ -30,7 +29,7 @@ namespace Assets.Scripts.Combat.Skills
 
             foreach (Pattern pattern in patterns)
             {
-                pattern.InitPattern(_enemy, poolChannel);
+                pattern.InitPattern(_enemy, poolChannel, this);
             }
         }
 
@@ -47,7 +46,7 @@ namespace Assets.Scripts.Combat.Skills
 
         public Pattern GetPattern()
         {
-            return _currentPattern; 
+            return _currentPattern;
         }
     }
 }

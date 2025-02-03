@@ -14,14 +14,17 @@ namespace Assets.Scripts.Combat.Patterns
 
         protected Enemy _enemy;
         protected GameEventChannel _poolChannel;
+        protected PatternComponent _patternComponent;
 
         public Vector2 areaSize;
+        public float attackTime = 5.5f;
         public Bullet bulletPrefab;
 
-        public void InitPattern(Enemy enemy, GameEventChannel poolChannel)
+        public void InitPattern(Enemy enemy, GameEventChannel poolChannel, PatternComponent patternComponent)
         {
             _enemy = enemy;
             _poolChannel = poolChannel;
+            _patternComponent = patternComponent;
         }
 
         public IPoolable Pop(string poolName)
