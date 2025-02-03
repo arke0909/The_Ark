@@ -1,9 +1,6 @@
 ﻿using Assets.Scripts.Combat.Bullets;
-using System;
 using System.Collections;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 namespace Assets.Scripts.Combat.Patterns
 {
@@ -25,16 +22,20 @@ namespace Assets.Scripts.Combat.Patterns
 
             foreach (Transform firePos in firePosTrm)
             {
-                Bullet bullet = GameObject.Instantiate(bulletPrefab, firePos.position, Quaternion.identity);
+                Bullet bullet = Pop("Bullet") as Bullet;
+                bullet.transform.position = firePos.position;
                 bullet.InitBullet(Vector2.down);
 
                 for (int i = 1; i <= repeat; i++)
                 {
-                    Bullet RBullet = GameObject.Instantiate(bulletPrefab, firePos.position, Quaternion.identity);
-                    Bullet LBullet = GameObject.Instantiate(bulletPrefab, firePos.position, Quaternion.identity);
+                    Bullet RBullet = Pop("Bullet") as Bullet;
+                    Bullet LBullet = Pop("Bullet") as Bullet;
 
                     Vector2 RDir= Quaternion.AngleAxis(angle * i, Vector3.forward) * Vector2.down;
                     Vector2 LDir= Quaternion.AngleAxis(angle * -i, Vector3.forward) * Vector2.down;
+
+                    RBullet.transform.position = firePos.position;
+                    LBullet.transform.position = firePos.position;
 
                     RBullet.InitBullet(RDir);
                     LBullet.InitBullet(LDir);
