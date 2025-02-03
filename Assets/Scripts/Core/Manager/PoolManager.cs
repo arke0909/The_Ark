@@ -49,7 +49,7 @@ namespace Assets.Scripts.Core.Manager
 
         private void HandlePoolPop(PoolPopEvent evt)
         {
-            Pop(evt.poolName);
+            evt.poolable = Pop(evt.poolName);
         }
 
         private void HandlePoolPush(PoolPushEvent evt)
