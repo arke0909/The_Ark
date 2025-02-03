@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Combat.Patterns;
+using Assets.Scripts.Core.EventChannel;
 using Assets.Scripts.Enemies;
 using Assets.Scripts.Entities;
 using System.Collections.Generic;
@@ -12,6 +13,7 @@ namespace Assets.Scripts.Combat.Skills
     public class PatternComponent : MonoBehaviour, IEnemyComponent
     {
         [SerializeField] private EntityFinder playerFinder;
+        [SerializeField] GameEventChannel poolChannel;
 
         [SerializeField] private bool canUseTwoPattern = false;
         [SerializeField] private float delay = 0.5f;
@@ -25,6 +27,11 @@ namespace Assets.Scripts.Combat.Skills
         {
             _enemy = enemy;
             patterns = GetComponentsInChildren<Pattern>().ToList();
+
+            foreach (Pattern pattern in patterns)
+            {
+                pattern.InitPattern(_enemy, poolChannel);
+            }
         }
 
         public void UsePattern()
