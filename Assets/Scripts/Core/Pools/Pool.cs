@@ -10,7 +10,7 @@ namespace Assets.Scripts.Core.Pools
         private IPoolable _poolable;
         private GameObject _prefab;
 
-        internal Pool(IPoolable poolalbe, Transform parent, int count)
+        public Pool(IPoolable poolalbe, Transform parent, int count)
         {
             _pool = new Stack<IPoolable>();
             _parent = parent;
@@ -44,15 +44,13 @@ namespace Assets.Scripts.Core.Pools
                 item = _pool.Pop();
                 item.PoolObject.SetActive(true);
             }
-            // 조건문을 거친 item을 리턴한다.
+
             return item;
         }
 
         public void Push(IPoolable item)
         {
-            // 매개변수로 받아온 풀링한 오브젝트를 비활성화한다.
             item.PoolObject.SetActive(false);
-            // 스택 클래스의 Push를 통해 풀에 집어넣는다.
             _pool.Push(item);
         }
 

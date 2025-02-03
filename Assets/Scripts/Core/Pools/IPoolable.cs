@@ -2,7 +2,7 @@
 
 namespace Assets.Scripts.Core.Pools
 {
-    internal interface IPoolable
+    public interface IPoolable
     {
         GameObject PoolObject { get; }
         string PoolName { get; }
