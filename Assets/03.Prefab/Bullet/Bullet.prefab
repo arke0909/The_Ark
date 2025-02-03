@@ -47,8 +47,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 642e14ccd0beaca48be333c5a72aa6c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  poolChannel: {fileID: 11400000, guid: d53dbf3475df90c4c9b0a574ee0663a7, type: 2}
   speed: 7
   lifeTime: 8
+  poolName: Bullet
 --- !u!58 &7843405864925913096
 CircleCollider2D:
   m_ObjectHideFlags: 0
