@@ -11,6 +11,7 @@ namespace Assets.Scripts.Core.EventChannel.Events
     public class PoolPopEvent : GameEvent
     {
         public string poolName;
+        public IPoolable poolable;
     }
     public class PoolPushEvent : GameEvent
     {
