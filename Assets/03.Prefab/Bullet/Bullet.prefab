@@ -49,7 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   poolChannel: {fileID: 11400000, guid: d53dbf3475df90c4c9b0a574ee0663a7, type: 2}
   speed: 7
-  lifeTime: 8
+  lifeTime: 6
   poolName: Bullet
 --- !u!58 &7843405864925913096
 CircleCollider2D:

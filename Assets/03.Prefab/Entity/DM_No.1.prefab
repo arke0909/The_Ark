@@ -112,7 +112,7 @@ MonoBehaviour:
   - {fileID: 4808638893217082371}
   - {fileID: 6169692598745693438}
   - {fileID: 1635108565512846519}
-  areaSize: {x: 6, y: 5}
+  areaSize: {x: 6, y: 4}
   bulletPrefab: {fileID: 5062867524870107985, guid: f1c6ecae08dc179488d1753c8f6ff1bf, type: 3}
   bulletCount: 5
   angle: 90

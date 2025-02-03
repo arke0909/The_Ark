@@ -16,10 +16,14 @@ namespace Assets.Scripts.Players
 
         private Dictionary<Type, IPlayerComponent> _playerComponents;
 
+        private Vector2 _originPos;
+
         #region Init Section
         protected override void Awake()
         {
             base.Awake();
+
+            _originPos = transform.position;
 
             _playerComponents = new Dictionary<Type, IPlayerComponent>();
             SetPlayerCompoentsAndInitialize();
@@ -78,6 +82,7 @@ namespace Assets.Scripts.Players
 
         protected override void DamageCalcTurn()
         {
+            transform.position = _originPos;
             InputCompo.TurnChange(false);
             GetPlayerCompo<PlayerRenderer>().FadeWithTurn(false);
             GetPlayerCompo<PlayerMovement>().canManualMove = false;
