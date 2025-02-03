@@ -1,15 +1,24 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.Core.EventChannel;
+using Assets.Scripts.Core.EventChannel.Events;
+using Assets.Scripts.Core.Pools;
+using UnityEngine;
 
 namespace Assets.Scripts.Combat.Bullets
 {
-    public class Bullet : MonoBehaviour
+    public class Bullet : MonoBehaviour, IPoolable
     {
+        [SerializeField] private GameEventChannel poolChannel;
         [SerializeField] private float speed;
         [SerializeField] private float lifeTime;
+        [SerializeField] private string poolName;
 
         private float _currentLifeTime = 0;
 
         private Rigidbody2D rigidCompo;
+
+        public GameObject PoolObject => gameObject;
+
+        public string PoolName => poolName;
 
         private void Awake()
         {
@@ -21,7 +30,7 @@ namespace Assets.Scripts.Combat.Bullets
             _currentLifeTime += Time.deltaTime;
             
             if(_currentLifeTime >= lifeTime)
-                Destroy(gameObject);
+                Push();
         }
 
         public void InitBullet(Vector2 dir)
@@ -34,9 +43,22 @@ namespace Assets.Scripts.Combat.Bullets
         {
             if (collision.CompareTag("Player"))
             {
-                Debug.Log("Player hit");
-                Destroy(gameObject);
+                Push();
             }
+        }
+
+        public void ResetItem()
+        {
+            _currentLifeTime = 0;
+        }
+        
+        private void Push()
+        {
+            PoolPushEvent evt = CoreEvents.PoolPushEvent;
+            evt.poolable = this;
+
+            poolChannel.RaiseEvent(evt);
+
         }
     }
 }
