@@ -1,60 +1,61 @@
+using Assets.Scripts.Combat;
 using Assets.Scripts.Core.EventChannel;
 using Assets.Scripts.Core.EventChannel.Events;
-using Assets.Scripts.Core.InGameData;
-using Assets.Scripts.Core.Manager;
-using System;
+using Assets.Scripts.Entities.Stats;
 using UnityEngine;
 
-namespace Assets.Scripts.Combat
+namespace Assets.Scripts.Players
 {
-    public class Judge : MonoBehaviour
+    public class PlayerAttackCompo : MonoBehaviour, IPlayerComponent
     {
+        [SerializeField] private StatSO attack;
         [SerializeField] private int totalRepeatCnt = 1;
         [SerializeField] private float totalTime;
 
         #region EventChannel Section
-        [Header("Event Channel")]
-        [SerializeField] private ArrowTypeEventChannel arrowCheckChannel;
         [SerializeField] private GameEventChannel turnChangeChannel;
         [SerializeField] private GameEventChannel attackChannel;
         #endregion
 
         private ArrowSetter _setterCompo;
+        private Player _player;
 
         private Arrow _currentArrow;
         private int _currentRepeatCnt = 0;
+        private int _idx;
 
         private bool _isCheckTime;
         private float _currentTime;
+        private float _damage;
 
-        private int _idx;
-
-        private void Awake()
+        public void Initialize(Player player)
         {
-            _setterCompo = GetComponent<ArrowSetter>();
+            _player = player;
 
-            arrowCheckChannel.ValueEvent += HandleArrowCheck;
+            _damage = _player.GetCompo<EntityStatComponent>().GetStat(attack).BaseValue;
+            _setterCompo = _player.GetPlayerCompo<ArrowSetter>();
+            _player.InputCompo.BattleEvent += HandleArrowCheck;
             turnChangeChannel.AddListner<TurnChangeEvent>(HandleTurnChange);
         }
 
         private void OnDestroy()
         {
-            arrowCheckChannel.ValueEvent -= HandleArrowCheck;
+            _player.InputCompo.BattleEvent -= HandleArrowCheck;
             turnChangeChannel.RemoveListner<TurnChangeEvent>(HandleTurnChange);
         }
 
         private void Update()
         {
-            if(_isCheckTime)
+            if (_isCheckTime)
             {
                 _currentTime += Time.deltaTime;
-            }  
+            }
         }
 
         private void HandleArrowCheck(ArrowType type)
         {
             if (_currentArrow == null)
-               _currentArrow = _setterCompo.SetCurrentArrow(_idx);
+                _currentArrow = _setterCompo.SetCurrentArrow(_idx);
 
             if (_currentArrow.IsEqual(type))
             {
@@ -78,9 +79,12 @@ namespace Assets.Scripts.Combat
 
         private void HandleTurnChange(TurnChangeEvent evt)
         {
-            if(evt.turnState == "INPUT")
+            if (evt.turnState == "INPUT")
+            {
                 _isCheckTime = true;
-            else if(evt.turnState == "DAMAGECALC") 
+                _currentTime = 0;
+            }
+            else if (evt.turnState == "DAMAGECALC")
             {
                 AttackEvent atkEvt = CombatEvents.AttackEvent;
                 atkEvt.damage = ConvertDamage(_currentTime);
@@ -124,5 +128,6 @@ namespace Assets.Scripts.Combat
 
             turnChangeChannel.RaiseEvent(evt);
         }
+
     }
 }

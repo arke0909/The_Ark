@@ -1,5 +1,59 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &859288113717801258
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3996785252094707956}
+  - component: {fileID: 2868440506175114883}
+  m_Layer: 6
+  m_Name: ArrowSetter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3996785252094707956
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 859288113717801258}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5259096048403228482}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2868440506175114883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 859288113717801258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89552c0876084446a0d65b1f9516240f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  arrowHolder: {fileID: 0}
+  arrowBack: {fileID: 0}
+  setArrowEvent: {fileID: 11400000, guid: d4651c7301d43654a8acc7de9def88f6, type: 2}
+  arrowSpriteList:
+  - {fileID: 356519396, guid: 266570cdc07e2344abb0096535544025, type: 3}
+  - {fileID: -1135250896, guid: 266570cdc07e2344abb0096535544025, type: 3}
+  - {fileID: 1228589079, guid: 266570cdc07e2344abb0096535544025, type: 3}
+  - {fileID: -241607317, guid: 266570cdc07e2344abb0096535544025, type: 3}
+  scaleDuration: 0.5
+  fadeDuration: 0.2
 --- !u!1 &3566180799947709076
 GameObject:
   m_ObjectHideFlags: 0
@@ -100,6 +154,55 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5581e4a4be56c4f43bc5222d29235f75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &6479470691237687330
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4729307498105713277}
+  - component: {fileID: 6224904697690517721}
+  m_Layer: 6
+  m_Name: AttackCompo
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4729307498105713277
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6479470691237687330}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5259096048403228482}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6224904697690517721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6479470691237687330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0580ae474c10424cb35d39f4298a26f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attack: {fileID: 11400000, guid: e7d3925cbb9aef145a666790bcfa69c7, type: 2}
+  totalRepeatCnt: 2
+  totalTime: 0
+  turnChangeChannel: {fileID: 11400000, guid: cbee26c0380d9c745b94e60ad84e18d2, type: 2}
+  attackChannel: {fileID: 11400000, guid: ac14975a5566f2c429fbd5bbbb04bba3, type: 2}
 --- !u!1 &8616597991817923533
 GameObject:
   m_ObjectHideFlags: 0
@@ -136,6 +239,8 @@ Transform:
   - {fileID: 6544228746648615350}
   - {fileID: 1443465053429876170}
   - {fileID: 5759785177026620722}
+  - {fileID: 3996785252094707956}
+  - {fileID: 4729307498105713277}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2993859539474320700

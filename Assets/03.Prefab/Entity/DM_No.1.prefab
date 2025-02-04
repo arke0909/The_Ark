@@ -112,6 +112,7 @@ MonoBehaviour:
   - {fileID: 4808638893217082371}
   - {fileID: 6169692598745693438}
   - {fileID: 1635108565512846519}
+  _damageMultiply: 0.6
   areaSize: {x: 6, y: 4}
   attackTime: 5.5
   bulletPrefab: {fileID: 5062867524870107985, guid: f1c6ecae08dc179488d1753c8f6ff1bf, type: 3}
@@ -594,6 +595,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3819c38adba0ff44c9ea657a9b7eaa55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <Attack>k__BackingField: {fileID: 11400000, guid: e7d3925cbb9aef145a666790bcfa69c7, type: 2}
   playerFinder: {fileID: 11400000, guid: 23e17a3a4d1d5894f8fa737d0d00f6b6, type: 2}
   poolChannel: {fileID: 11400000, guid: d53dbf3475df90c4c9b0a574ee0663a7, type: 2}
   canUseTwoPattern: 0

@@ -1,13 +1,12 @@
-﻿using Assets.Scripts.Core.EventChannel;
+﻿using Assets.Scripts.Combat;
+using Assets.Scripts.Core.EventChannel;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-namespace Assets.Scripts.Combat
+namespace Assets.Scripts.Players
 {
-    public class ArrowSetter : MonoBehaviour
+    public class ArrowSetter : MonoBehaviour, IPlayerComponent
     {
         [SerializeField] private Transform arrowHolder;
         [SerializeField] private Transform arrowBack;
@@ -23,10 +22,14 @@ namespace Assets.Scripts.Combat
 
         private readonly int _arrowTypeCnt = Enum.GetValues(typeof(ArrowType)).Length;
 
+        private Player _player;
+
         public List<Arrow> Arrows { get; private set; } = new List<Arrow>();
 
-        private void Awake()
+        public void Initialize(Player player)
         {
+            _player = player;
+
             InitDictionary();
 
             setArrowEvent.ValueEvent += HandleSetArrows;
@@ -62,7 +65,7 @@ namespace Assets.Scripts.Combat
             {
 
                 ArrowType arrowType = (ArrowType)UnityEngine.Random.Range(0, _arrowTypeCnt);
-                
+
                 Transform arrowTrm = arrowHolder.GetChild(0);
                 Debug.Assert(arrowTrm != null, $"{arrowHolder.name} has not children");
 
