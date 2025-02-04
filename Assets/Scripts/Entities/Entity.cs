@@ -13,10 +13,13 @@ namespace Assets.Scripts.Entities
 
         protected Dictionary<Type, IEntityComponent> _entityComponents = new Dictionary<Type, IEntityComponent>();
 
+        public bool IsDead { get; private set; } = false;
+
         #region Init Section
         protected virtual void Awake()
         {
             SetEntityCompoentsAndInitialize();
+            AfterInitalize();
             turnChangeChannel.AddListner<TurnChangeEvent>(HandleTurnChange);
         }
 
@@ -33,6 +36,11 @@ namespace Assets.Scripts.Entities
                 component.Initialize(this);
                 _entityComponents.Add(type, component);
             });
+        }
+
+        private void AfterInitalize()
+        {
+            _entityComponents.Values.OfType<IAfterInit>().ToList().ForEach(afterInit => afterInit.AfterInit());
         }
         #endregion
 
