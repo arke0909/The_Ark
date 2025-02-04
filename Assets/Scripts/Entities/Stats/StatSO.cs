@@ -1,9 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Assets.Scripts.Entities.Stats
 {
-    public class StatSO : ScriptableObject
+    public class StatSO : ScriptableObject, ICloneable
     {
         public delegate void ValueChangeHandler(StatSO stat, float currentValue, float prevValue);
         public event ValueChangeHandler OnValueChange;
@@ -51,5 +52,11 @@ namespace Assets.Scripts.Entities.Stats
                 OnValueChange?.Invoke(this, currnetValue, prevValue);
             }
         }
+
+        public virtual object Clone()
+        {
+            return Instantiate(this);
+        }
+
     }
 }
