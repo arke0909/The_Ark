@@ -1,6 +1,8 @@
 ﻿using Assets.Scripts.Core.EventChannel;
 using Assets.Scripts.Core.EventChannel.Events;
 using Assets.Scripts.Core.Pools;
+using Assets.Scripts.Entities;
+using Assets.Scripts.Players;
 using UnityEngine;
 
 namespace Assets.Scripts.Combat.Bullets
@@ -13,6 +15,7 @@ namespace Assets.Scripts.Combat.Bullets
         [SerializeField] private string poolName;
 
         private float _currentLifeTime = 0;
+        private float _damage;
 
         private Rigidbody2D rigidCompo;
 
@@ -33,16 +36,19 @@ namespace Assets.Scripts.Combat.Bullets
                 Push();
         }
 
-        public void InitBullet(Vector2 dir)
+        public void InitBullet(Vector2 dir, float damage)
         {
+            _damage = damage;
+
             transform.right = dir.normalized;
             rigidCompo.linearVelocity = transform.right * speed;
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.CompareTag("Player"))
+            if (collision.TryGetComponent(out Player player))
             {
+                player.GetCompo<EntityHealth>().ApplyDamage(_damage);
                 Push();
             }
         }
@@ -50,6 +56,7 @@ namespace Assets.Scripts.Combat.Bullets
         public void ResetItem()
         {
             _currentLifeTime = 0;
+            _damage = 0;
         }
         
         private void Push()
@@ -58,7 +65,6 @@ namespace Assets.Scripts.Combat.Bullets
             evt.poolable = this;
 
             poolChannel.RaiseEvent(evt);
-
         }
     }
 }

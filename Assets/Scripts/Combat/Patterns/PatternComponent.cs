@@ -1,6 +1,7 @@
 ﻿using Assets.Scripts.Core.EventChannel;
 using Assets.Scripts.Enemies;
 using Assets.Scripts.Entities;
+using Assets.Scripts.Entities.Stats;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -11,6 +12,7 @@ namespace Assets.Scripts.Combat.Patterns
 {
     public class PatternComponent : MonoBehaviour, IEnemyComponent
     {
+        [field: SerializeField] public StatSO Attack { get; private set; }
         [SerializeField] private EntityFinder playerFinder;
         [SerializeField] GameEventChannel poolChannel;
 
