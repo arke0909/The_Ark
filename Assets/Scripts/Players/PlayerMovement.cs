@@ -1,3 +1,4 @@
+using Assets.Scripts.Entities.Stats;
 using Assets.Scripts.Players;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -6,7 +7,8 @@ namespace Scripts.Players
 {
     public class PlayerMovement : MonoBehaviour, IPlayerComponent
     {
-        [SerializeField] private float moveSpeed = 5f;
+        [SerializeField] private StatSO moveSpeed;
+        private float _moveSpeed;
 
         private Player _player;
         private Rigidbody2D _rbCompo;
@@ -17,6 +19,8 @@ namespace Scripts.Players
         {
             _player = player;
             _rbCompo = _player.GetComponent<Rigidbody2D>();
+
+            _moveSpeed = _player.GetCompo<EntityStatComponent>().GetStat(moveSpeed).BaseValue;
         }
 
         private void FixedUpdate()
@@ -28,7 +32,7 @@ namespace Scripts.Players
 
         private void Movement(Vector2 inputVector)
         {
-            _rbCompo.linearVelocity = inputVector * moveSpeed;
+            _rbCompo.linearVelocity = inputVector * _moveSpeed;
         }
     }
 }

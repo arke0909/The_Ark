@@ -48,13 +48,13 @@ namespace Assets.Scripts
         private void ChangeArea(Vector2 targetSize, float duration)
         {
             DOTween.To(() => _confiningCollider.size,
-                       x => _confiningCollider.size = x,
+                       size => _confiningCollider.size = size,
                        targetSize,
                        duration)
                    .SetEase(Ease.InOutQuad);
 
             DOTween.To(() => _spriteRenderer.size,
-                       x => _spriteRenderer.size = x,
+                       size => _spriteRenderer.size = size + new Vector2(0.25f, 0.25f),
                        targetSize,
                        duration)
                    .SetEase(Ease.InOutQuad);

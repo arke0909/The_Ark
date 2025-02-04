@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.Entities.Stats
 {
+    [CreateAssetMenu(fileName = "StatSO", menuName = "SO/StatSystem/Stat")]
     public class StatSO : ScriptableObject, ICloneable
     {
         public delegate void ValueChangeHandler(StatSO stat, float currentValue, float prevValue);
