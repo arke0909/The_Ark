@@ -62,7 +62,7 @@ namespace Assets.Scripts.Enemies
 
         private void HandleApplyDamage(AttackEvent evt)
         {
-            Debug.Log(evt.damage);
+            GetCompo<EntityHealth>().ApplyDamage(evt.damage);
         }
 
         private void ChangeAreaSize(Vector2 size)
