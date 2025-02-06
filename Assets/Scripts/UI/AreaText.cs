@@ -3,22 +3,21 @@ using UnityEngine;
 using TMPro;
 using Assets.Scripts.Core.EventChannel;
 using Assets.Scripts.Core.EventChannel.Events;
-using System;
 
 namespace Assets.Scripts.UI
 {
     public class AreaText : MonoBehaviour
     {
+        [TextArea]
+        [SerializeField]private string content;
         [SerializeField] private float duration;
         [SerializeField] private GameEventChannel turnChangeChannel;
 
         private TextMeshProUGUI areaText;
-        private string content;
 
         private void Awake()
         {
             areaText = GetComponent<TextMeshProUGUI>();
-            content = areaText.text;
 
             turnChangeChannel.AddListner<TurnChangeEvent>(HandleTurnChange);
         }
@@ -34,6 +33,8 @@ namespace Assets.Scripts.UI
             {
                 StartCoroutine(TypingCoroutine(content, duration));
             }
+            else
+                areaText.text = "";
         }
 
         private IEnumerator TypingCoroutine(string text, float duration)
