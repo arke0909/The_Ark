@@ -4,7 +4,6 @@ using Assets.Scripts.Entities;
 using Assets.Scripts.Core.EventChannel.Events;
 using Assets.Scripts.Core.EventChannel;
 using Assets.Scripts.Players;
-using Assets.Scripts.Core.InGameData;
 
 namespace Assets.Scripts
 {

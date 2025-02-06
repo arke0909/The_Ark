@@ -781,6 +781,7 @@ GameObject:
   - component: {fileID: 473147595}
   - component: {fileID: 473147597}
   - component: {fileID: 473147596}
+  - component: {fileID: 473147598}
   m_Layer: 5
   m_Name: PanelText
   m_TagString: Untagged
@@ -827,10 +828,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '* '
+  m_text: "* \uC624\uB298 \uC800\uB141 \uAE40\uCE58\uCC0C\uAC1C\uC640 \uACE0\uB4F1\uC5B4
+    \uC870\uB9BC"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: aa4d8e6d538469f4a96c9ee675a07718, type: 2}
+  m_sharedMaterial: {fileID: 8657925680625492492, guid: aa4d8e6d538469f4a96c9ee675a07718, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -892,7 +894,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0.42443085, y: 0, z: 0, w: 3.1407974}
+  m_margin: {x: 0.4, y: 0.5, z: 0, w: 3}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -906,6 +908,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 473147594}
   m_CullTransparentMesh: 1
+--- !u!114 &473147598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 473147594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce563ee1979f60c4987ca397e4478983, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 3
+  turnChangeChannel: {fileID: 11400000, guid: cbee26c0380d9c745b94e60ad84e18d2, type: 2}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
