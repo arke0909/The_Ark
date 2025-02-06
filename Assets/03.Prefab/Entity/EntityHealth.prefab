@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: {fileID: 11400000, guid: b26449edae3ce8f46aba7fecb18e3706, type: 2}
+  attackChannel: {fileID: 11400000, guid: ac14975a5566f2c429fbd5bbbb04bba3, type: 2}
   OnHit:
     m_PersistentCalls:
       m_Calls: []
