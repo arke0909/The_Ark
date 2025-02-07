@@ -41,8 +41,8 @@ namespace Assets.Scripts.UI
             if (evt.whoWasHit != entityFinder.entity) return;
 
             float currentHp = Mathf.Clamp(evt.currentHp, 0, _maxHp);
-            float hpRatio = _maxHp / evt.currentHp;
-            string result = $"{_maxHp} / {evt.currentHp}";
+            float hpRatio = evt.currentHp / _maxHp;
+            string result = $"{evt.currentHp} / {_maxHp}";
 
             hpBar.fillAmount = hpRatio;
             _hpText.text = result;  
