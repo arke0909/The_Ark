@@ -1,7 +1,6 @@
 ﻿using Assets.Scripts.Core.EventChannel;
 using Assets.Scripts.Core.EventChannel.Events;
 using Assets.Scripts.Entities.Stats;
-using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -27,9 +26,13 @@ namespace Assets.Scripts.Entities
         {
             _entity = entity;
             _statCompo = _entity.GetCompo<EntityStatComponent>();
+            OnHit.AddListener(HPBarTextChange);
         }
 
-
+        private void OnDestroy()
+        {
+            OnHit.RemoveListener(HPBarTextChange);
+        }
 
         public void AfterInit()
         {
@@ -51,7 +54,7 @@ namespace Assets.Scripts.Entities
                 OnDead?.Invoke();
         }
 
-        private void HPBarTextChange()
+        public void HPBarTextChange()
         {
             HPTextEvent evt = CombatEvents.HPTextEvent;
             evt.currentHp = _currentHealth;

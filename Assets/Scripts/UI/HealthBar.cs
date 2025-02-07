@@ -1,9 +1,7 @@
 ﻿using Assets.Scripts.Core.EventChannel;
 using Assets.Scripts.Core.EventChannel.Events;
 using Assets.Scripts.Entities;
-using Assets.Scripts.Entities.Stats;
-using System;
-using System.Collections;
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,7 +12,8 @@ namespace Assets.Scripts.UI
     {
         [SerializeField] private EntityFinder entityFinder;
         [SerializeField] private GameEventChannel attackChannel;
-        [SerializeField] private Image hpBar; 
+        [SerializeField] private Image hpBar;
+        [SerializeField] private float duration;
 
         private TextMeshProUGUI _hpText;
         private float _maxHp;
@@ -44,7 +43,8 @@ namespace Assets.Scripts.UI
             float hpRatio = evt.currentHp / _maxHp;
             string result = $"{evt.currentHp} / {_maxHp}";
 
-            hpBar.fillAmount = hpRatio;
+            DOTween.To(() => hpBar.fillAmount, x => hpBar.fillAmount = x, hpRatio, duration);
+
             _hpText.text = result;  
         }
     }

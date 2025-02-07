@@ -15,9 +15,6 @@ namespace Assets.Scripts.Enemies
     {
         [SerializeField] private GameEventChannel attackChannel;
 
-        [SerializeField] private float minWaitSec = 1.5f;
-        [SerializeField] private float maxWaitSec = 3.5f;
-
         private Dictionary<Type, IEnemyComponent> _enemyComponents = new Dictionary<Type, IEnemyComponent>();
 
         public UnityEvent OnHit;
