@@ -8,7 +8,7 @@ namespace Assets.Scripts.Players.Act
     {
         [SerializeField] IntEventChannel setArrowChannel;
         [SerializeField] int arrowSize = 1;
-        public override void OnClick()
+        public override void ActEffect()
         {
             setArrowChannel.RaiseEvent(arrowSize);
 
