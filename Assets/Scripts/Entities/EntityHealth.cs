@@ -47,7 +47,6 @@ namespace Assets.Scripts.Entities
             if(_entity.IsDead) return;
             _currentHealth = Mathf.Clamp(_currentHealth - damage, 0, maxHealth);
 
-            HPBarTextChange();
             OnHit?.Invoke();
 
             if(_currentHealth <= 0)
