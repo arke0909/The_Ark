@@ -127,9 +127,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6625d24b569f8d047af93da2f3fc5032, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entityFinder: {fileID: 0}
+  entityFinder: {fileID: 11400000, guid: 910c7a313e70ce040a3e9ca0ebcaa3c8, type: 2}
   attackChannel: {fileID: 11400000, guid: ac14975a5566f2c429fbd5bbbb04bba3, type: 2}
   hpBar: {fileID: 7170969496437950568}
+  duration: 0.5
 --- !u!222 &5734521615536130599
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 896576707521906147, guid: c8157098465c6924086b744bbb76d3c5, type: 3}
       propertyPath: m_Name
-      value: Enemy Variant
+      value: EnemyHPBar
       objectReference: {fileID: 0}
     - target: {fileID: 4231692287401267849, guid: c8157098465c6924086b744bbb76d3c5, type: 3}
       propertyPath: m_Pivot.x
@@ -91,6 +91,18 @@ PrefabInstance:
     - target: {fileID: 4231692287401267849, guid: c8157098465c6924086b744bbb76d3c5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7170969496437950568, guid: c8157098465c6924086b744bbb76d3c5, type: 3}
+      propertyPath: m_Color.b
+      value: 0.3495012
+      objectReference: {fileID: 0}
+    - target: {fileID: 7170969496437950568, guid: c8157098465c6924086b744bbb76d3c5, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7170969496437950568, guid: c8157098465c6924086b744bbb76d3c5, type: 3}
+      propertyPath: m_Color.r
+      value: 0.6698113
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

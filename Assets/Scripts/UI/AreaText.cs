@@ -3,6 +3,7 @@ using UnityEngine;
 using TMPro;
 using Assets.Scripts.Core.EventChannel;
 using Assets.Scripts.Core.EventChannel.Events;
+using DG.Tweening;
 
 namespace Assets.Scripts.UI
 {
@@ -34,7 +35,10 @@ namespace Assets.Scripts.UI
                 StartCoroutine(TypingCoroutine(content, duration));
             }
             else
+            {
+                StopAllCoroutines();
                 areaText.text = "";
+            }
         }
 
         private IEnumerator TypingCoroutine(string text, float duration)
