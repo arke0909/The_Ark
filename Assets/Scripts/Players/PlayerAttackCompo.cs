@@ -83,13 +83,7 @@ namespace Assets.Scripts.Players
             {
                 _isCheckTime = true;
                 _currentTime = 0;
-            }
-            else if (evt.turnState == "DAMAGECALC")
-            {
-                AttackEvent atkEvt = CombatEvents.AttackEvent;
-                atkEvt.damage = ConvertDamage(_currentTime);
-
-                attackChannel.RaiseEvent(atkEvt);
+                _idx = 0;
             }
         }
 
@@ -123,10 +117,15 @@ namespace Assets.Scripts.Players
 
         private void DamageCalc()
         {
-            TurnChangeCallingEvent evt = TurnEvents.TurnChangeCallingEvent;
-            evt.turnState = "DAMAGECALC";
+            TurnChangeCallingEvent callevt = TurnEvents.TurnChangeCallingEvent;
+            callevt.turnState = "DAMAGECALC";
 
-            turnChangeChannel.RaiseEvent(evt);
+            turnChangeChannel.RaiseEvent(callevt);
+
+            AttackEvent atkEvt = CombatEvents.AttackEvent;
+            atkEvt.damage = ConvertDamage(_currentTime);
+
+            attackChannel.RaiseEvent(atkEvt);
         }
 
     }

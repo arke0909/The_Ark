@@ -1284,6 +1284,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turnChangeChannel: {fileID: 11400000, guid: cbee26c0380d9c745b94e60ad84e18d2, type: 2}
+  onSelectColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   x: 1
   y: 0
   setArrowChannel: {fileID: 11400000, guid: d4651c7301d43654a8acc7de9def88f6, type: 2}
@@ -1486,6 +1487,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerInput: {fileID: 11400000, guid: 805884eb54a0bc54dbd5ee8e9c59073d, type: 2}
+  turnChannel: {fileID: 11400000, guid: cbee26c0380d9c745b94e60ad84e18d2, type: 2}
 --- !u!225 &1232888088
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -1846,6 +1848,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turnChangeChannel: {fileID: 11400000, guid: cbee26c0380d9c745b94e60ad84e18d2, type: 2}
+  onSelectColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   x: 0
   y: -1
 --- !u!1001 &1480786552
@@ -1970,6 +1973,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turnChangeChannel: {fileID: 11400000, guid: cbee26c0380d9c745b94e60ad84e18d2, type: 2}
+  onSelectColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   x: 1
   y: -1
 --- !u!1 &1483960827
@@ -2337,6 +2341,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turnChangeChannel: {fileID: 11400000, guid: cbee26c0380d9c745b94e60ad84e18d2, type: 2}
+  onSelectColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   x: 0
   y: 0
   setArrowChannel: {fileID: 11400000, guid: d4651c7301d43654a8acc7de9def88f6, type: 2}
