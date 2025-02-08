@@ -1,34 +1,38 @@
 using Assets.Scripts.Core.EventChannel;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Assets.Scripts.Players.Act
 {
     public abstract class Act : MonoBehaviour
     {
         [SerializeField] protected GameEventChannel turnChangeChannel;
+        [SerializeField] private Color onSelectColor = Color.yellow;
 
-        private SpriteRenderer activeSprite;
+        private Image activeImage;
         private TextMeshProUGUI actText;
-        private Color onSelectColor = Color.yellow;
 
-        private void Awake()
+        public int x;
+        public int y;
+
+        public void Initialize()
         {
-            activeSprite = GetComponentInChildren<SpriteRenderer>();
+            activeImage = GetComponentInChildren<Image>();
             actText = GetComponentInChildren<TextMeshProUGUI>();
+
+            activeImage.color = onSelectColor;
         }
 
         public void OnSelct()
         {
-            activeSprite.enabled = true;
-            activeSprite.color = onSelectColor;
+            activeImage.enabled = true;
             actText.color = onSelectColor;
         }
 
         public void OffSelect()
         {
-            activeSprite.enabled = false;
-            activeSprite.color = Color.white;
+            activeImage.enabled = false;
             actText.color = Color.white;
         }
 
