@@ -62,6 +62,15 @@ public partial class @Input: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Select"",
+                    ""type"": ""Button"",
+                    ""id"": ""2f9cfdcb-7b68-4350-9510-6e1d32d1ecf5"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -106,6 +115,17 @@ public partial class @Input: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Right"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ba5d39a5-5d98-4d8b-8aa7-e73116647e86"",
+                    ""path"": ""<Keyboard>/z"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Select"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -341,6 +361,7 @@ public partial class @Input: IInputActionCollection2, IDisposable
         m_PlayerTurn_Down = m_PlayerTurn.FindAction("Down", throwIfNotFound: true);
         m_PlayerTurn_Left = m_PlayerTurn.FindAction("Left", throwIfNotFound: true);
         m_PlayerTurn_Right = m_PlayerTurn.FindAction("Right", throwIfNotFound: true);
+        m_PlayerTurn_Select = m_PlayerTurn.FindAction("Select", throwIfNotFound: true);
         // EnemyTurn
         m_EnemyTurn = asset.FindActionMap("EnemyTurn", throwIfNotFound: true);
         m_EnemyTurn_Move = m_EnemyTurn.FindAction("Move", throwIfNotFound: true);
@@ -422,6 +443,7 @@ public partial class @Input: IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerTurn_Down;
     private readonly InputAction m_PlayerTurn_Left;
     private readonly InputAction m_PlayerTurn_Right;
+    private readonly InputAction m_PlayerTurn_Select;
     public struct PlayerTurnActions
     {
         private @Input m_Wrapper;
@@ -430,6 +452,7 @@ public partial class @Input: IInputActionCollection2, IDisposable
         public InputAction @Down => m_Wrapper.m_PlayerTurn_Down;
         public InputAction @Left => m_Wrapper.m_PlayerTurn_Left;
         public InputAction @Right => m_Wrapper.m_PlayerTurn_Right;
+        public InputAction @Select => m_Wrapper.m_PlayerTurn_Select;
         public InputActionMap Get() { return m_Wrapper.m_PlayerTurn; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -451,6 +474,9 @@ public partial class @Input: IInputActionCollection2, IDisposable
             @Right.started += instance.OnRight;
             @Right.performed += instance.OnRight;
             @Right.canceled += instance.OnRight;
+            @Select.started += instance.OnSelect;
+            @Select.performed += instance.OnSelect;
+            @Select.canceled += instance.OnSelect;
         }
 
         private void UnregisterCallbacks(IPlayerTurnActions instance)
@@ -467,6 +493,9 @@ public partial class @Input: IInputActionCollection2, IDisposable
             @Right.started -= instance.OnRight;
             @Right.performed -= instance.OnRight;
             @Right.canceled -= instance.OnRight;
+            @Select.started -= instance.OnSelect;
+            @Select.performed -= instance.OnSelect;
+            @Select.canceled -= instance.OnSelect;
         }
 
         public void RemoveCallbacks(IPlayerTurnActions instance)
@@ -651,6 +680,7 @@ public partial class @Input: IInputActionCollection2, IDisposable
         void OnDown(InputAction.CallbackContext context);
         void OnLeft(InputAction.CallbackContext context);
         void OnRight(InputAction.CallbackContext context);
+        void OnSelect(InputAction.CallbackContext context);
     }
     public interface IEnemyTurnActions
     {
