@@ -12,7 +12,8 @@ public enum ArrowType
 public class InputReader : ScriptableObject, IPlayerTurnActions, IEnemyTurnActions, IBattleActions
 {
     public event Action<ArrowType> BattleEvent;
-    public event Action PlayerTurnInputEvent;
+    public event Action<(int x, int y)> PlayerTurnInputEvent;
+    public event Action SelectEvent;
 
     public Vector2 InputVector { get; private set; }
 
@@ -67,7 +68,7 @@ public class InputReader : ScriptableObject, IPlayerTurnActions, IEnemyTurnActio
         if (context.performed)
         {
             if (isChoice())
-                PlayerTurnInputEvent?.Invoke();
+                PlayerTurnInputEvent?.Invoke(ValueTuple.Create(0,1));
             else
                 BattleEvent?.Invoke(ArrowType.UP);
         }
@@ -78,7 +79,7 @@ public class InputReader : ScriptableObject, IPlayerTurnActions, IEnemyTurnActio
         if(context.performed)
         {
             if (isChoice())
-                PlayerTurnInputEvent?.Invoke();
+                PlayerTurnInputEvent?.Invoke(ValueTuple.Create(0, -1));
             else
                 BattleEvent?.Invoke(ArrowType.DOWN);
         }
@@ -89,7 +90,7 @@ public class InputReader : ScriptableObject, IPlayerTurnActions, IEnemyTurnActio
         if (context.performed)
         {
             if (isChoice())
-                PlayerTurnInputEvent?.Invoke();
+                PlayerTurnInputEvent?.Invoke(ValueTuple.Create(-1, 0));
             else
                 BattleEvent?.Invoke(ArrowType.LEFT);
         }
@@ -100,10 +101,15 @@ public class InputReader : ScriptableObject, IPlayerTurnActions, IEnemyTurnActio
         if (context.performed)
         {
             if (isChoice())
-                PlayerTurnInputEvent?.Invoke();
+                PlayerTurnInputEvent?.Invoke(ValueTuple.Create(1, 0));
             else
                 BattleEvent?.Invoke(ArrowType.RIGHT);
         }
+    }
+    public void OnSelect(InputAction.CallbackContext context)
+    {
+        if(context.performed)
+            SelectEvent?.Invoke();
     }
 
     #endregion
@@ -113,5 +119,6 @@ public class InputReader : ScriptableObject, IPlayerTurnActions, IEnemyTurnActio
     {
         InputVector = context.ReadValue<Vector2>();
     }
+
     #endregion
 }
