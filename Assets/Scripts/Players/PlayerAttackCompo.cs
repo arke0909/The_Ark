@@ -54,9 +54,6 @@ namespace Assets.Scripts.Players
 
         private void HandleArrowCheck(ArrowType type)
         {
-            if (_currentArrow == null)
-                _currentArrow = _setterCompo.SetCurrentArrow(_idx);
-
             if (_currentArrow.IsEqual(type))
             {
                 _idx++;
@@ -84,6 +81,8 @@ namespace Assets.Scripts.Players
                 _isCheckTime = true;
                 _currentTime = 0;
                 _idx = 0;
+                _currentArrow = _setterCompo.SetCurrentArrow(_idx);
+
             }
         }
 
@@ -108,10 +107,9 @@ namespace Assets.Scripts.Players
             else
             {
                 _isCheckTime = false;
+                _currentRepeatCnt = 0;
 
                 DamageCalc();
-
-                _currentRepeatCnt = 0;
             }
         }
 
