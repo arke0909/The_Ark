@@ -11,7 +11,7 @@ namespace Assets.Scripts.Players
         [SerializeField] private StatSO attack;
         [SerializeField] private int totalRepeatCnt = 1;
         [SerializeField] private float totalTime;
-        [SerializeField] private float minDamageMultiply = 0.8f, maxDamageMultiply = 1.2f;
+        [SerializeField] private float minRandomNumber = 0.8f, maxRandomNumber = 1.2f;
 
         #region EventChannel Section
         [SerializeField] private GameEventChannel turnChangeChannel;
@@ -27,13 +27,15 @@ namespace Assets.Scripts.Players
 
         private bool _isCheckTime;
         private float _currentTime;
-        private float _damage;
+        private float _attack;
+
+        public float DamageMultiply { get; private set; }
 
         public void Initialize(Player player)
         {
             _player = player;
 
-            _damage = _player.GetCompo<EntityStatComponent>().GetStat(attack).BaseValue;
+            _attack = _player.GetCompo<EntityStatComponent>().GetStat(attack).BaseValue;
             _setterCompo = _player.GetPlayerCompo<ArrowSetter>();
             _player.InputCompo.BattleEvent += HandleArrowCheck;
             turnChangeChannel.AddListner<TurnChangeEvent>(HandleTurnChange);
@@ -89,9 +91,9 @@ namespace Assets.Scripts.Players
 
         private int ConvertDamage(float currentTime)
         {
-            float multiply = Random.Range(minDamageMultiply, maxDamageMultiply);
+            float randomNumber = Random.Range(minRandomNumber, maxRandomNumber);
 
-            float damage = currentTime * multiply;
+            float damage = currentTime * randomNumber * _attack * DamageMultiply;
 
             return currentTime <= 0 ? 0 : (int)damage;
         }
@@ -129,5 +131,9 @@ namespace Assets.Scripts.Players
             attackChannel.RaiseEvent(atkEvt);
         }
 
+        public void SetDamageMultiply(float damageMultiply)
+        {
+            DamageMultiply = damageMultiply;
+        }
     }
 }

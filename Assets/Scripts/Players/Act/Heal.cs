@@ -6,7 +6,6 @@ namespace Assets.Scripts.Players.Act
 {
     public class Heal : Act
     {
-        [SerializeField] private EntityFinder playerFinder;
         [SerializeField] private float healValue;
 
         private EntityHealth _playerHealth;
