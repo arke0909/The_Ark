@@ -12,7 +12,7 @@ namespace Assets.Scripts.Core.EventChannel.Events
 
     public class AttackEvent : GameEvent
     {
-        public float damage;
+        public int damage;
     }
 
     public class ChangeAreaSizeEvent : GameEvent

@@ -17,10 +17,10 @@ namespace Assets.Scripts.Core.States.TurnStates
 
         protected override void TurnChange()
         {
-            turnManager.StartCoroutine(DamageCalcCoroutine());
+            turnManager.StartCoroutine(WaitCoroutine());
         }
 
-        private IEnumerator DamageCalcCoroutine()
+        private IEnumerator WaitCoroutine()
         {
             yield return new WaitForSeconds(WAIT_SEC);
 

@@ -16,7 +16,7 @@ namespace Assets.Scripts.Players.Act
         public int x;
         public int y;
 
-        public void Initialize()
+        public virtual void Initialize()
         {
             activeImage = GetComponentInChildren<Image>();
             actText = GetComponentInChildren<TextMeshProUGUI>();

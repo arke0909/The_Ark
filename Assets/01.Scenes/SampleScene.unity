@@ -504,8 +504,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce563ee1979f60c4987ca397e4478983, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  content: "* \uC624\uB298 \uC800\uB141 \uAE40\uCE58\uCC0C\uAC1C\uC640 \uACE0\uB4F1\uC5B4
-    \uC870\uB9BC"
+  playerTurnContent: 
+  healTurnContent: 
+  buffTurnContent: 
   duration: 3
   turnChangeChannel: {fileID: 11400000, guid: cbee26c0380d9c745b94e60ad84e18d2, type: 2}
 --- !u!114 &473147599
@@ -1851,6 +1852,8 @@ MonoBehaviour:
   onSelectColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   x: 0
   y: -1
+  playerFinder: {fileID: 11400000, guid: 23e17a3a4d1d5894f8fa737d0d00f6b6, type: 2}
+  healValue: 10
 --- !u!1001 &1480786552
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1976,6 +1979,8 @@ MonoBehaviour:
   onSelectColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   x: 1
   y: -1
+  playerFinder: {fileID: 0}
+  damage: {fileID: 0}
 --- !u!1 &1483960827
 GameObject:
   m_ObjectHideFlags: 0

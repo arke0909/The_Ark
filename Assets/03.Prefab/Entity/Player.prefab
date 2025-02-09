@@ -247,7 +247,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attack: {fileID: 11400000, guid: e7d3925cbb9aef145a666790bcfa69c7, type: 2}
   totalRepeatCnt: 2
-  totalTime: 0
+  totalTime: 20
+  minDamageMultiply: 0.8
+  maxDamageMultiply: 1.2
   turnChangeChannel: {fileID: 11400000, guid: cbee26c0380d9c745b94e60ad84e18d2, type: 2}
   attackChannel: {fileID: 11400000, guid: ac14975a5566f2c429fbd5bbbb04bba3, type: 2}
 --- !u!1 &8616597991817923533
