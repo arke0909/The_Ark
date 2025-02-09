@@ -80,7 +80,22 @@ namespace Assets.Scripts.Players
             InputCompo.Battle();
         }
 
+        protected override void HealTurn()
+        {
+            EndPlayerTurn();
+        }
+
+        protected override void BuffTurn()
+        {
+            EndPlayerTurn();
+        }
+
         protected override void DamageCalcTurn()
+        {
+            EndPlayerTurn();
+        }
+
+        private void EndPlayerTurn()
         {
             transform.position = _originPos;
             InputCompo.TurnChange(false);
