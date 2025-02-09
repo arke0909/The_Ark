@@ -248,8 +248,8 @@ MonoBehaviour:
   attack: {fileID: 11400000, guid: e7d3925cbb9aef145a666790bcfa69c7, type: 2}
   totalRepeatCnt: 2
   totalTime: 20
-  minDamageMultiply: 0.8
-  maxDamageMultiply: 1.2
+  minRandomNumber: 0.8
+  maxRandomNumber: 1.2
   turnChangeChannel: {fileID: 11400000, guid: cbee26c0380d9c745b94e60ad84e18d2, type: 2}
   attackChannel: {fileID: 11400000, guid: ac14975a5566f2c429fbd5bbbb04bba3, type: 2}
 --- !u!1 &8616597991817923533
@@ -405,7 +405,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3176466205535896301, guid: c8a0543e37e887b43b28052c3191b7a0, type: 3}
       propertyPath: statOverrides.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3176466205535896301, guid: c8a0543e37e887b43b28052c3191b7a0, type: 3}
       propertyPath: statOverrides.Array.data[0].stat
@@ -420,6 +420,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: e7d3925cbb9aef145a666790bcfa69c7, type: 2}
     - target: {fileID: 3176466205535896301, guid: c8a0543e37e887b43b28052c3191b7a0, type: 3}
+      propertyPath: statOverrides.Array.data[3].stat
+      value: 
+      objectReference: {fileID: 11400000, guid: 76f134442fd9e3a4b8efd9a6bc131c17, type: 2}
+    - target: {fileID: 3176466205535896301, guid: c8a0543e37e887b43b28052c3191b7a0, type: 3}
       propertyPath: statOverrides.Array.data[0].isUseOverride
       value: 1
       objectReference: {fileID: 0}
@@ -429,6 +433,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3176466205535896301, guid: c8a0543e37e887b43b28052c3191b7a0, type: 3}
       propertyPath: statOverrides.Array.data[2].isUseOverride
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3176466205535896301, guid: c8a0543e37e887b43b28052c3191b7a0, type: 3}
+      propertyPath: statOverrides.Array.data[3].isUseOverride
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3176466205535896301, guid: c8a0543e37e887b43b28052c3191b7a0, type: 3}
@@ -442,6 +450,10 @@ PrefabInstance:
     - target: {fileID: 3176466205535896301, guid: c8a0543e37e887b43b28052c3191b7a0, type: 3}
       propertyPath: statOverrides.Array.data[2].overrideBaseValue
       value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 3176466205535896301, guid: c8a0543e37e887b43b28052c3191b7a0, type: 3}
+      propertyPath: statOverrides.Array.data[3].overrideBaseValue
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4194132409258416963, guid: c8a0543e37e887b43b28052c3191b7a0, type: 3}
       propertyPath: m_Name
