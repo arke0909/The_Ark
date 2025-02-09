@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ca0b55872897e6748968ede203a0e377, type: 3}
-  m_Name: ItemTurn
+  m_Name: HealTurn
   m_EditorClassIdentifier: 
-  stateName: ITEM
-  className: Assets.Scripts.Core.States.TurnStates.ItemTurnState
+  stateName: HEAL
+  className: Assets.Scripts.Core.States.TurnStates.HealTurnState
