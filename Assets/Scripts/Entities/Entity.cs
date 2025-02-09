@@ -66,8 +66,11 @@ namespace Assets.Scripts.Entities
                 case "ENEMY":
                     EnemyTurn();
                     break;
-                case "ITEM":
-                    ItemTurn();
+                case "HEAL":
+                    HealTurn();
+                    break;
+                case "BUFF":
+                    BuffTurn();
                     break;
                 case "INPUT":
                     InputTurn();
@@ -82,7 +85,9 @@ namespace Assets.Scripts.Entities
         { }
         protected virtual void EnemyTurn()
         { }
-        protected virtual void ItemTurn()
+        protected virtual void HealTurn()
+        { }
+        protected virtual void BuffTurn()
         { }
         protected virtual void InputTurn()
         { }
