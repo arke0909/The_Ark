@@ -1979,8 +1979,8 @@ MonoBehaviour:
   onSelectColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   x: 1
   y: -1
-  playerFinder: {fileID: 0}
-  damage: {fileID: 0}
+  playerFinder: {fileID: 11400000, guid: 23e17a3a4d1d5894f8fa737d0d00f6b6, type: 2}
+  damage: {fileID: 11400000, guid: e7d3925cbb9aef145a666790bcfa69c7, type: 2}
 --- !u!1 &1483960827
 GameObject:
   m_ObjectHideFlags: 0
