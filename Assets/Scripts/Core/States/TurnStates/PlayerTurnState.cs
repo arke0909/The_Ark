@@ -1,7 +1,6 @@
 ﻿using Assets.Scripts.Core.EventChannel;
 using Assets.Scripts.Core.EventChannel.Events;
 using Scripts.Core.Manager;
-using System.Drawing;
 using UnityEngine;
 
 namespace Assets.Scripts.Core.States.TurnStates
