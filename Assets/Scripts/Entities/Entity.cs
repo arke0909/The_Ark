@@ -1,5 +1,6 @@
 using Assets.Scripts.Core.EventChannel;
 using Assets.Scripts.Core.EventChannel.Events;
+using Assets.Scripts.Entities.Stats;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,6 +27,8 @@ namespace Assets.Scripts.Entities
         protected virtual void OnDestroy()
         {
             turnChangeChannel.RemoveListner<TurnChangeEvent>(HandleTurnChange);
+
+            GetCompo<EntityStatComponent>().ClearAllStatModifier();
         }
 
         private void SetEntityCompoentsAndInitialize()

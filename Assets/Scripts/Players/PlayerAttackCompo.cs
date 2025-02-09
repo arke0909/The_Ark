@@ -95,6 +95,7 @@ namespace Assets.Scripts.Players
 
             float damage = currentTime * randomNumber * _attack * DamageMultiply;
 
+            Debug.Log(damage);
             return currentTime <= 0 ? 0 : (int)damage;
         }
 

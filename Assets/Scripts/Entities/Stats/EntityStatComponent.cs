@@ -22,5 +22,18 @@ namespace Assets.Scripts.Entities.Stats
             return _stats.FirstOrDefault(x => x.statName == stat.statName);
         }
 
+        public void AddModifier(StatSO stat, string key, float value)
+            => GetStat(stat).AddModifier(key, value);
+        public void RemoveModifier(StatSO stat, string key)
+            => GetStat(stat).RemoveModifier(key);
+
+        public void ClearAllStatModifier()
+        {
+            foreach (StatSO stat in _stats)
+            {
+                stat.ClearModifier();
+            }
+        }
+
     }
 }

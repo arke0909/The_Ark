@@ -69,6 +69,15 @@ namespace Assets.Scripts.Entities.Stats
             TryInvokeChangedEvent(Value, prevValue);
         }
 
+        public void ClearModifier()
+        {
+            float prevValue = Value;
+            _modifyValueByKey.Clear();
+            _modifiedValue = 0;
+            TryInvokeChangedEvent(Value, prevValue);
+        }
+
+
         private void TryInvokeChangedEvent(float currnetValue, float prevValue)
         {
             if(Mathf.Approximately(currnetValue, prevValue) == false)
