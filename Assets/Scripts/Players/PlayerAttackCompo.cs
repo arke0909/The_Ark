@@ -11,6 +11,7 @@ namespace Assets.Scripts.Players
         [SerializeField] private StatSO attack;
         [SerializeField] private int totalRepeatCnt = 1;
         [SerializeField] private float totalTime;
+        [SerializeField] private float minDamageMultiply = 0.8f, maxDamageMultiply = 1.2f;
 
         #region EventChannel Section
         [SerializeField] private GameEventChannel turnChangeChannel;
@@ -21,7 +22,7 @@ namespace Assets.Scripts.Players
         private Player _player;
 
         private Arrow _currentArrow;
-        private int _currentRepeatCnt = 0;
+        private int _currentRepeatCnt;
         private int _idx;
 
         private bool _isCheckTime;
@@ -48,7 +49,7 @@ namespace Assets.Scripts.Players
         {
             if (_isCheckTime)
             {
-                _currentTime += Time.deltaTime;
+                _currentTime -= Time.deltaTime;
             }
         }
 
@@ -79,18 +80,20 @@ namespace Assets.Scripts.Players
             if (evt.turnState == "INPUT")
             {
                 _isCheckTime = true;
-                _currentTime = 0;
+                _currentTime = totalTime;
                 _idx = 0;
                 _currentArrow = _setterCompo.SetCurrentArrow(_idx);
 
             }
         }
 
-        private float ConvertDamage(float currentTime)
+        private int ConvertDamage(float currentTime)
         {
-            // 나중에 대미지 환산 처리
+            float multiply = Random.Range(minDamageMultiply, maxDamageMultiply);
 
-            return currentTime;
+            float damage = currentTime * multiply;
+
+            return currentTime <= 0 ? 0 : (int)damage;
         }
 
         private void EndCheck()
