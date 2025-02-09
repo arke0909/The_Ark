@@ -3,14 +3,14 @@ using UnityEngine;
 using TMPro;
 using Assets.Scripts.Core.EventChannel;
 using Assets.Scripts.Core.EventChannel.Events;
-using DG.Tweening;
 
 namespace Assets.Scripts.UI
 {
     public class AreaText : MonoBehaviour
     {
-        [TextArea]
-        [SerializeField]private string content;
+        [SerializeField]private string playerTurnContent;
+        [SerializeField]private string healTurnContent;
+        [SerializeField]private string buffTurnContent;
         [SerializeField] private float duration;
         [SerializeField] private GameEventChannel turnChangeChannel;
 
@@ -32,12 +32,19 @@ namespace Assets.Scripts.UI
         {
             if (evt.turnState == "PLAYER")
             {
-                StartCoroutine(TypingCoroutine(content, duration));
+                StartCoroutine(TypingCoroutine(playerTurnContent, duration));
+            }
+            else if(evt.turnState == "HEAL")
+            {
+
+            }
+            else if (evt.turnState == "BUFF")
+            {
+
             }
             else
             {
                 StopAllCoroutines();
-                areaText.text = "";
             }
         }
 

@@ -1,4 +1,5 @@
 using Assets.Scripts.Core.EventChannel;
+using Assets.Scripts.Entities;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,6 +8,7 @@ namespace Assets.Scripts.Players.Act
 {
     public abstract class Act : MonoBehaviour
     {
+        [SerializeField] protected EntityFinder playerFinder;
         [SerializeField] protected GameEventChannel turnChangeChannel;
         [SerializeField] private Color onSelectColor = Color.yellow;
 
