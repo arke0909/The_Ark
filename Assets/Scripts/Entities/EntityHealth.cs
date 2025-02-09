@@ -12,6 +12,7 @@ namespace Assets.Scripts.Entities
         [SerializeField] private GameEventChannel attackChannel;
 
         public UnityEvent OnHit;
+        public UnityEvent OnHeal;
         public UnityEvent OnDead;
 
         public float maxHealth;
@@ -27,11 +28,13 @@ namespace Assets.Scripts.Entities
             _entity = entity;
             _statCompo = _entity.GetCompo<EntityStatComponent>();
             OnHit.AddListener(HPBarTextChange);
+            OnHeal.AddListener(HPBarTextChange);
         }
 
         private void OnDestroy()
         {
             OnHit.RemoveListener(HPBarTextChange);
+            OnHeal.RemoveListener(HPBarTextChange);
         }
 
         public void AfterInit()
@@ -51,6 +54,14 @@ namespace Assets.Scripts.Entities
 
             if(_currentHealth <= 0)
                 OnDead?.Invoke();
+        }
+
+        public void ApplyHeal(float healValue)
+        {
+            if(_entity.IsDead) return;
+            _currentHealth = Mathf.Clamp(_currentHealth + healValue, 0, maxHealth);
+
+            OnHeal?.Invoke();
         }
 
         public void HPBarTextChange()
