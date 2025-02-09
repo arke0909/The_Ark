@@ -6,8 +6,20 @@ namespace Assets.Scripts.Players.Act
 {
     public class Attack : Act
     {
-        [SerializeField] IntEventChannel setArrowChannel;
-        [SerializeField] int arrowSize = 1;
+        [SerializeField] private IntEventChannel setArrowChannel;
+        [SerializeField] private int arrowSize = 1;
+        [SerializeField] private float damageMultiply;
+
+        private PlayerAttackCompo playerAttackCompo;
+
+        public override void Initialize()
+        {
+            base.Initialize();
+
+            Player player = playerFinder.entity as Player;
+            playerAttackCompo = player.GetPlayerCompo<PlayerAttackCompo>();
+        }
+
         public override void ActEffect()
         {
             setArrowChannel.RaiseEvent(arrowSize);
@@ -16,6 +28,7 @@ namespace Assets.Scripts.Players.Act
             evt.turnState = "INPUT";
 
             turnChangeChannel.RaiseEvent(evt);
+            playerAttackCompo.SetDamageMultiply(damageMultiply);
         }
     }
 }
