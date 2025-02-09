@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.Rendering.DebugUI;
 
 namespace Assets.Scripts.Entities.Stats
 {
@@ -44,6 +45,28 @@ namespace Assets.Scripts.Entities.Stats
                 baseValue = Mathf.Clamp(value, MinValue, MaxValue);
                 TryInvokeChangedEvent(Value, prevValue);
             }
+        }
+
+        public void AddModifier(string key, float value)
+        {
+            if (_modifyValueByKey.ContainsKey(key)) return;
+
+            float prevValue = Value;
+            _modifiedValue += value;
+            _modifyValueByKey.Add(key, value);
+
+            TryInvokeChangedEvent(value, prevValue);
+        }
+
+        public void RemoveModifier(string key)
+        {
+            if(!_modifyValueByKey.ContainsKey(key)) return;
+
+            float prevValue = Value;
+            _modifiedValue -= _modifyValueByKey[key];
+            _modifyValueByKey.Remove(key);
+
+            TryInvokeChangedEvent(Value, prevValue);
         }
 
         private void TryInvokeChangedEvent(float currnetValue, float prevValue)
