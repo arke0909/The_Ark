@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Assets.Scripts.Entities.Stats
 {
@@ -20,6 +21,15 @@ namespace Assets.Scripts.Entities.Stats
         {
             Debug.Assert(stat != null, $"Stats::GetStat-stat is null");
             return _stats.FirstOrDefault(x => x.statName == stat.statName);
+        }
+
+        private void Update()
+        {
+            if(Keyboard.current.digit1Key.wasPressedThisFrame)
+            {
+                foreach (StatSO stat in _stats)
+                    Debug.Log($"{stat.name} : {stat.Value}");
+            }
         }
 
         public void AddModifier(StatSO stat, string key, float value)
