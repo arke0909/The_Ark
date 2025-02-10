@@ -132,7 +132,7 @@ SpriteRenderer:
   m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 0268c34e364ab914f805b9b6da8d1725, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -246,10 +246,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attack: {fileID: 11400000, guid: e7d3925cbb9aef145a666790bcfa69c7, type: 2}
+  criticalChance: {fileID: 11400000, guid: 76f134442fd9e3a4b8efd9a6bc131c17, type: 2}
   totalRepeatCnt: 2
   totalTime: 20
   minRandomNumber: 0.8
   maxRandomNumber: 1.2
+  criticalDamageMultiply: 1.5
   turnChangeChannel: {fileID: 11400000, guid: cbee26c0380d9c745b94e60ad84e18d2, type: 2}
   attackChannel: {fileID: 11400000, guid: ac14975a5566f2c429fbd5bbbb04bba3, type: 2}
 --- !u!1 &8616597991817923533
@@ -449,7 +451,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3176466205535896301, guid: c8a0543e37e887b43b28052c3191b7a0, type: 3}
       propertyPath: statOverrides.Array.data[2].overrideBaseValue
-      value: 40
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3176466205535896301, guid: c8a0543e37e887b43b28052c3191b7a0, type: 3}
       propertyPath: statOverrides.Array.data[3].overrideBaseValue

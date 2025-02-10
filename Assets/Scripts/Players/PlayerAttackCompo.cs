@@ -9,9 +9,11 @@ namespace Assets.Scripts.Players
     public class PlayerAttackCompo : MonoBehaviour, IPlayerComponent
     {
         [SerializeField] private StatSO attack;
+        [SerializeField] private StatSO criticalChance;
         [SerializeField] private int totalRepeatCnt = 1;
         [SerializeField] private float totalTime;
         [SerializeField] private float minRandomNumber = 0.8f, maxRandomNumber = 1.2f;
+        [SerializeField] private float criticalDamageMultiply;
 
         #region EventChannel Section
         [SerializeField] private GameEventChannel turnChangeChannel;
@@ -27,7 +29,8 @@ namespace Assets.Scripts.Players
 
         private bool _isCheckTime;
         private float _currentTime;
-        private float _attack;
+        private float _attackValue;
+        private float _criticalChanceValue;
 
         public float DamageMultiply { get; private set; }
 
@@ -35,14 +38,24 @@ namespace Assets.Scripts.Players
         {
             _player = player;
 
-            _attack = _player.GetCompo<EntityStatComponent>().GetStat(attack).BaseValue;
+            _player.GetCompo<EntityStatComponent>().GetStat(attack).OnValueChange += HandleAttackValueChanged;
+            _player.GetCompo<EntityStatComponent>().GetStat(criticalChance).OnValueChange += HandleCriticalChanceValueChanged;
+
+            _attackValue = _player.GetCompo<EntityStatComponent>().GetStat(attack).BaseValue;
+            _criticalChanceValue = _player.GetCompo<EntityStatComponent>().GetStat(criticalChance).BaseValue;
+            
             _setterCompo = _player.GetPlayerCompo<ArrowSetter>();
+
             _player.InputCompo.BattleEvent += HandleArrowCheck;
             turnChangeChannel.AddListner<TurnChangeEvent>(HandleTurnChange);
         }
 
+
         private void OnDestroy()
         {
+            _player.GetCompo<EntityStatComponent>().GetStat(attack).OnValueChange -= HandleAttackValueChanged;
+            _player.GetCompo<EntityStatComponent>().GetStat(criticalChance).OnValueChange -= HandleCriticalChanceValueChanged;
+
             _player.InputCompo.BattleEvent -= HandleArrowCheck;
             turnChangeChannel.RemoveListner<TurnChangeEvent>(HandleTurnChange);
         }
@@ -89,13 +102,21 @@ namespace Assets.Scripts.Players
             }
         }
 
+        private void HandleAttackValueChanged(StatSO stat, float currentValue, float prevValue) => _attackValue = currentValue;
+
+        private void HandleCriticalChanceValueChanged(StatSO stat, float currentValue, float prevValue) => _criticalChanceValue = currentValue;
+
         private int ConvertDamage(float currentTime)
         {
             float randomNumber = Random.Range(minRandomNumber, maxRandomNumber);
 
-            float damage = currentTime * randomNumber * _attack * DamageMultiply;
+            float damage = (currentTime * randomNumber  / 2) * _attackValue * DamageMultiply;
 
-            Debug.Log(damage);
+            bool isCritical = Random.value < (_criticalChanceValue / 100);
+            if (isCritical)
+                damage *= criticalDamageMultiply;
+
+            Debug.Log($"{currentTime * randomNumber  / 2} * {_attackValue} * {DamageMultiply} = {damage} : IsCritical {isCritical}");
             return currentTime <= 0 ? 0 : (int)damage;
         }
 

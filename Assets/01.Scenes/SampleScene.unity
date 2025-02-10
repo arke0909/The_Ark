@@ -504,7 +504,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce563ee1979f60c4987ca397e4478983, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerTurnContent: 
+  playerTurnContent: "* \uAC00\uB3D9\uD560 \uD504\uB85C\uD1A0\uCF5C\uC744 \uC120\uD0DD\uD558\uC138\uC694."
   healTurnContent: 
   buffTurnContent: 
   duration: 3
@@ -1291,7 +1291,7 @@ MonoBehaviour:
   y: 0
   setArrowChannel: {fileID: 11400000, guid: d4651c7301d43654a8acc7de9def88f6, type: 2}
   arrowSize: 4
-  damageMultiply: 1
+  damageMultiply: 0.8
 --- !u!1001 &1105647773
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1984,7 +1984,7 @@ MonoBehaviour:
   y: -1
   attack: {fileID: 11400000, guid: e7d3925cbb9aef145a666790bcfa69c7, type: 2}
   criticalChance: {fileID: 11400000, guid: 76f134442fd9e3a4b8efd9a6bc131c17, type: 2}
-  attackUpgradeValue: 5
+  attackUpgradeValue: 1
   criticalChanceUpgradeValue: 5
 --- !u!1 &1483960827
 GameObject:
@@ -2762,10 +2762,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1276699468557054207, guid: 290204e2e8e9ba042848ad936e90fc66, type: 3}
-      propertyPath: m_Color.a
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2868440506175114883, guid: 290204e2e8e9ba042848ad936e90fc66, type: 3}
       propertyPath: arrowBack
       value: 
