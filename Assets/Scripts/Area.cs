@@ -4,6 +4,7 @@ using Assets.Scripts.Entities;
 using Assets.Scripts.Core.EventChannel.Events;
 using Assets.Scripts.Core.EventChannel;
 using Assets.Scripts.Players;
+using System;
 
 namespace Assets.Scripts
 {
@@ -13,6 +14,7 @@ namespace Assets.Scripts
         [SerializeField] private GameEventChannel attackChannel;
         [SerializeField] private GameEventChannel turnChangeChannel;
 
+        [SerializeField] private Vector2 size;
         [SerializeField] private float duration;
 
         private Player _player;
@@ -34,17 +36,18 @@ namespace Assets.Scripts
             _spriteRenderer = GetComponent<SpriteRenderer>();
             Debug.Assert(_spriteRenderer != null, "this gameObject has not SpriteRenderer");
 
-            turnChangeChannel.AddListner<ChangeAreaSizeEvent>(HandhelChangeAreaSize);
+            turnChangeChannel.AddListner<PriorityTurnChangeEvent>(HandleTurnChange);
             attackChannel.AddListner<ChangeAreaSizeEvent>(HandhelChangeAreaSize);
         }
 
+
         private void OnDestroy()
         {
-            turnChangeChannel.RemoveListner<ChangeAreaSizeEvent>(HandhelChangeAreaSize);
+            turnChangeChannel.RemoveListner<PriorityTurnChangeEvent>(HandleTurnChange);
             attackChannel.RemoveListner<ChangeAreaSizeEvent>(HandhelChangeAreaSize);
         }
 
-        private void ChangeArea(Vector2 targetSize, float duration)
+        private void ChangeArea(Vector2 targetSize, float duration, string nextTurn = "")
         {
             DOTween.To(() => _confiningCollider.size,
                        size => _confiningCollider.size = size,
@@ -56,7 +59,25 @@ namespace Assets.Scripts
                        size => _spriteRenderer.size = size + new Vector2(0.25f, 0.25f),
                        targetSize,
                        duration)
-                   .SetEase(Ease.InOutQuad);
+                   .SetEase(Ease.InOutQuad).OnComplete(() => TurnChange(nextTurn));
+        }
+
+        private void TurnChange(string nextTurn)
+        {
+            if (nextTurn == "") return;
+
+            TurnChangeCallingEvent evt = TurnEvents.TurnChangeCallingEvent;
+            evt.nextTurn = nextTurn;
+
+            turnChangeChannel.RaiseEvent(evt);
+        }
+
+        private void HandleTurnChange(PriorityTurnChangeEvent evt)
+        {
+            if(evt.nextTurn == "PLAYER")
+            {
+                ChangeArea(size, duration, evt.nextTurn);
+            }
         }
 
         private void HandhelChangeAreaSize(ChangeAreaSizeEvent evt)
@@ -68,14 +89,14 @@ namespace Assets.Scripts
         {
             KeepTargetInsideBounds();
         }
+
         private void KeepTargetInsideBounds()
         {
-            Bounds confinerBounds = _confiningCollider.bounds; // 제한 콜라이더의 경계
-            Bounds targetBounds = _targetCollider.bounds; // 대상 콜라이더의 경계
+            Bounds confinerBounds = _confiningCollider.bounds;
+            Bounds targetBounds = _targetCollider.bounds;
 
             Vector3 targetPosition = _player.transform.position;
 
-            // 제한 영역 내로 위치 보정
             float clampedX = Mathf.Clamp(
                 targetPosition.x,
                 confinerBounds.min.x + (targetBounds.extents.x),
@@ -88,7 +109,6 @@ namespace Assets.Scripts
                 confinerBounds.max.y - (targetBounds.extents.y)
             );
 
-            // 보정된 위치 적용
             _player.transform.position = new Vector3(clampedX, clampedY, targetPosition.z);
         }
     }
