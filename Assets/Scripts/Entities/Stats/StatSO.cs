@@ -55,7 +55,7 @@ namespace Assets.Scripts.Entities.Stats
             _modifiedValue += value;
             _modifyValueByKey.Add(key, value);
 
-            TryInvokeChangedEvent(value, prevValue);
+            TryInvokeChangedEvent(Value, prevValue);
         }
 
         public void RemoveModifier(string key)
