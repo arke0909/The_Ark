@@ -47,9 +47,10 @@ public class ActSelector : MonoBehaviour
 
     private void HandleTurnChange(TurnChangeEvent evt)
     {
-        if(evt.turnState == "PLAYER")
+        if(evt.nextTurn == "PLAYER")
             _canvasGroup.alpha = 1;
     }
+
     private void ActSelect((int x, int y) index)
     {
         int x = currentX + index.x;

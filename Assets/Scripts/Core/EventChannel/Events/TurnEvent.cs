@@ -8,12 +8,12 @@ namespace Assets.Scripts.Core.EventChannel.Events
 
     public class TurnChangeEvent : GameEvent
     {
-        public string turnState;
+        public string nextTurn;
     }
 
     public class TurnChangeCallingEvent : GameEvent
     {
-        public string turnState;
+        public string nextTurn;
     }
 
 }

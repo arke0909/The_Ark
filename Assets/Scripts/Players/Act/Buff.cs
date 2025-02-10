@@ -30,7 +30,7 @@ namespace Assets.Scripts.Players.Act
             buffIndex++;
 
             TurnChangeCallingEvent evt = TurnEvents.TurnChangeCallingEvent;
-            evt.turnState = "BUFF";
+            evt.nextTurn = "BUFF";
 
             turnChangeChannel.RaiseEvent(evt);
         }

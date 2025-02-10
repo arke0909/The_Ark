@@ -25,7 +25,7 @@ namespace Assets.Scripts.Players.Act
             setArrowChannel.RaiseEvent(arrowSize);
 
             TurnChangeCallingEvent evt = TurnEvents.TurnChangeCallingEvent;
-            evt.turnState = "INPUT";
+            evt.nextTurn = "INPUT";
 
             turnChangeChannel.RaiseEvent(evt);
             playerAttackCompo.SetDamageMultiply(damageMultiply);
