@@ -8,9 +8,9 @@ namespace Assets.Scripts.UI
 {
     public class AreaText : MonoBehaviour
     {
-        [SerializeField]private string playerTurnContent;
-        [SerializeField]private string healTurnContent;
-        [SerializeField]private string buffTurnContent;
+        [SerializeField] private string playerTurnContent;
+        [SerializeField] private string healTurnContent;
+        [SerializeField] private string buffTurnContent;
         [SerializeField] private float duration;
         [SerializeField] private GameEventChannel turnChangeChannel;
 
@@ -30,21 +30,19 @@ namespace Assets.Scripts.UI
 
         private void HandleTurnChange(TurnChangeEvent evt)
         {
+            StopAllCoroutines();
+
             if (evt.nextTurn == "PLAYER")
             {
                 StartCoroutine(TypingCoroutine(playerTurnContent, duration));
             }
-            else if(evt.nextTurn == "HEAL")
+            else if (evt.nextTurn == "HEAL")
             {
                 StartCoroutine(TypingCoroutine(healTurnContent, duration));
             }
             else if (evt.nextTurn == "BUFF")
             {
                 StartCoroutine(TypingCoroutine(buffTurnContent, duration));
-            }
-            else
-            {
-                StopAllCoroutines();
             }
         }
 
@@ -53,7 +51,7 @@ namespace Assets.Scripts.UI
             float perCharTime = duration / text.Length;
             string result = string.Empty;
 
-           for(int i = 0; i < text.Length; i++)
+            for (int i = 0; i < text.Length; i++)
             {
                 result += text[i];
                 areaText.text = result;
