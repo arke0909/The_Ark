@@ -92,7 +92,7 @@ namespace Assets.Scripts.Players
 
         private void HandleTurnChange(TurnChangeEvent evt)
         {
-            if (evt.turnState == "INPUT")
+            if (evt.nextTurn == "INPUT")
             {
                 _isCheckTime = true;
                 _currentTime = totalTime;
@@ -143,7 +143,7 @@ namespace Assets.Scripts.Players
         private void DamageCalc()
         {
             TurnChangeCallingEvent callevt = TurnEvents.TurnChangeCallingEvent;
-            callevt.turnState = "DAMAGECALC";
+            callevt.nextTurn = "DAMAGECALC";
 
             turnChangeChannel.RaiseEvent(callevt);
 

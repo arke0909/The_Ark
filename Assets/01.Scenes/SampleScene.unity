@@ -1866,7 +1866,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 128611336723727938, guid: 1febfb5466a4ffe4a94848a83435f6d2, type: 3}
       propertyPath: m_text
-      value: "\uBC84\uD504\n"
+      value: "\uAC15\uD654"
       objectReference: {fileID: 0}
     - target: {fileID: 720931174955237353, guid: 1febfb5466a4ffe4a94848a83435f6d2, type: 3}
       propertyPath: m_Name

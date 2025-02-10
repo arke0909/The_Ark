@@ -86,7 +86,7 @@ namespace Assets.Scripts.Enemies
             yield return new WaitForSeconds(attackTime);
 
             TurnChangeCallingEvent evt = TurnEvents.TurnChangeCallingEvent;
-            evt.turnState = "PLAYER";
+            evt.nextTurn = "PLAYER";
 
             turnChangeChannel.RaiseEvent(evt);
         }

@@ -30,17 +30,17 @@ namespace Assets.Scripts.UI
 
         private void HandleTurnChange(TurnChangeEvent evt)
         {
-            if (evt.turnState == "PLAYER")
+            if (evt.nextTurn == "PLAYER")
             {
                 StartCoroutine(TypingCoroutine(playerTurnContent, duration));
             }
-            else if(evt.turnState == "HEAL")
+            else if(evt.nextTurn == "HEAL")
             {
-
+                StartCoroutine(TypingCoroutine(healTurnContent, duration));
             }
-            else if (evt.turnState == "BUFF")
+            else if (evt.nextTurn == "BUFF")
             {
-
+                StartCoroutine(TypingCoroutine(buffTurnContent, duration));
             }
             else
             {

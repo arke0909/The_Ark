@@ -61,7 +61,7 @@ namespace Assets.Scripts.Entities
 
         protected void HandleTurnChange(TurnChangeEvent evt)
         {
-            switch(evt.turnState)
+            switch(evt.nextTurn)
             {
                 case "PLAYER":
                     PlayerTurn();
