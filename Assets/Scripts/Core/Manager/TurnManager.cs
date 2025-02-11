@@ -12,23 +12,20 @@ namespace Scripts.Core.Manager
         private void Awake()
         {
             TurnChangeChannel.AddListner<TurnChangeCallingEvent>(HandleTurnChange);
-            TurnChangeChannel.AddListner<PriorityTurnChangeEvent>(HandlePriorityTurnChange);
         }
 
 
         private void OnDestroy()
         {
             TurnChangeChannel.RemoveListner<TurnChangeCallingEvent>(HandleTurnChange);
-            TurnChangeChannel.RemoveListner<PriorityTurnChangeEvent>(HandlePriorityTurnChange);
         }
 
         private void HandleTurnChange(TurnChangeCallingEvent evt)
         {
-            TurnChange(evt.nextTurn);
-        }
-        private void HandlePriorityTurnChange(PriorityTurnChangeEvent evt)
-        {
-            PriorityTurnChange(evt.nextTurn);
+            if(evt.isPriority)
+                PriorityTurnChange(evt.nextTurn);
+            else
+                TurnChange(evt.nextTurn);
         }
 
         private void TurnChange(string nextTurn)
