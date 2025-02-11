@@ -69,12 +69,12 @@ namespace Assets.Scripts.Enemies
 
         protected override void DamageCalcTurn()
         {
+            Debug.Log(1);
             StartCoroutine(TurnChange(true, turnDelay));
         }
 
         protected override void PriorityEnemyTurn()
         {
-            Debug.Log(1);
 
             PatternComponent patternCompo = GetEnemyCompo<PatternComponent>();
             patternCompo.UsePattern();

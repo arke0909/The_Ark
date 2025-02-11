@@ -30,8 +30,6 @@ namespace Assets.Scripts.UI
 
         private void HandleTurnChange(PriorityTurnChangeEvent evt)
         {
-            StopAllCoroutines();
-
             if (evt.nextTurn == "PLAYER")
             {
                 StartCoroutine(TypingCoroutine(playerTurnContent, evt.nextTurn, duration));
@@ -43,6 +41,10 @@ namespace Assets.Scripts.UI
             else if (evt.nextTurn == "BUFF")
             {
                 StartCoroutine(TypingCoroutine(buffTurnContent, evt.nextTurn, duration));
+            }
+            else
+            {
+                StopAllCoroutines();
             }
         }
 
@@ -59,13 +61,18 @@ namespace Assets.Scripts.UI
                 yield return new WaitForSeconds(perCharTime);
             }
 
+            TurnChange(nextTurn);
+
+            yield return null;
+        }
+
+        private void TurnChange(string nextTurn)
+        {
             TurnChangeCallingEvent evt = new TurnChangeCallingEvent();
             evt.isPriority = false;
             evt.nextTurn = nextTurn;
 
             turnChangeChannel.RaiseEvent(evt);
-
-            yield return null;
         }
     }
 }
