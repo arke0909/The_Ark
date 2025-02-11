@@ -14,6 +14,7 @@ namespace Assets.Scripts.Enemies
     public class Enemy : Entity
     {
         [SerializeField] private GameEventChannel attackChannel;
+        [SerializeField] private float turnDelay;
 
         private Dictionary<Type, IEnemyComponent> _enemyComponents = new Dictionary<Type, IEnemyComponent>();
 
@@ -69,6 +70,11 @@ namespace Assets.Scripts.Enemies
             attackChannel.RaiseEvent(evt);
         }
 
+        protected override void DamageCalcTurn()
+        {
+            StartCoroutine(TurnChange(false, turnDelay));
+        }
+
         protected override void EnemyTurn()
         {
             PatternComponent patternCompo = GetEnemyCompo<PatternComponent>();
@@ -78,15 +84,15 @@ namespace Assets.Scripts.Enemies
 
             ChangeAreaSize(pattern.areaSize);
 
-            StartCoroutine(TurnChangeToPlayer(pattern.attackTime));
+            StartCoroutine(TurnChange(true, pattern.attackTime));
         }
 
-        private IEnumerator TurnChangeToPlayer(float attackTime)
+        private IEnumerator TurnChange(bool isPlayerTurn, float delay)
         {
-            yield return new WaitForSeconds(attackTime);
+            yield return new WaitForSeconds(delay);
 
             TurnChangeCallingEvent evt = TurnEvents.TurnChangeCallingEvent;
-            evt.nextTurn = "PLAYER";
+            evt.nextTurn = isPlayerTurn ? "PLAYER" : "ENEMY";
 
             turnChangeChannel.RaiseEvent(evt);
         }
