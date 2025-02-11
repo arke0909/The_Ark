@@ -30,7 +30,6 @@ namespace Assets.Scripts.Players.Act
             buffIndex++;
 
             TurnChangeCallingEvent evt = TurnEvents.TurnChangeCallingEvent;
-            evt.isPriority = true;
             evt.nextTurn = "BUFF";
 
             turnChangeChannel.RaiseEvent(evt);

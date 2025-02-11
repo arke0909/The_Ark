@@ -23,14 +23,12 @@ namespace Assets.Scripts.Entities
             AfterInitalize();
 
             turnChangeChannel.AddListner<TurnChangeEvent>(HandleTurnChange);
-            turnChangeChannel.AddListner<PriorityTurnChangeEvent>(HandlePriorityTurnChange);
         }
 
 
         protected virtual void OnDestroy()
         {
             turnChangeChannel.RemoveListner<TurnChangeEvent>(HandleTurnChange);
-            turnChangeChannel.RemoveListner<PriorityTurnChangeEvent>(HandlePriorityTurnChange);
 
             GetCompo<EntityStatComponent>().ClearAllStatModifier();
         }
@@ -55,7 +53,7 @@ namespace Assets.Scripts.Entities
         {
             Type type = typeof(T);
 
-            if(_entityComponents.TryGetValue(type, out IEntityComponent compo))
+            if (_entityComponents.TryGetValue(type, out IEntityComponent compo))
             {
                 return compo as T;
             }
@@ -66,19 +64,13 @@ namespace Assets.Scripts.Entities
         #region TurnChange Section
         protected void HandleTurnChange(TurnChangeEvent evt)
         {
-            switch(evt.nextTurn)
+            switch (evt.nextTurn)
             {
                 case "PLAYER":
                     PlayerTurn();
                     break;
                 case "ENEMY":
                     EnemyTurn();
-                    break;
-                case "HEAL":
-                    HealTurn();
-                    break;
-                case "BUFF":
-                    BuffTurn();
                     break;
                 case "INPUT":
                     InputTurn();
@@ -93,55 +85,10 @@ namespace Assets.Scripts.Entities
         { }
         protected virtual void EnemyTurn()
         { }
-        protected virtual void HealTurn()
-        { }
-        protected virtual void BuffTurn()
-        { }
         protected virtual void InputTurn()
         { }
         protected virtual void DamageCalcTurn()
         { }
-        #endregion
-
-        #region Priority TurnChange Section
-        private void HandlePriorityTurnChange(PriorityTurnChangeEvent evt)
-        {
-            switch (evt.nextTurn)
-            {
-                case "PLAYER":
-                    PriorityPlayerTurn();
-                    break;
-                case "ENEMY":
-                    PriorityEnemyTurn();
-                    break;
-                case "HEAL":
-                    PriorityHealTurn();
-                    break;
-                case "BUFF":
-                    PriorityBuffTurn();
-                    break;
-                case "INPUT":
-                    PriorityInputTurn();
-                    break;
-                case "DAMAGECALC":
-                    PriorityDamageCalcTurn();
-                    break;
-            }
-        }
-
-        protected virtual void PriorityPlayerTurn()
-        { }
-        protected virtual void PriorityEnemyTurn()
-        { }
-        protected virtual void PriorityHealTurn()
-        { }
-        protected virtual void PriorityBuffTurn()
-        { }
-        protected virtual void PriorityInputTurn()
-        { }
-        protected virtual void PriorityDamageCalcTurn()
-        { }
-
         #endregion
     }
 }

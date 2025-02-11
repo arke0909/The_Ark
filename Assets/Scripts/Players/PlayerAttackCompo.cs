@@ -148,7 +148,6 @@ namespace Assets.Scripts.Players
         private void DamageCalc()
         {
             TurnChangeCallingEvent callevt = TurnEvents.TurnChangeCallingEvent;
-            callevt.isPriority = false;
             callevt.nextTurn = "DAMAGECALC";
 
             turnChangeChannel.RaiseEvent(callevt);

@@ -19,7 +19,6 @@ namespace Assets.Scripts.Players.Act
         public override void ActEffect()
         {
             TurnChangeCallingEvent evt = TurnEvents.TurnChangeCallingEvent;
-            evt.isPriority = true;
             evt.nextTurn = "HEAL";
 
             turnChangeChannel.RaiseEvent(evt);

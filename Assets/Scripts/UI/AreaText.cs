@@ -30,26 +30,23 @@ namespace Assets.Scripts.UI
 
         private void HandleTurnChange(TurnChangeEvent evt)
         {
+            StopAllCoroutines();
+
             if (evt.nextTurn == "PLAYER")
             {
-                StartCoroutine(TypingCoroutine(playerTurnContent, duration));
+                StartCoroutine(TypingCoroutine(playerTurnContent));
             }
             else if(evt.nextTurn == "HEAL")
             {
-                Debug.Log(1);
-                StartCoroutine(TypingCoroutine(healTurnContent, duration, false));
+                StartCoroutine(TypingCoroutine(healTurnContent, false));
             }
             else if (evt.nextTurn == "BUFF")
             {
-                StartCoroutine(TypingCoroutine(buffTurnContent, duration, false));
-            }
-            else
-            {
-                StopAllCoroutines();
+                StartCoroutine(TypingCoroutine(buffTurnContent, false));
             }
         }
 
-        private IEnumerator TypingCoroutine(string text, float duration, bool isPlayerTurn = true)
+        private IEnumerator TypingCoroutine(string text, bool isPlayerTurn = true)
         {
             float perCharTime = duration / text.Length;
             string result = string.Empty;

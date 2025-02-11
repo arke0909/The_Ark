@@ -1,7 +1,6 @@
 using Assets.Scripts.Core.EventChannel;
 using Assets.Scripts.Core.EventChannel.Events;
 using Assets.Scripts.Players.Act;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -9,6 +8,7 @@ using UnityEngine;
 public class ActSelector : MonoBehaviour
 {
     [SerializeField] private InputReader playerInput;
+    [SerializeField] private GameEventChannel turnChannel;
     [SerializeField] private GameEventChannel uiChannel;
 
     private CanvasGroup _canvasGroup;
@@ -16,8 +16,9 @@ public class ActSelector : MonoBehaviour
     private Dictionary<(int x, int y), Act> acts = new Dictionary<(int, int), Act>();
     private Act currentAct;
 
-    private int currentX = 0;
-    private int currentY = 0;
+    private int _currentX = 0;
+    private int _currentY = 0;
+    private bool _canSelect = true;
 
     private void Awake()
     {
@@ -29,7 +30,8 @@ public class ActSelector : MonoBehaviour
             acts.Add((act.x, act.y), act);
         });
 
-        uiChannel.AddListner<AreaEvent>(HandleTurnChange);
+        uiChannel.AddListner<AreaEvent>(HandleAreaEvent);
+        turnChannel.AddListner<TurnChangeEvent>(HandleTurnChange);
         playerInput.PlayerTurnInputEvent += ActSelect;
         playerInput.SelectEvent += UseAct;
 
@@ -40,36 +42,48 @@ public class ActSelector : MonoBehaviour
 
     private void OnDestroy()
     {
-        uiChannel.RemoveListner<AreaEvent>(HandleTurnChange);
+        uiChannel.RemoveListner<AreaEvent>(HandleAreaEvent);
+        turnChannel.RemoveListner<TurnChangeEvent>(HandleTurnChange);
         playerInput.PlayerTurnInputEvent -= ActSelect;
         playerInput.SelectEvent -= UseAct;
     }
 
-    private void HandleTurnChange(AreaEvent evt)
+    private void HandleAreaEvent(AreaEvent evt)
     {
         if(evt.nextTurn == "PLAYER")
+        {
             _canvasGroup.alpha = 1;
-        else if (evt.nextTurn == "ENEMY")
+            _canSelect = true;
+        }
+       
+    }
+
+    private void HandleTurnChange(TurnChangeEvent evt)
+    {
+        if (evt.nextTurn == "ENEMY" || evt.nextTurn == "INPUT")
             _canvasGroup.alpha = 0;
     }
 
     private void ActSelect((int x, int y) index)
     {
-        int x = currentX + index.x;
-        int y = currentY + index.y;
+        if (!_canSelect) return;
+
+        int x = _currentX + index.x;
+        int y = _currentY + index.y;
 
         if (!acts.ContainsKey((x, y))) return;
 
-        currentX = x;
-        currentY = y;
+        _currentX = x;
+        _currentY = y;
 
         currentAct?.OffSelect();
-        currentAct = acts[(currentX, currentY)];
+        currentAct = acts[(_currentX, _currentY)];
         currentAct.OnSelct();
     }
 
     private void UseAct()
     {
+        _canSelect = false;
         currentAct.ActEffect();
     }
 }

@@ -1492,6 +1492,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerInput: {fileID: 11400000, guid: 805884eb54a0bc54dbd5ee8e9c59073d, type: 2}
+  turnChannel: {fileID: 11400000, guid: cbee26c0380d9c745b94e60ad84e18d2, type: 2}
   uiChannel: {fileID: 11400000, guid: f7bbf08f46c57844e9967cf2cbb699c2, type: 2}
 --- !u!225 &1232888088
 CanvasGroup:

@@ -72,35 +72,14 @@ namespace Assets.Scripts.Players
 
         protected override void EnemyTurn()
         {
-            GetPlayerCompo<PlayerMovement>().canManualMove = true;
+            transform.position = _originPos;
+            InputCompo.TurnChange(false);
+            GetPlayerCompo<PlayerRenderer>().FadeWithTurn(false);
         }
 
         protected override void InputTurn()
         {
             InputCompo.Battle();
-        }
-
-        protected override void HealTurn()
-        {
-            EndPlayerTurn();
-        }
-
-        protected override void BuffTurn()
-        {
-            EndPlayerTurn();
-        }
-
-        protected override void DamageCalcTurn()
-        {
-            EndPlayerTurn();
-        }
-
-        private void EndPlayerTurn()
-        {
-            transform.position = _originPos;
-            InputCompo.TurnChange(false);
-            GetPlayerCompo<PlayerRenderer>().FadeWithTurn(false);
-            GetPlayerCompo<PlayerMovement>().canManualMove = false;
         }
     }
 }
