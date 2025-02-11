@@ -20,33 +20,33 @@ namespace Assets.Scripts.UI
         {
             areaText = GetComponent<TextMeshProUGUI>();
 
-            turnChangeChannel.AddListner<TurnChangeEvent>(HandleTurnChange);
+            turnChangeChannel.AddListner<PriorityTurnChangeEvent>(HandleTurnChange);
         }
 
         private void OnDestroy()
         {
-            turnChangeChannel.RemoveListner<TurnChangeEvent>(HandleTurnChange);
+            turnChangeChannel.RemoveListner<PriorityTurnChangeEvent>(HandleTurnChange);
         }
 
-        private void HandleTurnChange(TurnChangeEvent evt)
+        private void HandleTurnChange(PriorityTurnChangeEvent evt)
         {
             StopAllCoroutines();
 
             if (evt.nextTurn == "PLAYER")
             {
-                StartCoroutine(TypingCoroutine(playerTurnContent, duration));
+                StartCoroutine(TypingCoroutine(playerTurnContent, evt.nextTurn, duration));
             }
             else if (evt.nextTurn == "HEAL")
             {
-                StartCoroutine(TypingCoroutine(healTurnContent, duration));
+                StartCoroutine(TypingCoroutine(healTurnContent, evt.nextTurn, duration));
             }
             else if (evt.nextTurn == "BUFF")
             {
-                StartCoroutine(TypingCoroutine(buffTurnContent, duration));
+                StartCoroutine(TypingCoroutine(buffTurnContent, evt.nextTurn, duration));
             }
         }
 
-        private IEnumerator TypingCoroutine(string text, float duration)
+        private IEnumerator TypingCoroutine(string text, string nextTurn, float duration)
         {
             float perCharTime = duration / text.Length;
             string result = string.Empty;
@@ -58,6 +58,12 @@ namespace Assets.Scripts.UI
 
                 yield return new WaitForSeconds(perCharTime);
             }
+
+            TurnChangeCallingEvent evt = new TurnChangeCallingEvent();
+            evt.isPriority = false;
+            evt.nextTurn = nextTurn;
+
+            turnChangeChannel.RaiseEvent(evt);
 
             yield return null;
         }

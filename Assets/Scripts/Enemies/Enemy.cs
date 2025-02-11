@@ -7,17 +7,15 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace Assets.Scripts.Enemies
 {
     public class Enemy : Entity
     {
         [SerializeField] private GameEventChannel attackChannel;
+        [SerializeField] private float turnDelay = 1;
 
         private Dictionary<Type, IEnemyComponent> _enemyComponents = new Dictionary<Type, IEnemyComponent>();
-
-        public UnityEvent OnHit;
 
         protected override void Awake()
         {
@@ -69,7 +67,12 @@ namespace Assets.Scripts.Enemies
             attackChannel.RaiseEvent(evt);
         }
 
-        protected override void EnemyTurn()
+        protected override void DamageCalcTurn()
+        {
+            StartCoroutine(TurnChange(true, turnDelay));
+        }
+
+        protected override void PriorityEnemyTurn()
         {
             PatternComponent patternCompo = GetEnemyCompo<PatternComponent>();
             patternCompo.UsePattern();
@@ -78,15 +81,16 @@ namespace Assets.Scripts.Enemies
 
             ChangeAreaSize(pattern.areaSize);
 
-            StartCoroutine(TurnChangeToPlayer(pattern.attackTime));
+            StartCoroutine(TurnChange(true ,pattern.attackTime));
         }
 
-        private IEnumerator TurnChangeToPlayer(float attackTime)
+        private IEnumerator TurnChange(bool isPlayerTurn, float delay)
         {
-            yield return new WaitForSeconds(attackTime);
+            yield return new WaitForSeconds(delay);
 
             TurnChangeCallingEvent evt = TurnEvents.TurnChangeCallingEvent;
-            evt.nextTurn = "PLAYER";
+            evt.isPriority = true;
+            evt.nextTurn = isPlayerTurn ? "PLAYER" : "ENEMY";
 
             turnChangeChannel.RaiseEvent(evt);
         }

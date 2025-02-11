@@ -505,8 +505,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerTurnContent: "* \uAC00\uB3D9\uD560 \uD504\uB85C\uD1A0\uCF5C\uC744 \uC120\uD0DD\uD558\uC138\uC694."
-  healTurnContent: 
-  buffTurnContent: 
+  healTurnContent: "* \uD68C\uBCF5 \uD504\uB85C\uD1A0\uCF5C \uC2E4\uD589."
+  buffTurnContent: "* \uAC15\uD654 \uD504\uB85C\uD1A0\uCF5C \uC2E4\uD589."
   duration: 3
   turnChangeChannel: {fileID: 11400000, guid: cbee26c0380d9c745b94e60ad84e18d2, type: 2}
 --- !u!114 &473147599
@@ -1210,6 +1210,7 @@ MonoBehaviour:
   playerFinder: {fileID: 11400000, guid: 23e17a3a4d1d5894f8fa737d0d00f6b6, type: 2}
   attackChannel: {fileID: 11400000, guid: ac14975a5566f2c429fbd5bbbb04bba3, type: 2}
   turnChangeChannel: {fileID: 11400000, guid: cbee26c0380d9c745b94e60ad84e18d2, type: 2}
+  size: {x: 0, y: 0}
   duration: 0.2
 --- !u!61 &717742552
 BoxCollider2D:

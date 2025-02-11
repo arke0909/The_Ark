@@ -25,7 +25,7 @@ namespace Assets.Scripts.Players.Act
             setArrowChannel.RaiseEvent(arrowSize);
 
             TurnChangeCallingEvent evt = TurnEvents.TurnChangeCallingEvent;
-            evt.isPriority = true;
+            evt.isPriority = false;
             evt.nextTurn = "INPUT";
 
             turnChangeChannel.RaiseEvent(evt);

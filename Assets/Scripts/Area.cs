@@ -47,7 +47,7 @@ namespace Assets.Scripts
             attackChannel.RemoveListner<ChangeAreaSizeEvent>(HandhelChangeAreaSize);
         }
 
-        private void ChangeArea(Vector2 targetSize, float duration, string nextTurn = "")
+        private void ChangeAreaSize(Vector2 targetSize, float duration, string nextTurn = "")
         {
             DOTween.To(() => _confiningCollider.size,
                        size => _confiningCollider.size = size,
@@ -76,13 +76,17 @@ namespace Assets.Scripts
         {
             if(evt.nextTurn == "PLAYER")
             {
-                ChangeArea(size, duration, evt.nextTurn);
+                ChangeAreaSize(size, duration, evt.nextTurn);
+            }
+            else if(evt.nextTurn == "Enemy")
+            {
+                //ChangeAreaSize(size, duration, evt.nextTurn);
             }
         }
 
         private void HandhelChangeAreaSize(ChangeAreaSizeEvent evt)
         {
-            ChangeArea(evt.size, duration);
+            ChangeAreaSize(evt.size, duration);
         }
 
         private void LateUpdate()
