@@ -75,6 +75,16 @@ namespace Assets.Scripts.Enemies
             StartCoroutine(TurnChange(false, turnDelay));
         }
 
+        protected override void HealTurn()
+        {
+            StartCoroutine(TurnChange(false, turnDelay));
+        }
+
+        protected override void BuffTurn()
+        {
+            StartCoroutine(TurnChange(false, turnDelay));
+        }
+
         protected override void EnemyTurn()
         {
             PatternComponent patternCompo = GetEnemyCompo<PatternComponent>();

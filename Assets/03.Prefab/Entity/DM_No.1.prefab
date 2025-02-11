@@ -165,7 +165,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyTrm: {fileID: 8931942801642117383}
   duration: 1
-  strength: 0.5
+  strength: 0.8
 --- !u!1 &2517013641628220882
 GameObject:
   m_ObjectHideFlags: 0
@@ -341,8 +341,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   turnChangeChannel: {fileID: 11400000, guid: cbee26c0380d9c745b94e60ad84e18d2, type: 2}
   attackChannel: {fileID: 11400000, guid: ac14975a5566f2c429fbd5bbbb04bba3, type: 2}
-  minWaitSec: 1.5
-  maxWaitSec: 3.5
+  turnDelay: 1
   OnHit:
     m_PersistentCalls:
       m_Calls: []

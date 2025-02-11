@@ -1209,7 +1209,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerFinder: {fileID: 11400000, guid: 23e17a3a4d1d5894f8fa737d0d00f6b6, type: 2}
   attackChannel: {fileID: 11400000, guid: ac14975a5566f2c429fbd5bbbb04bba3, type: 2}
+  uiChannel: {fileID: 11400000, guid: f7bbf08f46c57844e9967cf2cbb699c2, type: 2}
   turnChangeChannel: {fileID: 11400000, guid: cbee26c0380d9c745b94e60ad84e18d2, type: 2}
+  size: {x: 12, y: 4}
   duration: 0.2
 --- !u!61 &717742552
 BoxCollider2D:
@@ -1490,7 +1492,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerInput: {fileID: 11400000, guid: 805884eb54a0bc54dbd5ee8e9c59073d, type: 2}
-  turnChannel: {fileID: 11400000, guid: cbee26c0380d9c745b94e60ad84e18d2, type: 2}
+  uiChannel: {fileID: 11400000, guid: f7bbf08f46c57844e9967cf2cbb699c2, type: 2}
 --- !u!225 &1232888088
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -2744,10 +2746,6 @@ PrefabInstance:
     - target: {fileID: 3473599909730330885, guid: e18efc0e254be5149b73fc1fc7382deb, type: 3}
       propertyPath: m_Name
       value: DM_No.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6072602747956037388, guid: e18efc0e254be5149b73fc1fc7382deb, type: 3}
-      propertyPath: strength
-      value: 0.8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -9,11 +9,11 @@ using UnityEngine;
 public class ActSelector : MonoBehaviour
 {
     [SerializeField] private InputReader playerInput;
-    [SerializeField] private GameEventChannel turnChannel;
+    [SerializeField] private GameEventChannel uiChannel;
 
     private CanvasGroup _canvasGroup;
 
-    private Dictionary<(int x, int y), Act> acts = new Dictionary<(int, int), Act> ();
+    private Dictionary<(int x, int y), Act> acts = new Dictionary<(int, int), Act>();
     private Act currentAct;
 
     private int currentX = 0;
@@ -29,7 +29,7 @@ public class ActSelector : MonoBehaviour
             acts.Add((act.x, act.y), act);
         });
 
-        turnChannel.AddListner<TurnChangeEvent>(HandleTurnChange);
+        uiChannel.AddListner<AreaEvent>(HandleTurnChange);
         playerInput.PlayerTurnInputEvent += ActSelect;
         playerInput.SelectEvent += UseAct;
 
@@ -40,12 +40,12 @@ public class ActSelector : MonoBehaviour
 
     private void OnDestroy()
     {
-        turnChannel.RemoveListner<TurnChangeEvent>(HandleTurnChange);
+        uiChannel.RemoveListner<AreaEvent>(HandleTurnChange);
         playerInput.PlayerTurnInputEvent -= ActSelect;
         playerInput.SelectEvent -= UseAct;
     }
 
-    private void HandleTurnChange(TurnChangeEvent evt)
+    private void HandleTurnChange(AreaEvent evt)
     {
         if(evt.nextTurn == "PLAYER")
             _canvasGroup.alpha = 1;

@@ -11,8 +11,10 @@ namespace Assets.Scripts
     {
         [SerializeField] private EntityFinder playerFinder;
         [SerializeField] private GameEventChannel attackChannel;
+        [SerializeField] private GameEventChannel uiChannel;
         [SerializeField] private GameEventChannel turnChangeChannel;
 
+        [SerializeField] private Vector2 size;
         [SerializeField] private float duration;
 
         private Player _player;
@@ -34,17 +36,17 @@ namespace Assets.Scripts
             _spriteRenderer = GetComponent<SpriteRenderer>();
             Debug.Assert(_spriteRenderer != null, "this gameObject has not SpriteRenderer");
 
-            turnChangeChannel.AddListner<ChangeAreaSizeEvent>(HandhelChangeAreaSize);
+            turnChangeChannel.AddListner<TurnChangeEvent>(HandleTurnChange);
             attackChannel.AddListner<ChangeAreaSizeEvent>(HandhelChangeAreaSize);
         }
 
         private void OnDestroy()
         {
-            turnChangeChannel.RemoveListner<ChangeAreaSizeEvent>(HandhelChangeAreaSize);
+            turnChangeChannel.RemoveListner<TurnChangeEvent>(HandleTurnChange);
             attackChannel.RemoveListner<ChangeAreaSizeEvent>(HandhelChangeAreaSize);
         }
 
-        private void ChangeArea(Vector2 targetSize, float duration)
+        private void ChangeArea(Vector2 targetSize, float duration, string nextTurn = "")
         {
             DOTween.To(() => _confiningCollider.size,
                        size => _confiningCollider.size = size,
@@ -56,12 +58,27 @@ namespace Assets.Scripts
                        size => _spriteRenderer.size = size + new Vector2(0.25f, 0.25f),
                        targetSize,
                        duration)
-                   .SetEase(Ease.InOutQuad);
+                   .SetEase(Ease.InOutQuad).OnComplete(() => 
+                   {
+                       if (nextTurn == "") return;
+
+                       AreaEvent evt = CoreEvents.AreaEvent;
+                       evt.nextTurn = nextTurn;
+                       uiChannel.RaiseEvent(evt);
+                   });
         }
 
         private void HandhelChangeAreaSize(ChangeAreaSizeEvent evt)
         {
             ChangeArea(evt.size, duration);
+        }
+
+        private void HandleTurnChange(TurnChangeEvent evt)
+        {
+            if(evt.nextTurn == "PLAYER")
+            {
+                ChangeArea(size, duration, evt.nextTurn);
+            }
         }
 
         private void LateUpdate()
