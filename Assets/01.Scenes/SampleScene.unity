@@ -413,7 +413,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: test
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 804d2046ccffdb44193de51f09815af8, type: 2}
   m_sharedMaterial: {fileID: -9205467148826864039, guid: 804d2046ccffdb44193de51f09815af8, type: 2}
@@ -1210,7 +1210,7 @@ MonoBehaviour:
   playerFinder: {fileID: 11400000, guid: 23e17a3a4d1d5894f8fa737d0d00f6b6, type: 2}
   attackChannel: {fileID: 11400000, guid: ac14975a5566f2c429fbd5bbbb04bba3, type: 2}
   turnChangeChannel: {fileID: 11400000, guid: cbee26c0380d9c745b94e60ad84e18d2, type: 2}
-  size: {x: 0, y: 0}
+  size: {x: 12, y: 4}
   duration: 0.2
 --- !u!61 &717742552
 BoxCollider2D:

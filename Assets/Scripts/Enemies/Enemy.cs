@@ -74,6 +74,8 @@ namespace Assets.Scripts.Enemies
 
         protected override void PriorityEnemyTurn()
         {
+            Debug.Log(1);
+
             PatternComponent patternCompo = GetEnemyCompo<PatternComponent>();
             patternCompo.UsePattern();
 

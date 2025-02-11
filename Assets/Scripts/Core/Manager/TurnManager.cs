@@ -14,6 +14,10 @@ namespace Scripts.Core.Manager
             TurnChangeChannel.AddListner<TurnChangeCallingEvent>(HandleTurnChange);
         }
 
+        private void Start()
+        {
+            PriorityTurnChange("PLAYER");
+        }
 
         private void OnDestroy()
         {
