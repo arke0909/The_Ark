@@ -20,6 +20,7 @@ namespace Assets.Scripts.Core.EventChannel.Events
     public class TurnChangeCallingEvent : GameEvent
     {
         public string nextTurn;
+        public bool isPriority;
     }
 
 }
