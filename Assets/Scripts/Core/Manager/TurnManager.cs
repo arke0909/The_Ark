@@ -13,6 +13,11 @@ namespace Scripts.Core.Manager
             TurnChangeChannel.AddListner<TurnChangeCallingEvent>(HandleTurnChange);
         }
 
+        private void Start()
+        {
+            TurnChange("PLAYER");
+        }
+
         private void OnDestroy()
         {
             TurnChangeChannel.RemoveListner<TurnChangeCallingEvent>(HandleTurnChange);

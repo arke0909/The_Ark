@@ -49,6 +49,8 @@ public class ActSelector : MonoBehaviour
     {
         if(evt.nextTurn == "PLAYER")
             _canvasGroup.alpha = 1;
+        else if (evt.nextTurn == "ENEMY")
+            _canvasGroup.alpha = 0;
     }
 
     private void ActSelect((int x, int y) index)
@@ -68,8 +70,6 @@ public class ActSelector : MonoBehaviour
 
     private void UseAct()
     {
-        _canvasGroup.alpha = 0;
-
         currentAct.ActEffect();
     }
 }

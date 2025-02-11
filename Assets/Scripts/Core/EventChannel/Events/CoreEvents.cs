@@ -6,7 +6,8 @@ namespace Assets.Scripts.Core.EventChannel.Events
     {
         public static PoolPopEvent PoolPopEvent = new PoolPopEvent();
         public static PoolPushEvent PoolPushEvent = new PoolPushEvent();
-        public static TextEvent TextEvent = new TextEvent();
+        public static HealTextEvent HealTextEvent = new HealTextEvent();
+        public static BuffTextEvent BuffTextEvent = new BuffTextEvent();
         public static AreaEvent AreaEvent = new AreaEvent();
     }
 
@@ -19,7 +20,11 @@ namespace Assets.Scripts.Core.EventChannel.Events
     {
         public IPoolable poolable;
     }
-    public class TextEvent : GameEvent
+    public class HealTextEvent : GameEvent
+    {
+        public string nextTurn;
+    }
+    public class BuffTextEvent : GameEvent
     {
         public string nextTurn;
     }

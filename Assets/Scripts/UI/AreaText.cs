@@ -36,11 +36,12 @@ namespace Assets.Scripts.UI
             }
             else if(evt.nextTurn == "HEAL")
             {
-                StartCoroutine(TypingCoroutine(healTurnContent, duration));
+                Debug.Log(1);
+                StartCoroutine(TypingCoroutine(healTurnContent, duration, false));
             }
             else if (evt.nextTurn == "BUFF")
             {
-                StartCoroutine(TypingCoroutine(buffTurnContent, duration));
+                StartCoroutine(TypingCoroutine(buffTurnContent, duration, false));
             }
             else
             {
@@ -48,7 +49,7 @@ namespace Assets.Scripts.UI
             }
         }
 
-        private IEnumerator TypingCoroutine(string text, float duration)
+        private IEnumerator TypingCoroutine(string text, float duration, bool isPlayerTurn = true)
         {
             float perCharTime = duration / text.Length;
             string result = string.Empty;
@@ -59,6 +60,13 @@ namespace Assets.Scripts.UI
                 areaText.text = result;
 
                 yield return new WaitForSeconds(perCharTime);
+            }
+
+            if (!isPlayerTurn)
+            {
+                TurnChangeCallingEvent evt = TurnEvents.TurnChangeCallingEvent;
+                evt.nextTurn = "ENEMY";
+                turnChangeChannel.RaiseEvent(evt);
             }
 
             yield return null;

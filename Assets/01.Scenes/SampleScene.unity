@@ -505,8 +505,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerTurnContent: "* \uAC00\uB3D9\uD560 \uD504\uB85C\uD1A0\uCF5C\uC744 \uC120\uD0DD\uD558\uC138\uC694."
-  healTurnContent: 
-  buffTurnContent: 
+  healTurnContent: "* \uD68C\uBCF5 \uD504\uB85C\uD1A0\uCF5C \uAC00\uB3D9."
+  buffTurnContent: "* \uAC15\uD654 \uD504\uB85C\uD1A0\uCF5C \uAC00\uB3D9."
   duration: 3
   turnChangeChannel: {fileID: 11400000, guid: cbee26c0380d9c745b94e60ad84e18d2, type: 2}
 --- !u!114 &473147599
