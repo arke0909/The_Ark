@@ -21,12 +21,16 @@ namespace Assets.Scripts.Entities
         {
             SetEntityCompoentsAndInitialize();
             AfterInitalize();
+
             turnChangeChannel.AddListner<TurnChangeEvent>(HandleTurnChange);
+            turnChangeChannel.AddListner<PriorityTurnChangeEvent>(HandlePriorityTurnChange);
         }
+
 
         protected virtual void OnDestroy()
         {
             turnChangeChannel.RemoveListner<TurnChangeEvent>(HandleTurnChange);
+            turnChangeChannel.RemoveListner<PriorityTurnChangeEvent>(HandlePriorityTurnChange);
 
             GetCompo<EntityStatComponent>().ClearAllStatModifier();
         }
@@ -59,6 +63,7 @@ namespace Assets.Scripts.Entities
             return default;
         }
 
+        #region TurnChange Section
         protected void HandleTurnChange(TurnChangeEvent evt)
         {
             switch(evt.nextTurn)
@@ -96,7 +101,47 @@ namespace Assets.Scripts.Entities
         { }
         protected virtual void DamageCalcTurn()
         { }
+        #endregion
 
+        #region Priority TurnChange Section
+        private void HandlePriorityTurnChange(PriorityTurnChangeEvent evt)
+        {
+            switch (evt.nextTurn)
+            {
+                case "PLAYER":
+                    PriorityPlayerTurn();
+                    break;
+                case "ENEMY":
+                    PriorityEnemyTurn();
+                    break;
+                case "HEAL":
+                    PriorityHealTurn();
+                    break;
+                case "BUFF":
+                    PriorityBuffTurn();
+                    break;
+                case "INPUT":
+                    PriorityInputTurn();
+                    break;
+                case "DAMAGECALC":
+                    PriorityDamageCalcTurn();
+                    break;
+            }
+        }
 
+        protected virtual void PriorityPlayerTurn()
+        { }
+        protected virtual void PriorityEnemyTurn()
+        { }
+        protected virtual void PriorityHealTurn()
+        { }
+        protected virtual void PriorityBuffTurn()
+        { }
+        protected virtual void PriorityInputTurn()
+        { }
+        protected virtual void PriorityDamageCalcTurn()
+        { }
+
+        #endregion
     }
 }

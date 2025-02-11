@@ -50,7 +50,6 @@ namespace Assets.Scripts.Players
             turnChangeChannel.AddListner<TurnChangeEvent>(HandleTurnChange);
         }
 
-
         private void OnDestroy()
         {
             _player.GetCompo<EntityStatComponent>().GetStat(attack).OnValueChange -= HandleAttackValueChanged;
@@ -98,7 +97,13 @@ namespace Assets.Scripts.Players
                 _currentTime = totalTime;
                 _idx = 0;
                 _currentArrow = _setterCompo.SetCurrentArrow(_idx);
+            }
+            else if(evt.nextTurn == "DAMAGECALC")
+            {
+                AttackEvent atkEvt = CombatEvents.AttackEvent;
+                atkEvt.damage = ConvertDamage(_currentTime);
 
+                attackChannel.RaiseEvent(atkEvt);
             }
         }
 
@@ -143,14 +148,10 @@ namespace Assets.Scripts.Players
         private void DamageCalc()
         {
             TurnChangeCallingEvent callevt = TurnEvents.TurnChangeCallingEvent;
+            callevt.isPriority = false;
             callevt.nextTurn = "DAMAGECALC";
 
             turnChangeChannel.RaiseEvent(callevt);
-
-            AttackEvent atkEvt = CombatEvents.AttackEvent;
-            atkEvt.damage = ConvertDamage(_currentTime);
-
-            attackChannel.RaiseEvent(atkEvt);
         }
 
         public void SetDamageMultiply(float damageMultiply)
