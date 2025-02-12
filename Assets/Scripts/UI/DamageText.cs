@@ -36,7 +36,7 @@ namespace Assets.Scripts.UI
             _text.color = evt.isCritical ? criticalColor : nonCriticalColor;
 
             _sequence = DOTween.Sequence();
-            _sequence.Append( _text.DOFade(0, duration).SetEase(Ease.Linear))
+            _sequence.Append( _text.DOFade(0, duration).SetEase(Ease.InExpo))
                 .Join(transform.DOShakePosition(duration, new Vector2(1,0), 1,0, false, false));
 
         }
