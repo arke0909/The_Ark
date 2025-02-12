@@ -12,6 +12,7 @@ namespace Assets.Scripts.Core.EventChannel.Events
 
     public class AttackEvent : GameEvent
     {
+        public bool isCritical;
         public int damage;
     }
 

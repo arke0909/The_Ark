@@ -26,6 +26,7 @@ namespace Assets.Scripts.Players
         private Arrow _currentArrow;
         private int _currentRepeatCnt;
         private int _idx;
+        private bool _isCritical;
 
         private bool _isCheckTime;
         private float _currentTime;
@@ -102,6 +103,7 @@ namespace Assets.Scripts.Players
             {
                 AttackEvent atkEvt = CombatEvents.AttackEvent;
                 atkEvt.damage = ConvertDamage(_currentTime);
+                atkEvt.isCritical = _isCritical;
 
                 attackChannel.RaiseEvent(atkEvt);
             }
@@ -117,11 +119,11 @@ namespace Assets.Scripts.Players
 
             float damage = (currentTime * randomNumber  / 2) * _attackValue * DamageMultiply;
 
-            bool isCritical = Random.value < (_criticalChanceValue / 100);
-            if (isCritical)
+            _isCritical = Random.value < (_criticalChanceValue / 100);
+            if (_isCritical)
                 damage *= criticalDamageMultiply;
 
-            Debug.Log($"{currentTime * randomNumber  / 2} * {_attackValue} * {DamageMultiply} = {damage} : IsCritical {isCritical}");
+            Debug.Log($"{currentTime * randomNumber  / 2} * {_attackValue} * {DamageMultiply} = {damage} : IsCritical {_isCritical}");
             return currentTime <= 0 ? 0 : (int)damage;
         }
 
