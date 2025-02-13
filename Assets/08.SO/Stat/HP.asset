@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: HP
   m_EditorClassIdentifier: 
   statName: HP
+  displayStatName: HP
   baseValue: 100
   minValue: 1
   maxValue: 99999

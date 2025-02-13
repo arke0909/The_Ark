@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: CriticalChance
   m_EditorClassIdentifier: 
   statName: CriticalChance
+  displayStatName: CRIT Rate
   baseValue: 5
   minValue: 0
   maxValue: 100

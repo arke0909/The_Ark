@@ -12,6 +12,7 @@ namespace Assets.Scripts.Entities.Stats
         public event ValueChangeHandler OnValueChange;
 
         public string statName;
+        public string displayStatName;
 
         [SerializeField] private float baseValue, minValue,  maxValue;
         private Dictionary<string, float> _modifyValueByKey = new Dictionary<string, float>();

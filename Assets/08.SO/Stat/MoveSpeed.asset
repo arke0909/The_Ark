@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: MoveSpeed
   m_EditorClassIdentifier: 
   statName: MoveSpeed
+  displayStatName: MSPD
   baseValue: 5
   minValue: 1
   maxValue: 15
