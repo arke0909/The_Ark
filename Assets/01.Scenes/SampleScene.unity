@@ -2640,11 +2640,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4050135472960427667, guid: 77d14b7a9f3c4af4bbcb411d4592ba9d, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 62
+      value: 235
       objectReference: {fileID: 0}
     - target: {fileID: 5452902857762463776, guid: 77d14b7a9f3c4af4bbcb411d4592ba9d, type: 3}
       propertyPath: m_Spacing
-      value: 200
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 7708102764356452185, guid: 77d14b7a9f3c4af4bbcb411d4592ba9d, type: 3}
       propertyPath: m_Pivot.x

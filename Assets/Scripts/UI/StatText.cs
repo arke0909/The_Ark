@@ -15,9 +15,6 @@ public class StatText : MonoBehaviour
     private void Awake()
     {
         text = GetComponent<TextMeshProUGUI>();
-
-        stat = playerFinder.entity.GetCompo<EntityStatComponent>().GetStat(statSO);
-        stat.OnValueChange += HandleStatValueChanged;
     }
 
     private void OnDestroy()
@@ -26,6 +23,8 @@ public class StatText : MonoBehaviour
     }
     private void Start()
     {
+        stat = playerFinder.entity.GetCompo<EntityStatComponent>().GetStat(statSO);
+        stat.OnValueChange += HandleStatValueChanged;
         text.text = $"{stat.displayStatName} : {stat.BaseValue.ToString()}";
     }
     private void HandleStatValueChanged(StatSO stat, float currentValue, float prevValue)
