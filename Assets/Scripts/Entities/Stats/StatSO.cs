@@ -79,7 +79,7 @@ namespace Assets.Scripts.Entities.Stats
         }
 
 
-        private void TryInvokeChangedEvent(float currnetValue, float prevValue)
+        public void TryInvokeChangedEvent(float currnetValue, float prevValue)
         {
             if(Mathf.Approximately(currnetValue, prevValue) == false)
             {

@@ -23,15 +23,6 @@ namespace Assets.Scripts.Entities.Stats
             return _stats.FirstOrDefault(x => x.statName == stat.statName);
         }
 
-        private void Update()
-        {
-            if(Keyboard.current.digit1Key.wasPressedThisFrame)
-            {
-                foreach (StatSO stat in _stats)
-                    Debug.Log($"{stat.name} : {stat.Value}");
-            }
-        }
-
         public void AddModifier(StatSO stat, string key, float value)
             => GetStat(stat).AddModifier(key, value);
         public void RemoveModifier(StatSO stat, string key)

@@ -50,8 +50,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: feeaf4787f8902744af31025a210fdb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  uiChannel: {fileID: 11400000, guid: f7bbf08f46c57844e9967cf2cbb699c2, type: 2}
   playerFinder: {fileID: 11400000, guid: 23e17a3a4d1d5894f8fa737d0d00f6b6, type: 2}
   statSO: {fileID: 0}
+  aditionalText: 
 --- !u!222 &4304748592279309545
 CanvasRenderer:
   m_ObjectHideFlags: 0
