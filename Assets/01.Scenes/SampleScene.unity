@@ -2833,6 +2833,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5698820048933990000, guid: 290204e2e8e9ba042848ad936e90fc66, type: 3}
+      propertyPath: poolChannel
+      value: 
+      objectReference: {fileID: 11400000, guid: d53dbf3475df90c4c9b0a574ee0663a7, type: 2}
     - target: {fileID: 8616597991817923533, guid: 290204e2e8e9ba042848ad936e90fc66, type: 3}
       propertyPath: m_Name
       value: Player
