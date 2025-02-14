@@ -23,6 +23,7 @@ namespace Assets.Scripts.Players.Act
 
             turnChangeChannel.RaiseEvent(evt);
 
+            OnEffect?.Invoke();
             _playerHealth.ApplyHeal(healValue);
         }
     }

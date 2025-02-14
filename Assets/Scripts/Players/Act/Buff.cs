@@ -12,7 +12,6 @@ namespace Assets.Scripts.Players.Act
         [SerializeField] private float criticalChanceUpgradeValue;
 
         private EntityStatComponent entityStat;
-
         private int buffIndex = 0;
 
         public override void Initialize()
@@ -33,6 +32,7 @@ namespace Assets.Scripts.Players.Act
             evt.nextTurn = "BUFF";
 
             turnChangeChannel.RaiseEvent(evt);
+            OnEffect?.Invoke();
         }
     }
 }

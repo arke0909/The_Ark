@@ -4,6 +4,7 @@ using Assets.Scripts.Players.Act;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ActSelector : MonoBehaviour
 {
@@ -19,6 +20,9 @@ public class ActSelector : MonoBehaviour
     private int _currentX = 0;
     private int _currentY = 0;
     private bool _canSelect = true;
+
+    public UnityEvent OnChangeSelect;
+    public UnityEvent OnSelect;
 
     private void Awake()
     {
@@ -79,11 +83,14 @@ public class ActSelector : MonoBehaviour
         currentAct?.OffSelect();
         currentAct = acts[(_currentX, _currentY)];
         currentAct.OnSelct();
+
+        OnChangeSelect?.Invoke();
     }
 
     private void UseAct()
     {
         _canSelect = false;
         currentAct.ActEffect();
+        OnSelect?.Invoke();
     }
 }

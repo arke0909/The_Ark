@@ -29,6 +29,7 @@ namespace Assets.Scripts.Players.Act
 
             turnChangeChannel.RaiseEvent(evt);
             playerAttackCompo.SetDamageMultiply(damageMultiply);
+            OnEffect?.Invoke();
         }
     }
 }

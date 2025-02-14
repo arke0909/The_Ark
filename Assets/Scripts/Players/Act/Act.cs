@@ -2,6 +2,7 @@ using Assets.Scripts.Core.EventChannel;
 using Assets.Scripts.Entities;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace Assets.Scripts.Players.Act
@@ -14,6 +15,8 @@ namespace Assets.Scripts.Players.Act
 
         private Image activeImage;
         private TextMeshProUGUI actText;
+
+        public UnityEvent OnEffect;
 
         public int x;
         public int y;
