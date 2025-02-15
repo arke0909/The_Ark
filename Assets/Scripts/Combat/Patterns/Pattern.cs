@@ -21,7 +21,6 @@ namespace Assets.Scripts.Combat.Patterns
 
         public Vector2 areaSize;
         public float attackTime = 5.5f;
-        public Bullet bulletPrefab;
 
         public void InitPattern(Enemy enemy, GameEventChannel poolChannel, PatternComponent patternComponent)
         {
