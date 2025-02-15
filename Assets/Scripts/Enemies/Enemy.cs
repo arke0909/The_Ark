@@ -18,8 +18,6 @@ namespace Assets.Scripts.Enemies
 
         private Dictionary<Type, IEnemyComponent> _enemyComponents = new Dictionary<Type, IEnemyComponent>();
 
-        public UnityEvent OnHit;
-
         protected override void Awake()
         {
             base.Awake();

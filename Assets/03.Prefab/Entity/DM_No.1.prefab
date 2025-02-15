@@ -116,7 +116,6 @@ MonoBehaviour:
   _damageMultiply: 0.6
   areaSize: {x: 6, y: 4}
   attackTime: 5.5
-  bulletPrefab: {fileID: 5062867524870107985, guid: f1c6ecae08dc179488d1753c8f6ff1bf, type: 3}
   bulletCount: 5
   angle: 90
   deleay: 0.5
@@ -130,6 +129,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5472199374214404745}
   - component: {fileID: 6072602747956037388}
+  - component: {fileID: 7411574551465883797}
   m_Layer: 0
   m_Name: Feedback
   m_TagString: Untagged
@@ -167,6 +167,20 @@ MonoBehaviour:
   enemyTrm: {fileID: 8931942801642117383}
   duration: 1
   strength: 0.8
+--- !u!114 &7411574551465883797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2299822182822350196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c984ef3f96aac44e91231b8a2f820d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  poolChannel: {fileID: 11400000, guid: d53dbf3475df90c4c9b0a574ee0663a7, type: 2}
+  soundData: {fileID: 0}
 --- !u!1 &2517013641628220882
 GameObject:
   m_ObjectHideFlags: 0
@@ -376,6 +390,58 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4432953535079465046}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5175123588944454016
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6247093991342795681}
+  - component: {fileID: 3654290152172620095}
+  m_Layer: 0
+  m_Name: ShotToOriginPattern
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6247093991342795681
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5175123588944454016}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -4.2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 3886086830986165265}
+  m_Father: {fileID: 5955716109363529752}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3654290152172620095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5175123588944454016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a40b09e4f5ebbf4d99382042c49f901, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firePosTrm:
+  - {fileID: 3886086830986165265}
+  _damageMultiply: 0.8
+  areaSize: {x: 6, y: 4}
+  attackTime: 5.5
+  bulletCount: 10
+  rotateDuration: 5
 --- !u!1 &5348245270406060441
 GameObject:
   m_ObjectHideFlags: 0
@@ -596,6 +662,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8651776061231875225}
+  - {fileID: 6247093991342795681}
   m_Father: {fileID: 1162767057557713498}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6070038272318628717
@@ -820,6 +887,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &9049870893847895633
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3886086830986165265}
+  m_Layer: 0
+  m_Name: FirePos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3886086830986165265
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9049870893847895633}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6247093991342795681}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &7132398623857785572
 PrefabInstance:
   m_ObjectHideFlags: 0
