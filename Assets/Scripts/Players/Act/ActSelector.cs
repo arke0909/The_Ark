@@ -40,6 +40,7 @@ public class ActSelector : MonoBehaviour
         playerInput.SelectEvent += UseAct;
 
         acts.Values.ToList().ForEach(act => act.OffSelect());
+
         ActSelect((0, 0));
     }
 
@@ -80,11 +81,12 @@ public class ActSelector : MonoBehaviour
         _currentX = x;
         _currentY = y;
 
+        if (currentAct != null)
+            OnChangeSelect?.Invoke();
+
         currentAct?.OffSelect();
         currentAct = acts[(_currentX, _currentY)];
         currentAct.OnSelct();
-
-        OnChangeSelect?.Invoke();
     }
 
     private void UseAct()
