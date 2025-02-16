@@ -20,9 +20,6 @@ TextureImporter:
   - first:
       213: -1727099591339626916
     second: Emission_5
-  - first:
-      213: -2176177522400899671
-    second: Emission_6
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -55,16 +52,16 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
-    wrapU: 1
-    wrapV: 1
-    wrapW: 1
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -135,9 +132,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 1376
-        width: 19
-        height: 85
+        y: 217
+        width: 47
+        height: 536
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -156,10 +153,10 @@ TextureImporter:
       name: Emission_1
       rect:
         serializedVersion: 2
-        x: 31
-        y: 1277
-        width: 21
-        height: 118
+        x: 314
+        y: 526
+        width: 56
+        height: 236
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -178,10 +175,10 @@ TextureImporter:
       name: Emission_2
       rect:
         serializedVersion: 2
-        x: 79
-        y: 74
-        width: 252
-        height: 1526
+        x: 599
+        y: 282
+        width: 51
+        height: 297
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -200,10 +197,10 @@ TextureImporter:
       name: Emission_3
       rect:
         serializedVersion: 2
-        x: 329
-        y: 417
-        width: 235
-        height: 1183
+        x: 192
+        y: 74
+        width: 60
+        height: 397
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -222,10 +219,10 @@ TextureImporter:
       name: Emission_4
       rect:
         serializedVersion: 2
-        x: 566
-        y: 73
-        width: 556
-        height: 1527
+        x: 452
+        y: 310
+        width: 45
+        height: 74
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -244,10 +241,10 @@ TextureImporter:
       name: Emission_5
       rect:
         serializedVersion: 2
-        x: 1120
+        x: 401
         y: 0
-        width: 475
-        height: 1600
+        width: 49
+        height: 172
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -262,33 +259,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: Emission_6
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 670
-        width: 80
-        height: 589
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 9adca11c21aacc1e0800000000000000
-      internalID: -2176177522400899671
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -297,7 +272,13 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Emission_0: 314895679393478442
+      Emission_1: -7947982404675349973
+      Emission_2: -7539916654002250483
+      Emission_3: -2732386470356990743
+      Emission_4: -5981803034501121140
+      Emission_5: -1727099591339626916
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

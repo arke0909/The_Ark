@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: HealthBarMat
-  m_Shader: {fileID: -6465566751694194690, guid: ba37e665dec72054faacf715eb1638dc, type: 3}
+  m_Name: FadeMat
+  m_Shader: {fileID: -6465566751694194690, guid: 844152a0b65d89b468ce555fcfff6545, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -23,6 +23,14 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _01Text:
+        m_Texture: {fileID: 2800000, guid: 94d1a2f677f235848878354b25c648ad, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Emission:
+        m_Texture: {fileID: 2800000, guid: 68206c22d01ec8748b86b18aebacd8c9, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -42,7 +50,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _ColorMask: 15
-    - _Roatation: -30
+    - _ScrollSpeed: 0.05
     - _Stencil: 0
     - _StencilComp: 8
     - _StencilOp: 0
@@ -52,6 +60,7 @@ Material:
     - _UIMaskSoftnessY: 1
     m_Colors:
     - _ClipRect: {r: 0, g: 0, b: 0, a: 0}
-    - _Color: {r: 1, g: 0, b: 0, a: 1}
+    - _Color: {r: 2, g: 0, b: 0, a: 1}
+    - _TilingValue: {r: 1, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
