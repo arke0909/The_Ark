@@ -1364,6 +1364,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 829966659}
+  - component: {fileID: 829966660}
   m_Layer: 0
   m_Name: FadeImage
   m_TagString: Untagged
@@ -1392,6 +1393,21 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -540}
   m_SizeDelta: {x: 0, y: -1080}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &829966660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 829966658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 034632c23481dc746bf9f4d3611721df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeChannel: {fileID: 11400000, guid: f08ae2333c6d29243ba2525f10a5f758, type: 2}
+  uiChannel: {fileID: 11400000, guid: f7bbf08f46c57844e9967cf2cbb699c2, type: 2}
+  duration: 1
 --- !u!1 &881436508
 GameObject:
   m_ObjectHideFlags: 0

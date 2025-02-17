@@ -91,7 +91,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <TurnChangeChannel>k__BackingField: {fileID: 11400000, guid: cbee26c0380d9c745b94e60ad84e18d2, type: 2}
-  stateList: {fileID: 11400000, guid: dae9e9d441568a14e897d504ab28d8d6, type: 2}
 --- !u!1 &4646480972133679431
 GameObject:
   m_ObjectHideFlags: 0
@@ -123,7 +122,6 @@ Transform:
   m_Children:
   - {fileID: 846145363948859080}
   - {fileID: 4996879718129179987}
-  - {fileID: 505737567311099369}
   - {fileID: 5071344237552303524}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -171,77 +169,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 060792d2b5978874c9dc418f907cf03c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fadeChannel: {fileID: 11400000, guid: f08ae2333c6d29243ba2525f10a5f758, type: 2}
   playerFinder: {fileID: 11400000, guid: 23e17a3a4d1d5894f8fa737d0d00f6b6, type: 2}
   enemyFinder: {fileID: 11400000, guid: 910c7a313e70ce040a3e9ca0ebcaa3c8, type: 2}
---- !u!1 &8139496135161167765
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 505737567311099369}
-  - component: {fileID: 484969296255645271}
-  - component: {fileID: 3520844340707257420}
-  m_Layer: 0
-  m_Name: ArrowSystem
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &505737567311099369
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8139496135161167765}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 7866126021993417701}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &484969296255645271
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8139496135161167765}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0580ae474c10424cb35d39f4298a26f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  totalRepeatCnt: 2
-  totalTime: 0
-  arrowCheckChannel: {fileID: 11400000, guid: eebe65fef960775428db45766bf268bd, type: 2}
-  turnChangeChannel: {fileID: 11400000, guid: cbee26c0380d9c745b94e60ad84e18d2, type: 2}
-  attackChannel: {fileID: 11400000, guid: ac14975a5566f2c429fbd5bbbb04bba3, type: 2}
---- !u!114 &3520844340707257420
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8139496135161167765}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89552c0876084446a0d65b1f9516240f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  arrowHolder: {fileID: 0}
-  arrowBack: {fileID: 0}
-  setArrowEvent: {fileID: 11400000, guid: d4651c7301d43654a8acc7de9def88f6, type: 2}
-  arrowSpriteList:
-  - {fileID: 356519396, guid: 266570cdc07e2344abb0096535544025, type: 3}
-  - {fileID: -1135250896, guid: 266570cdc07e2344abb0096535544025, type: 3}
-  - {fileID: 1228589079, guid: 266570cdc07e2344abb0096535544025, type: 3}
-  - {fileID: -241607317, guid: 266570cdc07e2344abb0096535544025, type: 3}
-  scaleDuration: 0.5
-  fadeDuration: 0.2
