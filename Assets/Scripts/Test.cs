@@ -8,7 +8,7 @@ public class Test : MonoBehaviour
 
     private void Update()
     {
-        if(Keyboard.current.wasUpdatedThisFrame)
+        if(Keyboard.current.digit1Key.wasPressedThisFrame)
         {
             fadeChannel.RaiseEvent(true);
         }

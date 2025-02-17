@@ -28,17 +28,20 @@ public class ActSelector : MonoBehaviour
     {
         _canvasGroup = GetComponent<CanvasGroup>();
 
+        uiChannel.AddListner<AreaEvent>(HandleAreaEvent);
+        turnChannel.AddListner<TurnChangeEvent>(HandleTurnChange);
+        playerInput.PlayerTurnInputEvent += ActSelect;
+        playerInput.SelectEvent += UseAct;
+    }
+
+    private void Start()
+    {
         GetComponentsInChildren<Act>().ToList().ForEach(act =>
         {
             act.Initialize();
             acts.Add((act.x, act.y), act);
         });
-
-        uiChannel.AddListner<AreaEvent>(HandleAreaEvent);
-        turnChannel.AddListner<TurnChangeEvent>(HandleTurnChange);
-        playerInput.PlayerTurnInputEvent += ActSelect;
-        playerInput.SelectEvent += UseAct;
-
+        
         acts.Values.ToList().ForEach(act => act.OffSelect());
 
         ActSelect((0, 0));
