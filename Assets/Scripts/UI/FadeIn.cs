@@ -1,6 +1,7 @@
 ﻿using Assets.Scripts.Core.EventChannel;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Assets.Scripts.UI
 {
@@ -9,6 +10,7 @@ namespace Assets.Scripts.UI
         [SerializeField] private BoolEventChannel fadeChannel;
         [SerializeField] private GameEventChannel uiChannel;
         [SerializeField] private float duration;
+        [SerializeField] private string sceneName;
 
         private void Awake()
         {
@@ -34,7 +36,11 @@ namespace Assets.Scripts.UI
             Vector3 endPos = new Vector2(0, endValue);
 
             DOTween.To(() => rectTrm.localPosition, pos => rectTrm.localPosition = pos, endPos, duration).SetEase(Ease.Linear)
-                .OnComplete(() => Debug.Log(rectTrm.localPosition));
+                .OnComplete(() => 
+                {
+                    if(isFadein)
+                        SceneManager.LoadScene(sceneName);
+                });
         }
     }
 }
