@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39aa4f34928edd24391fe99dcbd7ddca, type: 3}
   m_Name: ShotDown
   m_EditorClassIdentifier: 
-  poolName: 
-  prefab: {fileID: 0}
-  count: 0
+  poolName: ShotToDown
+  prefab: {fileID: 6335861708738757999, guid: 11b7368fe34414b44918f41a52853233, type: 3}
+  count: 1

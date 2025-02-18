@@ -1,14 +1,15 @@
 ﻿using Assets.Scripts.Combat.Bullets;
-using System.Collections;
 using UnityEngine;
 
 namespace Assets.Scripts.Combat.Patterns
 {
-    public class ShotDownPattern : Pattern
+    public class ParticleBulletPattern : Pattern
     {
+        [SerializeField] private string poolName;
+
         public override void UsePattern()
         {
-            ParticleBullet particleBullet = Pop("ShotToDown") as ParticleBullet;
+            ParticleBullet particleBullet = Pop(poolName) as ParticleBullet;
 
             particleBullet.Init(_damage, firePosTrm[0].position);
         }
