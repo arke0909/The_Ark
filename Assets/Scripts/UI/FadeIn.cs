@@ -8,7 +8,7 @@ namespace Assets.Scripts.UI
     public class FadeIn : MonoBehaviour
     {
         [SerializeField] private BoolEventChannel fadeChannel;
-        [SerializeField] private GameEventChannel uiChannel;
+        [SerializeField] private BoolEventChannel activeChannel;
         [SerializeField] private float duration;
         [SerializeField] private string sceneName;
 
@@ -40,6 +40,8 @@ namespace Assets.Scripts.UI
                 {
                     if(isFadein)
                         SceneManager.LoadScene(sceneName);
+                    else
+                        activeChannel.RaiseEvent(true);
                 });
         }
     }
