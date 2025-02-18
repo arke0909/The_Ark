@@ -48,8 +48,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1577202681528762046, guid: 7efd43a056b470744a64be4eaf9dae08, type: 3}
+      propertyPath: poolName
+      value: ShotToDown
+      objectReference: {fileID: 0}
+    - target: {fileID: 1577202681528762046, guid: 7efd43a056b470744a64be4eaf9dae08, type: 3}
+      propertyPath: poolChannel
+      value: 
+      objectReference: {fileID: 11400000, guid: d53dbf3475df90c4c9b0a574ee0663a7, type: 2}
     - target: {fileID: 1855888622799662934, guid: 7efd43a056b470744a64be4eaf9dae08, type: 3}
       propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1855888622799662934, guid: 7efd43a056b470744a64be4eaf9dae08, type: 3}
+      propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1855888622799662934, guid: 7efd43a056b470744a64be4eaf9dae08, type: 3}
@@ -70,7 +82,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6429930427288456469, guid: 7efd43a056b470744a64be4eaf9dae08, type: 3}
       propertyPath: m_Name
-      value: ParticleBullet Variant
+      value: ShotDownParticleBullet
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
