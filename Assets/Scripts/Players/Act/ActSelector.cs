@@ -1,6 +1,7 @@
 using Assets.Scripts.Core.EventChannel;
 using Assets.Scripts.Core.EventChannel.Events;
 using Assets.Scripts.Players.Act;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -11,6 +12,7 @@ public class ActSelector : MonoBehaviour
     [SerializeField] private InputReader playerInput;
     [SerializeField] private GameEventChannel turnChannel;
     [SerializeField] private GameEventChannel uiChannel;
+    [SerializeField] private BoolEventChannel activeChannel;
 
     private CanvasGroup _canvasGroup;
 
@@ -19,7 +21,7 @@ public class ActSelector : MonoBehaviour
 
     private int _currentX = 0;
     private int _currentY = 0;
-    private bool _canSelect = true;
+    private bool _canSelect = false;
 
     public UnityEvent OnChangeSelect;
     public UnityEvent OnSelect;
@@ -30,6 +32,7 @@ public class ActSelector : MonoBehaviour
 
         uiChannel.AddListner<AreaEvent>(HandleAreaEvent);
         turnChannel.AddListner<TurnChangeEvent>(HandleTurnChange);
+        activeChannel.ValueEvent += HandleValueChange;
         playerInput.PlayerTurnInputEvent += ActSelect;
         playerInput.SelectEvent += UseAct;
     }
@@ -52,8 +55,14 @@ public class ActSelector : MonoBehaviour
     {
         uiChannel.RemoveListner<AreaEvent>(HandleAreaEvent);
         turnChannel.RemoveListner<TurnChangeEvent>(HandleTurnChange);
+        activeChannel.ValueEvent -= HandleValueChange;
         playerInput.PlayerTurnInputEvent -= ActSelect;
         playerInput.SelectEvent -= UseAct;
+    }
+
+    private void HandleValueChange(bool value)
+    {
+        _canSelect = value;
     }
 
     private void HandleAreaEvent(AreaEvent evt)
@@ -94,6 +103,8 @@ public class ActSelector : MonoBehaviour
 
     private void UseAct()
     {
+        if(!_canSelect) return;
+
         _canSelect = false;
         currentAct.ActEffect();
         OnSelect?.Invoke();
