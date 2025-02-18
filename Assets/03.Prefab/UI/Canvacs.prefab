@@ -126,6 +126,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FadeCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 7485150138087800975, guid: 04825b73add3808429b87709d74cb2ee, type: 3}
+      propertyPath: activeChannel
+      value: 
+      objectReference: {fileID: 11400000, guid: 02b39b3ad3548db4f99976466bc859a8, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -366,6 +370,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6057435449665716525, guid: 7c1ca5cb3bb196745a99f572aa2f5027, type: 3}
+      propertyPath: activeChannel
+      value: 
+      objectReference: {fileID: 11400000, guid: 02b39b3ad3548db4f99976466bc859a8, type: 2}
     - target: {fileID: 7833541419538433642, guid: 7c1ca5cb3bb196745a99f572aa2f5027, type: 3}
       propertyPath: m_Name
       value: AreaCanvas
