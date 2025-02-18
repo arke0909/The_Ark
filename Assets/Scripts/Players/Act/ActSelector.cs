@@ -14,10 +14,11 @@ public class ActSelector : MonoBehaviour
     [SerializeField] private GameEventChannel uiChannel;
     [SerializeField] private BoolEventChannel activeChannel;
 
+    [SerializeField] private Act currentAct;
+
     private CanvasGroup _canvasGroup;
 
     private Dictionary<(int x, int y), Act> acts = new Dictionary<(int, int), Act>();
-    private Act currentAct;
 
     private int _currentX = 0;
     private int _currentY = 0;
@@ -29,6 +30,7 @@ public class ActSelector : MonoBehaviour
     private void Awake()
     {
         _canvasGroup = GetComponent<CanvasGroup>();
+
 
         uiChannel.AddListner<AreaEvent>(HandleAreaEvent);
         turnChannel.AddListner<TurnChangeEvent>(HandleTurnChange);
@@ -47,7 +49,10 @@ public class ActSelector : MonoBehaviour
         
         acts.Values.ToList().ForEach(act => act.OffSelect());
 
-        ActSelect((0, 0));
+        _currentX = currentAct.x;
+        _currentY = currentAct.y;
+
+        currentAct.OnSelct();
     }
 
 
