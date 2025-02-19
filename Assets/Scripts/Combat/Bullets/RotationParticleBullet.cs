@@ -1,5 +1,4 @@
 ﻿using DG.Tweening;
-using System.Collections;
 using UnityEngine;
 
 namespace Assets.Scripts.Combat.Bullets
@@ -15,6 +14,13 @@ namespace Assets.Scripts.Combat.Bullets
             bool isRight = Random.value <= 50;
             int rotateAbs = isRight ? -1 : 1;
             transform.DORotate(new Vector3(0, 0, rotateAbs * 360), duration, RotateMode.FastBeyond360).SetEase(Ease.Linear).SetLoops(-1);   
+        }
+
+        protected override void Push()
+        {
+            transform.DOKill();
+
+            base.Push();
         }
     }
 }
