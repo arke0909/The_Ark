@@ -9,9 +9,12 @@ namespace Assets.Scripts.Combat.Patterns
 
         public override void UsePattern()
         {
-            ParticleBullet particleBullet = Pop(poolName) as ParticleBullet;
+            foreach (Transform firePos in firePosTrm)
+            {
+                ParticleBullet particleBullet = Pop(poolName) as ParticleBullet;
 
-            particleBullet.Init(_damage, firePosTrm[0].position);
+                particleBullet.Init(_damage, firePos.position);
+            }
         }
     }
 }
