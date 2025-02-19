@@ -24,7 +24,7 @@ namespace Assets.Scripts.Combat.Bullets
             _particle = GetComponent<ParticleSystem>();
         }
 
-        public void Init(float damage, Vector2 position)
+        public virtual void Init(float damage, Vector2 position)
         {
             transform.position = position;
 
