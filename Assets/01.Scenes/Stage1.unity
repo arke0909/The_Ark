@@ -477,9 +477,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1725430666953065314, guid: e18efc0e254be5149b73fc1fc7382deb, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2999001616646669882, guid: e18efc0e254be5149b73fc1fc7382deb, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3473599909730330885, guid: e18efc0e254be5149b73fc1fc7382deb, type: 3}
       propertyPath: m_Name
       value: DM_No.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5175123588944454016, guid: e18efc0e254be5149b73fc1fc7382deb, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8561478361823924695, guid: e18efc0e254be5149b73fc1fc7382deb, type: 3}
       propertyPath: poolName

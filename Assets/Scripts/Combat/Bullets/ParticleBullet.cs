@@ -51,7 +51,7 @@ namespace Assets.Scripts.Combat.Bullets
             _damage = 0;
         }
 
-        private void Push()
+        protected virtual void Push()
         {
             PoolPushEvent evt = CoreEvents.PoolPushEvent;
             evt.poolable = this;
