@@ -16,15 +16,15 @@ namespace Assets.Scripts.Combat.Patterns
 
         private IEnumerator PatternCoroutine()
         {
-            Vector2 dir = Vector2.zero;
-            dir.x = Random.value > 50 ? 1 : -1;
-
             for (int i = 0; i < bulletCount; i++)
             {
                 foreach (Transform firePos in firePosTrm)
                 {
-                    CurveBullet curveBullet = Pop("CurveBullet") as CurveBullet;
-                    curveBullet.InitBullet(firePos.position, dir, _damage);
+                    CurveBullet LCurveBullet = Pop("CurveBullet") as CurveBullet;
+                    LCurveBullet.InitBullet(firePos.position, Vector2.left, _damage, sizeMultiply);
+
+                    CurveBullet RCurveBullet = Pop("CurveBullet") as CurveBullet;
+                    RCurveBullet.InitBullet(firePos.position, Vector2.right, _damage, sizeMultiply);
                 }
 
                 yield return new WaitForSeconds(delay);
