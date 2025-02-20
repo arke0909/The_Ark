@@ -325,6 +325,21 @@ MonoBehaviour:
   turnChangeChannel: {fileID: 11400000, guid: cbee26c0380d9c745b94e60ad84e18d2, type: 2}
   <InputCompo>k__BackingField: {fileID: 11400000, guid: 805884eb54a0bc54dbd5ee8e9c59073d, type: 2}
   arrowCheckChannel: {fileID: 11400000, guid: eebe65fef960775428db45766bf268bd, type: 2}
+  FeedbackFinishEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6290278618566990156}
+        m_TargetAssemblyTypeName: Assets.Scripts.Feedbacks.BlinkFeedback, Assembly-CSharp
+        m_MethodName: FinishFeedback
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &4459543979401727318
 MonoBehaviour:
   m_ObjectHideFlags: 0

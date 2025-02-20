@@ -5,6 +5,7 @@ using Assets.Scripts.Core.EventChannel;
 using Assets.Scripts.Entities;
 using Scripts.Players;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Assets.Scripts.Players
 {
@@ -17,6 +18,8 @@ namespace Assets.Scripts.Players
         private Dictionary<Type, IPlayerComponent> _playerComponents;
 
         private Vector2 _originPos;
+
+        public UnityEvent FeedbackFinishEvent;
 
         #region Init Section
         protected override void Awake()
@@ -66,6 +69,8 @@ namespace Assets.Scripts.Players
 
         protected override void PlayerTurn()
         {
+            FeedbackFinishEvent?.Invoke();
+
             InputCompo.TurnChange(true);
             GetPlayerCompo<PlayerRenderer>().FadeWithTurn(true);
         }
