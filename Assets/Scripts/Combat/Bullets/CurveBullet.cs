@@ -14,13 +14,14 @@ namespace Assets.Scripts.Combat.Bullets
             _rigidCompo = GetComponent<Rigidbody2D>();
         }
 
-        public override void InitBullet(Vector2 position, Vector2 dir, float damage)
+        public override void InitBullet(Vector2 position, Vector2 dir, float damage, float sizeMultiply)
         {
             _damage = damage;
 
+            transform.localScale *= sizeMultiply;
             transform.position = position;
 
-            curvePower *= Mathf.Abs(dir.x);
+            curvePower *= Mathf.Sign(dir.x);
         }
 
         void FixedUpdate()
