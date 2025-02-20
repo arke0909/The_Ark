@@ -12,7 +12,8 @@ namespace Assets.Scripts.Combat.Patterns
     public abstract class Pattern : MonoBehaviour
     {
         [SerializeField] protected List<Transform> firePosTrm = new List<Transform>();
-        [SerializeField] private float _damageMultiply;
+        [SerializeField] protected float sizeMultiply = 1;
+        [SerializeField] private float damageMultiply;
 
         protected Enemy _enemy;
         protected GameEventChannel _poolChannel;
@@ -27,7 +28,7 @@ namespace Assets.Scripts.Combat.Patterns
             _enemy = enemy;
             _poolChannel = poolChannel;
             _patternComponent = patternComponent;
-            _damage = enemy.GetCompo<EntityStatComponent>().GetStat(patternComponent.Attack).BaseValue * _damageMultiply;
+            _damage = enemy.GetCompo<EntityStatComponent>().GetStat(patternComponent.Attack).BaseValue * damageMultiply;
         }
 
         public IPoolable Pop(string poolName)
