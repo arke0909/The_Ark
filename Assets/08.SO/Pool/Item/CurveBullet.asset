@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39aa4f34928edd24391fe99dcbd7ddca, type: 3}
   m_Name: CurveBullet
   m_EditorClassIdentifier: 
-  poolName: SoundPlayer
-  prefab: {fileID: 9071984627393461201, guid: 57361902b882c844c9636105ec176a96, type: 3}
-  count: 3
+  poolName: CurveBullet
+  prefab: {fileID: 4325950911691641562, guid: ab3372e17268c8a47bd369d65172f6a8, type: 3}
+  count: 30

@@ -82,6 +82,7 @@ MonoBehaviour:
   speed: 5
   lifeTime: 15
   poolName: CurveBullet
+  curvePower: 2
   speedCurve:
     serializedVersion: 2
     m_Curve:
