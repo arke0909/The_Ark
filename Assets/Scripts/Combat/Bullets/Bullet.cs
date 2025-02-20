@@ -9,26 +9,26 @@ namespace Assets.Scripts.Combat.Bullets
 {
     public class Bullet : MonoBehaviour, IPoolable
     {
-        [SerializeField] private GameEventChannel poolChannel;
-        [SerializeField] private float speed;
-        [SerializeField] private float lifeTime;
-        [SerializeField] private string poolName;
+        [SerializeField] protected GameEventChannel poolChannel;
+        [SerializeField] protected float speed;
+        [SerializeField] protected float lifeTime;
+        [SerializeField] protected string poolName;
 
-        private float _currentLifeTime = 0;
-        private float _damage;
+        protected float _currentLifeTime = 0;
+        protected float _damage;
 
-        private Rigidbody2D rigidCompo;
+        protected Rigidbody2D rigidCompo;
 
         public GameObject PoolObject => gameObject;
 
         public string PoolName => poolName;
 
-        private void Awake()
+        protected virtual void Awake()
         {
             rigidCompo = GetComponent<Rigidbody2D>();
         }
 
-        private void Update()
+        protected virtual void Update()
         {
             _currentLifeTime += Time.deltaTime;
             
@@ -36,7 +36,7 @@ namespace Assets.Scripts.Combat.Bullets
                 Push();
         }
 
-        public void InitBullet(Vector2 position ,Vector2 dir, float damage)
+        public virtual void InitBullet(Vector2 position ,Vector2 dir, float damage)
         {
             _damage = damage;
 
@@ -45,7 +45,7 @@ namespace Assets.Scripts.Combat.Bullets
             rigidCompo.linearVelocity = transform.right * speed;
         }
 
-        private void OnTriggerEnter2D(Collider2D collision)
+        protected virtual void OnTriggerEnter2D(Collider2D collision)
         {
             if (collision.TryGetComponent(out Player player))
             {
@@ -54,13 +54,13 @@ namespace Assets.Scripts.Combat.Bullets
             }
         }
 
-        public void ResetItem()
+        public virtual void ResetItem()
         {
             _currentLifeTime = 0;
             _damage = 0;
         }
         
-        private void Push()
+        protected virtual void Push()
         {
             PoolPushEvent evt = CoreEvents.PoolPushEvent;
             evt.poolable = this;
