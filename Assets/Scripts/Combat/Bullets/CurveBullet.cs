@@ -25,7 +25,8 @@ namespace Assets.Scripts.Combat.Bullets
 
         void FixedUpdate()
         {
-            _rigidCompo.linearVelocity = new Vector2(speedCurve.Evaluate(_currentLifeTime) * curvePower, Vector2.down.y) * speed;
+            float curveValue = speedCurve.Evaluate(_currentLifeTime);
+            _rigidCompo.linearVelocity = new Vector2(curveValue * curvePower, Vector2.down.y) * speed;
         }
     }
 }
