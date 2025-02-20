@@ -14,6 +14,8 @@ namespace Assets.Scripts.Combat.Bullets
         [SerializeField] protected float lifeTime;
         [SerializeField] protected string poolName;
 
+        protected Vector3 _originSize;
+
         protected float _currentLifeTime = 0;
         protected float _damage;
 
@@ -26,6 +28,7 @@ namespace Assets.Scripts.Combat.Bullets
         protected virtual void Awake()
         {
             rigidCompo = GetComponent<Rigidbody2D>();
+            _originSize = transform.localScale;
         }
 
         protected virtual void Update()
@@ -40,7 +43,7 @@ namespace Assets.Scripts.Combat.Bullets
         {
             _damage = damage;
 
-            transform.localScale *= sizeMultiply;
+            transform.localScale = _originSize * sizeMultiply;
             transform.position = position;
             transform.right = dir.normalized;
             rigidCompo.linearVelocity = transform.right * speed;
