@@ -36,10 +36,11 @@ namespace Assets.Scripts.Combat.Bullets
                 Push();
         }
 
-        public virtual void InitBullet(Vector2 position ,Vector2 dir, float damage)
+        public virtual void InitBullet(Vector2 position ,Vector2 dir, float damage, float sizeMultiply)
         {
             _damage = damage;
 
+            transform.localScale *= sizeMultiply;
             transform.position = position;
             transform.right = dir.normalized;
             rigidCompo.linearVelocity = transform.right * speed;
