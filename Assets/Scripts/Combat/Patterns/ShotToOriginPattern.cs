@@ -26,7 +26,7 @@ namespace Assets.Scripts.Combat.Patterns
             for (int i = 0; i < bulletCount; i++)
             {
                 Bullet bullet = Pop("Bullet") as Bullet;
-                bullet.InitBullet(firePosTrm[0].position, firePosTrm[0].right, _damage);
+                bullet.InitBullet(firePosTrm[0].position, firePosTrm[0].right, _damage, sizeMultiply);
 
                 yield return new WaitForSeconds(spawnTime);
             }
