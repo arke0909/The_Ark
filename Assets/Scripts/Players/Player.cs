@@ -73,8 +73,14 @@ namespace Assets.Scripts.Players
         protected override void EnemyTurn()
         {
             transform.position = _originPos;
-            InputCompo.TurnChange(false);
             GetPlayerCompo<PlayerRenderer>().FadeWithTurn(false);
+            GetPlayerCompo<PlayerMovement>().canManualMove = true;
+        }
+
+        protected override void DamageCalcTurn()
+        {
+            GetPlayerCompo<PlayerMovement>().canManualMove = false;
+            InputCompo.TurnChange(false);
         }
 
         protected override void InputTurn()
