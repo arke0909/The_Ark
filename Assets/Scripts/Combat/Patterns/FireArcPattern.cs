@@ -26,7 +26,7 @@ namespace Assets.Scripts.Combat.Patterns
             foreach (Transform firePos in firePosTrm)
             {
                 Bullet bullet = Pop("Bullet") as Bullet;
-                bullet.InitBullet(firePos.position, Vector2.down, _damage);
+                bullet.InitBullet(firePos.position, Vector2.down, _damage, sizeMultiply);
 
                 for (int i = 1; i <= repeat; i++)
                 {
@@ -39,8 +39,8 @@ namespace Assets.Scripts.Combat.Patterns
                     RBullet.transform.position = firePos.position;
                     LBullet.transform.position = firePos.position;
 
-                    RBullet.InitBullet(firePos.position, RDir, _damage);
-                    LBullet.InitBullet(firePos.position, LDir, _damage);
+                    RBullet.InitBullet(firePos.position, RDir, _damage, sizeMultiply);
+                    LBullet.InitBullet(firePos.position, LDir, _damage, sizeMultiply);
                 }
 
                 yield return new WaitForSeconds(deleay);

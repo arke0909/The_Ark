@@ -48,10 +48,8 @@ MonoBehaviour:
   firePosTrm:
   - {fileID: 2345897947139057887}
   - {fileID: 8820845283086328782}
-  - {fileID: 1689829188269342594}
-  - {fileID: 0}
-  - {fileID: 0}
-  _damageMultiply: 0.6
+  sizeMultiply: 0.5
+  damageMultiply: 0.8
   areaSize: {x: 6, y: 4}
   attackTime: 5.5
   bulletCount: 6
@@ -165,7 +163,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8651776061231875225
 Transform:
   m_ObjectHideFlags: 0
@@ -200,7 +198,8 @@ MonoBehaviour:
   - {fileID: 4808638893217082371}
   - {fileID: 6169692598745693438}
   - {fileID: 1635108565512846519}
-  _damageMultiply: 0.6
+  sizeMultiply: 1
+  damageMultiply: 0
   areaSize: {x: 6, y: 4}
   attackTime: 5.5
   bulletCount: 5
@@ -329,7 +328,7 @@ Transform:
   m_GameObject: {fileID: 2640057095470698767}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5, y: -1, z: 0}
+  m_LocalPosition: {x: -2, y: -1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -366,7 +365,6 @@ Transform:
   m_Children:
   - {fileID: 2345897947139057887}
   - {fileID: 8820845283086328782}
-  - {fileID: 1689829188269342594}
   m_Father: {fileID: 8195122871801525900}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2998982805362018238
@@ -472,7 +470,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2400056259648239374
 Transform:
   m_ObjectHideFlags: 0
@@ -503,10 +501,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firePosTrm:
   - {fileID: 3054482829711385606}
-  _damageMultiply: 0.8
+  sizeMultiply: 1
+  damageMultiply: 0
   areaSize: {x: 12, y: 4}
   attackTime: 5.5
-  poolName: 
+  poolName: ShotToDown
 --- !u!1 &3473599909730330885
 GameObject:
   m_ObjectHideFlags: 0
@@ -615,7 +614,7 @@ Transform:
   m_GameObject: {fileID: 4933735876130457738}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1, z: 0}
+  m_LocalPosition: {x: 2, y: -1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -668,7 +667,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6247093991342795681
 Transform:
   m_ObjectHideFlags: 0
@@ -699,7 +698,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firePosTrm:
   - {fileID: 3886086830986165265}
-  _damageMultiply: 0.8
+  sizeMultiply: 1
+  damageMultiply: 0
   areaSize: {x: 6, y: 4}
   attackTime: 5.5
   bulletCount: 10
@@ -947,37 +947,6 @@ MonoBehaviour:
   poolChannel: {fileID: 11400000, guid: d53dbf3475df90c4c9b0a574ee0663a7, type: 2}
   canUseTwoPattern: 0
   delay: 0.5
---- !u!1 &5819225703596361592
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1689829188269342594}
-  m_Layer: 0
-  m_Name: FirePos_3
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1689829188269342594
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5819225703596361592}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5, y: -1, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 5032471017950521249}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6680053205018760519
 GameObject:
   m_ObjectHideFlags: 0
@@ -1143,7 +1112,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8064435213692707085
 Transform:
   m_ObjectHideFlags: 0
@@ -1176,7 +1145,8 @@ MonoBehaviour:
   firePosTrm:
   - {fileID: 2367275815497118295}
   - {fileID: 7127405538562074950}
-  _damageMultiply: 0.8
+  sizeMultiply: 1
+  damageMultiply: 0
   areaSize: {x: 12, y: 4}
   attackTime: 5.5
   poolName: RotationBullet
