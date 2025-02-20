@@ -17,6 +17,13 @@ namespace Assets.Scripts.Combat.Bullets
             curvePower *= Mathf.Sign(dir.x);
         }
 
+        protected override void Push()
+        {
+            base.Push();
+
+            curvePower = Mathf.Abs(curvePower);
+        }
+
         void FixedUpdate()
         {
             float curveValue = speedCurve.Evaluate(_currentLifeTime);
