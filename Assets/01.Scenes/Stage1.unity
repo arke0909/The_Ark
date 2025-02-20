@@ -479,11 +479,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1725430666953065314, guid: e18efc0e254be5149b73fc1fc7382deb, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2999001616646669882, guid: e18efc0e254be5149b73fc1fc7382deb, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3473599909730330885, guid: e18efc0e254be5149b73fc1fc7382deb, type: 3}
       propertyPath: m_Name
@@ -491,7 +491,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5175123588944454016, guid: e18efc0e254be5149b73fc1fc7382deb, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7376848061114579859, guid: e18efc0e254be5149b73fc1fc7382deb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8561478361823924695, guid: e18efc0e254be5149b73fc1fc7382deb, type: 3}
       propertyPath: poolName
