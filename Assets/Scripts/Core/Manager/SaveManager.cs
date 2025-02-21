@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Assets.Scripts.Core.EventChannel;
+using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Assets.Scripts.Core.Manager
@@ -18,7 +20,7 @@ namespace Assets.Scripts.Core.Manager
     }
     public class SaveManager : MonoBehaviour
     {
-        [SerializeField] private GameEventChannelSO systemChannel;
+        [SerializeField] private GameEventChannel systemChannel;
         [SerializeField] private string saveDataKey = "savedGame";
 
         private List<SaveData> unUsedData = new List<SaveData>();
