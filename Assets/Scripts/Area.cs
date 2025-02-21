@@ -36,14 +36,14 @@ namespace Assets.Scripts
             _spriteRenderer = GetComponent<SpriteRenderer>();
             Debug.Assert(_spriteRenderer != null, "this gameObject has not SpriteRenderer");
 
-            turnChangeChannel.AddListner<TurnChangeEvent>(HandleTurnChange);
-            attackChannel.AddListner<ChangeAreaSizeEvent>(HandhelChangeAreaSize);
+            turnChangeChannel.AddListener<TurnChangeEvent>(HandleTurnChange);
+            attackChannel.AddListener<ChangeAreaSizeEvent>(HandhelChangeAreaSize);
         }
 
         private void OnDestroy()
         {
-            turnChangeChannel.RemoveListner<TurnChangeEvent>(HandleTurnChange);
-            attackChannel.RemoveListner<ChangeAreaSizeEvent>(HandhelChangeAreaSize);
+            turnChangeChannel.RemoveListener<TurnChangeEvent>(HandleTurnChange);
+            attackChannel.RemoveListener<ChangeAreaSizeEvent>(HandhelChangeAreaSize);
         }
 
         private void ChangeArea(Vector2 targetSize, float duration, string nextTurn = "")

@@ -22,13 +22,13 @@ namespace Assets.Scripts.Entities
             SetEntityCompoentsAndInitialize();
             AfterInitalize();
 
-            turnChangeChannel.AddListner<TurnChangeEvent>(HandleTurnChange);
+            turnChangeChannel.AddListener<TurnChangeEvent>(HandleTurnChange);
         }
 
 
         protected virtual void OnDestroy()
         {
-            turnChangeChannel.RemoveListner<TurnChangeEvent>(HandleTurnChange);
+            turnChangeChannel.RemoveListener<TurnChangeEvent>(HandleTurnChange);
 
             GetCompo<EntityStatComponent>().ClearAllStatModifier();
         }

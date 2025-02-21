@@ -32,8 +32,8 @@ public class ActSelector : MonoBehaviour
         _canvasGroup = GetComponent<CanvasGroup>();
 
 
-        uiChannel.AddListner<AreaEvent>(HandleAreaEvent);
-        turnChannel.AddListner<TurnChangeEvent>(HandleTurnChange);
+        uiChannel.AddListener<AreaEvent>(HandleAreaEvent);
+        turnChannel.AddListener<TurnChangeEvent>(HandleTurnChange);
         activeChannel.ValueEvent += HandleValueChange;
         playerInput.PlayerTurnInputEvent += ActSelect;
         playerInput.SelectEvent += UseAct;
@@ -58,8 +58,8 @@ public class ActSelector : MonoBehaviour
 
     private void OnDestroy()
     {
-        uiChannel.RemoveListner<AreaEvent>(HandleAreaEvent);
-        turnChannel.RemoveListner<TurnChangeEvent>(HandleTurnChange);
+        uiChannel.RemoveListener<AreaEvent>(HandleAreaEvent);
+        turnChannel.RemoveListener<TurnChangeEvent>(HandleTurnChange);
         activeChannel.ValueEvent -= HandleValueChange;
         playerInput.PlayerTurnInputEvent -= ActSelect;
         playerInput.SelectEvent -= UseAct;

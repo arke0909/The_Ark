@@ -10,7 +10,7 @@ namespace Scripts.Core.Manager
 
         private void Awake()
         {
-            TurnChangeChannel.AddListner<TurnChangeCallingEvent>(HandleTurnChange);
+            TurnChangeChannel.AddListener<TurnChangeCallingEvent>(HandleTurnChange);
         }
 
         private void Start()
@@ -20,7 +20,7 @@ namespace Scripts.Core.Manager
 
         private void OnDestroy()
         {
-            TurnChangeChannel.RemoveListner<TurnChangeCallingEvent>(HandleTurnChange);
+            TurnChangeChannel.RemoveListener<TurnChangeCallingEvent>(HandleTurnChange);
         }
 
         private void HandleTurnChange(TurnChangeCallingEvent evt)

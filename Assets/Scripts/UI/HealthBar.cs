@@ -21,7 +21,7 @@ namespace Assets.Scripts.UI
         private void Awake()
         {
             _hpText = GetComponentInChildren<TextMeshProUGUI>();
-            attackChannel.AddListner<HPTextEvent>(HandleHpTextEvent);
+            attackChannel.AddListener<HPTextEvent>(HandleHpTextEvent);
         }
 
         private void Start()
@@ -32,7 +32,7 @@ namespace Assets.Scripts.UI
 
         private void OnDestroy()
         {
-            attackChannel.RemoveListner<HPTextEvent>(HandleHpTextEvent);
+            attackChannel.RemoveListener<HPTextEvent>(HandleHpTextEvent);
         }
 
         private void HandleHpTextEvent(HPTextEvent evt)

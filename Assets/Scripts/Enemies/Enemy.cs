@@ -24,14 +24,14 @@ namespace Assets.Scripts.Enemies
 
             SetEnemyCompoentsAndInitialize();
 
-            attackChannel.AddListner<AttackEvent>(HandleApplyDamage);
+            attackChannel.AddListener<AttackEvent>(HandleApplyDamage);
         }
 
         protected override void OnDestroy()
         {
             base.OnDestroy();
 
-            attackChannel.RemoveListner<AttackEvent>(HandleApplyDamage);
+            attackChannel.RemoveListener<AttackEvent>(HandleApplyDamage);
         }
 
         private void SetEnemyCompoentsAndInitialize()

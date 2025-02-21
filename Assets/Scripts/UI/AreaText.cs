@@ -20,12 +20,12 @@ namespace Assets.Scripts.UI
         {
             areaText = GetComponent<TextMeshProUGUI>();
 
-            turnChangeChannel.AddListner<TurnChangeEvent>(HandleTurnChange);
+            turnChangeChannel.AddListener<TurnChangeEvent>(HandleTurnChange);
         }
 
         private void OnDestroy()
         {
-            turnChangeChannel.RemoveListner<TurnChangeEvent>(HandleTurnChange);
+            turnChangeChannel.RemoveListener<TurnChangeEvent>(HandleTurnChange);
         }
 
         private void HandleTurnChange(TurnChangeEvent evt)

@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Core.EventChannel;
+using Assets.Scripts.Core.EventChannel.Events;
 using System;
 using System.Collections;
 using System.Collections.Generic;

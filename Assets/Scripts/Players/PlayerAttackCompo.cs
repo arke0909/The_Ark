@@ -48,7 +48,7 @@ namespace Assets.Scripts.Players
             _setterCompo = _player.GetPlayerCompo<ArrowSetter>();
 
             _player.InputCompo.BattleEvent += HandleArrowCheck;
-            turnChangeChannel.AddListner<TurnChangeEvent>(HandleTurnChange);
+            turnChangeChannel.AddListener<TurnChangeEvent>(HandleTurnChange);
         }
 
         private void OnDestroy()
@@ -57,7 +57,7 @@ namespace Assets.Scripts.Players
             _player.GetCompo<EntityStatComponent>().GetStat(criticalChance).OnValueChange -= HandleCriticalChanceValueChanged;
 
             _player.InputCompo.BattleEvent -= HandleArrowCheck;
-            turnChangeChannel.RemoveListner<TurnChangeEvent>(HandleTurnChange);
+            turnChangeChannel.RemoveListener<TurnChangeEvent>(HandleTurnChange);
         }
 
         private void Update()

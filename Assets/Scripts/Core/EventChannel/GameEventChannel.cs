@@ -12,7 +12,7 @@ namespace Assets.Scripts.Core.EventChannel
         private Dictionary<Type, Action<GameEvent>> _events = new Dictionary<Type, Action<GameEvent>>();
         private Dictionary<Delegate, Action<GameEvent>> _lookUpTable = new Dictionary<Delegate, Action<GameEvent>>();
 
-        public void AddListner<T>(Action<T> handler) where T : GameEvent
+        public void AddListener<T>(Action<T> handler) where T : GameEvent
         {
             if (_lookUpTable.ContainsKey(handler)) return;
 
@@ -26,7 +26,7 @@ namespace Assets.Scripts.Core.EventChannel
                 _events[evtType] = action;
         }
 
-        public void RemoveListner<T>(Action<T> evt) where T : GameEvent
+        public void RemoveListener<T>(Action<T> evt) where T : GameEvent
         {
             if (_lookUpTable.TryGetValue(evt, out Action<GameEvent> tableHandler))
             {

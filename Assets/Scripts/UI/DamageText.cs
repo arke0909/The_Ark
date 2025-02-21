@@ -22,12 +22,12 @@ namespace Assets.Scripts.UI
             _text = GetComponent<TextMeshProUGUI>();
             _text.color = Color.clear;
 
-            attackChannel.AddListner<AttackEvent>(HandleAttackEvent);
+            attackChannel.AddListener<AttackEvent>(HandleAttackEvent);
         }
 
         private void OnDestroy()
         {
-            attackChannel.RemoveListner<AttackEvent>(HandleAttackEvent);
+            attackChannel.RemoveListener<AttackEvent>(HandleAttackEvent);
         }
 
         private void HandleAttackEvent(AttackEvent evt)

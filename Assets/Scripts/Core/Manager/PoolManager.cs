@@ -23,8 +23,8 @@ namespace Assets.Scripts.Core.Manager
                 CreatePool(so);
             }
 
-            poolChannel.AddListner<PoolPopEvent>(HandlePoolPop);
-            poolChannel.AddListner<PoolPushEvent>(HandlePoolPush);
+            poolChannel.AddListener<PoolPopEvent>(HandlePoolPop);
+            poolChannel.AddListener<PoolPushEvent>(HandlePoolPush);
         }
 
         private void CreatePool(PoolItemSO so)
@@ -42,8 +42,8 @@ namespace Assets.Scripts.Core.Manager
 
         private void OnDestroy()
         {
-            poolChannel.RemoveListner<PoolPopEvent>(HandlePoolPop);
-            poolChannel.RemoveListner<PoolPushEvent>(HandlePoolPush);
+            poolChannel.RemoveListener<PoolPopEvent>(HandlePoolPop);
+            poolChannel.RemoveListener<PoolPushEvent>(HandlePoolPush);
         }
 
 
