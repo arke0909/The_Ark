@@ -1,8 +1,10 @@
 ﻿using Assets.Scripts.Core.EventChannel;
 using Assets.Scripts.Core.EventChannel.Events;
+using Assets.Scripts.Core.Save;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Assets.Scripts.Core.Manager
@@ -62,7 +64,7 @@ namespace Assets.Scripts.Core.Manager
 
             foreach (ISavable savable in savableObjects)
             {
-                saveDataList.Add(new SaveData { saveID = savable.SaveID.saveID, data = savable.GetSaveData() });
+                saveDataList.Add(new SaveData { saveID = savable.ID.saveID, data = savable.GetSaveData() });
             }
 
             saveDataList.AddRange(unUsedData);
@@ -102,7 +104,7 @@ namespace Assets.Scripts.Core.Manager
             {
                 foreach (SaveData saveData in collection.dataList)
                 {
-                    ISavable target = savableObjects.FirstOrDefault(savable => savable.SaveID.saveID == saveData.saveID);
+                    ISavable target = savableObjects.FirstOrDefault(savable => savable.ID.saveID == saveData.saveID);
 
                     if (target != default)
                     {
