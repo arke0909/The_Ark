@@ -1,6 +1,7 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 namespace Assets.Scripts.Entities.Stats
 {
@@ -36,5 +37,33 @@ namespace Assets.Scripts.Entities.Stats
             }
         }
 
+        #region Save Logic
+
+        [Serializable]
+        public struct StatSaveData
+        {
+            public string statName;
+            public float statValue;
+        }
+
+        public List<StatSaveData> GetSaveData()
+            => _stats.Aggregate(new List<StatSaveData>(), (saveList, stat) =>
+            {
+                saveList.Add(new StatSaveData { statName = stat.statName, statValue = stat.Value });
+                return saveList;
+            });
+
+        public void RestoreData(List<StatSaveData> loadSaveList)
+        {
+            foreach(StatSaveData saveStat in loadSaveList)
+            {
+                StatSO stat = _stats.FirstOrDefault(stat => saveStat.statName == stat.name);
+                if(stat != default)
+                {
+                    stat.BaseValue = saveStat.statValue;
+                }
+            }
+        }
+        #endregion
     }
 }
