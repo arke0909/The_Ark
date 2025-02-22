@@ -5,42 +5,44 @@ namespace Assets.Scripts.Feedbacks
 {
     public class BlinkFeedback : Feedback
     {
-        [SerializeField] private SpriteRenderer spriteRenderer;
-        [SerializeField] private float time;
-        [SerializeField] private int blinkCnt;
+        [SerializeField] private SpriteRenderer targetRenderer;
+        [SerializeField] private float delaySeconds;
+        [SerializeField] private float blinkValue;
 
-        private float _blinkTime;
+        private readonly int _blinkShaderParam = Shader.PropertyToID("_BlinkValue");
+        private Material _material;
+        private bool _isFinished;
+        private Coroutine _delayCoroutine = null;
 
         private void Awake()
         {
-            _blinkTime = (time / blinkCnt) * 0.5f;
+            _material = targetRenderer.material;
+        }
+
+        private IEnumerator ResetAfterDelay()
+        {
+            _isFinished = false;
+            yield return new WaitForSeconds(delaySeconds);
+
+            if (_isFinished == false)
+                FinishFeedback();
         }
 
         public override void StartFeedback()
         {
-            FinishFeedback();
-
-            StartCoroutine(BlinkCoroutine());
-        }
-
-        private IEnumerator BlinkCoroutine()
-        {
-            for(int i = 0; i < blinkCnt; i++)
-            {
-                Color color = Color.clear;
-                spriteRenderer.color = color;
-
-                yield return new WaitForSeconds(_blinkTime);
-
-                color = Color.white;
-                spriteRenderer.color = color;
-                yield return new WaitForSeconds(_blinkTime);
-            }
+            _material.SetFloat(_blinkShaderParam, blinkValue);
+            _delayCoroutine = StartCoroutine(ResetAfterDelay());
         }
 
         public override void FinishFeedback()
         {
-            StopAllCoroutines();
+            if (_delayCoroutine != null)
+            {
+                StopCoroutine(_delayCoroutine);
+            }
+
+            _isFinished = true;
+            _material.SetFloat(_blinkShaderParam, 0);
         }
     }
 }
