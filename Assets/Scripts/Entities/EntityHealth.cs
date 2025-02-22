@@ -53,7 +53,10 @@ namespace Assets.Scripts.Entities
             OnHit?.Invoke();
 
             if(_currentHealth <= 0)
+            {
+                _entity.OnDead();
                 OnDead?.Invoke();
+            }
         }
 
         public void ApplyHeal(float healValue)
