@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: StatSaveID
   m_EditorClassIdentifier: 
   saveID: 10
-  saveName: AttackStat
+  saveName: Stat

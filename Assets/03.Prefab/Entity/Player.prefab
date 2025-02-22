@@ -437,6 +437,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849835146324160816}
+  - component: {fileID: 2337813397184110142}
   m_Layer: 6
   m_Name: PlayerStatSaveCompo
   m_TagString: Untagged
@@ -459,6 +460,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 5259096048403228482}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2337813397184110142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8664914943261600092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 211627583a5c71d4caeadb6d9a98d6ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <ID>k__BackingField: {fileID: 11400000, guid: aed9561a48c70ce44bcb617e2b9e5f2f, type: 2}
 --- !u!1001 &7462413802243797158
 PrefabInstance:
   m_ObjectHideFlags: 0

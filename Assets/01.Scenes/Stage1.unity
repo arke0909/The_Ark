@@ -666,6 +666,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5209076419765021999, guid: f7d650f394cf456408365e3a24258eea, type: 3}
+      propertyPath: sceneName
+      value: Stage2
+      objectReference: {fileID: 0}
     - target: {fileID: 5425601049473467542, guid: f7d650f394cf456408365e3a24258eea, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
