@@ -61,9 +61,16 @@ namespace Assets.Scripts.Entities
             return default;
         }
 
+        public void OnDead()
+        {
+            IsDead = true;
+        }
+
         #region TurnChange Section
         protected void HandleTurnChange(TurnChangeEvent evt)
         {
+            if (IsDead) return;
+
             switch (evt.nextTurn)
             {
                 case "PLAYER":
