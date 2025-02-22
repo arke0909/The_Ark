@@ -199,9 +199,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a18d10d5809c7b341b4e7a51904f4e02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 1276699468557054207}
-  time: 0.5
-  blinkCnt: 3
+  targetRenderer: {fileID: 1276699468557054207}
+  delaySeconds: 1.5
+  blinkValue: 0
 --- !u!114 &5698820048933990000
 MonoBehaviour:
   m_ObjectHideFlags: 0
