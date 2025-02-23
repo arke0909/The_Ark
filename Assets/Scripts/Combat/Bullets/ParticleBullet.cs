@@ -9,17 +9,17 @@ namespace Assets.Scripts.Combat.Bullets
 {
     public class ParticleBullet : MonoBehaviour, IPoolable
     {
-        [SerializeField] private GameEventChannel poolChannel;
-        [SerializeField] private string poolName;
+        [SerializeField] protected GameEventChannel poolChannel;
+        [SerializeField] protected string poolName;
 
-        private ParticleSystem _particle;
-        private float _damage;
+        protected ParticleSystem _particle;
+        protected float _damage;
 
         public GameObject PoolObject => gameObject;
 
         public string PoolName => poolName;
 
-        private void Awake()
+        protected virtual void Awake()
         {
             _particle = GetComponent<ParticleSystem>();
         }
@@ -46,7 +46,7 @@ namespace Assets.Scripts.Combat.Bullets
             Push();
         }
 
-        public void ResetItem()
+        public virtual void ResetItem()
         {
             _damage = 0;
         }
