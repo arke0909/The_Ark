@@ -4849,5 +4849,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd98cc234193aa047b73a1700f285dc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolChannel: {fileID: 0}
+  poolChannel: {fileID: 11400000, guid: d53dbf3475df90c4c9b0a574ee0663a7, type: 2}
   poolName: 
