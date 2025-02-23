@@ -4,6 +4,7 @@ using Assets.Scripts.Core.EventChannel.Events;
 using Assets.Scripts.Core.Pools;
 using Assets.Scripts.Enemies;
 using Assets.Scripts.Entities.Stats;
+using Assets.Scripts.Players;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -16,6 +17,7 @@ namespace Assets.Scripts.Combat.Patterns
         [SerializeField] private float damageMultiply;
 
         protected Enemy _enemy;
+        protected Player _player;
         protected GameEventChannel _poolChannel;
         protected PatternComponent _patternComponent;
         protected float _damage;
@@ -26,6 +28,7 @@ namespace Assets.Scripts.Combat.Patterns
         public void InitPattern(Enemy enemy, GameEventChannel poolChannel, PatternComponent patternComponent)
         {
             _enemy = enemy;
+            _player = patternComponent.PlayerFinder.entity as Player;
             _poolChannel = poolChannel;
             _patternComponent = patternComponent;
             _damage = enemy.GetCompo<EntityStatComponent>().GetStat(patternComponent.Attack).BaseValue * damageMultiply;
