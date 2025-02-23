@@ -62,7 +62,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1855888622799662934, guid: 7efd43a056b470744a64be4eaf9dae08, type: 3}
       propertyPath: ShapeModule.arc.value
-      value: 70
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 1855888622799662934, guid: 7efd43a056b470744a64be4eaf9dae08, type: 3}
+      propertyPath: ShapeModule.arc.spread
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1855888622799662934, guid: 7efd43a056b470744a64be4eaf9dae08, type: 3}
       propertyPath: EmissionModule.m_BurstCount
@@ -94,7 +98,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1855888622799662934, guid: 7efd43a056b470744a64be4eaf9dae08, type: 3}
       propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.scalar
-      value: 0
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1855888622799662934, guid: 7efd43a056b470744a64be4eaf9dae08, type: 3}
       propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.minScalar
