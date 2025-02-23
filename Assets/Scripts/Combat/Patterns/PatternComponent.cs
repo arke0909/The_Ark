@@ -13,7 +13,7 @@ namespace Assets.Scripts.Combat.Patterns
     public class PatternComponent : MonoBehaviour, IEnemyComponent
     {
         [field: SerializeField] public StatSO Attack { get; private set; }
-        [SerializeField] private EntityFinder playerFinder;
+        [field: SerializeField] public EntityFinder PlayerFinder { get; private set; }
         [SerializeField] GameEventChannel poolChannel;
 
         [SerializeField] private bool canUseTwoPattern = false;
