@@ -382,7 +382,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
-  m_ApplyToSortingLayers: 00000000eb47522663f80670ab12cf1f1583bf0be1ebcd63
+  m_ApplyToSortingLayers: 00000000eb47522663f80670ab12cf1f1583bf0be1ebcd63bb987af4
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -437,10 +437,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1028113944937629156, guid: e18efc0e254be5149b73fc1fc7382deb, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1162767057557713498, guid: e18efc0e254be5149b73fc1fc7382deb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -481,25 +477,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1725430666953065314, guid: e18efc0e254be5149b73fc1fc7382deb, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2999001616646669882, guid: e18efc0e254be5149b73fc1fc7382deb, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3473599909730330885, guid: e18efc0e254be5149b73fc1fc7382deb, type: 3}
       propertyPath: m_Name
       value: DM_No.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5175123588944454016, guid: e18efc0e254be5149b73fc1fc7382deb, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7376848061114579859, guid: e18efc0e254be5149b73fc1fc7382deb, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
