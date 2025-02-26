@@ -9,11 +9,12 @@ public enum ArrowType
 }
 
 [CreateAssetMenu(fileName = "InputReader", menuName = "SO/InputReader")]
-public class InputReader : ScriptableObject, IPlayerTurnActions, IEnemyTurnActions, IBattleActions
+public class InputReader : ScriptableObject, IPlayerTurnActions, IEnemyTurnActions, IBattleActions, IUIActions
 {
     public event Action<ArrowType> BattleEvent;
     public event Action<(int x, int y)> PlayerTurnInputEvent;
     public event Action SelectEvent;
+    public event Action EscapeEvent;
 
     public Vector2 InputVector { get; private set; }
 
@@ -28,9 +29,11 @@ public class InputReader : ScriptableObject, IPlayerTurnActions, IEnemyTurnActio
             _input.PlayerTurn.SetCallbacks(this);
             _input.Battle.SetCallbacks(this);
             _input.EnemyTurn.SetCallbacks(this);
+            _input.UI.SetCallbacks(this);
         }
 
         _input.PlayerTurn.Enable();
+        _input.UI.Enable();
     }
 
     private void OnDisable()
@@ -41,6 +44,7 @@ public class InputReader : ScriptableObject, IPlayerTurnActions, IEnemyTurnActio
     public void TurnChange(bool isPlayerTurn)
     {
         _input.Disable();
+        _input.UI.Enable();
 
         if (isPlayerTurn)
             _input.PlayerTurn.Enable();
@@ -52,6 +56,7 @@ public class InputReader : ScriptableObject, IPlayerTurnActions, IEnemyTurnActio
     {
         _input.Disable();
 
+        _input.UI.Enable();
         _input.Battle.Enable();
     }
 
@@ -68,7 +73,7 @@ public class InputReader : ScriptableObject, IPlayerTurnActions, IEnemyTurnActio
         if (context.performed)
         {
             if (isChoice())
-                PlayerTurnInputEvent?.Invoke(ValueTuple.Create(0,1));
+                PlayerTurnInputEvent?.Invoke(ValueTuple.Create(0, 1));
             else
                 BattleEvent?.Invoke(ArrowType.UP);
         }
@@ -76,7 +81,7 @@ public class InputReader : ScriptableObject, IPlayerTurnActions, IEnemyTurnActio
 
     public void OnDown(InputAction.CallbackContext context)
     {
-        if(context.performed)
+        if (context.performed)
         {
             if (isChoice())
                 PlayerTurnInputEvent?.Invoke(ValueTuple.Create(0, -1));
@@ -106,9 +111,10 @@ public class InputReader : ScriptableObject, IPlayerTurnActions, IEnemyTurnActio
                 BattleEvent?.Invoke(ArrowType.RIGHT);
         }
     }
+
     public void OnSelect(InputAction.CallbackContext context)
     {
-        if(context.performed)
+        if (context.performed)
             SelectEvent?.Invoke();
     }
 
@@ -120,5 +126,36 @@ public class InputReader : ScriptableObject, IPlayerTurnActions, IEnemyTurnActio
         InputVector = context.ReadValue<Vector2>();
     }
 
+
     #endregion
+
+    public void OnEscape(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+            EscapeEvent?.Invoke();
+    }
+
+    public void SetActive(bool isActive)
+    {
+        if (isActive)
+        {
+            _input.EnemyTurn.Enable();
+            _input.PlayerTurn.Enable();
+            _input.Battle.Enable();
+        }
+        else
+        {
+            _input.EnemyTurn.Disable();
+            _input.PlayerTurn.Disable();
+            _input.Battle.Disable();
+        }
+    }
+
+    public void InputClear()
+    {
+        BattleEvent = null;
+        PlayerTurnInputEvent = null;
+        SelectEvent = null;
+        EscapeEvent = null;
+    }
 }
