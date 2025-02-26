@@ -51,9 +51,9 @@ MonoBehaviour:
   damageMultiply: 0.8
   areaSize: {x: 8, y: 4}
   attackTime: 5.5
-  repeatCnt: 2
-  delay: 0.8
-  angle: 70
+  repeatCnt: 4
+  delay: 0.3
+  angle: 90
   firstBulletCnt: 3
   secondBulletCnt: 4
 --- !u!1 &1947054264874389478
