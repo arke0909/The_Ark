@@ -9,8 +9,6 @@ namespace Assets.Scripts.Combat.Bullets
 
         public override void Init(float damage, Vector2 position)
         {
-            base.Init(damage, position);
-
             var shape = _particle.shape;
             shape.arc = angle;
 
@@ -19,6 +17,8 @@ namespace Assets.Scripts.Combat.Bullets
             burst.count = bulletCount;
 
             emission.SetBurst(0, burst);
+            
+            base.Init(damage, position);
         }
 
         public void ValueSetting(int bulletCount, float angle, Vector3 targetDir)
@@ -26,7 +26,7 @@ namespace Assets.Scripts.Combat.Bullets
             this.bulletCount = bulletCount;
             this.angle = angle;
 
-            transform.rotation = Quaternion.FromToRotation(targetDir.normalized, Vector2.one);
+            transform.rotation = Quaternion.FromToRotation(Vector2.one, targetDir.normalized);
         }
     }
 }
