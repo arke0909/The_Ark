@@ -22,14 +22,16 @@ namespace Assets.Scripts.Combat.Patterns
             
             for (int i = 0; i < repeatCnt; i++)
             {
+                Vector2 dir = _player.transform.position - firePosTrm[0].position;
+
                 SpreadParticleBullet firstBullet = Pop("SpreadBullet") as SpreadParticleBullet;
-                firstBullet.ValueSetting(firstBulletCnt, angle, _player.transform.position);
+                firstBullet.ValueSetting(firstBulletCnt, angle, dir);
                 firstBullet.Init(_damage, firePosTrm[0].position);
 
                 yield return new WaitForSeconds(delay);
 
                 SpreadParticleBullet secondullet = Pop("SpreadBullet") as SpreadParticleBullet;
-                secondullet.ValueSetting(secondBulletCnt, angle, _player.transform.position);
+                secondullet.ValueSetting(secondBulletCnt, angle, dir);
                 secondullet.Init(_damage, firePosTrm[0].position);
 
                 yield return new WaitForSeconds(delay);
