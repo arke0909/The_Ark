@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Assets.Scripts.Core.EventChannel;
+using Assets.Scripts.Core.EventChannel.Events;
 using Assets.Scripts.Entities;
 using Scripts.Players;
 using UnityEngine;

@@ -7,42 +7,44 @@ namespace Assets.Scripts.Feedbacks
     {
         [SerializeField] private SpriteRenderer targetRenderer;
         [SerializeField] private float delaySeconds;
-        [SerializeField] private float blinkValue;
+        [SerializeField] private int blinkCount;
 
-        private readonly int _blinkShaderParam = Shader.PropertyToID("_BlinkValue");
+        private readonly int _isEffectParam = Shader.PropertyToID("_IsEffect");
         private Material _material;
-        private bool _isFinished;
         private Coroutine _delayCoroutine = null;
+        private float blinkTime;
 
         private void Awake()
         {
             _material = targetRenderer.material;
+            blinkTime = (delaySeconds / blinkCount) / 2;
         }
 
         private IEnumerator ResetAfterDelay()
         {
-            _isFinished = false;
-            yield return new WaitForSeconds(delaySeconds);
+            for (int i = 0; i < blinkCount; i++)
+            {
+                _material.SetFloat(_isEffectParam, 1);
 
-            if (_isFinished == false)
-                FinishFeedback();
+                yield return new WaitForSeconds(blinkTime);
+
+                _material.SetFloat(_isEffectParam, 0);
+
+                yield return new WaitForSeconds(blinkTime);
+            }
         }
 
         public override void StartFeedback()
         {
-            _material.SetFloat(_blinkShaderParam, blinkValue);
+            if (_delayCoroutine != null)
+                FinishFeedback();
+
             _delayCoroutine = StartCoroutine(ResetAfterDelay());
         }
 
         public override void FinishFeedback()
         {
-            if (_delayCoroutine != null)
-            {
-                StopCoroutine(_delayCoroutine);
-            }
-
-            _isFinished = true;
-            _material.SetFloat(_blinkShaderParam, 0);
+            _material.SetFloat(_isEffectParam, 0);
         }
     }
 }
