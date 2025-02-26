@@ -494,9 +494,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2523637892073989412, guid: f7d650f394cf456408365e3a24258eea, type: 3}
-      propertyPath: m_SortingOrder
-      value: 55
+    - target: {fileID: 2232972265383165196, guid: f7d650f394cf456408365e3a24258eea, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3043844839737129248, guid: f7d650f394cf456408365e3a24258eea, type: 3}
       propertyPath: m_AnchorMax.y
@@ -517,6 +517,10 @@ PrefabInstance:
     - target: {fileID: 3140505365557215960, guid: f7d650f394cf456408365e3a24258eea, type: 3}
       propertyPath: m_Name
       value: Canvacs
+      objectReference: {fileID: 0}
+    - target: {fileID: 3170537838786370627, guid: f7d650f394cf456408365e3a24258eea, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3469418366249003648, guid: f7d650f394cf456408365e3a24258eea, type: 3}
       propertyPath: m_LocalPosition.x
