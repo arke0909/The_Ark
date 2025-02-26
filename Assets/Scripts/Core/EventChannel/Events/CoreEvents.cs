@@ -11,6 +11,7 @@ namespace Assets.Scripts.Core.EventChannel.Events
         public static AreaEvent AreaEvent = new AreaEvent();
         public static SaveGameEvent SaveGameEvent = new SaveGameEvent();
         public static LoadGameEvent LoadGameEvent = new LoadGameEvent();
+        public static UIEvent UIEvent = new UIEvent();
     }
 
     public class PoolPopEvent : GameEvent
@@ -43,4 +44,9 @@ namespace Assets.Scripts.Core.EventChannel.Events
     {
         public bool isLoadFromFile;
     }
+    public class UIEvent : GameEvent
+    {
+        public bool isOpen = false;
+    }
+
 }
