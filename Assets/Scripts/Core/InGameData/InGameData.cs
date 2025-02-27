@@ -4,7 +4,6 @@ namespace Assets.Scripts.Core
 {
     public abstract class InGameData<T> : ScriptableObject
     {
-        [field : SerializeField]
-        public T Value { get; private set; }
+        public T value;
     }
 }
