@@ -9,7 +9,7 @@ namespace Assets.Scripts.UI
         Closed, Opened
     }
 
-    public class EscPanel : MonoBehaviour
+    public class EscMenuCanvas : MonoBehaviour
     {
         [SerializeField] private GameEventChannel uiChannel;
         [SerializeField] private InputReader playerInput;
@@ -20,6 +20,8 @@ namespace Assets.Scripts.UI
         private void Awake()
         {
             uiChannel.AddListener<UIEvent>(HandleEscUI);
+
+            SetWindow(false);
         }
 
         private void OnDestroy()
