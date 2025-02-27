@@ -229,11 +229,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73e89616940b4e640ab6fe94758e4b76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boolChannel: {fileID: 11400000, guid: 2dc4d5be7f1fa6146aeeb263a851e4ce, type: 2}
+  endDissolveEvent: {fileID: 11400000, guid: 30a61c62eae7b1e439780914b99e40b6, type: 2}
   targetRenderer:
   - {fileID: 1276699468557054207}
   delaySeconds: 1
-  value: 1
+  isPlayer: 1
 --- !u!1 &6479470691237687330
 GameObject:
   m_ObjectHideFlags: 0

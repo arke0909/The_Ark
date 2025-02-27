@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Core.EventChannel;
+using Assets.Scripts.Core.EventChannel.Events;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,10 +8,10 @@ namespace Assets.Scripts.Feedbacks
 {
     public class DissolveFeedback : Feedback
     {
-        [SerializeField] private BoolEventChannel boolChannel;
+        [SerializeField] private GameEventChannel endDissolveEvent;
         [SerializeField] private SpriteRenderer[] targetRenderer;
         [SerializeField] private float delaySeconds;
-        [SerializeField] private bool value;
+        [SerializeField] private bool isPlayer;
 
         private readonly int _dissolveValueParam = Shader.PropertyToID("_DissolveValue");
         private List<Material> _materials = new List<Material>();
@@ -38,7 +39,8 @@ namespace Assets.Scripts.Feedbacks
                 yield return null;
             }
 
-            boolChannel.RaiseEvent(value);
+            GameEvent evt = isPlayer ? CombatEvents.PlayerDeadEvent : CoreEvents.FadeEvent;
+            endDissolveEvent.RaiseEvent(evt);
         }
 
         public override void StartFeedback()

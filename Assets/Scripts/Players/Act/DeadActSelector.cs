@@ -21,7 +21,7 @@ namespace Assets.Scripts.Players.Act
 
         private void SetCanvasGroup(bool isDead)
         {
-            _canvasGroup.alpha = 1;
+            _canvasGroup.alpha = isDead ? 1 : 0;
             _canvasGroup.interactable = isDead;
             _canvasGroup.blocksRaycasts = isDead;
         }

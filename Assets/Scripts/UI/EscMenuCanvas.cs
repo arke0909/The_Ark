@@ -13,7 +13,6 @@ namespace Assets.Scripts.UI
     {
         [SerializeField] private GameEventChannel uiChannel;
         [SerializeField] private GameEventChannel sceneChannel;
-        [SerializeField] private BoolEventChannel fadeChannel;
         [SerializeField] private InputReader playerInput;
         [SerializeField] private CanvasGroup canvasGroup;
 
@@ -60,7 +59,7 @@ namespace Assets.Scripts.UI
 
         public void OnExit()
         {
-            SceneEvent evt = CoreEvents.SceneEvent;
+            FadeEvent evt = CoreEvents.FadeEvent;
             evt.sceneName = "MainTitle";
 
             sceneChannel.RaiseEvent(evt);

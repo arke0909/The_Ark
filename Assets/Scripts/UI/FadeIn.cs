@@ -8,29 +8,28 @@ namespace Assets.Scripts.UI
     public class FadeIn : MonoBehaviour
     {
         [SerializeField] private GameEventChannel sceneChannel;
-        [SerializeField] private BoolEventChannel fadeChannel;
         [SerializeField] private BoolEventChannel activeChannel;
         [SerializeField] private float duration;
         [SerializeField] private string sceneName;
 
         private void Awake()
         {
-            fadeChannel.ValueEvent += Fade;
+            sceneChannel.AddListener<FadeEvent>(HandleFadeEvent);
         }
 
         private void OnDestroy()
         {
-            fadeChannel.ValueEvent -= Fade;
+            sceneChannel.RemoveListener<FadeEvent>(HandleFadeEvent);
         }
 
-        private void Fade(bool isFadein)
+        private void HandleFadeEvent(FadeEvent evt)
         {
             RectTransform rectTrm = GetComponent<RectTransform>();
-
+            Debug.Log(1);
             float screenHeight = Screen.height;
 
-            float startValue = isFadein ? screenHeight : 0;
-            float endValue = isFadein ? 0 : -screenHeight;
+            float startValue = evt.isFading ? screenHeight : 0;
+            float endValue = evt.isFading ? 0 : -screenHeight;
 
             rectTrm.localPosition = new Vector2(0, startValue);
             Vector3 endPos = new Vector2(0, endValue);
@@ -38,10 +37,10 @@ namespace Assets.Scripts.UI
             DOTween.To(() => rectTrm.localPosition, pos => rectTrm.localPosition = pos, endPos, duration).SetEase(Ease.Linear)
                 .OnComplete(() => 
                 {
-                    if(isFadein)
+                    if (evt.isFading)
                     {
-                        SceneEvent evt = CoreEvents.SceneEvent;
-                        evt.sceneName = sceneName;
+                        SceneEvent sceneEvt = CoreEvents.SceneEvent;
+                        sceneEvt.sceneName = evt.sceneName;
 
                         sceneChannel.RaiseEvent(evt);
                     }
