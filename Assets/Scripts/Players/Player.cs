@@ -70,8 +70,6 @@ namespace Assets.Scripts.Players
 
         protected override void PlayerTurn()
         {
-            FeedbackFinishEvent?.Invoke();
-
             InputCompo.TurnChange(true);
             GetPlayerCompo<PlayerRenderer>().FadeWithTurn(true);
         }
