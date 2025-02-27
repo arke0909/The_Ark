@@ -1,21 +1,25 @@
-﻿namespace Assets.Scripts.Players.Act
+﻿using Assets.Scripts.Core.EventChannel;
+using Assets.Scripts.Core.EventChannel.Events;
+using UnityEngine;
+
+namespace Assets.Scripts.Players.Act
 {
     public class DeadActSelector : ActSelector
     {
+        [SerializeField] private GameEventChannel playerDeadChannel;
+
         protected override void Awake()
         {
             base.Awake();
 
-            HandleValueChange(false);
+            playerDeadChannel.AddListener<PlayerDeadEvent>(HandlePlayerDeadEvent);
         }
 
-        protected override void HandleValueChange(bool value)
+        private void HandlePlayerDeadEvent(PlayerDeadEvent evt)
         {
-            base.HandleValueChange(value);
-
-            _canvasGroup.alpha = value ? 1 : 0;
-            _canvasGroup.interactable = value;
-            _canvasGroup.blocksRaycasts = value;
+            _canvasGroup.alpha = 1;
+            _canvasGroup.interactable = true;
+            _canvasGroup.blocksRaycasts = true;
         }
     }
 }
