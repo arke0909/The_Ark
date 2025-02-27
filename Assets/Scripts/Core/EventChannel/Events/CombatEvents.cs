@@ -8,6 +8,7 @@ namespace Assets.Scripts.Core.EventChannel.Events
         public static AttackEvent AttackEvent = new AttackEvent();
         public static ChangeAreaSizeEvent ChangeAreaSizeEvent = new ChangeAreaSizeEvent();
         public static HPTextEvent HPTextEvent = new HPTextEvent();
+        public static PlayerDeadEvent PlayerDeadEvent = new PlayerDeadEvent();
     }
 
     public class AttackEvent : GameEvent
@@ -26,4 +27,7 @@ namespace Assets.Scripts.Core.EventChannel.Events
         public Entity whoWasHit;
         public float currentHp;
     }
+
+    public class PlayerDeadEvent : GameEvent
+    { }
 }
