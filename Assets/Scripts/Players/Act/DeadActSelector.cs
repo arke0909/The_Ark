@@ -10,15 +10,20 @@ namespace Assets.Scripts.Players.Act
         protected override void Awake()
         {
             base.Awake();
-
+            SetCanvasGroup(false);
         }
 
         protected override void HandlePlayerDeadEvent(PlayerDeadEvent evt)
         {
             _canSelect = true;
+            SetCanvasGroup(true);
+        }
+
+        private void SetCanvasGroup(bool isDead)
+        {
             _canvasGroup.alpha = 1;
-            _canvasGroup.interactable = true;
-            _canvasGroup.blocksRaycasts = true;
+            _canvasGroup.interactable = isDead;
+            _canvasGroup.blocksRaycasts = isDead;
         }
     }
 }
