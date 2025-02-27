@@ -229,10 +229,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73e89616940b4e640ab6fe94758e4b76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fadeChannel: {fileID: 11400000, guid: f08ae2333c6d29243ba2525f10a5f758, type: 2}
+  boolChannel: {fileID: 11400000, guid: 2dc4d5be7f1fa6146aeeb263a851e4ce, type: 2}
   targetRenderer:
   - {fileID: 1276699468557054207}
   delaySeconds: 1
+  value: 1
 --- !u!1 &6479470691237687330
 GameObject:
   m_ObjectHideFlags: 0
@@ -343,21 +344,6 @@ MonoBehaviour:
   turnChangeChannel: {fileID: 11400000, guid: cbee26c0380d9c745b94e60ad84e18d2, type: 2}
   <InputCompo>k__BackingField: {fileID: 11400000, guid: 805884eb54a0bc54dbd5ee8e9c59073d, type: 2}
   arrowCheckChannel: {fileID: 11400000, guid: eebe65fef960775428db45766bf268bd, type: 2}
-  FeedbackFinishEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6290278618566990156}
-        m_TargetAssemblyTypeName: Assets.Scripts.Feedbacks.BlinkFeedback, Assembly-CSharp
-        m_MethodName: FinishFeedback
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &4459543979401727318
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -665,11 +651,19 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8903459154893450532, guid: 0a2a1ea1d293b9f43abf6db93ae2f465, type: 3}
+      propertyPath: OnDead.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8903459154893450532, guid: 0a2a1ea1d293b9f43abf6db93ae2f465, type: 3}
       propertyPath: OnHit.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8903459154893450532, guid: 0a2a1ea1d293b9f43abf6db93ae2f465, type: 3}
       propertyPath: OnHit.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8903459154893450532, guid: 0a2a1ea1d293b9f43abf6db93ae2f465, type: 3}
+      propertyPath: OnDead.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8903459154893450532, guid: 0a2a1ea1d293b9f43abf6db93ae2f465, type: 3}
@@ -681,11 +675,19 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5698820048933990000}
     - target: {fileID: 8903459154893450532, guid: 0a2a1ea1d293b9f43abf6db93ae2f465, type: 3}
+      propertyPath: OnDead.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1772017233138523912}
+    - target: {fileID: 8903459154893450532, guid: 0a2a1ea1d293b9f43abf6db93ae2f465, type: 3}
       propertyPath: OnHit.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8903459154893450532, guid: 0a2a1ea1d293b9f43abf6db93ae2f465, type: 3}
       propertyPath: OnHit.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8903459154893450532, guid: 0a2a1ea1d293b9f43abf6db93ae2f465, type: 3}
+      propertyPath: OnDead.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8903459154893450532, guid: 0a2a1ea1d293b9f43abf6db93ae2f465, type: 3}
@@ -697,6 +699,10 @@ PrefabInstance:
       value: StartFeedback
       objectReference: {fileID: 0}
     - target: {fileID: 8903459154893450532, guid: 0a2a1ea1d293b9f43abf6db93ae2f465, type: 3}
+      propertyPath: OnDead.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: StartFeedback
+      objectReference: {fileID: 0}
+    - target: {fileID: 8903459154893450532, guid: 0a2a1ea1d293b9f43abf6db93ae2f465, type: 3}
       propertyPath: OnHit.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: Assets.Scripts.Feedbacks.BlinkFeedback, Assembly-CSharp
       objectReference: {fileID: 0}
@@ -705,11 +711,19 @@ PrefabInstance:
       value: Assets.Scripts.Feedbacks.SoundPlayFeedback, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 8903459154893450532, guid: 0a2a1ea1d293b9f43abf6db93ae2f465, type: 3}
+      propertyPath: OnDead.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Assets.Scripts.Feedbacks.DissolveFeedback, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8903459154893450532, guid: 0a2a1ea1d293b9f43abf6db93ae2f465, type: 3}
       propertyPath: OnHit.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 8903459154893450532, guid: 0a2a1ea1d293b9f43abf6db93ae2f465, type: 3}
       propertyPath: OnHit.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8903459154893450532, guid: 0a2a1ea1d293b9f43abf6db93ae2f465, type: 3}
+      propertyPath: OnDead.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []

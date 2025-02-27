@@ -75,13 +75,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73e89616940b4e640ab6fe94758e4b76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fadeChannel: {fileID: 11400000, guid: f08ae2333c6d29243ba2525f10a5f758, type: 2}
+  boolChannel: {fileID: 11400000, guid: f08ae2333c6d29243ba2525f10a5f758, type: 2}
   targetRenderer:
   - {fileID: 7847647263618026742}
   - {fileID: 4318727269946516774}
   - {fileID: 3944319672113255105}
   - {fileID: 8120936772795692335}
   delaySeconds: 2
+  value: 1
 --- !u!1 &2998982805362018238
 GameObject:
   m_ObjectHideFlags: 0
