@@ -6,17 +6,16 @@ namespace Assets.Scripts.Players.Act
 {
     public class DeadActSelector : ActSelector
     {
-        [SerializeField] private GameEventChannel playerDeadChannel;
 
         protected override void Awake()
         {
             base.Awake();
 
-            playerDeadChannel.AddListener<PlayerDeadEvent>(HandlePlayerDeadEvent);
         }
 
-        private void HandlePlayerDeadEvent(PlayerDeadEvent evt)
+        protected override void HandlePlayerDeadEvent(PlayerDeadEvent evt)
         {
+            _canSelect = true;
             _canvasGroup.alpha = 1;
             _canvasGroup.interactable = true;
             _canvasGroup.blocksRaycasts = true;
