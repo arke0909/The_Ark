@@ -58,7 +58,7 @@ public class ActSelector : MonoBehaviour
         playerInput.SelectEvent -= UseAct;
     }
 
-    private void HandleValueChange(bool value)
+    protected virtual void HandleValueChange(bool value)
     {
         _canSelect = value;
     }
