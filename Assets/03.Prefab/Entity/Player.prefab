@@ -165,6 +165,7 @@ GameObject:
   - component: {fileID: 1307662271432097049}
   - component: {fileID: 6290278618566990156}
   - component: {fileID: 5698820048933990000}
+  - component: {fileID: 1772017233138523912}
   m_Layer: 6
   m_Name: Feedback
   m_TagString: Untagged
@@ -216,6 +217,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   poolChannel: {fileID: 11400000, guid: d53dbf3475df90c4c9b0a574ee0663a7, type: 2}
   soundData: {fileID: 11400000, guid: bca66754f53ec0742a87788c41ed5d42, type: 2}
+--- !u!114 &1772017233138523912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3595345397312779895}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73e89616940b4e640ab6fe94758e4b76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeChannel: {fileID: 11400000, guid: f08ae2333c6d29243ba2525f10a5f758, type: 2}
+  targetRenderer:
+  - {fileID: 1276699468557054207}
+  delaySeconds: 1
 --- !u!1 &6479470691237687330
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,5 +1,4 @@
 using Assets.Scripts.Core.EventChannel;
-using Assets.Scripts.Core.EventChannel.Events;
 using Assets.Scripts.Players.Act;
 using System;
 using System.Collections.Generic;
@@ -9,37 +8,33 @@ using UnityEngine.Events;
 
 public class ActSelector : MonoBehaviour
 {
-    [SerializeField] private InputReader playerInput;
-    [SerializeField] private GameEventChannel turnChannel;
-    [SerializeField] private GameEventChannel uiChannel;
+    [SerializeField] protected InputReader playerInput;
+    
     [SerializeField] private BoolEventChannel activeChannel;
 
-    [SerializeField] private Act currentAct;
+    [SerializeField] protected Act currentAct;
 
-    private CanvasGroup _canvasGroup;
+    protected CanvasGroup _canvasGroup;
 
-    private Dictionary<(int x, int y), Act> acts = new Dictionary<(int, int), Act>();
+    protected Dictionary<(int x, int y), Act> acts = new Dictionary<(int, int), Act>();
 
-    private int _currentX = 0;
-    private int _currentY = 0;
-    private bool _canSelect = false;
+    protected int _currentX = 0;
+    protected int _currentY = 0;
+    protected bool _canSelect = false;
 
     public UnityEvent OnChangeSelect;
     public UnityEvent OnSelect;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         _canvasGroup = GetComponent<CanvasGroup>();
 
-
-        uiChannel.AddListener<AreaEvent>(HandleAreaEvent);
-        turnChannel.AddListener<TurnChangeEvent>(HandleTurnChange);
         activeChannel.ValueEvent += HandleValueChange;
         playerInput.PlayerTurnInputEvent += ActSelect;
         playerInput.SelectEvent += UseAct;
     }
 
-    private void Start()
+    protected virtual void Start()
     {
         GetComponentsInChildren<Act>().ToList().ForEach(act =>
         {
@@ -56,10 +51,8 @@ public class ActSelector : MonoBehaviour
     }
 
 
-    private void OnDestroy()
+    protected virtual void OnDestroy()
     {
-        uiChannel.RemoveListener<AreaEvent>(HandleAreaEvent);
-        turnChannel.RemoveListener<TurnChangeEvent>(HandleTurnChange);
         activeChannel.ValueEvent -= HandleValueChange;
         playerInput.PlayerTurnInputEvent -= ActSelect;
         playerInput.SelectEvent -= UseAct;
@@ -70,23 +63,7 @@ public class ActSelector : MonoBehaviour
         _canSelect = value;
     }
 
-    private void HandleAreaEvent(AreaEvent evt)
-    {
-        if(evt.nextTurn == "PLAYER")
-        {
-            _canvasGroup.alpha = 1;
-            _canSelect = true;
-        }
-       
-    }
-
-    private void HandleTurnChange(TurnChangeEvent evt)
-    {
-        if (evt.nextTurn == "ENEMY" || evt.nextTurn == "INPUT")
-            _canvasGroup.alpha = 0;
-    }
-
-    private void ActSelect((int x, int y) index)
+    protected void ActSelect((int x, int y) index)
     {
         if (!_canSelect) return;
 
@@ -106,7 +83,7 @@ public class ActSelector : MonoBehaviour
         currentAct.OnSelct();
     }
 
-    private void UseAct()
+    protected void UseAct()
     {
         if(!_canSelect) return;
 
