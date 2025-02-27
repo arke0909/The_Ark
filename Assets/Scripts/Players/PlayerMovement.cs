@@ -13,7 +13,7 @@ namespace Scripts.Players
         private Player _player;
         private Rigidbody2D _rbCompo;
 
-        public bool canManualMove = true;
+        private bool _canManualMove = true;
 
         public void Initialize(Player player)
         {
@@ -25,7 +25,7 @@ namespace Scripts.Players
 
         private void FixedUpdate()
         {
-            if (!canManualMove) return;
+            if (!_canManualMove) return;
 
             Movement(_player.InputCompo.InputVector);
         }
@@ -34,5 +34,7 @@ namespace Scripts.Players
         {
             _rbCompo.linearVelocity = inputVector * _moveSpeed;
         }
+
+        public void SetCanMove(bool value) => _canManualMove = value;
     }
 }
