@@ -1,5 +1,6 @@
 using Assets.Scripts.Core.EventChannel;
 using Assets.Scripts.Players.Act;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -9,7 +10,7 @@ public class ActSelector : MonoBehaviour
 {
     [SerializeField] protected InputReader playerInput;
     
-    [SerializeField] protected BoolEventChannel activeChannel;
+    [SerializeField] private BoolEventChannel activeChannel;
 
     [SerializeField] protected Act currentAct;
 
@@ -57,7 +58,7 @@ public class ActSelector : MonoBehaviour
         playerInput.SelectEvent -= UseAct;
     }
 
-    protected virtual void HandleValueChange(bool value)
+    private void HandleValueChange(bool value)
     {
         _canSelect = value;
     }
