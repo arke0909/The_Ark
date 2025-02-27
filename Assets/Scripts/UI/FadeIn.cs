@@ -25,7 +25,6 @@ namespace Assets.Scripts.UI
         private void HandleFadeEvent(FadeEvent evt)
         {
             RectTransform rectTrm = GetComponent<RectTransform>();
-            Debug.Log(1);
             float screenHeight = Screen.height;
 
             float startValue = evt.isFading ? screenHeight : 0;
@@ -35,14 +34,14 @@ namespace Assets.Scripts.UI
             Vector3 endPos = new Vector2(0, endValue);
 
             DOTween.To(() => rectTrm.localPosition, pos => rectTrm.localPosition = pos, endPos, duration).SetEase(Ease.Linear)
-                .OnComplete(() => 
+                .OnComplete(() =>
                 {
                     if (evt.isFading)
                     {
                         SceneEvent sceneEvt = CoreEvents.SceneEvent;
                         sceneEvt.sceneName = evt.sceneName;
 
-                        sceneChannel.RaiseEvent(evt);
+                        sceneChannel.RaiseEvent(sceneEvt);
                     }
                     else
                         activeChannel.RaiseEvent(true);

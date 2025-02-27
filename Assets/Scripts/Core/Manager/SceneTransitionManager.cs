@@ -24,7 +24,6 @@ namespace Assets.Scripts.Core.Manager
         {
             Time.timeScale = 1;
             sceneManagerSO.LoadScene(evt.sceneName);
-            Debug.Log(1);
         }
     }
 }
