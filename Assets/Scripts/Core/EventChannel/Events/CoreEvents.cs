@@ -12,6 +12,7 @@ namespace Assets.Scripts.Core.EventChannel.Events
         public static SaveGameEvent SaveGameEvent = new SaveGameEvent();
         public static LoadGameEvent LoadGameEvent = new LoadGameEvent();
         public static UIEvent UIEvent = new UIEvent();
+        public static FadeEvent FadeEvent = new FadeEvent();
         public static SceneEvent SceneEvent = new SceneEvent();
         public static ReloadSceneEvent ReloadSceneEvent = new ReloadSceneEvent();
     }
@@ -49,6 +50,11 @@ namespace Assets.Scripts.Core.EventChannel.Events
     public class UIEvent : GameEvent
     {
         public bool isOpen = false;
+    }
+    public class FadeEvent : GameEvent
+    {
+        public bool isFading;
+        public string sceneName;
     }
     public class SceneEvent : GameEvent
     {
