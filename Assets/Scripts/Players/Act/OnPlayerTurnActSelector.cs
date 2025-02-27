@@ -24,6 +24,11 @@ namespace Assets.Scripts.Players.Act
             uiChannel.RemoveListener<AreaEvent>(HandleAreaEvent);
         }
 
+        protected override void HandlePlayerDeadEvent(PlayerDeadEvent evt)
+        {
+            _canSelect = false;
+        }
+
         private void HandleAreaEvent(AreaEvent evt)
         {
             if (evt.nextTurn == "PLAYER")
