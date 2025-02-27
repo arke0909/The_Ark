@@ -15,12 +15,11 @@ namespace Assets.Scripts.Players
         [field: SerializeField] public InputReader InputCompo { get; private set; }
 
         [SerializeField] private ArrowTypeEventChannel arrowCheckChannel;
+        [SerializeField] private GameEventChannel playerDeadChannel;
 
         private Dictionary<Type, IPlayerComponent> _playerComponents;
 
         private Vector2 _originPos;
-
-        public UnityEvent FeedbackFinishEvent;
 
         #region Init Section
         protected override void Awake()
@@ -32,6 +31,7 @@ namespace Assets.Scripts.Players
             _playerComponents = new Dictionary<Type, IPlayerComponent>();
             SetPlayerCompoentsAndInitialize();
 
+            playerDeadChannel.AddListener<PlayerDeadEvent>(HandlePlayerDeadEvent);
             InputCompo.BattleEvent += CheckArrow;
         }
         protected override void OnDestroy()
@@ -68,6 +68,12 @@ namespace Assets.Scripts.Players
             arrowCheckChannel.RaiseEvent(type);
         }
 
+        private void HandlePlayerDeadEvent(PlayerDeadEvent evt)
+        {
+            PlayerTurn();
+            GetPlayerCompo<PlayerMovement>().SetCanMove(true);
+        }
+
         protected override void PlayerTurn()
         {
             InputCompo.TurnChange(true);
@@ -79,12 +85,12 @@ namespace Assets.Scripts.Players
             transform.position = _originPos;
             InputCompo.TurnChange(false);
             GetPlayerCompo<PlayerRenderer>().FadeWithTurn(false);
-            GetPlayerCompo<PlayerMovement>().canManualMove = true;
+            GetPlayerCompo<PlayerMovement>().SetCanMove(true);
         }
 
         protected override void DamageCalcTurn()
         {
-            GetPlayerCompo<PlayerMovement>().canManualMove = false;
+            GetPlayerCompo<PlayerMovement>().SetCanMove(false);
             InputCompo.TurnChange(true);
         }
 
