@@ -1,4 +1,5 @@
 using Assets.Scripts.Core.EventChannel;
+using Assets.Scripts.Core.EventChannel.Events;
 using Assets.Scripts.Players.Act;
 using System;
 using System.Collections.Generic;
@@ -6,10 +7,11 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class ActSelector : MonoBehaviour
+public abstract class ActSelector : MonoBehaviour
 {
     [SerializeField] protected InputReader playerInput;
-    
+
+    [SerializeField] protected GameEventChannel playerDeadChannel;
     [SerializeField] private BoolEventChannel activeChannel;
 
     [SerializeField] protected Act currentAct;
@@ -30,6 +32,7 @@ public class ActSelector : MonoBehaviour
         _canvasGroup = GetComponent<CanvasGroup>();
 
         activeChannel.ValueEvent += HandleValueChange;
+        playerDeadChannel.AddListener<PlayerDeadEvent>(HandlePlayerDeadEvent);
         playerInput.PlayerTurnInputEvent += ActSelect;
         playerInput.SelectEvent += UseAct;
     }
@@ -54,6 +57,7 @@ public class ActSelector : MonoBehaviour
     protected virtual void OnDestroy()
     {
         activeChannel.ValueEvent -= HandleValueChange;
+        playerDeadChannel.RemoveListener<PlayerDeadEvent>(HandlePlayerDeadEvent);
         playerInput.PlayerTurnInputEvent -= ActSelect;
         playerInput.SelectEvent -= UseAct;
     }
@@ -62,6 +66,8 @@ public class ActSelector : MonoBehaviour
     {
         _canSelect = value;
     }
+
+    protected abstract void HandlePlayerDeadEvent(PlayerDeadEvent evt);
 
     protected void ActSelect((int x, int y) index)
     {
