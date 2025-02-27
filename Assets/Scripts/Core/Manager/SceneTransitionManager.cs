@@ -22,6 +22,7 @@ namespace Assets.Scripts.Core.Manager
 
         private void HandleSceneEvent(SceneEvent evt)
         {
+            Time.timeScale = 1;
             SceneManager.LoadScene(evt.sceneName);
         }
     }
