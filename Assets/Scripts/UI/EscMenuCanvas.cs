@@ -12,6 +12,8 @@ namespace Assets.Scripts.UI
     public class EscMenuCanvas : MonoBehaviour
     {
         [SerializeField] private GameEventChannel uiChannel;
+        [SerializeField] private GameEventChannel sceneChannel;
+        [SerializeField] private BoolEventChannel fadeChannel;
         [SerializeField] private InputReader playerInput;
         [SerializeField] private CanvasGroup canvasGroup;
 
@@ -54,6 +56,14 @@ namespace Assets.Scripts.UI
             canvasGroup.alpha = alpha;
             canvasGroup.blocksRaycasts = isOpen;
             canvasGroup.interactable = isOpen;
+        }
+
+        public void OnExit()
+        {
+            SceneEvent evt = CoreEvents.SceneEvent;
+            evt.sceneName = "MainTitle";
+
+            sceneChannel.RaiseEvent(evt);
         }
     }
 }
