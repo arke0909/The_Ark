@@ -7,9 +7,10 @@ namespace Assets.Scripts.Feedbacks
 {
     public class DissolveFeedback : Feedback
     {
-        [SerializeField] private BoolEventChannel fadeChannel;
+        [SerializeField] private BoolEventChannel boolChannel;
         [SerializeField] private SpriteRenderer[] targetRenderer;
         [SerializeField] private float delaySeconds;
+        [SerializeField] private bool value;
 
         private readonly int _dissolveValueParam = Shader.PropertyToID("_DissolveValue");
         private List<Material> _materials = new List<Material>();
@@ -37,7 +38,7 @@ namespace Assets.Scripts.Feedbacks
                 yield return null;
             }
 
-            fadeChannel.RaiseEvent(true);
+            boolChannel.RaiseEvent(value);
         }
 
         public override void StartFeedback()
