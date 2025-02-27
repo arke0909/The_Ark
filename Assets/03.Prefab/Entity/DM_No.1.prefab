@@ -75,13 +75,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73e89616940b4e640ab6fe94758e4b76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fadeChannel: {fileID: 11400000, guid: f08ae2333c6d29243ba2525f10a5f758, type: 2}
+  boolChannel: {fileID: 11400000, guid: f08ae2333c6d29243ba2525f10a5f758, type: 2}
   targetRenderer:
   - {fileID: 7847647263618026742}
   - {fileID: 4318727269946516774}
   - {fileID: 3944319672113255105}
   - {fileID: 8120936772795692335}
   delaySeconds: 2
+  value: 1
 --- !u!1 &2998982805362018238
 GameObject:
   m_ObjectHideFlags: 0
@@ -614,6 +615,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5955716109363529752}
     m_Modifications:
+    - target: {fileID: 2476937728009386966, guid: e13d5034ed515b0419a72e27dbe4d374, type: 3}
+      propertyPath: damageMultiply
+      value: 0.6
+      objectReference: {fileID: 0}
     - target: {fileID: 4036278653592399181, guid: e13d5034ed515b0419a72e27dbe4d374, type: 3}
       propertyPath: m_Name
       value: FireCirclePattern
@@ -728,6 +733,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4862924394849452589, guid: 907c985dda3d35c4b872398831bdcdaf, type: 3}
+      propertyPath: damageMultiply
+      value: 0.8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -793,6 +802,10 @@ PrefabInstance:
     - target: {fileID: 4125748728229459811, guid: d619facc0096e93429b8213960359169, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5477486523067986481, guid: d619facc0096e93429b8213960359169, type: 3}
+      propertyPath: damageMultiply
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -949,6 +962,14 @@ PrefabInstance:
     - target: {fileID: 3461573954242004708, guid: c88c2adb5d3d8544c88537a3486905c7, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5003188985684864603, guid: c88c2adb5d3d8544c88537a3486905c7, type: 3}
+      propertyPath: bulletCount
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5003188985684864603, guid: c88c2adb5d3d8544c88537a3486905c7, type: 3}
+      propertyPath: damageMultiply
+      value: 0.8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
