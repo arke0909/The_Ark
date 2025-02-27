@@ -14,7 +14,6 @@ namespace Assets.Scripts.Core.EventChannel.Events
         public static UIEvent UIEvent = new UIEvent();
         public static FadeEvent FadeEvent = new FadeEvent();
         public static SceneEvent SceneEvent = new SceneEvent();
-        public static ReloadSceneEvent ReloadSceneEvent = new ReloadSceneEvent();
     }
 
     public class PoolPopEvent : GameEvent
@@ -60,6 +59,4 @@ namespace Assets.Scripts.Core.EventChannel.Events
     {
         public string sceneName;
     }
-    public class ReloadSceneEvent : GameEvent
-    { }
 }

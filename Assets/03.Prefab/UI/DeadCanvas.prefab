@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 7525135513193714452}
   - component: {fileID: 5312114080552772846}
   - component: {fileID: 1510397573638270254}
-  - component: {fileID: 3799989096281489950}
   m_Layer: 5
   m_Name: OnDeadPanel
   m_TagString: Untagged
@@ -79,27 +78,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &3799989096281489950
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 714878649902175385}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 293fa6697f5d1e0438aa2e72c41224de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerInput: {fileID: 11400000, guid: 805884eb54a0bc54dbd5ee8e9c59073d, type: 2}
-  activeChannel: {fileID: 11400000, guid: 2dc4d5be7f1fa6146aeeb263a851e4ce, type: 2}
-  currentAct: {fileID: 0}
-  OnChangeSelect:
-    m_PersistentCalls:
-      m_Calls: []
-  OnSelect:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &1076676375997675736
 GameObject:
   m_ObjectHideFlags: 0
@@ -328,6 +306,7 @@ GameObject:
   - component: {fileID: 5633311473744452804}
   - component: {fileID: 9064778865064297351}
   - component: {fileID: 1871285268674037326}
+  - component: {fileID: 3711760937369781153}
   m_Layer: 5
   m_Name: DeadCanvas
   m_TagString: Untagged
@@ -430,6 +409,27 @@ CanvasGroup:
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
+--- !u!114 &3711760937369781153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7566343446850020227}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 293fa6697f5d1e0438aa2e72c41224de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerInput: {fileID: 11400000, guid: 805884eb54a0bc54dbd5ee8e9c59073d, type: 2}
+  activeChannel: {fileID: 11400000, guid: 2dc4d5be7f1fa6146aeeb263a851e4ce, type: 2}
+  currentAct: {fileID: 0}
+  OnChangeSelect:
+    m_PersistentCalls:
+      m_Calls: []
+  OnSelect:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &9085020480227917018
 GameObject:
   m_ObjectHideFlags: 0
@@ -627,7 +627,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 720931174955237353, guid: 1febfb5466a4ffe4a94848a83435f6d2, type: 3}
       propertyPath: m_Name
-      value: Act_Ext
+      value: Act_Exit
       objectReference: {fileID: 0}
     - target: {fileID: 4417356657412620056, guid: 1febfb5466a4ffe4a94848a83435f6d2, type: 3}
       propertyPath: soundData
@@ -719,14 +719,14 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 720931174955237353, guid: 1febfb5466a4ffe4a94848a83435f6d2, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2469085199741313881}
+      addedObject: {fileID: 5534749705586174039}
   m_SourcePrefab: {fileID: 100100000, guid: 1febfb5466a4ffe4a94848a83435f6d2, type: 3}
 --- !u!1 &2285754577871345471 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 720931174955237353, guid: 1febfb5466a4ffe4a94848a83435f6d2, type: 3}
   m_PrefabInstance: {fileID: 1565531629265922262}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2469085199741313881
+--- !u!114 &5534749705586174039
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -735,43 +735,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 2285754577871345471}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0919fd435aa62eb4d8558e791b118465, type: 3}
+  m_Script: {fileID: 11500000, guid: 57d367121c55bb24b82fa572ebbe6738, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   playerFinder: {fileID: 11400000, guid: 23e17a3a4d1d5894f8fa737d0d00f6b6, type: 2}
-  turnChangeChannel: {fileID: 11400000, guid: cbee26c0380d9c745b94e60ad84e18d2, type: 2}
+  turnChangeChannel: {fileID: 0}
   onSelectColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   OnEffect:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2951116426901034958}
-        m_TargetAssemblyTypeName: Assets.Scripts.Feedbacks.SoundPlayFeedback, Assembly-CSharp
-        m_MethodName: StartFeedback
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  x: 0
+      m_Calls: []
+  x: 1
   y: 0
-  setArrowChannel: {fileID: 11400000, guid: d4651c7301d43654a8acc7de9def88f6, type: 2}
-  arrowSize: 8
-  damageMultiply: 1.75
---- !u!114 &2951116426901034958 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4417356657412620056, guid: 1febfb5466a4ffe4a94848a83435f6d2, type: 3}
-  m_PrefabInstance: {fileID: 1565531629265922262}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c984ef3f96aac44e91231b8a2f820d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  sceneChannel: {fileID: 11400000, guid: 244dc55beb24cd441b4d2a52c33078a5, type: 2}
 --- !u!224 &7031987058468723228 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8371980876365738698, guid: 1febfb5466a4ffe4a94848a83435f6d2, type: 3}
@@ -903,14 +878,14 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 720931174955237353, guid: 1febfb5466a4ffe4a94848a83435f6d2, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 9090880770519130372}
+      addedObject: {fileID: 1862967720710143769}
   m_SourcePrefab: {fileID: 100100000, guid: 1febfb5466a4ffe4a94848a83435f6d2, type: 3}
 --- !u!1 &1449325923364949436 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 720931174955237353, guid: 1febfb5466a4ffe4a94848a83435f6d2, type: 3}
   m_PrefabInstance: {fileID: 2169689569104556629}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &9090880770519130372
+--- !u!114 &1862967720710143769
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -919,43 +894,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 1449325923364949436}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0919fd435aa62eb4d8558e791b118465, type: 3}
+  m_Script: {fileID: 11500000, guid: 291b12d1f987b9c43a292ef820668c25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerFinder: {fileID: 11400000, guid: 23e17a3a4d1d5894f8fa737d0d00f6b6, type: 2}
-  turnChangeChannel: {fileID: 11400000, guid: cbee26c0380d9c745b94e60ad84e18d2, type: 2}
+  playerFinder: {fileID: 0}
+  turnChangeChannel: {fileID: 0}
   onSelectColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   OnEffect:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2545047618616151373}
-        m_TargetAssemblyTypeName: Assets.Scripts.Feedbacks.SoundPlayFeedback, Assembly-CSharp
-        m_MethodName: StartFeedback
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   x: 0
   y: 0
-  setArrowChannel: {fileID: 11400000, guid: d4651c7301d43654a8acc7de9def88f6, type: 2}
-  arrowSize: 8
-  damageMultiply: 1.75
---- !u!114 &2545047618616151373 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4417356657412620056, guid: 1febfb5466a4ffe4a94848a83435f6d2, type: 3}
-  m_PrefabInstance: {fileID: 2169689569104556629}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c984ef3f96aac44e91231b8a2f820d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  sceneManagerSO: {fileID: 11400000, guid: cb25dfc70ccfae84884891599035e428, type: 2}
+  sceneChannel: {fileID: 11400000, guid: 244dc55beb24cd441b4d2a52c33078a5, type: 2}
 --- !u!224 &7652470546956566687 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8371980876365738698, guid: 1febfb5466a4ffe4a94848a83435f6d2, type: 3}

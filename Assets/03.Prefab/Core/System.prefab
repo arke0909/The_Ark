@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneChannel: {fileID: 11400000, guid: 244dc55beb24cd441b4d2a52c33078a5, type: 2}
+  sceneManagerSO: {fileID: 11400000, guid: cb25dfc70ccfae84884891599035e428, type: 2}
 --- !u!1 &915491442344395555
 GameObject:
   m_ObjectHideFlags: 0
