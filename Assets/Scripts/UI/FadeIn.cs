@@ -1,12 +1,13 @@
 ﻿using Assets.Scripts.Core.EventChannel;
+using Assets.Scripts.Core.EventChannel.Events;
 using DG.Tweening;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace Assets.Scripts.UI
 {
     public class FadeIn : MonoBehaviour
     {
+        [SerializeField] private GameEventChannel sceneChannel;
         [SerializeField] private BoolEventChannel fadeChannel;
         [SerializeField] private BoolEventChannel activeChannel;
         [SerializeField] private float duration;
@@ -14,7 +15,6 @@ namespace Assets.Scripts.UI
 
         private void Awake()
         {
-
             fadeChannel.ValueEvent += Fade;
         }
 
@@ -39,7 +39,12 @@ namespace Assets.Scripts.UI
                 .OnComplete(() => 
                 {
                     if(isFadein)
-                        SceneManager.LoadScene(sceneName);
+                    {
+                        SceneEvent evt = CoreEvents.SceneEvent;
+                        evt.sceneName = sceneName;
+
+                        sceneChannel.RaiseEvent(evt);
+                    }
                     else
                         activeChannel.RaiseEvent(true);
                 });
