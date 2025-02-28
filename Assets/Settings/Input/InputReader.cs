@@ -19,6 +19,7 @@ public class InputReader : ScriptableObject, IPlayerTurnActions, IEnemyTurnActio
     public Vector2 InputVector { get; private set; }
 
     private Input _input;
+    private bool _isBattle;
 
     private void OnEnable()
     {
@@ -43,6 +44,8 @@ public class InputReader : ScriptableObject, IPlayerTurnActions, IEnemyTurnActio
 
     public void TurnChange(bool isPlayerTurn)
     {
+        _isBattle = false;
+
         _input.Disable();
         _input.UI.Enable();
 
@@ -56,6 +59,7 @@ public class InputReader : ScriptableObject, IPlayerTurnActions, IEnemyTurnActio
     {
         _input.Disable();
 
+        _isBattle = true;
         _input.UI.Enable();
         _input.Battle.Enable();
     }
@@ -139,9 +143,15 @@ public class InputReader : ScriptableObject, IPlayerTurnActions, IEnemyTurnActio
     {
         if (isActive)
         {
-            _input.EnemyTurn.Enable();
-            _input.PlayerTurn.Enable();
-            _input.Battle.Enable();
+            if(_isBattle)
+            {
+                _input.Battle.Enable();
+            }
+            else
+            {
+                _input.EnemyTurn.Enable();
+                _input.PlayerTurn.Enable();
+            }
         }
         else
         {
