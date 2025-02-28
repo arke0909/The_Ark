@@ -16,9 +16,6 @@ namespace Assets.Scripts.Combat.Patterns
         [field: SerializeField] public EntityFinder PlayerFinder { get; private set; }
         [SerializeField] GameEventChannel poolChannel;
 
-        [SerializeField] private bool canUseTwoPattern = false;
-        [SerializeField] private float delay = 0.5f;
-
         private Enemy _enemy;
         private List<Pattern> patterns;
 
