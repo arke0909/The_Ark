@@ -9,12 +9,16 @@ namespace Assets.Scripts.Players.Act
     {
         [SerializeField] private GameEventChannel turnChannel;
         [SerializeField] private GameEventChannel uiChannel;
+        [SerializeField] private BoolEventChannel activeChannel;
+
+        private bool _isActive = true;
 
         protected override void Awake()
         {
             base.Awake();
             turnChannel.AddListener<TurnChangeEvent>(HandleTurnChange);
             uiChannel.AddListener<AreaEvent>(HandleAreaEvent);
+            activeChannel.ValueEvent += HandleValueChange;
         }
 
         protected override void OnDestroy()
@@ -22,11 +26,17 @@ namespace Assets.Scripts.Players.Act
             base.OnDestroy();
             turnChannel.RemoveListener<TurnChangeEvent>(HandleTurnChange);
             uiChannel.RemoveListener<AreaEvent>(HandleAreaEvent);
+            activeChannel.ValueEvent -= HandleValueChange;
+        }
+
+        private  void HandleValueChange(bool value)
+        {
+            _canSelect = value;
         }
 
         protected override void HandlePlayerDeadEvent(PlayerDeadEvent evt)
         {
-            _canSelect = false;
+            _isActive = false;
         }
 
         private void HandleAreaEvent(AreaEvent evt)
@@ -41,6 +51,18 @@ namespace Assets.Scripts.Players.Act
         {
             if (evt.nextTurn == "ENEMY" || evt.nextTurn == "INPUT")
                 _canvasGroup.alpha = 0;
+        }
+
+        protected override void ActSelect((int x, int y) index)
+        {
+            if(_isActive)
+            base.ActSelect(index);
+        }
+
+        protected override void UseAct()
+        {
+            if(_isActive)
+            base.UseAct();
         }
     }
 }
