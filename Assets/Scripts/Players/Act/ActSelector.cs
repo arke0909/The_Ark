@@ -12,7 +12,6 @@ public abstract class ActSelector : MonoBehaviour
     [SerializeField] protected InputReader playerInput;
 
     [SerializeField] protected GameEventChannel playerDeadChannel;
-    [SerializeField] private BoolEventChannel activeChannel;
 
     [SerializeField] protected Act currentAct;
 
@@ -31,7 +30,6 @@ public abstract class ActSelector : MonoBehaviour
     {
         _canvasGroup = GetComponent<CanvasGroup>();
 
-        activeChannel.ValueEvent += HandleValueChange;
         playerDeadChannel.AddListener<PlayerDeadEvent>(HandlePlayerDeadEvent);
         playerInput.PlayerTurnInputEvent += ActSelect;
         playerInput.SelectEvent += UseAct;
@@ -56,20 +54,14 @@ public abstract class ActSelector : MonoBehaviour
 
     protected virtual void OnDestroy()
     {
-        activeChannel.ValueEvent -= HandleValueChange;
         playerDeadChannel.RemoveListener<PlayerDeadEvent>(HandlePlayerDeadEvent);
         playerInput.PlayerTurnInputEvent -= ActSelect;
         playerInput.SelectEvent -= UseAct;
     }
 
-    protected virtual void HandleValueChange(bool value)
-    {
-        _canSelect = value;
-    }
-
     protected abstract void HandlePlayerDeadEvent(PlayerDeadEvent evt);
 
-    protected void ActSelect((int x, int y) index)
+    protected virtual void ActSelect((int x, int y) index)
     {
         if (!_canSelect) return;
 
@@ -89,7 +81,7 @@ public abstract class ActSelector : MonoBehaviour
         currentAct.OnSelct();
     }
 
-    protected void UseAct()
+    protected virtual void UseAct()
     {
         if(!_canSelect) return;
 
