@@ -20,6 +20,5 @@ namespace Assets.Scripts.Players
 
             _renderer.color = color;
         }
-
     }
 }

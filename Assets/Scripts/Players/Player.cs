@@ -70,7 +70,7 @@ namespace Assets.Scripts.Players
 
         private void HandlePlayerDeadEvent(PlayerDeadEvent evt)
         {
-            PlayerTurn();
+            InputCompo.TurnChange(true);
             GetPlayerCompo<PlayerMovement>().SetCanMove(true);
         }
 
