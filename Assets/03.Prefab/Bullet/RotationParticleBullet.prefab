@@ -232,4 +232,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   poolChannel: {fileID: 11400000, guid: d53dbf3475df90c4c9b0a574ee0663a7, type: 2}
   poolName: RotationBullet
-  duration: 10
+  duration: 7

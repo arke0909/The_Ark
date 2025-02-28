@@ -1,4 +1,5 @@
 using Assets.Scripts.Core.EventChannel;
+using Assets.Scripts.Core.EventChannel.Events;
 using Assets.Scripts.Enemies;
 using Assets.Scripts.Entities;
 using Assets.Scripts.Players;
@@ -9,7 +10,7 @@ namespace Assets.Scripts.Core.Manager
     [DefaultExecutionOrder(-20)]
     public class GameManager : MonoBehaviour
     {
-        [SerializeField] private BoolEventChannel fadeChannel;
+        [SerializeField] private GameEventChannel uiChannel;
         [SerializeField] private EntityFinder playerFinder;
         [SerializeField] private EntityFinder enemyFinder;
         private Player _player;
@@ -25,7 +26,11 @@ namespace Assets.Scripts.Core.Manager
 
         private void Start()
         {
-            fadeChannel.RaiseEvent(false);
+            FadeEvent evt = CoreEvents.FadeEvent;
+            evt.isClear = false;
+            evt.isFading = false;
+
+            uiChannel.RaiseEvent(evt);
         }
     }
 }

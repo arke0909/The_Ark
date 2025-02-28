@@ -12,7 +12,5 @@ namespace Assets.Scripts.Entities
             _entity = entity;
             _renderer = GetComponent<SpriteRenderer>();
         }
-
-        
     }
 }
