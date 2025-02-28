@@ -29,8 +29,6 @@ namespace Assets.Scripts.Combat.Bullets
             transform.position = position;
             _damage = damage;
 
-            Debug.Log(1);
-            
             _spriteRenderer.DOFade(0, duration).SetEase(Ease.InExpo)
                 .OnComplete(() => Push());
         }
