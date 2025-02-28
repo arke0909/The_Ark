@@ -15,12 +15,12 @@ namespace Assets.Scripts.Players.Act
 
         protected override void HandlePlayerDeadEvent(PlayerDeadEvent evt)
         {
-            _canSelect = true;
             SetCanvasGroup(true);
         }
 
         private void SetCanvasGroup(bool isDead)
         {
+            _canSelect = isDead;
             _canvasGroup.alpha = isDead ? 1 : 0;
             _canvasGroup.interactable = isDead;
             _canvasGroup.blocksRaycasts = isDead;
