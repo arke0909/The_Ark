@@ -12,6 +12,7 @@ namespace Assets.Scripts.Players.Act
         {
             FadeEvent evt = CoreEvents.FadeEvent;
             evt.isFading = true;
+            evt.isClear = false;
             evt.sceneName = "MainTitle";
 
             sceneChannel.RaiseEvent(evt);

@@ -11,6 +11,7 @@ namespace Assets.Scripts.Feedbacks
         [SerializeField] private GameEventChannel endDissolveEvent;
         [SerializeField] private SpriteRenderer[] targetRenderer;
         [SerializeField] private float delaySeconds;
+        [SerializeField] private string nextStage;
         [SerializeField] private bool isPlayer;
 
         private readonly int _dissolveValueParam = Shader.PropertyToID("_DissolveValue");
@@ -39,8 +40,19 @@ namespace Assets.Scripts.Feedbacks
                 yield return null;
             }
 
-            GameEvent evt = isPlayer ? CombatEvents.PlayerDeadEvent : CoreEvents.FadeEvent;
-            endDissolveEvent.RaiseEvent(evt);
+            if (isPlayer)
+            {
+                PlayerDeadEvent evt = CombatEvents.PlayerDeadEvent;
+                endDissolveEvent.RaiseEvent(evt);
+            }
+            else
+            {
+                FadeEvent evt = CoreEvents.FadeEvent;
+                evt.isFading = true;
+                evt.sceneName = nextStage;
+                endDissolveEvent.RaiseEvent(evt);
+            }
+
         }
 
         public override void StartFeedback()

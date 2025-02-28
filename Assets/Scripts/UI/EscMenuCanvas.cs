@@ -60,6 +60,7 @@ namespace Assets.Scripts.UI
         public void OnExit()
         {
             FadeEvent evt = CoreEvents.FadeEvent;
+            evt.isClear = false;
             evt.sceneName = "MainTitle";
 
             sceneChannel.RaiseEvent(evt);
