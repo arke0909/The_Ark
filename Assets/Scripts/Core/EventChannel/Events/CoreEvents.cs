@@ -53,6 +53,7 @@ namespace Assets.Scripts.Core.EventChannel.Events
     public class FadeEvent : GameEvent
     {
         public bool isFading;
+        public bool isClear;
         public string sceneName;
     }
     public class SceneEvent : GameEvent
