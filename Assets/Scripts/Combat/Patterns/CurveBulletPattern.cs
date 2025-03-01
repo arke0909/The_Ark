@@ -11,6 +11,7 @@ namespace Assets.Scripts.Combat.Patterns
 
         public override void UsePattern()
         {
+            base.UsePattern();
             StartCoroutine(PatternCoroutine());
         }
 

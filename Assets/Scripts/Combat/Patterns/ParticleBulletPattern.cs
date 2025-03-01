@@ -9,6 +9,8 @@ namespace Assets.Scripts.Combat.Patterns
 
         public override void UsePattern()
         {
+            base.UsePattern();
+
             foreach (Transform firePos in firePosTrm)
             {
                 ParticleBullet particleBullet = Pop(poolName) as ParticleBullet;
