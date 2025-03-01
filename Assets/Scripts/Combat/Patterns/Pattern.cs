@@ -24,8 +24,6 @@ namespace Assets.Scripts.Combat.Patterns
         protected PatternComponent _patternComponent;
         protected float _damage;
 
-        protected List<Feedback> _feedbacks;
-
         public Vector2 areaSize;
         public float attackTime = 5.5f;
 
@@ -37,8 +35,10 @@ namespace Assets.Scripts.Combat.Patterns
             _player = patternComponent.PlayerFinder.entity as Player;
             _poolChannel = poolChannel;
             _patternComponent = patternComponent;
-            _feedbacks = GetComponentsInChildren<Feedback>().ToList();
-            _feedbacks.ForEach(feedback => FeedbackEvent.AddListener(feedback.StartFeedback));
+
+            GetComponentsInChildren<Feedback>().ToList()
+                .ForEach(feedback => FeedbackEvent.AddListener(feedback.StartFeedback));
+
             _damage = enemy.GetCompo<EntityStatComponent>().GetStat(patternComponent.Attack).BaseValue * damageMultiply;
         }
 
