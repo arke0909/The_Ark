@@ -1,12 +1,14 @@
-﻿using Assets.Scripts.Combat.Bullets;
-using Assets.Scripts.Core.EventChannel;
+﻿using Assets.Scripts.Core.EventChannel;
 using Assets.Scripts.Core.EventChannel.Events;
 using Assets.Scripts.Core.Pools;
 using Assets.Scripts.Enemies;
 using Assets.Scripts.Entities.Stats;
+using Assets.Scripts.Feedbacks;
 using Assets.Scripts.Players;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Assets.Scripts.Combat.Patterns
 {
@@ -22,8 +24,12 @@ namespace Assets.Scripts.Combat.Patterns
         protected PatternComponent _patternComponent;
         protected float _damage;
 
+        protected List<Feedback> _feedbacks;
+
         public Vector2 areaSize;
         public float attackTime = 5.5f;
+
+        public UnityEvent FeedbackEvent;
 
         public void InitPattern(Enemy enemy, GameEventChannel poolChannel, PatternComponent patternComponent)
         {
@@ -31,7 +37,14 @@ namespace Assets.Scripts.Combat.Patterns
             _player = patternComponent.PlayerFinder.entity as Player;
             _poolChannel = poolChannel;
             _patternComponent = patternComponent;
+            _feedbacks = GetComponentsInChildren<Feedback>().ToList();
+            _feedbacks.ForEach(feedback => FeedbackEvent.AddListener(feedback.StartFeedback));
             _damage = enemy.GetCompo<EntityStatComponent>().GetStat(patternComponent.Attack).BaseValue * damageMultiply;
+        }
+
+        private void OnDestroy()
+        {
+            FeedbackEvent = null;
         }
 
         public IPoolable Pop(string poolName)
@@ -47,6 +60,9 @@ namespace Assets.Scripts.Combat.Patterns
         }
 
 
-        public abstract void UsePattern();
+        public virtual void UsePattern() 
+        {
+            FeedbackEvent?.Invoke();
+        }
     }
 }
