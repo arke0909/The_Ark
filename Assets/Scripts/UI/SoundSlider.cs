@@ -17,11 +17,8 @@ namespace Assets.Scripts.UI
         {
             _bar = GetComponentInChildren<Slider>();
             _bar.value = volumeData.value;
-        }
+            audioMixer.SetFloat(volumeName, Mathf.Log10(volumeData.value) * 20);
 
-        private void Start()
-        {
-            audioMixer.SetFloat(volumeName, volumeData.value);
         }
 
         public void OnValueChange()
