@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 031fb49fed6d7064788cfb09f8e42849, type: 3}
   m_Name: Stage3
   m_EditorClassIdentifier: 
-  audioType: 0
+  audioType: 1
   clip: {fileID: 8300000, guid: b863b8ce771781f4f81f60944bd51ed1, type: 3}
   loop: 0
   randomizePitch: 0
