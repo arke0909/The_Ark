@@ -481,9 +481,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: DM_No.2
       objectReference: {fileID: 0}
-    - target: {fileID: 3586998163854137310, guid: ab64ab9ef7c21b84c80619bf0a9f0d41, type: 3}
-      propertyPath: statOverrides.Array.data[0].overrideBaseValue
-      value: 5
+    - target: {fileID: 5564162198480797095, guid: ab64ab9ef7c21b84c80619bf0a9f0d41, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7270009521406152565, guid: ab64ab9ef7c21b84c80619bf0a9f0d41, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8012847121548228201, guid: ab64ab9ef7c21b84c80619bf0a9f0d41, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

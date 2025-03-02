@@ -82,4 +82,4 @@ MonoBehaviour:
   speed: 1.8
   lifeTime: 3
   poolName: SellBullet
-  bulletCount: 12
+  bulletCount: 8
