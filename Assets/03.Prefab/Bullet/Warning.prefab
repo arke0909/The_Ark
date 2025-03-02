@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0023f974d951d304391dfa7c76608376, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soundSO: {fileID: 11400000, guid: 2097e32f6b8e2da41947e74b2edff8e5, type: 2}
   poolChannel: {fileID: 11400000, guid: d53dbf3475df90c4c9b0a574ee0663a7, type: 2}
   poolName: Warning
 --- !u!212 &5908445098468034004
