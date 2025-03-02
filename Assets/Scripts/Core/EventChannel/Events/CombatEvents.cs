@@ -9,6 +9,7 @@ namespace Assets.Scripts.Core.EventChannel.Events
         public static ChangeAreaSizeEvent ChangeAreaSizeEvent = new ChangeAreaSizeEvent();
         public static HPTextEvent HPTextEvent = new HPTextEvent();
         public static PlayerDeadEvent PlayerDeadEvent = new PlayerDeadEvent();
+        public static CameraShakeEvent CameraShakeEvent = new CameraShakeEvent();
     }
 
     public class AttackEvent : GameEvent
@@ -30,4 +31,9 @@ namespace Assets.Scripts.Core.EventChannel.Events
 
     public class PlayerDeadEvent : GameEvent
     { }
+
+    public class CameraShakeEvent : GameEvent
+    {
+        public float shakePower;
+    }
 }
