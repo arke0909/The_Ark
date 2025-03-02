@@ -82,4 +82,6 @@ MonoBehaviour:
   speed: 1.8
   lifeTime: 3
   poolName: SellBullet
+  cameraChannel: {fileID: 11400000, guid: 6d92435f2340ea74898048f5463b9072, type: 2}
+  shakePower: 0.5
   bulletCount: 8
