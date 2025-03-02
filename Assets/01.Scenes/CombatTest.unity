@@ -613,9 +613,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: DM_No.2
       objectReference: {fileID: 0}
+    - target: {fileID: 4036668918546383233, guid: ab64ab9ef7c21b84c80619bf0a9f0d41, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5564162198480797095, guid: ab64ab9ef7c21b84c80619bf0a9f0d41, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7270009521406152565, guid: ab64ab9ef7c21b84c80619bf0a9f0d41, type: 3}
       propertyPath: m_IsActive
@@ -623,7 +627,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8012847121548228201, guid: ab64ab9ef7c21b84c80619bf0a9f0d41, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
