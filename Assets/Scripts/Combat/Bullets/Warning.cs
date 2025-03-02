@@ -1,6 +1,7 @@
 ﻿using Assets.Scripts.Core.EventChannel;
 using Assets.Scripts.Core.EventChannel.Events;
 using Assets.Scripts.Core.Pools;
+using Assets.Scripts.Sound;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,7 @@ namespace Assets.Scripts.Combat.Bullets
 {
     public class Warning : MonoBehaviour, IPoolable
     {
+        [SerializeField] private SoundSO soundSO;
         [SerializeField] private GameEventChannel poolChannel;
         [SerializeField] private string poolName;
 
@@ -28,6 +30,9 @@ namespace Assets.Scripts.Combat.Bullets
         {
             Thunder thunder = Pop("Thunder") as Thunder;
             thunder.Init(transform.position, _damage);
+
+            SoundPlayer soundPlayer = Pop("SoundPlayer") as SoundPlayer;
+            soundPlayer.PlaySound(soundSO);
 
             Push();
         }
