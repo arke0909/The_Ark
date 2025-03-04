@@ -63,6 +63,8 @@ namespace Assets.Scripts.UI
             evt.isClear = false;
             evt.sceneName = "MainTitle";
 
+            Time.timeScale = 1;
+
             sceneChannel.RaiseEvent(evt);
         }
     }

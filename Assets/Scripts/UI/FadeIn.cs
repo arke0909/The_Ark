@@ -47,6 +47,7 @@ namespace Assets.Scripts.UI
                         SceneEvent sceneEvt = CoreEvents.SceneEvent;
                         sceneEvt.sceneName = evt.sceneName;
 
+                        Debug.Log(evt.sceneName);
                         sceneChannel.RaiseEvent(sceneEvt);
                     }
                     else

@@ -316,7 +316,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5503704619074420043, guid: 88092336bb5bd4d49a888321f15b013c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.2
+      value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 5503704619074420043, guid: 88092336bb5bd4d49a888321f15b013c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -390,7 +390,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3176466205535896301, guid: c8a0543e37e887b43b28052c3191b7a0, type: 3}
       propertyPath: statOverrides.Array.data[0].overrideBaseValue
-      value: 5
+      value: 325
       objectReference: {fileID: 0}
     - target: {fileID: 3176466205535896301, guid: c8a0543e37e887b43b28052c3191b7a0, type: 3}
       propertyPath: statOverrides.Array.data[1].overrideBaseValue

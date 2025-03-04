@@ -13,6 +13,9 @@ namespace Assets.Scripts.UI
 
         private void Awake()
         {
+            if(Time.timeScale != 1) 
+                Time.timeScale = 1;
+
             _canvasGroup = GetComponent<CanvasGroup>();
         }
 
