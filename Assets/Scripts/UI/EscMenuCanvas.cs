@@ -61,6 +61,7 @@ namespace Assets.Scripts.UI
         {
             FadeEvent evt = CoreEvents.FadeEvent;
             evt.isClear = false;
+            evt.isFading = true;
             evt.sceneName = "MainTitle";
 
             Time.timeScale = 1;

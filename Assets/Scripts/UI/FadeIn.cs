@@ -12,6 +12,8 @@ namespace Assets.Scripts.UI
         [SerializeField] private float duration;
         [SerializeField] private string sceneName;
 
+        private bool _isTweeing = false;
+
         private void Awake()
         {
             sceneChannel.AddListener<FadeEvent>(HandleFadeEvent);
@@ -24,6 +26,10 @@ namespace Assets.Scripts.UI
 
         private void HandleFadeEvent(FadeEvent evt)
         {
+            if (_isTweeing) return;
+
+            _isTweeing = true;
+
             RectTransform rectTrm = GetComponent<RectTransform>();
             float screenHeight = Screen.height;
 
@@ -42,12 +48,13 @@ namespace Assets.Scripts.UI
             DOTween.To(() => rectTrm.localPosition, pos => rectTrm.localPosition = pos, endPos, duration).SetEase(Ease.Linear)
                 .OnComplete(() =>
                 {
+                    _isTweeing = false;
+
                     if (evt.isFading)
                     {
                         SceneEvent sceneEvt = CoreEvents.SceneEvent;
                         sceneEvt.sceneName = evt.sceneName;
 
-                        Debug.Log(evt.sceneName);
                         sceneChannel.RaiseEvent(sceneEvt);
                     }
                     else
