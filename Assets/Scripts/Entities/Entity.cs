@@ -1,6 +1,5 @@
 using Assets.Scripts.Core.EventChannel;
 using Assets.Scripts.Core.EventChannel.Events;
-using Assets.Scripts.Entities.Stats;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +11,7 @@ namespace Assets.Scripts.Entities
     {
         [SerializeField] protected GameEventChannel turnChangeChannel;
 
-        protected Dictionary<Type, IEntityComponent> _entityComponents = new Dictionary<Type, IEntityComponent>();
+        private Dictionary<Type, IEntityComponent> _entityComponents = new Dictionary<Type, IEntityComponent>();
 
         public bool IsDead { get; private set; } = false;
 
@@ -20,7 +19,7 @@ namespace Assets.Scripts.Entities
         protected virtual void Awake()
         {
             SetEntityComponentsAndInitialize();
-            AfterInitalize();
+            AfterInitialize();
 
             turnChangeChannel.AddListener<TurnChangeEvent>(HandleTurnChange);
         }
@@ -41,7 +40,7 @@ namespace Assets.Scripts.Entities
             });
         }
 
-        private void AfterInitalize()
+        private void AfterInitialize()
         {
             _entityComponents.Values.OfType<IAfterInit>().ToList().ForEach(afterInit => afterInit.AfterInit());
         }
@@ -65,7 +64,7 @@ namespace Assets.Scripts.Entities
         }
 
         #region TurnChange Section
-        protected void HandleTurnChange(TurnChangeEvent evt)
+        private void HandleTurnChange(TurnChangeEvent evt)
         {
             if (IsDead) return;
 
