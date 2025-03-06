@@ -18,6 +18,11 @@ namespace Assets.Scripts.Entities.Stats
             _stats = statOverrides.Select(x => x.CreateStat()).ToArray();
         }
 
+        private void OnDestroy()
+        {
+            ClearAllStatModifier();
+        }
+
         public StatSO GetStat(StatSO stat)
         {
             Debug.Assert(stat != null, $"Stats::GetStat-stat is null");

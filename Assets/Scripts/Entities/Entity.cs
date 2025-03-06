@@ -29,11 +29,9 @@ namespace Assets.Scripts.Entities
         protected virtual void OnDestroy()
         {
             turnChangeChannel.RemoveListener<TurnChangeEvent>(HandleTurnChange);
-
-            GetCompo<EntityStatComponent>().ClearAllStatModifier();
         }
 
-        private void SetEntityCompoentsAndInitialize()
+        private void SetEntityComponetsAndInitialize()
         {
             GetComponentsInChildren<IEntityComponent>().ToList().ForEach(component =>
             {
