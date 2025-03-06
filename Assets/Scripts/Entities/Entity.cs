@@ -19,7 +19,7 @@ namespace Assets.Scripts.Entities
         #region Init Section
         protected virtual void Awake()
         {
-            SetEntityCompoentsAndInitialize();
+            SetEntityComponentsAndInitialize();
             AfterInitalize();
 
             turnChangeChannel.AddListener<TurnChangeEvent>(HandleTurnChange);
@@ -31,7 +31,7 @@ namespace Assets.Scripts.Entities
             turnChangeChannel.RemoveListener<TurnChangeEvent>(HandleTurnChange);
         }
 
-        private void SetEntityComponetsAndInitialize()
+        private void SetEntityComponentsAndInitialize()
         {
             GetComponentsInChildren<IEntityComponent>().ToList().ForEach(component =>
             {
