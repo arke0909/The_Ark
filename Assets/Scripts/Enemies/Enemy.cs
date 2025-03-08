@@ -61,13 +61,6 @@ namespace Assets.Scripts.Enemies
             GetCompo<EntityHealth>().ApplyDamage(evt.damage);
         }
 
-        private void ChangeAreaSize(Vector2 size)
-        {
-            ChangeAreaSizeEvent evt = CombatEvents.ChangeAreaSizeEvent;
-            evt.size = size;
-            attackChannel.RaiseEvent(evt);
-        }
-
         protected override void DamageCalcTurn()
         {
             StartCoroutine(TurnChange(false, turnDelay));
@@ -77,12 +70,7 @@ namespace Assets.Scripts.Enemies
         {
             PatternComponent patternCompo = GetEnemyCompo<PatternComponent>();
             patternCompo.UsePattern();
-
-            Pattern pattern = patternCompo.GetPattern();
-
-            ChangeAreaSize(pattern.areaSize);
-
-            StartCoroutine(TurnChange(true, pattern.attackTime));
+            StartCoroutine(TurnChange(false, patternCompo.CurrentPattern.attackTime));
         }
 
         private IEnumerator TurnChange(bool isPlayerTurn, float delay)
