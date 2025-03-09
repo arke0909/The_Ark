@@ -21,7 +21,6 @@ namespace Assets.Scripts.Combat.Patterns
         protected Enemy _enemy;
         protected Player _player;
         protected GameEventChannel _poolChannel;
-        protected PatternComponent _patternComponent;
         protected float _damage;
 
         public Vector2 areaSize;
@@ -34,7 +33,6 @@ namespace Assets.Scripts.Combat.Patterns
             _enemy = enemy;
             _player = patternComponent.PlayerFinder.entity as Player;
             _poolChannel = poolChannel;
-            _patternComponent = patternComponent;
 
             GetComponentsInChildren<Feedback>().ToList()
                 .ForEach(feedback => FeedbackEvent.AddListener(feedback.StartFeedback));
