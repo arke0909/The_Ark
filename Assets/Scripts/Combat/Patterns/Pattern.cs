@@ -18,7 +18,6 @@ namespace Assets.Scripts.Combat.Patterns
         [SerializeField] protected float sizeMultiply = 1;
         [SerializeField] private float damageMultiply;
 
-        protected Enemy _enemy;
         protected Player _player;
         protected GameEventChannel _poolChannel;
         protected float _damage;
@@ -30,7 +29,6 @@ namespace Assets.Scripts.Combat.Patterns
 
         public void InitPattern(Enemy enemy, GameEventChannel poolChannel, PatternComponent patternComponent)
         {
-            _enemy = enemy;
             _player = patternComponent.PlayerFinder.entity as Player;
             _poolChannel = poolChannel;
 

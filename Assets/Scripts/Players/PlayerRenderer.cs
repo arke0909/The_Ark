@@ -5,11 +5,8 @@ namespace Assets.Scripts.Players
 {
     public class PlayerRenderer : EntityRenderer, IPlayerComponent
     {
-        private Player _player;
-
         public void Initialize(Player player)
         {
-            _player = player;
         }
 
         public void FadeWithTurn(bool isPlayerTurn)
