@@ -35,9 +35,10 @@ namespace Assets.Scripts.Entities
             GetComponentsInChildren<IEntityComponent>().ToList().ForEach(component =>
             {
                 Type type = component.GetType();
-                component.Initialize(this);
                 _entityComponents.Add(type, component);
             });
+
+           _entityComponents.Values.ToList().ForEach(component => component.Initialize(this));
         }
 
         private void AfterInitialize()
@@ -46,16 +47,18 @@ namespace Assets.Scripts.Entities
         }
         #endregion
 
-        public T GetCompo<T>() where T : class
+        public T GetCompo<T>(bool isDerived = false) where T : IEntityComponent
         {
-            Type type = typeof(T);
-
-            if (_entityComponents.TryGetValue(type, out IEntityComponent compo))
-            {
-                return compo as T;
-            }
-
-            return default;
+            if (_entityComponents.TryGetValue(typeof(T), out IEntityComponent component))
+                return (T)component;
+            
+            if(isDerived == false) return default(T);
+            
+            Type findType = _entityComponents.Keys.FirstOrDefault(type => type.IsSubclassOf(typeof(T)));
+            if(findType != null) 
+                return (T)_entityComponents[findType];
+            
+            return default(T);
         }
 
         public void OnDead()
