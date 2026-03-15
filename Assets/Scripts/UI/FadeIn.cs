@@ -1,4 +1,4 @@
-﻿using Assets.Scripts.Core.EventChannel;
+using Assets.Scripts.Core.EventChannel;
 using Assets.Scripts.Core.EventChannel.Events;
 using DG.Tweening;
 using UnityEngine;
@@ -38,13 +38,6 @@ namespace Assets.Scripts.UI
 
             rectTrm.localPosition = new Vector2(0, startValue);
             Vector3 endPos = new Vector2(0, endValue);
-
-            if (evt.isClear)
-            {
-                SaveGameEvent saveEvt = CoreEvents.SaveGameEvent;
-                saveEvt.isSaveToFile = true;
-            }
-
             DOTween.To(() => rectTrm.localPosition, pos => rectTrm.localPosition = pos, endPos, duration).SetEase(Ease.Linear)
                 .OnComplete(() =>
                 {
